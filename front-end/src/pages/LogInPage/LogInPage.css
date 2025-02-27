@@ -1,0 +1,9 @@
+.log-in-page{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, #FDFDFD 16.63%, #AEE8FF 110.04%);
+    display: flex;
+     align-items: center;
+     justify-content: center;
+    
+}

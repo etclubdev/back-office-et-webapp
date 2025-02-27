@@ -1,7 +1,12 @@
 import React from 'react';
+import './LogInPage.css';
+
+import { LogInForm } from '../../components/LogInForm';
 
 export const LogInPage = () => {
   return (
-    <h1>This is Log In Page</h1>
+    <div className="log-in-page">
+      <LogInForm/>
+    </div>
   )
 }
