@@ -11,7 +11,7 @@ if (ENV === 'local'){
     api = {
         get: async (url) => {
             if (url !== ""){
-                const mockData = require(`../mocks${url}.json`);
+                const mockData = require(`../mocks/data${url}.json`);
                 return { data: mockData };
             }            
             return {data: []}
