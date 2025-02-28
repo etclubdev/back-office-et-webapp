@@ -1,0 +1,20 @@
+[
+    {
+      "id": "001",
+      "name": "Mock User 1",
+      "email": "mock1@example.com",
+      "role": "guest"
+    },
+    {
+      "id": "002",
+      "name": "Mock User 2",
+      "email": "mock2@example.com",
+      "role": "member"
+    },
+    {
+      "id": "003",
+      "name": "Mock User 3",
+      "email": "mock3@example.com",
+      "role": "admin"
+    }
+]

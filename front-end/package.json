@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
@@ -19,8 +20,8 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "set REACT_APP_ENV=local && react-scripts start",
+    "start:dev": "set REACT_APP_ENV=development && react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
