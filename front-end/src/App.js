@@ -1,18 +1,30 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { LogInPage } from './pages/LogInPage';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+// import { LogInPage } from './pages/LogInPage';
+import { Navbar } from './components/Navbar';
+
+function AppContent() {
+  const location = useLocation();
+  // const isLoginPage = location.pathname === "/";
+
+  return (
+    <div className="App">
+      {/* {!isLoginPage && <Navbar />}       */}
+      <Navbar />
+      <div className="root-container">
+        <Routes>
+          {/* <Route path="/" element={<LogInPage />} /> */}
+        </Routes>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <div className="root-container">
-          <Routes>
-            <Route path="/" element={<LogInPage />} />
-          </Routes>
-        </div>
-      </Router>
-    </div>
+    <Router> 
+      <AppContent />
+    </Router>
   );
 }
 
