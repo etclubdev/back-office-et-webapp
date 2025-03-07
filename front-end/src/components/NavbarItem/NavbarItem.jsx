@@ -1,63 +1,66 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/AuthContext";
 
 export const NavbarItem = ({ id, to, icon, label, dropdownContent, role, isUserItem, isLogoutItem }) => {
     const { user, logout } = useAuth();
-    const isAllowed = role && role.includes(user?.role);
+    const location = useLocation();
+    const isAllowed = role && role.includes(user?.role); 
+    const navigate = useNavigate();
+    console.log("Current path:", location.pathname);
 
-    const toggleActiveClass = (selector, container = "navbar-section") => {
-        const containerEle = document.querySelector("." + container);
-        const clickedEle = containerEle?.querySelector(selector);
+    useEffect(() => {
+        if (!user) return; 
 
-        containerEle?.querySelector(".active")?.classList.remove("active");
-        clickedEle?.classList.add("active");
-    };
+        const toggleActiveClass = (element) => {
+            element?.classList.toggle("active", location.pathname === element.pathname);
+        }
 
-    const toggleDropdownIcon = (selector) => {
-        const clickedEle = document.querySelector(selector);
-        const dropdownIcon = clickedEle?.querySelector(".dropdown-icon");
-        console.log(clickedEle, dropdownIcon);
+        const element = document.getElementById(id);
+        if (dropdownContent){
+            const dropdownEle = element.parentElement?.querySelector(".dropdown-container");
+            const elements = dropdownEle.querySelectorAll(".dropdown-item");
+            elements.forEach(ele => {
+                toggleActiveClass(ele);
+                if (ele.classList.contains("active") && !dropdownEle.classList.contains("show")){
+                    dropdownEle.classList.add("show");
+                }
+            })
+            
+        } else {
+            toggleActiveClass(element)
+        }
         
-        if (dropdownIcon) {
-            dropdownIcon.classList.toggle("show");
-        }
-    }
+    }, [location.pathname, to, id, user]);
 
-    const handleNavBarItem = (id, e, hasRoleCheck = true, isAllowed = role ? role.includes(user?.role) : true) => {
-        if (dropdownContent) {
-            const dropdownContainer = document.querySelector(`#${id} + .dropdown-container`);
-            dropdownContainer?.classList.toggle("show");
+     useEffect(() => {
+        if (user && location.pathname === to && !isAllowed) {
+            console.log(1);
+            
+            alert("Bạn không có quyền truy cập trang này!");
+            navigate("/");
         }
+    }, [user, location.pathname, to, isAllowed, navigate]);
 
+    const handleClick = (e, isAllowed = role && role.includes(user?.role)) => {
         if (!isAllowed) {
+            alert("Bạn không có quyền truy cập mục này!");
             e.preventDefault();
-            alert("Bạn không có quyền truy cập mục này.");
-            return;
-        }
-
-        if (hasRoleCheck) {
-            toggleActiveClass(`#${id}`);
-        }
-        else{
-            toggleDropdownIcon(`#${id}`);
         }
     };
 
     if (isUserItem) {
         return user ? (
-            <Link onClick={(e) => toggleActiveClass(`#${e.currentTarget.id}`)} to="user/info" className="navbar-item" id="navbar-user">
+            <Link to="user/info" className="navbar-item" id="navbar-user">
                 <img className="user-avatar" src={user.image || '/default-avatar.png'} alt="User Avatar" />
                 <div className="user-info">
                     <p className="user-name">{user.name}</p>
                     <p className="user-id">@{user.id}</p>
                 </div>
             </Link>
-        ) : (
-            <div className="loading-user">Đang tải...</div>
-        );
+        ) : <div className="loading-user">Đang tải...</div>;
     }
 
     if (isLogoutItem) {
@@ -72,22 +75,29 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, role, isUserI
     return (
         <div className="navbar-item-wrapper">
             {!dropdownContent ? (
-                <Link onClick={(e) => handleNavBarItem(id, e)} to={to} className={`navbar-item ${isAllowed ? "" : "disabled"}`} id={id}>
+                <Link id={id} to={to} onClick={handleClick} className={`navbar-item ${isAllowed ? "" : "disabled"}`}>
                     <FontAwesomeIcon className="navbar-item-icon" icon={icon} />
                     <p className="navbar-item-label">{label}</p>
                 </Link>
             ) : (
                 <div>
-                    <div onClick={(e) => handleNavBarItem(id, e, false)} className="navbar-item" id={id}>
+                    <div id={id} className="navbar-item" onClick={() => document.getElementById(id + "-dropdown")?.classList.toggle("show")}>
                         <FontAwesomeIcon className="navbar-item-icon" icon={icon} />
                         <p className="navbar-item-label">{label}</p>
                         <FontAwesomeIcon className="dropdown-icon" icon={faChevronDown} />
                     </div>
-                    <div className="dropdown-container">
+
+                    <div id={id + "-dropdown"} className="dropdown-container">
                         {dropdownContent.map((item) => {
-                            const isDropdownAllowed = item.role ? item.role.includes(user?.role) : true;
+                            const isDropdownAllowed = !item.role || item.role.includes(user?.role);
                             return (
-                                <Link key={item.id} onClick={(e) => handleNavBarItem(item.id, e, true, isDropdownAllowed)} to={item.to} className={`dropdown-item ${!isDropdownAllowed ? "disabled" : ""}`} id={item.id}>
+                                <Link 
+                                    key={item.id} 
+                                    id={item.id} 
+                                    to={item.to} 
+                                    onClick={(e) => handleClick(e, isDropdownAllowed)} 
+                                    className={`dropdown-item ${isDropdownAllowed ? "" : "disabled"}`}
+                                >
                                     {item.label}
                                 </Link>
                             );

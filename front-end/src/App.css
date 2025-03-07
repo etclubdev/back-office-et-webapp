@@ -5,3 +5,11 @@ body::-webkit-scrollbar {
 body{
   margin: 0;
 }
+
+.root-container {
+  display: flex;
+}
+
+.page-section{
+  flex: 1;
+}
