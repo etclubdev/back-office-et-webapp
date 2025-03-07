@@ -1,0 +1,15 @@
+{
+    "id": "etadmin_user",
+    "name": "ET Admin",
+    "image": "/images/profiles/1.png",
+    "phone": "0123456789",
+    "dob": "2004-01-01",
+    "address": "123 Đường ABC Quận 10 TP.HCM",
+    "major": "Hệ thống thông tin quản lý",
+    "department": "Event",
+    "email": "etclub@ueh.vn",
+    "gender": "Nữ",
+    "infoId": "31220000000",
+    "class": "INF001",
+    "role": "admin"
+}
