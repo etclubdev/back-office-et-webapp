@@ -53,7 +53,7 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, role, isUserI
 
     if (isUserItem) {
         return user ? (
-            <Link to="user/info" className="navbar-item" id="navbar-user">
+            <Link to="" className="navbar-item" id="navbar-user">
                 <img className="user-avatar" src={user.image || '/default-avatar.png'} alt="User Avatar" />
                 <div className="user-info">
                     <p className="user-name">{user.name}</p>

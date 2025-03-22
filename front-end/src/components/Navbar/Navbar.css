@@ -15,7 +15,7 @@
 }
 
 .navbar-logo {
-   width: 12vw;
+   width: 80%;
    margin-top: 0.7vw;
 }
 
@@ -144,21 +144,16 @@
    color: #000;
 }
 
-
-.dropdown-item + .dropdown-item{
-   border-top: 0.1vw solid #CAC8C8;
-}
-
 .dropdown-item:hover{
    background-color: #EBEBEB;
 }
 
 .dropdown-item.active{
    background-color: #EBEBEB;
+
 }
 
 .dropdown-item.disabled{
-   background-color: #EBEBEB;
    color: #B8B8B8;
 }
 
