@@ -3,9 +3,10 @@
     display: flex;
     font-family: 'BeVietnamPro';
     align-items: center;
-    padding: 0.5vw 3vw;
+    padding: 1vw 3vw;
     gap: 1em;
     box-shadow: 0 0 1vw #292d327c;
+    z-index: 8;
 }
 
 .header-icon{

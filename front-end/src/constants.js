@@ -6,8 +6,8 @@ const breadcrumbNameMap = {
     "hr": "Ban Nhân sự - Tổ chức",
     "fer": "Ban Tài chính - Đối ngoại",
     "pr": "Ban Truyền thông",
-    "homepage-achievement": "Thành tựu",
-    "homepage-partner": "Đối tác",
+    "homepage-achievements": "Thành tựu",
+    "homepage-partners": "Đối tác",
     "homepage-faqs": "FAQs",
     "faqs": "Quản lý FAQs",
     "et-news": "Quản lý ET News",
@@ -18,5 +18,4 @@ const breadcrumbNameMap = {
     "create": "Thêm mới",
     "edit": "Chỉnh sửa"
 };
-
 export { breadcrumbNameMap }
