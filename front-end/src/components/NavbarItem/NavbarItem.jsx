@@ -9,7 +9,6 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, role, isUserI
     const location = useLocation();
     const isAllowed = role && role.includes(user?.role); 
     const navigate = useNavigate();
-    console.log("Current path:", location.pathname);
 
     useEffect(() => {
         if (!user) return; 
@@ -37,8 +36,6 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, role, isUserI
 
      useEffect(() => {
         if (user && location.pathname === to && !isAllowed) {
-            console.log(1);
-            
             alert("Bạn không có quyền truy cập trang này!");
             navigate("/");
         }

@@ -8,6 +8,7 @@
    align-items: center;
    font-family: 'BeVietnamPro';
    position: relative;
+   z-index: 10;
 }
 
 .navbar-section a {
@@ -21,19 +22,17 @@
 
 .navbar-items {
    width: 100%;
-   flex: 1;
-   margin-top: 1vw;
    display: flex;
-   overflow-y: auto;
    flex-direction: column;
+   flex: 1; 
+   overflow: hidden; 
 }
 
-.navbar-items-wrapper{
+.navbar-items-wrapper {
    width: 100%;
-   margin-bottom: 22%;
-   display: flex;
-   overflow-y: auto;
-   flex-direction: column;
+   flex: 1; 
+   overflow-y: auto; 
+   max-height: calc(100vh - 12vw); 
 }
 
 .navbar-item {

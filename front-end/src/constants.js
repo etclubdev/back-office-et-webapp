@@ -16,7 +16,16 @@ const navbarContents = [
         ],
     },
     { id: "navbar-partners", to: "partners", icon: faHandshake, label: "Quản lý đối tác", role: ["admin"] },
-    { id: "navbar-homepage", to: "homepage", icon: faObjectGroup, label: "Quản lý trang chủ", role: ["admin"] },
+    { 
+        id: "navbar-homepage", 
+        icon: faObjectGroup, 
+        label: "Quản lý trang chủ", 
+        dropdownContent: [
+            { id: "dropdown-achievements", to: "homepage-achievements", label: "Thành tựu", role: ["admin"] },
+            { id: "dropdown-partners", to: "homepage-partners", label: "Đối tác", role: ["admin"] },
+            { id: "dropdown-faqs", to: "homepage-faqs", label: "FAQs", role: ["admin"] },
+        ], 
+    },
     { id: "navbar-faqs", to: "faqs", icon: faCircleQuestion, label: "Quản lý FAQs", role: ["admin"] },
     {
         id: "navbar-posts",
