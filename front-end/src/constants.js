@@ -1,13 +1,22 @@
 const breadcrumbNameMap = {
-    "account": "Quản lý tài khoản",
-    "hr": "Quản lý nhân sự",
-    "partner": "Quản lý đối tác",
-    "homepage": "Quản lý trang chủ",
-    "achievement": "Thành tựu",
-    "partner": "Đối tác",
-    "faqs": "Lựa chọn FAQs",
-    "post": "Quản lý bài đăng",
-    "collaborator": "Quản lý Tìm kiếm CTV",
+    "accounts": "Quản lý tài khoản",
+    "partners": "Quản lý đối tác",
+    "tech": "Ban Kỹ thuật - Công nghệ",
+    "event": "Ban Sự kiện",
+    "hr": "Ban Nhân sự - Tổ chức",
+    "fer": "Ban Tài chính - Đối ngoại",
+    "pr": "Ban Truyền thông",
+    "homepage-achievement": "Thành tựu",
+    "homepage-partner": "Đối tác",
+    "homepage-faqs": "FAQs",
+    "faqs": "Quản lý FAQs",
+    "et-news": "Quản lý ET News",
+    "et-blog": "Quản lý ET Blog",
+    "activities": "Quản lý Hoạt động",
+    "status": "Cập nhật trạng thái",
+    "banner": "Cập nhật biểu ngữ",
+    "create": "Thêm mới",
+    "edit": "Chỉnh sửa"
 };
 
 export { breadcrumbNameMap }

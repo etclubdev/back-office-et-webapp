@@ -7,7 +7,7 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import { breadcrumbNameMap } from "../../constants";
 
-export const Header = () => {
+export const Header = ({children = ""}) => {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
     
@@ -28,7 +28,7 @@ export const Header = () => {
 
                         return isLast ? (
                             <Typography key={to} color="textPrimary">
-                                {displayName}
+                                {`${displayName} ${children}`}
                             </Typography>
                         ) : (
                             <Link key={to} to={to}>
@@ -37,7 +37,7 @@ export const Header = () => {
                         );
                     })}
                 </Breadcrumbs>
-                <span className="header-title">{lastDisplayName}</span>
+                <span className="header-title">{`${lastDisplayName} ${children}`}</span>
             </div>
         </div>
     );
