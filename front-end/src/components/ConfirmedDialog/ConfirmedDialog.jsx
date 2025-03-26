@@ -1,12 +1,17 @@
 import React from 'react';
 import './ConfirmedDialog.css';
 
-export const ConfirmedDialog = ({ title, desc, type }) => {
-    return (
+export const ConfirmedDialog = ({ title, desc, type, isOpen = true, onClose, onConfirm }) => {
+    const handleConfirm = () => {
+        onConfirm();
+        onClose();
+    }
+
+    return isOpen && (
         <div className="modal-overlay">
             <div className="modal-container">
                 <div className="modal-close">
-                    <button className="close-button">✕</button>
+                    <button className="close-button" onClick={onClose}>✕</button>
                 </div>
                 <div className="modal-icon">
                     <div className={`circle ${type}`}>
@@ -18,10 +23,10 @@ export const ConfirmedDialog = ({ title, desc, type }) => {
                     <p className="modal-text">{desc}</p>
                 </div>
                 <div className="modal-actions">
-                    <button className="cancel-button">Hủy bỏ</button>
-                    <button className={`confirm-button ${type}`}>Xác nhận</button>
+                    <button className="cancel-button" onClick={onClose}>Hủy bỏ</button>
+                    <button className={`confirm-button ${type}`} onClick={handleConfirm}>Xác nhận</button>
                 </div>
             </div >
         </div >
-    );
+    )
 }
