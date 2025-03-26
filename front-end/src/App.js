@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { LogInPage } from './pages/LogInPage';
+import { SearchBar } from './components/SearchBar';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <Router>
         <div className="root-container">
           <Routes>
-            <Route path="/" element={<LogInPage />} />
+            <Route path="/" element={<SearchBar />} />
           </Routes>
         </div>
       </Router>
