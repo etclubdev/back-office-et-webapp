@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 
-const BaseButton = ({ onClick, children, color = "primary", variant = "contained", size="medium", startIcon, sx }) => {
+const BaseButton = ({ onClick, children, color = "primary", variant = "contained", size="small", startIcon, sx }) => {
   return (
     <Button 
         onClick={onClick} 
