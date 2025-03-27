@@ -1,20 +1,15 @@
 import React from 'react';
 import './ConfirmedDialog.css';
 
-export const ConfirmedDialog = ({ title, desc, type, isOpen = true, onClose, onConfirm }) => {
-    const handleConfirm = () => {
-        onConfirm();
-        onClose();
-    }
-
-    return isOpen && (
+export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) => {
+    return (
         <div className="modal-overlay">
             <div className="modal-container">
                 <div className="modal-close">
                     <button className="close-button" onClick={onClose}>✕</button>
                 </div>
                 <div className="modal-icon">
-                    <div className={`circle ${type}`}>
+                    <div className={`circle ${alertType}`}>
                         <span className="mark">!</span>
                     </div>
                 </div>
@@ -24,7 +19,7 @@ export const ConfirmedDialog = ({ title, desc, type, isOpen = true, onClose, onC
                 </div>
                 <div className="modal-actions">
                     <button className="cancel-button" onClick={onClose}>Hủy bỏ</button>
-                    <button className={`confirm-button ${type}`} onClick={handleConfirm}>Xác nhận</button>
+                    <button className={`confirm-button ${alertType}`} onClick={onConfirm}>Xác nhận</button>
                 </div>
             </div >
         </div >
