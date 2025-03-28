@@ -15,21 +15,21 @@ import {
 } from "@mui/material";
 
 
-export const DataTable = ({data, columns}) => {
-  const [selected, setSelected] = useState([]);
+export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [sortConfig, setSortConfig] = useState({ key: "title", direction: "asc" });
 
-  const handleSelect = (activityId) => {
+  const handleSelect = (id) => {
     setSelected((prev) =>
-      prev.includes(activityId) ? prev.filter((id) => id !== activityId) : [...prev, activityId]
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
@@ -61,7 +61,7 @@ export const DataTable = ({data, columns}) => {
                 <Checkbox
                   indeterminate={selected.length > 0 && selected.length < data.length}
                   checked={selected.length === data.length}
-                  onChange={() => setSelected(selected.length === data.length ? [] : data.map((row) => row.activity_id))}
+                  onChange={() => setSelected(selected.length === data.length ? [] : data.map((row) => row[itemId]))}
                   color="primary"
                 />
               </TableCell>
@@ -80,24 +80,31 @@ export const DataTable = ({data, columns}) => {
           </TableHead>
           <TableBody>
             {paginatedData.map((row) => {
-                return (
-                    (
-                        <TableRow key={row.activity_id}>
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={selected.includes(row.activity_id)}
-                              onChange={() => handleSelect(row.activity_id)}
-                              color="primary"
-                            />
-                          </TableCell>
-                          {columns.map((col) => (
-                            <TableCell key={col.field} sx={{ minWidth: 100 }}>
-                              {col.field === "visible" ? (<>{row[col.field] ? "Có" : "Không"}</>) : row[col.field]}
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                      )
+              const isSelected = selected.includes(row[itemId]);
+              return (
+                (
+                  <TableRow 
+                    key={row[itemId]}
+                    sx={{
+                      backgroundColor: isSelected ? "#e3f2fd" : "inherit",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={selected.includes(row[itemId])}
+                        onChange={() => handleSelect(row[itemId])}
+                        color="primary"
+                      />
+                    </TableCell>
+                    {columns.map((col) => (
+                      <TableCell key={col.field} sx={{ minWidth: 100 }}>
+                        {col.field === "visible" ? (<>{row[col.field] ? "Có" : "Không"}</>) : row[col.field]}
+                      </TableCell>
+                    ))}
+                  </TableRow>
                 )
+              )
             })}
           </TableBody>
         </Table>
