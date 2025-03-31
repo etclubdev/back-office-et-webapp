@@ -15,6 +15,18 @@ if (ENV === 'local'){
                 return { data: mockData };
             }            
             return {data: []}
+        },
+        post: async (url, payload) => {
+            console.log(`POST ${url}`, payload);
+            return { message: "Created successfully", data: payload };
+        },
+        put: async (url, payload) => {
+            console.log(`PUT ${url}`, payload);
+            return { message: "Updated successfully", data: payload };
+        },
+        delete: async (url) => {
+            console.log(`DELETE ${url}`);
+            return { message: "Deleted successfully" };
         }
     }
 } else {

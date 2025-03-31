@@ -30,7 +30,7 @@ const navbarContents = [
         icon: faUserGroup,
         label: "Quản lý nhân sự",
         dropdownContent: [
-            { id: "dropdown-hr", to: "hr", label: "Ban Nhân sự - Tổ chức", role: [] },
+            { id: "dropdown-hr", to: "hr", label: "Ban Nhân sự - Tổ chức", role: ["admin"] },
             { id: "dropdown-tech", to: "tech", label: "Ban Kỹ thuật - Công nghệ", role: ["admin"] },
             { id: "dropdown-pr", to: "pr", label: "Ban Truyền thông", role: ["admin"] },
             { id: "dropdown-event", to: "event", label: "Ban Sự kiện", role: ["admin"] },
@@ -55,12 +55,15 @@ const navbarContents = [
         icon: faFileLines,
         label: "Quản lý Bài đăng",
         dropdownContent: [
-            { id: "dropdown-activities", to: "activities", label: "Hoạt động", role: [] },
-            { id: "dropdown-etnews", to: "et-news", label: "ET News", role: [] },
-            { id: "dropdown-etblog", to: "et-blog", label: "ET Blog", role: [] },
+            { id: "dropdown-activities", to: "activities", label: "Hoạt động", role: ["admin"] },
+            { id: "dropdown-etnews", to: "et-news", label: "ET News", role: ["admin"] },
+            { id: "dropdown-etblog", to: "et-blog", label: "ET Blog", role: ["admin"] },
         ],
     },
-    { id: "navbar-collaborator", to: "collaborator", icon: faFaceSmile, label: "Quản lý Tìm kiếm CTV", role: [] },
+    { id: "navbar-collaborator", to: "collaborator", icon: faFaceSmile, label: "Quản lý Tìm kiếm CTV", role: ["admin"] },
 ];
 
-export { breadcrumbNameMap, navbarContents }
+const UPLOAD_PRESET = "first_upload";
+const CLOUD_NAME = "dgqolusci";
+
+export { breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }

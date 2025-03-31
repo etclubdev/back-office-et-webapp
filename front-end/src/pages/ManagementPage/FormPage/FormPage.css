@@ -1,0 +1,15 @@
+.form-page{
+    width: 100%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-page .form{
+    width: 85%;
+    align-self: center;
+}
+
+.rich-text-editor{
+    width: 100%;
+}
