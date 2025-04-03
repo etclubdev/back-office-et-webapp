@@ -14,8 +14,8 @@ export const Navbar = () => {
                     {navbarContents.map(item => (
                         <NavbarItem key={item.id} {...item} />
                     ))}
-                    <NavbarItem isLogoutItem />
                 </div>
+                <NavbarItem isLogoutItem />
             </div>
         </div>
     );

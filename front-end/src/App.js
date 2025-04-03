@@ -17,7 +17,7 @@ function AppContent() {
           <Navbar />
           <div className="page-section">
             <Routes>
-              <Route path="/faqs" element={<FormPage action="create"/>} />
+              <Route path="/faqs" element={<OverviewPage />} />
               <Route path="/faqs/create" element={<FormPage action="create"/>} />
               <Route path="/faqs/edit/:id" element={<FormPage action="edit"/>} />
             </Routes>
