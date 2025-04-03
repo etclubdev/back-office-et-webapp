@@ -11,12 +11,13 @@ const breadcrumbNameMap = {
     "homepage-achievements": "Thành tựu",
     "homepage-partners": "Đối tác",
     "homepage-faqs": "FAQs",
+    "homepage-banners": "FAQs",
     "faqs": "Quản lý FAQs",
     "et-news": "Quản lý ET News",
     "et-blog": "Quản lý ET Blog",
     "activities": "Quản lý Hoạt động",
     "status": "Cập nhật trạng thái",
-    "banner": "Cập nhật biểu ngữ",
+    "archive": "Lưu trữ",
     "create": "Thêm mới",
     "edit": "Chỉnh sửa"
 };
@@ -46,6 +47,7 @@ const navbarContents = [
             { id: "dropdown-achievements", to: "homepage-achievements", label: "Thành tựu", role: ["admin"] },
             { id: "dropdown-partners", to: "homepage-partners", label: "Đối tác", role: ["admin"] },
             { id: "dropdown-faqs", to: "homepage-faqs", label: "FAQs", role: ["admin"] },
+            { id: "dropdown-banners", to: "homepage-banners", label: "Banner", role: ["admin"] },
         ], 
     },
     { id: "navbar-faqs", to: "faqs", icon: faCircleQuestion, label: "Quản lý FAQs", role: ["admin"] },
@@ -60,7 +62,16 @@ const navbarContents = [
             { id: "dropdown-etblog", to: "et-blog", label: "ET Blog", role: ["admin"] },
         ],
     },
-    { id: "navbar-collaborator", to: "collaborator", icon: faFaceSmile, label: "Quản lý Tìm kiếm CTV", role: ["admin"] },
+    { 
+        id: "navbar-collaborator", 
+        to: "collaborator", 
+        icon: faFaceSmile, 
+        label: "Quản lý Tìm kiếm CTV", 
+        dropdownContent: [
+            { id: "dropdown-status", to: "collaborator-status", label: "Trạng thái", role: ["admin"] },
+            { id: "dropdown-archive", to: "collaborator-archive", label: "Lưu trữ", role: ["admin"] },
+        ],
+     },
 ];
 
 const UPLOAD_PRESET = "first_upload";

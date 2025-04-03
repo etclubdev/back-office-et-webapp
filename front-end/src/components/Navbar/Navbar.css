@@ -42,7 +42,7 @@
    min-height: 3.3vw;
    display: flex;
    align-items: center;
-   font-size: 1vw;
+   font-size: 0.9vw;
    transition: background 0.2s ease;
    cursor: pointer;
    position: relative;
@@ -100,13 +100,13 @@
 
 .navbar-item-icon {
    width: 12%;
-   font-size: 1.4vw;
-   margin-right: 1vw;
+   font-size: 1.2vw;
+   margin-right: 0.5vw;
    color: #000000bb;
 }
 
 .navbar-item-label {
-   color: #000;
+   color: #4A4A4A;
 }
 
 #navbar-logout {
@@ -139,7 +139,7 @@
    display: flex;
    align-items: center;
    text-indent: 2vw;
-   font-size: 1vw;
+   font-size: 0.9vw;
    color: #000;
 }
 
