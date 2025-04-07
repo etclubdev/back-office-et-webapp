@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getSpecialTableCell } from "../../utils/getSpecialTableCellUtil";
 import "./DataTable.css";
 import {
   Table,
@@ -13,7 +14,6 @@ import {
   TablePagination,
   TableSortLabel,
 } from "@mui/material";
-
 
 export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
   const [page, setPage] = useState(0);
@@ -99,7 +99,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
                     </TableCell>
                     {columns.map((col) => (
                       <TableCell key={col.field} sx={{ minWidth: 100 }}>
-                        {col.field === "visible" ? (<>{row[col.field] ? "Có" : "Không"}</>) : row[col.field]}
+                        {getSpecialTableCell(row, col)}
                       </TableCell>
                     ))}
                   </TableRow>

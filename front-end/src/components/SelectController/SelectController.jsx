@@ -2,8 +2,11 @@ import React from 'react'
 import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-export const SelectController = ({ register, name, control, label, menuItems}) => {
-    if (!Array.isArray(menuItems)) return;
+export const SelectController = ({ name, control, label, menuItems }) => {
+    if (!Array.isArray(menuItems) || menuItems.length === 0) return;
+
+    const [value, itemName] = Object.keys(menuItems[0])
+
     return (
         <Controller
             name={name}
@@ -12,20 +15,20 @@ export const SelectController = ({ register, name, control, label, menuItems}) =
                 <FormControl size="small" fullWidth>
                     <InputLabel>{label}</InputLabel>
                     <Select
-                        {...register}
                         {...field}
-                        value={menuItems.includes(field.value) ? field.value : ""}
-                        onChange={(event) => field.onChange(event.target.value)}
                         label={label}
+                        value={field.value || ""}
+                        onChange={(event) => field.onChange(event.target.value)}
                     >
                         {menuItems.map((item, index) => (
-                            <MenuItem key={`name-menu-item-${index}`} value={item}>
-                                {item}
+                            <MenuItem key={`name-menu-item-${index}`} value={item[value] || item}>
+                                {item[itemName] || item}
                             </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             )}
         />
+
     )
 }
