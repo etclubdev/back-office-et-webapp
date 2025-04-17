@@ -1,0 +1,262 @@
+.log-in-page{
+    max-width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, #FDFDFD 16.63%, #AEE8FF 110.04%);
+    display: flex;
+     align-items: center;
+     justify-content: center;
+    
+}
+
+.log-in-form {
+    width: 38%;
+    height: 38vw;
+    padding: 1.5vw;
+    border-radius: 1vw;
+    background: #FDFDFD;
+    box-shadow: 0vw 0.2vw 2vw 1vw rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ 
+ 
+ .log-in-form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    gap: 1.5vw;
+    font-family: 'BeVietnamPro';
+ }
+ 
+ .log-in-logo {
+    margin-top: 2vw;
+    width: 9vw;
+    height: auto;
+ }
+ 
+ .log-in-welcome {
+    background: linear-gradient(135deg, #47A8B4 0%, #5D3E91 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8vw;
+    font-weight: 900;
+    margin: 0;
+ }
+ 
+ .log-in-division {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+ }
+ 
+ .log-in-division-bar {
+    width: 5vw;
+    height: 0.1vw;
+    background: rgba(0, 0, 0, 0.10);
+ }
+ 
+ .log-in-desc {
+    margin: 0 1vw;
+    color: rgba(0, 0, 0, 0.40);
+    font-size: 0.9vw;
+ }
+ 
+ .log-in-form form {
+    flex: 1;
+    width: 90%;
+    margin-top: 1.5vw;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .log-in-form .form-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1vw;
+ }
+ 
+ .log-in-form-control {
+    width: 27vw;
+    height: 5.5vw;
+    margin-bottom: 1.2vw;
+    display: flex;
+    flex-direction: column;
+ }
+ 
+ .log-in-form-control label {
+    margin-bottom: 0.5vw;
+    color: #000;
+    font-size: 1.2vw;
+    font-weight: 500;
+ }
+ 
+ .log-in-form-control input {
+    width: 90%;
+    height: 2.5vw;
+    padding-right: 2.5vw;
+    border: 0.07vw solid #000;
+    border-radius: 0.5vw;
+    color: #000;
+    font-family: 'Montserrat';
+    font-size: 1vw;
+    text-indent: 1vw;
+ }
+ 
+ .log-in-form .password-input {
+    position: relative;
+ }
+ 
+ .log-in-form .password-eye {
+    color: #000;
+    font-size: 1.5vw;
+    position: absolute;
+    top: 22%;
+    right: 2%;
+    transition: color 1s ease;
+    cursor: pointer;
+ }
+ 
+ .log-in-form .password-eye:hover {
+    color: #141313af;
+ }
+ 
+ .log-in-error {
+    font-size: 0.8vw;
+    margin: 0.5vw 0 0 0;
+    color: rgb(255, 0, 0);
+    font-style: italic;
+ }
+ 
+ .log-in-form .submit-button {
+    width: 100%;
+    height: 2.7vw;
+    background: linear-gradient(135deg, #47A8B4 0%, #5D3E91 100%);
+    border: none;
+    border-radius: 0.5vw;
+    color: #fff;
+    font-family: 'BeVietnamPro';
+    font-weight: 800;
+    font-size: 1.2vw;
+    cursor: pointer;
+    margin-top: 1vw;
+ }
+
+
+/* Tablet (<= 1024px) */
+@media (max-width: 1024px) {
+    .log-in-form {
+      width: 70%;
+      height: auto;
+      padding: 8vw 2vw;
+    }
+
+    .log-in-logo {
+        width: 15vw;
+    }
+
+    .log-in-welcome {
+        font-size: 3vw;
+        text-align: center;
+      }
+    
+      .log-in-division-bar {
+        display: none;
+      }
+    
+      .log-in-desc {
+        font-size: 1.5vw;
+      }
+  
+    .log-in-form-control {
+      width: 100%;
+      height: auto;
+    }
+  
+    .log-in-form-control input {
+      height: 3.5vw;
+      font-size: 1.5vw;
+    }
+  
+    .log-in-form .submit-button {
+      height: 3.5vw;
+      font-size: 1.5vw;
+    }
+
+    .log-in-form .form-input{
+        margin: 3vw 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2vw;
+    }
+  }
+  
+  /* Mobile (<= 600px) */
+  @media (max-width: 600px) {
+    .log-in-form {
+      width: 78%;
+      padding: 10vw 5vw;
+      border-radius: 3vw;
+    }
+  
+    .log-in-logo {
+      width: 18vw;
+    }
+  
+    .log-in-welcome {
+      font-size: 4vw;
+      text-align: center;
+    }
+  
+    .log-in-division-bar {
+      display: none;
+    }
+  
+    .log-in-desc {
+      font-size: 2vw;
+    }
+  
+    .log-in-form-control {
+      width: 100%;
+      height: auto;
+    }
+  
+    .log-in-form-control label {
+      font-size: 3.5vw;
+    }
+  
+    .log-in-form-control input {
+      height: 6vw;
+      font-size: 3.5vw;
+      text-indent: 2vw;
+    }
+  
+    .log-in-form .password-eye {
+      font-size: 5vw;
+      top: 25%;
+    }
+  
+    .log-in-error {
+      font-size: 3vw;
+    }
+  
+    .log-in-form .submit-button {
+      height: 6.5vw;
+      font-size: 3vw;
+      margin-top: 3vw;
+    }
+
+    
+    .log-in-form .form-input{
+        margin-top: 3vw;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 4vw;
+    }
+  }
+  
