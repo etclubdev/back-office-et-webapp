@@ -31,7 +31,6 @@ function App() {
                 {/* All roles */}
                 <Route element={<RequireAuth />}>
                   <Route path="/" element={<WelcomePage />} />
-                  <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
                   {/* <Route path="/profile" element={<PersonalProfilePage />} /> */}
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
@@ -69,7 +68,8 @@ function App() {
                   <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
 
                   <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
-
+                
+                  <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
 
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />
                   <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
