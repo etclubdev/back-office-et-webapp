@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthProvider';
 import { LogInPage } from './pages/LogInPage';
 import { RequireAuth } from './components/RequireAuth/RequireAuth';
+import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 
 function App() {
@@ -23,8 +24,13 @@ function App() {
 
               {/* Protected routes */}
               <Route element={<RequireAuth />}>
-                <Route path="/" element={<WelcomePage />} />
+                <Route element={<MainLayout />}>
+                 <Route path="/" element={<WelcomePage />} />
+                </Route>
               </Route>
+
+              {/* Unauthorized */}
+              {/* <Route path="/unauthorized" element={<UnauthorizedPage />} /> */}
             </Routes>
           </div>
         </Router>

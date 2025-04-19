@@ -1,9 +1,19 @@
 import { getAccessToken } from "../../utils/jwt";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, useLocation, Outlet } from "react-router-dom";
+import { useAuth } from "../../context/useAuth";
 
-export const RequireAuth = () => {
-
+export const RequireAuth = ({ allowedRoles }) => {
+    const { user } = useAuth();
+    const location = useLocation();
     const isAuthenticated = !!getAccessToken(); 
+    
+    if (!isAuthenticated){
+        return <Navigate to="/login" state={{from: location}} replace />
+    }
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+    if (allowedRoles && (!user || !allowedRoles.includes(user.sysrole_name))) {
+        return <Navigate to="/unauthorized" replace />;
+    }
+
+    return <Outlet />;
 };
