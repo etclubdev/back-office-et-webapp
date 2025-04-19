@@ -1,0 +1,9 @@
+{
+    "account_id": "ACCT018",
+    "exp": 1745094263,
+    "iat": 1745090663,
+    "personnel_id": "PERS003",
+    "sysrole_id": "SRLE007",
+    "sysrole_name": "CTV/TV",
+    "username": "lvc.event@example.com"
+}

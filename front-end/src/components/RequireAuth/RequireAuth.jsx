@@ -12,7 +12,9 @@ export const RequireAuth = ({ allowedRoles }) => {
     }
 
     if (allowedRoles && (!user || !allowedRoles.includes(user.sysrole_name))) {
-        return <Navigate to="/unauthorized" replace />;
+        setTimeout(() => {
+            return <Navigate to="/unauthorized" replace />;
+        }, 500);
     }
 
     return <Outlet />;
