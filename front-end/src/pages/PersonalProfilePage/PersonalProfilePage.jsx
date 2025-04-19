@@ -9,7 +9,7 @@ import { DatePickerController } from '../../components/DatePickerController';
 import { TextFieldController } from '../../components/TextFieldController';
 import { ConfirmedDialog } from '../../components/ConfirmedDialog';
 import { Header } from '../../components/Header';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/useAuth';
 import { formatDates } from '../../utils/formatDatesUtil';
 import { handleImageUpload } from '../../utils/handleUploadUtil';
 import { PasswordController } from '../../components/PasswordController/PasswordController';
@@ -21,7 +21,7 @@ import { personnelSchema } from '../../schemas/personnelSchema';
 const categories = ["Thông tin cá nhân", "Đổi mật khẩu"];
 
 export const PersonalProfilePage = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [activeTab, setActiveTab] = useState(0);
     const progressBarRef = useRef(null);
     const tabsRef = useRef([]);
@@ -350,13 +350,11 @@ const PasswordUpdate = () => {
                 payload.new_password
             );
 
-            if (response.status === 200) {
-                setMessage({
-                    title: "Chỉnh sửa thành công",
-                    alertType: "info"
-                });
-                setIsDialogOpen(true);
-            }
+            setMessage({
+                title: "Chỉnh sửa thành công",
+                alertType: "info"
+            });
+            setIsDialogOpen(true);
         } catch (error) {
             console.error("Update password error:", error);
             setMessage({

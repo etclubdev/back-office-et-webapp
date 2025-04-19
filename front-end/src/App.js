@@ -8,6 +8,7 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { PersonalProfilePage } from './pages/PersonalProfilePage'
 
 function App() {
   useEffect(() => {
@@ -30,7 +31,7 @@ function App() {
                 {/* All roles */}
                 <Route element={<RequireAuth />}>
                   <Route path="/" element={<WelcomePage />} />
-                  {/* <Route path="/profile" element={<PersonalProfilePage />} /> */}
+                  <Route path="/profile" element={<PersonalProfilePage />} />
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
                 </Route>
