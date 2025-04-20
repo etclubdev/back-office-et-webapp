@@ -1,0 +1,176 @@
+.modal-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: white;
+    border-radius: 20px;
+    width: 40%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+}
+
+.modal-icon {
+    margin: 20px auto 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle.warning {
+    background-color: rgba(240, 173, 78, 0.2);
+}
+
+.circle.info {
+    background-color: rgba(0, 149, 191, 0.2);
+}
+
+.circle.delete {
+    background-color: rgba(229, 62, 62, 0.1);
+}
+
+.circle:before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle.warning:before {
+    background-color: #f0ad4e;
+}
+
+.circle.info:before {
+    background-color: #0095bf;
+}
+
+.circle.delete:before {
+    background-color: #e53e3e;
+}
+
+.mark {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-content {
+    margin-bottom: 30px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.modal-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 450px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    font-family: 'Montserrat';
+    padding: 15px 30px;
+    background-color: #f0f0f0;
+    color: #555;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 45%;
+}
+
+.confirm-button {
+    font-family: 'Montserrat';
+    padding: 15px 30px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 45%;
+}
+
+.confirm-button.warning {
+    background-color: #f0ad4e;
+}
+
+.confirm-button.info {
+    background-color: #0095bf;
+}
+
+.confirm-button.delete {
+    background-color: #ff3b30;
+}
+
+.cancel-button:hover {
+    background-color: #e5e5e5;
+}
+
+.confirm-button.warning:hover {
+    background-color: #ec971f;
+}
+
+.confirm-button.info:hover {
+    background-color: #007a9f;
+}
+
+.confirm-button.delete:hover {
+    background-color: #e02d23;
+}
