@@ -1,9 +1,8 @@
 .navbar-section {
    width: 16vw;
-   height: auto;
    max-height: 100vh;
-   background-color: #fff;
-   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   background: #fff;
+   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -21,92 +20,68 @@
    margin-top: 0.7vw;
 }
 
-.navbar-items {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   flex: 1; 
-   overflow: hidden; 
-}
-
+.navbar-items,
 .navbar-items-wrapper {
    width: 100%;
-   flex: 1; 
-   overflow-y: auto; 
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   overflow-y: auto;
 }
 
 .navbar-item {
    width: 100%;
    padding-left: 1vw;
-   box-sizing: border-box;
    min-height: 3.3vw;
    display: flex;
    align-items: center;
-   font-size: 1vw;
-   transition: background 0.2s ease;
+   font-size: 0.9vw;
    cursor: pointer;
+   transition: background 0.2s ease;
    position: relative;
+   box-sizing: border-box;
 }
 
-#navbar-user{
-   border-top: 0.1vw solid #D9D9D9;
-   border-bottom: 0.1vw solid #D9D9D9;
+.navbar-item-icon,
+.dropdown-icon {
+   font-size: 1.2vw;
+   margin-right: 0.5vw;
+   color: #000c;
 }
 
-.navbar-item.active {
-   background: #E0F2FF;
-   .navbar-item-label {
-      color: #178DE2;
-   };
-
-   .navbar-item-icon{
-      color: #178DE2;
-   } 
-}
-
-.navbar-item.disabled{
-   opacity: 0.3;
-}
-
-.navbar-item:hover {
-   background: #E0F2FF;
-  
-   .navbar-item-label, .navbar-item-icon, .dropdown-icon {
-      color: #178DE2;
-   };
-}
-
-.navbar-item .user-avatar {
-   width: 2.5vw;
-   height: 2.5vw;
-   border-radius: 50%;
-   margin-right: 1vw;
-}
-
-.navbar-item .user-info p {
-   margin: 0;
-}
-
-.navbar-item .user-name {
-   color: #000;
-   font-size: 1vw;
-   font-weight: 900;
-}
-
-.navbar-item .user-id {
-   color: #178DE2;
+.dropdown-icon {
    font-size: 0.8vw;
-}
-
-.navbar-item-icon {
-   width: 12%;
-   font-size: 1.4vw;
-   margin-right: 1vw;
-   color: #000000bb;
+   position: absolute;
+   right: 10%;
+   transition: transform 0.2s ease-in-out;
 }
 
 .navbar-item-label {
-   color: #000;
+   color: #4A4A4A;
+}
+
+.navbar-item:hover,
+.navbar-item.active {
+   background: #E0F2FF;
+}
+
+.navbar-item:hover .navbar-item-label,
+.navbar-item:hover .navbar-item-icon,
+.navbar-item:hover .dropdown-icon,
+.navbar-item.active .navbar-item-label,
+.navbar-item.active .navbar-item-icon {
+   color: #178DE2;
+}
+
+.navbar-item.disabled {
+   opacity: 0.3;
+   pointer-events: none;
+}
+
+.navbar-item.user {
+   margin-top: 0.5vw;
+   border-top: 0.1vw solid #D9D9D9;
+   border-bottom: 0.1vw solid #D9D9D9;
 }
 
 #navbar-logout {
@@ -115,64 +90,78 @@
 }
 
 #navbar-logout:hover {
-   background: #eaeaeaa1;
+   background: #E0F2FF;
 }
 
+.navbar-item .user-avatar {
+   width: 2.5vw;
+   height: 2.5vw;
+   border-radius: 50%;
+   margin-right: 1vw;
+   object-fit: cover;
+}
+
+.user-info p {
+   margin: 0;
+}
+
+.user-name {
+   color: #000;
+   font-size: 1vw;
+   font-weight: 500;
+}
+
+.user-id {
+   color: #178DE2;
+   font-size: 0.8vw;
+}
+
+/* Dropdown */
 .dropdown-container {
    max-height: 0;
    opacity: 0;
    overflow: hidden;
+   display: flex;
    flex-direction: column;
    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .dropdown-container.show {
-   max-height: 30vw; 
+   max-height: 30vw;
    opacity: 1;
 }
 
-.dropdown-item{
-   width: 100%;
+.dropdown-item {
    height: 3.3vw;
+   padding-left: 2vw;
    display: flex;
    align-items: center;
-   text-indent: 2vw;
-   font-size: 1vw;
+   font-size: 0.9vw;
    color: #000;
 }
 
-.dropdown-item:hover{
-   background-color: #EBEBEB;
+.dropdown-item:hover,
+.dropdown-item.active {
+   background: #EBEBEB;
 }
 
-.dropdown-item.active{
-   background-color: #EBEBEB;
-
-}
-
-.dropdown-item.disabled{
+.dropdown-item.disabled {
    color: #B8B8B8;
+   pointer-events: none;
 }
 
-.navbar-item .dropdown-icon {
-   font-size: 0.8vw;
-   color: #000000bb;
-   position: absolute;
-   right: 10%;
-   transition: transform 0.2s ease-in-out;
-}
-
-.navbar-item .dropdown-icon.show {
+/* Icon rotate when open */
+.navbar-item.show .dropdown-icon {
    transform: rotate(-180deg);
 }
 
-
+/* Scrollbar */
 .navbar-items-wrapper::-webkit-scrollbar {
    width: 0.25vw;
 }
 
 .navbar-items-wrapper::-webkit-scrollbar-track {
-   background: #ffffff;
+   background: #fff;
    border-radius: 0.1vw;
 }
 

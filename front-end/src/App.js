@@ -8,6 +8,8 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { ETBlogOverviewPage } from './pages/ETBlogManagementPage/ETBlogOverviewPage';
+import { ETBlogFormPage } from './pages/ETBlogManagementPage/ETBlogFormPage';
 
 function App() {
   useEffect(() => {
@@ -33,6 +35,9 @@ function App() {
                   {/* <Route path="/profile" element={<PersonalProfilePage />} /> */}
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
+                  <Route path="/et-blog" element={<ETBlogOverviewPage />} />
+                  <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
+                  <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
                 </Route>
 
                 {/* Account Management */}
