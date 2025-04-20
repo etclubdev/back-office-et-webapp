@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./FAQsOverviewPage.css";
 
@@ -31,16 +31,16 @@ export const FAQsOverviewPage = () => {
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data}  = await getAllFAQs();
-            const array = convertToArray(data);
-            setFAQs(array);
-            setFilteredFAQs(array);
-        }
-        fetchData();
+    const fetchData = useCallback(async () => {
+        const { data }  = await getAllFAQs();
+        const array = convertToArray(data);
+        setFAQs(array);
+        setFilteredFAQs(array);
+    }, [])
 
-    }, []);
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
 
     const onClose = () => {
         setIsOpenConfirmedDialog(false);

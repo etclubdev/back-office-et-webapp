@@ -13,12 +13,6 @@ import { createFAQs, updateFAQsById, getFAQsById } from '../../../api/faq.servic
 export const FAQsFormPage = ({ action }) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [defaultFAQs, setDefaultFAQs] = useState({
-        question: "",
-        faq_category: "",
-        answer: "",
-        visible: false,
-    });
     
     const {
         control,
@@ -27,7 +21,7 @@ export const FAQsFormPage = ({ action }) => {
         formState: { errors },
     } = useForm({
         resolver: yupResolver(action === "create" ? createFAQSchema : updateFAQSchema),
-        defaultValues: id ? defaultFAQs : {
+        defaultValues: {
             question: "",
             faq_category: "",
             answer: "",
@@ -38,19 +32,13 @@ export const FAQsFormPage = ({ action }) => {
     useEffect(() => {
         const fetchData = async () => {
             if (id) {
-                const data = await getFAQsById(id);
-                setDefaultFAQs(data);
+                const {data} = await getFAQsById(id);
+                reset(data);
             }
         };
         fetchData();
     }, [id]);
     
-    useEffect(() => {
-        if (defaultFAQs && Object.keys(defaultFAQs).length > 0) {
-            reset(defaultFAQs);
-        }
-    }, [defaultFAQs, reset]);
-
     const handleCancel = () => {
         navigate('/faqs');
     }
