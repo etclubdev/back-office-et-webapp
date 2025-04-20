@@ -1,6 +1,7 @@
 import axios from "axios";
-import { getAccessToken } from "../utils/jwt";
+import { getAccessToken, removeAccessToken, removeRefreshToken } from "../utils/jwt";
 import { getTraceId } from "../utils/trace";
+import { refreshAccessToken } from "./auth.service";
 
 const ENV = process.env.REACT_APP_ENV.trim() || "development";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -9,14 +10,14 @@ console.log(`Running in ${ENV} mode`);
 
 let api;
 
-if (ENV === 'local'){
+if (ENV === 'local') {
     api = {
         get: async (url) => {
-            if (url !== ""){
+            if (url !== "") {
                 const mockData = require(`../mocks/data${url}.json`);
                 return { data: { data: mockData } };
-            }            
-            return { data: { data: [] } } 
+            }
+            return { data: { data: [] } }
         },
         post: async (url, payload) => {
             console.log(`POST ${url}`, payload);
@@ -35,7 +36,7 @@ if (ENV === 'local'){
     api = axios.create({
         baseURL: API_BASE_URL,
         timeout: 10000,
-        headers: {"Content-Type": "application/json"}
+        headers: { "Content-Type": "application/json" }
     })
 }
 
@@ -55,6 +56,31 @@ if (ENV !== 'local') {
     }, (error) => {
         return Promise.reject(error);
     });
+
+    api.interceptors.response.use(
+        (response) => response,
+        async (error) => {
+          const originalRequest = error.config;
+      
+          if (error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+      
+            try {
+              const newAccessToken = await refreshAccessToken();
+      
+              originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+      
+              return api(originalRequest);
+            } catch (refreshError) {
+              removeAccessToken();
+              removeRefreshToken();
+              return Promise.reject(refreshError);
+            }
+          }
+      
+          return Promise.reject(error);
+        }
+      );
 }
 
 
