@@ -7,28 +7,20 @@ import { refreshAccessToken } from "../../api/auth.service";
 export const RequireAuth = ({ allowedRoles }) => {
     const { user } = useAuth();
     const location = useLocation();
-
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // State to track loading process
 
     useEffect(() => {
         const verifyAuth = async () => {
             const token = getAccessToken();
-            console.log(user);
             
             if (!user) {
                 try {
                     const newToken = await refreshAccessToken();
                     console.log("New tokens:", newToken);
-
-                    if (newToken?.accessToken) {
-                        setAccessToken(newToken.accessToken);
-                        setRefreshToken(newToken.refreshToken);
-                    } 
                 } catch (err) {
                     console.error("Refresh token failed:", err);
                 }
             } 
-
             setLoading(false);
         };
         verifyAuth();
