@@ -1,5 +1,5 @@
 import { api } from "./index";
-import { getRefreshToken, setAccessToken, removeAccessToken, removeRefreshToken } from "../utils/jwt";
+import { getRefreshToken, setAccessToken, setRefreshToken } from "../utils/jwt";
 
 const loginUser = async ({ username, password }) => {
   try {
@@ -14,8 +14,6 @@ const loginUser = async ({ username, password }) => {
 
 const refreshAccessToken = async () => {
   const refreshToken = getRefreshToken();
-  console.log(refreshToken);
-  
   
   if (!refreshToken) {
     throw new Error("Refresh token không tồn tại");
@@ -30,9 +28,12 @@ const refreshAccessToken = async () => {
       },
     }
   );
-  const newAccessToken = response.data.accessToken;
-  setAccessToken(newAccessToken);  
-  return newAccessToken;
+  const newToken = response.data;
+  console.log(newToken);
+  
+  setAccessToken(newToken.accessToken);
+  setRefreshToken(newToken.refreshToken);
+  return newToken;
 };
 
 
