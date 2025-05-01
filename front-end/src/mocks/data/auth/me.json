@@ -1,15 +1,9 @@
 {
-    "id": "etadmin_user",
-    "name": "ET Admin",
-    "image": "/images/profiles/1.png",
-    "phone": "0123456789",
-    "dob": "2004-01-01",
-    "address": "123 Đường ABC Quận 10 TP.HCM",
-    "major": "Hệ thống thông tin quản lý",
-    "department": "Event",
-    "email": "etclub@ueh.vn",
-    "gender": "Nữ",
-    "infoId": "31220000000",
-    "class": "INF001",
-    "role": "admin"
+    "account_id": "ACCT018",
+    "exp": 1745094263,
+    "iat": 1745090663,
+    "personnel_id": "PERS003",
+    "sysrole_id": "SRLE007",
+    "sysrole_name": "CTV/TV",
+    "username": "lvc.event@example.com"
 }

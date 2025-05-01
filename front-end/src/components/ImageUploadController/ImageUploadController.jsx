@@ -19,7 +19,6 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                             onClick={() => document.getElementById("fileInput").click()}
                         >
                             <input
-                            
                                 id="fileInput"
                                 type="file"
                                 accept="image/jpeg, image/png"
@@ -28,14 +27,20 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                                     const file = event.target.files[0];
                                     if (file) {
                                         setPreview(file);
-                                        setValue("thumbnail_image_url", URL.createObjectURL(file));
+                                        setValue(name, URL.createObjectURL(file));
                                     }
                                 }}
                             />
                             {(preview || field.value)? (
                                 <img 
                                     className="thumbnail-img"
-                                    src={preview ? URL.createObjectURL(preview) : field.value}
+                                    src={
+                                        preview
+                                          ? preview instanceof File
+                                            ? URL.createObjectURL(preview)
+                                            : preview
+                                          : field.value
+                                      }
                                     alt="Preview"
                                     style={{ width: "100%", borderRadius: "4px" }}
                                 />

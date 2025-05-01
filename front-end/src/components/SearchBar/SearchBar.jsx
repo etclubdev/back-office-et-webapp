@@ -8,8 +8,6 @@ export const SearchBar = ({ onSearch }) => {
     const [query, setQuery] = useState("");
 
     const handleSearch = () => {
-        if (query.length === 0) return;
-
         onSearch(query);
     }
 

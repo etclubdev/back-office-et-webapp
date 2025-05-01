@@ -126,7 +126,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="personnel-form-page">
             {
                 isOpenDialog && (
                     <ConfirmedDialog 

@@ -3,10 +3,10 @@ import { api } from "./index";
 const getAllPersonnels = async (personnel_status, department_name) => {
   try {
     const response = await api.get("/personnels", {
-      params: {
-        status: personnel_status,
-        departmentName: department_name
-      }
+        params: {
+          status: personnel_status,
+            departmentName: department_name
+        }
     });
     return response.data;
   } catch (error) {
@@ -55,14 +55,24 @@ const deletePersonnelById = async (id) => {
   }
 };
 
-const deletePersonnels = async (personnelIds) => {
+const deletePersonnels = async (ids) => {
   try {
-    const response = await api.delete("/personnels/bulk-delete", { data: { personnelIds } });
+    const response = await api.delete("/personnels/bulk-delete", { data: { ids } });
     return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
+};
+
+const getUnregisteredAccount = async () => {
+    try {
+        const response = await api.get("/personnels/unregistered");
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 };
 
 export {
@@ -72,4 +82,5 @@ export {
   updatePersonnel,
   deletePersonnels,
   deletePersonnelById,
+  getUnregisteredAccount,
 };

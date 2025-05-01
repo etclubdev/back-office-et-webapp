@@ -1,98 +1,54 @@
-import * as yup from "yup";
+import * as yup from 'yup';
+
+const genderEnum = ['Nam', 'Nữ', 'Khác'];
 
 const personnelSchema = yup.object().shape({
-    personnel_name: yup
-        .string()
-        .max(30, "Họ và tên không được vượt quá 30 ký tự.")
-        .required("Vui lòng nhập họ và tên của bạn."),
+    personnel_id: yup.string()
+        .length(7, "Mã nhân viên phải có 7 ký tự")
+        .required("Mã nhân viên là bắt buộc"),
 
-    email: yup
-        .string()
-        .email("Định dạng email không hợp lệ.")
-        .max(320, "Email không được vượt quá 320 ký tự.")
-        .required("Vui lòng nhập địa chỉ email."),
+    personnel_name: yup.string()
+        .matches(/^[^\d]*$/, "Họ và tên không được chứa số")
+        .required("Họ và tên là bắt buộc"),
 
-    dob: yup
-        .date()
-        .typeError("Ngày sinh không hợp lệ.")
-        .required("Vui lòng chọn ngày sinh."),
+    phone_number: yup.string()
+        .matches(/^0[0-9]{9}$/, "Số điện thoại phải gồm 10 chữ số và bắt đầu bằng 0")
+        .nullable(),
 
-    gender: yup
-        .string()
-        .oneOf(["Nam", "Nữ", "Khác"], "Giới tính không hợp lệ.")
-        .required("Vui lòng chọn giới tính."),
+    email: yup.string()
+        .email("Định dạng email không hợp lệ")
+        .required("Email là bắt buộc"),
 
-    address: yup.string().max(263, "Địa chỉ không được vượt quá 263 ký tự."),
+    dob: yup.date()
+        .required("Ngày sinh là bắt buộc"),
 
-    student_id: yup.string().max(20, "Mã sinh viên không được vượt quá 20 ký tự."),
+    gender: yup.string()
+        .oneOf(genderEnum, "Giới tính không hợp lệ")
+        .required("Giới tính là bắt buộc"),
 
-    faculty: yup.string().max(100, "Tên khoa không được vượt quá 100 ký tự."),
+    address: yup.string()
+        .nullable(),
 
-    university: yup.string().max(50, "Tên trường không được vượt quá 50 ký tự."),
+    student_id: yup.string()
+        .required("MSSV là bắt buộc"),
 
-    major: yup.string().max(100, "Ngành học không được vượt quá 100 ký tự."),
+    university: yup.string()
+        .required("Trường là bắt buộc"),
 
-    class: yup.string().max(10, "Lớp không được vượt quá 10 ký tự."),
+    faculty: yup.string()
+        .required("Khoa là bắt buộc"),
 
-    cv_type: yup
-        .string()
-        .oneOf(["CV mẫu", "CV tự thiết kế"], "Loại CV không hợp lệ."),
+    major: yup.string()
+        .required("Ngành là bắt buộc"),
 
-    cv_link: yup
-        .string()
-        .url("Đường dẫn CV không hợp lệ."),
+    class: yup.string()
+        .required("Lớp là bắt buộc"),
 
-    cohort_name: yup
-        .string()
-        .matches(/^K([1-9]?[0-9])$/, "Khóa phải có định dạng 'Kxx', ví dụ: K49.")
-        .nullable()
-        .notRequired(),
+    avatar_url: yup.string()
+        .nullable(),
 
-    term_id: yup
-        .string()
-        .nullable()
-        .required("Vui lòng chọn nhiệm kỳ."),
-
-    department_name: yup
-        .string()
-        .required("Vui lòng chọn tên ban.")
-        .oneOf(
-            [
-                "Ban Kỹ thuật - Công nghệ",
-                "Ban Truyền thông",
-                "Ban Nhân sự - Tổ chức",
-                "Ban Sự kiện",
-                "Ban Tài chính - Đối ngoại"
-            ],
-            "Vui lòng chọn đúng tên ban."
-        ),
-
-    position_name: yup
-        .string()
-        .required("Vui lòng chọn chức vụ.")
-        .oneOf(
-            [
-                "Chủ nhiệm",
-                "Phó chủ nhiệm",
-                "Thành viên ban chủ nhiệm",
-                "Trưởng ban",
-                "Phó ban",
-                "Thành viên",
-                "Cộng tác viên"
-            ],
-            "Chức vụ không hợp lệ."
-        ),
-    phone_number: yup
-        .string()
-        .matches(/^\d{10}$/, "Số điện thoại phải có 10 chữ số.")
-        .required("Vui lòng nhập số điện thoại."),
-    personnel_status: yup
-        .string()
-        .required("Vui lòng chọn trạng thái hiện tại.")
-        .oneOf(
-            ["Đang hoạt động", "Cựu thành viên", "Ứng viên"],
-            "Trạng thái không hợp lệ."
-        )
+    cohort_name: yup.string()
+        .required("Tên khóa học là bắt buộc")
 });
 
 export { personnelSchema };

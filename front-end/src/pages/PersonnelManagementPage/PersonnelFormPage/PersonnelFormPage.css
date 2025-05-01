@@ -1,4 +1,4 @@
-.form-page{
+.personnel-form-page{
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.form-page .form-container{
+.personnel-form-page .form-container{
     margin-top: 3vw;
     width: 80%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.form-page .form{
+.personnel-form-page .form{
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,14 +23,14 @@
     flex-direction: column;
 }
 
-.form-page .form .form-top{
+.personnel-form-page .form .form-top{
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
     gap: 3vw
 }
 
-.form-page .form .form-top{
+.personnel-form-page .form .form-top{
 
     .form-right{
         width: 30%;
@@ -54,47 +54,47 @@
 
 }
 
-.date-controller{
+.personnel-form-page .date-controller{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.date-controller .date-item {
+.personnel-form-page .date-controller .date-item {
     width: 45%;
 }
 
-.rich-text-editor{
+.personnel-form-page .rich-text-editor{
     width: 100%;
 }
 
-.form-page .form .form-bottom {
+.personnel-form-page .form .form-bottom {
     max-width: 80vw;
     display: flex;
     flex-direction: column;
     gap: 2vw;
 }
 
-.form-button{
+.personnel-form-page .form-button{
     align-self: flex-end;
     display: flex;
     gap: 2vw;
 }
 
-.form-page .form-container::-webkit-scrollbar {
+.personnel-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-track {
+ .personnel-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-thumb {
+ .personnel-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-thumb:hover {
+ .personnel-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
  }
