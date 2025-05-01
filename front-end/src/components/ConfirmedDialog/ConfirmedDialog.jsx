@@ -17,11 +17,13 @@ export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) 
                     <h2 className="modal-title">{title}</h2>
                     <p className="modal-text">{desc}</p>
                 </div>
-                {onConfirm && 
-                    <div className="modal-actions">
-                        <button className="cancel-button" onClick={onClose}>Hủy bỏ</button>
-                        <button className={`confirm-button ${alertType}`} onClick={onConfirm}>Xác nhận</button>
-                    </div>
+                {
+                    onConfirm && (
+                        <div className="modal-actions">
+                            <button className="cancel-button" onClick={onClose}>Hủy bỏ</button>
+                            <button className={`confirm-button ${alertType}`} onClick={onConfirm}>Xác nhận</button>
+                        </div>
+                    )
                 }
             </div >
         </div >

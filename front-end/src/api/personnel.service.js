@@ -16,14 +16,14 @@ const getAllPersonnels = async (personnel_status, department_name) => {
 };
 
 const getPersonnelById = async (id) => {
-  try {
+    try {
       const response = await api.get(`/personnels/${id}`);
       return response.data;
-  } catch (error) {
+    } catch (error) {
       console.error(error);
       throw error;
-  }
-};
+    }
+  };
 
 const createPersonnel = async (payload) => {
   try {
@@ -65,6 +65,16 @@ const deletePersonnels = async (ids) => {
   }
 };
 
+const getUnregisteredAccount = async () => {
+    try {
+        const response = await api.get("/personnels/unregistered");
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
 export {
   getAllPersonnels,
   getPersonnelById,
@@ -72,4 +82,5 @@ export {
   updatePersonnel,
   deletePersonnels,
   deletePersonnelById,
+  getUnregisteredAccount,
 };

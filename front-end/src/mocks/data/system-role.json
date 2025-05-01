@@ -1,0 +1,9 @@
+[
+    { "sysrole_id": "SRLE001", "sysrole_name": "Administration" },
+    { "sysrole_id": "SRLE002", "sysrole_name": "Trưởng ban Tech" },
+    { "sysrole_id": "SRLE003", "sysrole_name": "Trưởng ban PR" },
+    { "sysrole_id": "SRLE004", "sysrole_name": "Trưởng ban HR" },
+    { "sysrole_id": "SRLE005", "sysrole_name": "Trưởng ban EV" },
+    { "sysrole_id": "SRLE006", "sysrole_name": "Trưởng ban FER" },
+    { "sysrole_id": "SRLE007", "sysrole_name": "CTV/TV" }
+]

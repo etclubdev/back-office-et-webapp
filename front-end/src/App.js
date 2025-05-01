@@ -3,12 +3,14 @@ import { useEffect } from 'react';
 import { generateTraceId } from './utils/trace';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
-import { UnauthorizedPage } from './pages/UnauthorizedPage';
-import { PersonalProfilePage } from './pages/PersonalProfilePage'
 import { LogInPage } from './pages/LogInPage';
 import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
+import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { AccountsFormPage } from './pages/AccountsManagementPage/AccountsFormPage';
+import { AccountsOverviewPage } from './pages/AccountsManagementPage/AccountsOverviewPage';
+import { PersonalProfilePage } from './pages/PersonalProfilePage';
 
 function App() {
   useEffect(() => {
@@ -38,9 +40,9 @@ function App() {
 
                 {/* Account Management */}
                 <Route element={<RequireAuth allowedRoles={['Administrator']} />}>
-                  {/* <Route path="/accounts" element={<WelcomePage />} /> 
+                  <Route path="/accounts" element={<AccountsOverviewPage />} /> 
                   <Route path="/accounts/create" element={<AccountsFormPage action="create" />} />
-                  <Route path="/accounts/edit/:id" element={<AccountsFormPage action="edit" />} /> */}
+                  <Route path="/accounts/edit/:id" element={<AccountsFormPage action="edit" />} />
                 </Route>
                 
                 {/* Except CTV/TV */}
