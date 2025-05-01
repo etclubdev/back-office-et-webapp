@@ -127,20 +127,8 @@ const PersonalInformation = () => {
             if (!user) return;
             const response = await getPersonnelById(user?.personnel_id);
             reset(response.data);
-            if (response.status === 200) {
-                setMessage({
-                    title: "Chỉnh sửa thành công",
-                    alertType: "info"
-                });
-                setIsDialogOpen(true);
-            }
         } catch (error) {
             console.log(error);
-            setMessage({
-                title: "Chỉnh sửa thất bại",
-                alertType: "warning"
-            });
-            setIsDialogOpen(true);
         }
     }, [])
 

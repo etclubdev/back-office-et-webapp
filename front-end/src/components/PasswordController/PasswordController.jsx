@@ -3,7 +3,7 @@ import { Controller } from "react-hook-form";
 import { FormHelperText, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-export const PasswordController = ({ control, name, label, setValue, errors }) => {
+export const PasswordController = ({ control, name, label, setValue, errors, size = 'small' }) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -28,7 +28,7 @@ export const PasswordController = ({ control, name, label, setValue, errors }) =
       name={name} 
       control={control}
       render={({ field }) => (
-        <FormControl variant="outlined" fullWidth error={!!errors[name]}>
+        <FormControl size={size} variant="outlined" fullWidth error={!!errors[name]}>
           <InputLabel htmlFor={`outlined-adornment-${name}`}>{label}</InputLabel>
           <OutlinedInput
             {...field}
