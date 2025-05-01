@@ -1,32 +1,54 @@
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { AuthContext } from "./AuthContext";
-import { setAccessToken, removeAccessToken } from "../utils/jwt";
+import { 
+  getAccessToken, 
+  setAccessToken, 
+  removeAccessToken, 
+  getRefreshToken, 
+  setRefreshToken, 
+  removeRefreshToken 
+} from "../utils/jwt";
+
+const isTokenValid = (token) => {
+  if (!token) return false;
+  const decoded = jwtDecode(token);
+  const currentTime = Date.now() / 1000;
+  return decoded.exp > currentTime;
+};
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("accessToken"));
+  const [tokens, setTokens] = useState({
+    accessToken: getAccessToken(),
+    refreshToken: getRefreshToken()
+  });
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (token && token !== undefined) {
-      const decoded = jwtDecode(token);
+    if (tokens?.accessToken && isTokenValid(tokens.accessToken)) {
+      const decoded = jwtDecode(tokens.accessToken);
       setUser(decoded);
+    } else {
+      logout(); 
     }
-  }, [token]);
-  
-  const login = (token) => {
-    setAccessToken(token);
-    setToken(token);
+  }, [tokens]);
+
+  const login = ({ accessToken, refreshToken }) => {
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken);
+    setTokens({ accessToken, refreshToken });
   };
 
   const logout = () => {
     removeAccessToken();
-    setToken(null);
-    setUser(null);
+    removeRefreshToken();
+    setTokens(null); 
+    setUser(null);   
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, tokens, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
