@@ -1,0 +1,100 @@
+.personnel-form-page{
+    width: 100%;
+    overflow-x: hidden;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.personnel-form-page .form-container{
+    margin-top: 3vw;
+    width: 80%;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.personnel-form-page .form{
+    margin: 2%;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.personnel-form-page .form .form-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+    gap: 3vw
+}
+
+.personnel-form-page .form .form-top{
+
+    .form-right{
+        width: 30%;
+    }
+
+    .form-left{
+        width: 60%;
+    }
+
+    .form-right, .form-left {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        gap: 1vw;
+
+        .form-group {
+            display: flex;
+            gap: 1vw;
+        }
+    }
+
+}
+
+.personnel-form-page .date-controller{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.personnel-form-page .date-controller .date-item {
+    width: 45%;
+}
+
+.personnel-form-page .rich-text-editor{
+    width: 100%;
+}
+
+.personnel-form-page .form .form-bottom {
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.personnel-form-page .form-button{
+    align-self: flex-end;
+    display: flex;
+    gap: 2vw;
+}
+
+.personnel-form-page .form-container::-webkit-scrollbar {
+    width: 0.4vw;
+ }
+ 
+ .personnel-form-page .form-container::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 0.1vw;
+ }
+ 
+ .personnel-form-page .form-container::-webkit-scrollbar-thumb {
+    background: #178DE2;
+    border-radius: 0.1vw;
+ }
+ 
+ .personnel-form-page .form-container::-webkit-scrollbar-thumb:hover {
+    background: #2886ca;
+ }

@@ -1,4 +1,4 @@
-.form-page {
+.account-form-page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.form-page .form-container {
+.account-form-page .form-container {
     margin-top: 2vw;
     width: 100%;
     display: flex;
@@ -17,7 +17,7 @@
     flex: 1; /* Makes the form container take up the remaining space */
 }
 
-.form-page .form {
+.account-form-page .form {
     height: 100%;
     margin: 2%;
     width: 90%;
@@ -26,13 +26,13 @@
     flex-direction: column;
 }
 
-.form-page .form form {
+.account-form-page .form form {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.form-page .form .form-top {
+.account-form-page .form .form-top {
     width: 50%;
     height: 90%;
     margin-bottom: 2vw;
@@ -42,7 +42,7 @@
     flex-direction: column;
 }
 
-.form-page .form .form-bottom {
+.account-form-page .form .form-bottom {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
     flex: 1;
 }
 
-.form-page .form-control{
+.account-form-page .form-control{
     position: relative;
 
     .select-button{
@@ -67,20 +67,20 @@
     gap: 2vw;
 }
 
-.form-page .form-container::-webkit-scrollbar {
+.account-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
 }
 
-.form-page .form-container::-webkit-scrollbar-track {
+.account-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
 }
 
-.form-page .form-container::-webkit-scrollbar-thumb {
+.account-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
 }
 
-.form-page .form-container::-webkit-scrollbar-thumb:hover {
+.account-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
 }

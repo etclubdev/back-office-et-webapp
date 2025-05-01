@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getSpecialTableCell } from "../../utils/getSpecialTableCellUtil";
+import { getSpecialTableCell } from "../../utils/getSpecialTableCell";
 import "./DataTable.css";
 import {
   Table,
@@ -52,8 +52,8 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
   const paginatedData = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <Paper sx={{ width: "100%", padding: 2, minHeight: "300px" }}>
-      <TableContainer sx={{ maxHeight: "400px", overflowY: "auto" }}>
+    <Paper sx={{ width: "100%", padding: 2, minHeight: "300px", boxSizing: "border-box" }}>
+      <TableContainer className="data-table-container" sx={{ maxHeight: "400px", overflowY: "auto" }}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>

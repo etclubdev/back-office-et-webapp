@@ -81,7 +81,7 @@ export const AccountsFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="account-form-page">
             {
                 isOpenConfirmedDialog && (
                     <ConfirmedDialog

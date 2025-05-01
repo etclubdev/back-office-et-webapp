@@ -4,8 +4,8 @@ const getAllPersonnels = async (personnel_status, department_name) => {
   try {
     const response = await api.get("/personnels", {
         params: {
-            personnel_status: personnel_status,
-            department_name: department_name
+          status: personnel_status,
+            departmentName: department_name
         }
     });
     return response.data;
