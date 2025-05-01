@@ -11,7 +11,7 @@ export const RequireAuth = ({ allowedRoles }) => {
         return <Navigate to="/login" state={{from: location}} replace />
     }
 
-    if (allowedRoles && (!user || !allowedRoles.includes(user.sysrole_name))) {
+    if (user && allowedRoles && (!user || !allowedRoles.includes(user.sysrole_name))) {
         return <Navigate to="/unauthorized" replace />;
     }
 

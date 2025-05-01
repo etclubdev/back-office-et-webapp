@@ -35,6 +35,7 @@ export const LogInPage = () => {
 
     try {
       const token = await loginUser({ username, password });
+      
       login(token);
       navigate('/');
     } catch (error) {

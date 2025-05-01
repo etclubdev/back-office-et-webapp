@@ -1,4 +1,5 @@
 import { api } from "./index";
+import { jwtDecode } from "jwt-decode";
 import { getRefreshToken, setAccessToken, removeAccessToken, removeRefreshToken } from "../utils/jwt";
 
 const loginUser = async ({ username, password }) => {
@@ -14,13 +15,21 @@ const loginUser = async ({ username, password }) => {
 
 const refreshAccessToken = async () => {
   const refreshToken = getRefreshToken();
-
+  
   if (!refreshToken) {
     throw new Error("Refresh token không tồn tại");
   }
 
   try {
-    const response = await api.post("/auth/refresh-token", { refreshToken });
+    const response = await api.post(
+      "/auth/refresh-token",
+      {}, 
+      {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`, 
+        },
+      }
+    );
     const newAccessToken = response.data.accessToken;
     setAccessToken(newAccessToken);  
     return newAccessToken;
@@ -30,7 +39,6 @@ const refreshAccessToken = async () => {
     removeRefreshToken();
   }
 };
-
 
 
 export { loginUser, refreshAccessToken };

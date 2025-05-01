@@ -42,11 +42,13 @@ if (ENV === 'local') {
 
 if (ENV !== 'local') {
     api.interceptors.request.use((config) => {
-        const token = getAccessToken();
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-
+        if (config.url !== "/auth/refresh-token") {
+            const token = getAccessToken();
+            if (token) {
+              config.headers.Authorization = `Bearer ${token}`;
+            }
+          }
+        
         const traceId = getTraceId();
         if (traceId) {
             config.headers["X-Trace-Id"] = traceId;
