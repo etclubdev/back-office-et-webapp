@@ -1,6 +1,6 @@
 import { api } from "./index";
 
-const getAllAccounts = async (Account_status, department_name) => {
+const getAllAccounts = async () => {
   try {
     const response = await api.get("/accounts");
     return response.data;
@@ -60,6 +60,20 @@ const deleteAccounts = async (accounts) => {
   }
 };
 
+const updatePassword = async (id, oldPassword, newPassword) => {
+  try {
+      const response = await api.put(`/accounts/change-password/${id}`, {
+          oldPassword,
+          newPassword
+      });
+      return response.data;
+  } catch (error) {
+      console.error(error);
+      throw error;
+  }
+};
+
+
 export {
   getAllAccounts,
   getAccountById,
@@ -67,4 +81,5 @@ export {
   updateAccount,
   deleteAccounts,
   deleteAccountById,
+  updatePassword,
 };

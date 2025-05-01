@@ -3,13 +3,14 @@ import { useEffect } from 'react';
 import { generateTraceId } from './utils/trace';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
-// import { LogInPage } from './pages/LogInPage';
+import { LogInPage } from './pages/LogInPage';
 import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
 import { AccountsFormPage } from './pages/AccountsManagementPage/AccountsFormPage';
 import { AccountsOverviewPage } from './pages/AccountsManagementPage/AccountsOverviewPage';
+import { PersonalProfilePage } from './pages/PersonalProfilePage';
 
 function App() {
   useEffect(() => {
@@ -25,14 +26,14 @@ function App() {
               {/* Catch-all route */}
               <Route path="*" element={<Navigate to="/" replace />} />
               {/* Public route */}
-              {/* <Route path="/login" element={<LogInPage />} /> */}
+              <Route path="/login" element={<LogInPage />} />
 
               {/* Protected routes */}
               <Route element={<MainLayout />}>
                 {/* All roles */}
                 <Route element={<RequireAuth />}>
                   <Route path="/" element={<WelcomePage />} />
-                  {/* <Route path="/profile" element={<PersonalProfilePage />} /> */}
+                  <Route path="/profile" element={<PersonalProfilePage />} />
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
                 </Route>
