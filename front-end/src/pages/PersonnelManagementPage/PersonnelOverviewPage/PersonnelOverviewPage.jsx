@@ -16,7 +16,6 @@ import { getAllPersonnels, deletePersonnelById, deletePersonnels } from '../../.
 
 const columns = [
     { field: 'personnel_name', headerName: 'Họ và tên' },
-    { field: 'email', headerName: 'Email' },
     { field: 'dob', headerName: 'Ngày sinh' },
     { field: 'address', headerName: 'Địa chỉ' },
     { field: 'gender', headerName: 'Giới tính' },
@@ -25,10 +24,7 @@ const columns = [
     { field: 'university', headerName: 'Trường' },
     { field: 'major', headerName: 'Chuyên ngành' },
     { field: 'class', headerName: 'Lớp' },
-    { field: 'cv_type', headerName: 'Loại CV' },
-    { field: 'cv_link', headerName: 'Link CV' },
     { field: 'cohort_name', headerName: 'Khóa đào tạo' },
-    { field: 'term_name', headerName: 'Nhiệm kỳ' },
     { field: 'position_name', headerName: 'Chức vụ' },
     { field: 'department_name', headerName: 'Ban hoạt động' },
 ]

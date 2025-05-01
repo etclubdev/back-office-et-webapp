@@ -295,7 +295,7 @@ const PersonalInformation = () => {
                             Hủy bỏ
                         </Button>
                         <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                            {isSubmitting ? "Đang lưu..." : "Gửi"}
+                            {isSubmitting ? "Đang lưu..." : "Lưu"}
                         </Button>
                     </div>
                 </div>
@@ -392,7 +392,7 @@ const PasswordUpdate = () => {
                             Hủy bỏ
                         </Button>
                         <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                            {isSubmitting ? "Đang lưu..." : "Gửi"}
+                            {isSubmitting ? "Đang lưu..." : "Lưu"}
                         </Button>
                     </div>
                 </div>
