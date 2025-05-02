@@ -56,7 +56,6 @@ const handleUploadToCloud = async ({ isContent, preview, editorContent, setEdito
 };
 
 export const handleImageUpload= async (imageUrl, field, preview, setPreview, setValue) => {
-   
         let url = imageUrl;
         if (url && url.startsWith("blob")) {
             url = await handleUploadToCloud({preview});
@@ -64,8 +63,8 @@ export const handleImageUpload= async (imageUrl, field, preview, setPreview, set
             setValue(field, url);
         }
         return url;
-    
-    
+
+
 }
 
 export const handleRichTextUpload = async (editorContent, setEditorContent, uploadImages, setUploadImages) => {

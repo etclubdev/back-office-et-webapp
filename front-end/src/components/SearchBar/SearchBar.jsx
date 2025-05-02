@@ -28,7 +28,7 @@ export const SearchBar = ({ onSearch }) => {
                 onChange={(e) => setQuery(e.target.value)}
             />
             <BaseButton 
-                sx={{ whiteSpace: "nowrap" , paddingX: 2}}
+                sx={{ whiteSpace: "nowrap" , paddingX: 2, backgroundColor: "#007bff", "&:hover": { backgroundColor: "#0056b3" }}}
                 onClick={handleSearch}
             >
                 Tìm kiếm

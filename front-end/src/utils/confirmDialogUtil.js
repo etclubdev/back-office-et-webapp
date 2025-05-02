@@ -10,7 +10,7 @@ export const getConfirmDialogConfig = (actionType) => {
         return {
           title: "Xác nhận xóa",
           desc: "Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác!",
-          alertType: "warning",
+          alertType: "delete",
         };
       default:
         return {
