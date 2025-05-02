@@ -16,6 +16,7 @@ import { PersonalProfilePage } from './pages/PersonalProfilePage';
 import { PartnersOverviewPage } from './pages/PartnersManagementPage/PartnersOverviewPage';
 import { PartnersFormPage } from './pages/PartnersManagementPage/PartnersFormPage';
 import { AchievementsSelectionPage } from './pages/AchievementsSelectionPage'
+import { PartnersSelectionPage } from './pages/PartnersSelectionPage'
 
 function App() {
   useEffect(() => {
@@ -73,11 +74,11 @@ function App() {
                   <Route path="/pr/edit/:id" element={<PersonnelFormPage action="edit" department_name="pr" />} />
                   
                   <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
+                  <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
                   {/*
 
                   <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
 
-                  <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
 
 
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />

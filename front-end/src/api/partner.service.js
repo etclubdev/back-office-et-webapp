@@ -60,6 +60,16 @@ const deletePartners = async (partners) => {
   }
 };
 
+const updateVisible = async (partners) => {
+  try {
+    const response = await api.put('/partners/bulk-update', { partners });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 export {
   getAllPartners,
   getPartnerById,
@@ -67,4 +77,5 @@ export {
   updatePartner,
   deletePartners,
   deletePartnerById,
+  updateVisible,
 };
