@@ -13,6 +13,8 @@ import { PersonnelFormPage } from './pages/PersonnelManagementPage/PersonnelForm
 import { AccountsFormPage } from './pages/AccountsManagementPage/AccountsFormPage';
 import { AccountsOverviewPage } from './pages/AccountsManagementPage/AccountsOverviewPage';
 import { PersonalProfilePage } from './pages/PersonalProfilePage';
+import { PartnersOverviewPage } from './pages/PartnersManagementPage/PartnersOverviewPage';
+import { PartnersFormPage } from './pages/PartnersManagementPage/PartnersFormPage';
 
 function App() {
   useEffect(() => {
@@ -97,9 +99,9 @@ function App() {
                   <Route path="/fer/create" element={<PersonnelFormPage action="create" department_name="fer" />} />
                   <Route path="/fer/edit/:id" element={<PersonnelFormPage action="edit" department_name="fer" />} /> 
                   
-                  {/* <Route path="/partners" element={<PartnersOverviewPage />} />
+                  <Route path="/partners" element={<PartnersOverviewPage />} />
                   <Route path="/partners/create" element={<PartnersFormPage action="create"/>} />
-                  <Route path="/partners/edit/:id" element={<PartnersFormPage action="edit"/>} /> */}
+                  <Route path="/partners/edit/:id" element={<PartnersFormPage action="edit"/>} />
                  
                 </Route>
 
