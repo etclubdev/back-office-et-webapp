@@ -52,6 +52,7 @@ const navbarContents = [
 ];
 
 const breadcrumbNameMap = {
+    "profile": "Thông tin cá nhân",
     "accounts": "Quản lý tài khoản",
     "partners": "Quản lý đối tác",
     "tech": "Ban Kỹ thuật - Công nghệ",
@@ -62,13 +63,18 @@ const breadcrumbNameMap = {
     "homepage-achievements": "Thành tựu",
     "homepage-partners": "Đối tác",
     "homepage-faqs": "FAQs",
+    "homepage-banners": "Quản lý Banner",
     "faqs": "Quản lý FAQs",
     "et-news": "Quản lý ET News",
     "et-blog": "Quản lý ET Blog",
     "activities": "Quản lý Hoạt động",
-    "status": "Cập nhật trạng thái",
-    "banner": "Cập nhật biểu ngữ",
+    "collaborator-status": "Cập nhật trạng thái",
+    "collaborator-archive": "Lưu trữ",
     "create": "Thêm mới",
     "edit": "Chỉnh sửa"
 };
-export { navbarContents, breadcrumbNameMap }
+
+const UPLOAD_PRESET = "first_upload";
+const CLOUD_NAME = "dgqolusci";
+
+export { breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }

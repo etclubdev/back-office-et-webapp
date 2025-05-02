@@ -1,0 +1,21 @@
+{
+    "personnel_id": "PERS001",
+    "personnel_name": "Nguyễn Văn A",
+    "phone_number": "0123456789",
+    "email": "nguyenvana@example.com",
+    "dob": "Mon Jan 01 1990 00:00:00 GMT+0700",
+    "gender": "Nam",
+    "address": "123 Đường ABC, TP.HCM",
+    "student_id": "3123XXXXXXX",
+    "university": "Đại học Kinh tế TP.HCM",
+    "faculty": "Công nghệ thông tin kinh doanh",
+    "major": "Công nghệ thông tin",
+    "class": "ET0001",
+    "avatar_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+    "cv_type": "CV mẫu",
+    "cv_link": "https://example.com/cv/nguyenvana.pdf",
+    "cohort_name": "K49",
+    "term_name": "NKI",
+    "position_name": "Thành viên",
+    "department_name": "Ban Kỹ thuật - Công nghệ"
+}
