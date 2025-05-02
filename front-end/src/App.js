@@ -15,6 +15,7 @@ import { AccountsOverviewPage } from './pages/AccountsManagementPage/AccountsOve
 import { PersonalProfilePage } from './pages/PersonalProfilePage';
 import { PartnersOverviewPage } from './pages/PartnersManagementPage/PartnersOverviewPage';
 import { PartnersFormPage } from './pages/PartnersManagementPage/PartnersFormPage';
+import { AchievementsSelectionPage } from './pages/AchievementsSelectionPage'
 
 function App() {
   useEffect(() => {
@@ -70,13 +71,14 @@ function App() {
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban PR']} />}>
                   <Route path="/pr/create" element={<PersonnelFormPage action="create" department_name="pr" />} />
                   <Route path="/pr/edit/:id" element={<PersonnelFormPage action="edit" department_name="pr" />} />
+                  
+                  <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
                   {/*
 
                   <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
 
                   <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
 
-                  <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
 
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />
                   <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
