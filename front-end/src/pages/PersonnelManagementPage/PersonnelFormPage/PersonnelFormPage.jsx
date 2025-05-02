@@ -15,6 +15,7 @@ import { getAllTerms } from '../../../api/term.service';
 import { getDepartmentNameUtil } from '../../../utils/getDepartmentNameUtil';
 import { formatDates } from '../../../utils/formatDatesUtil';
 import { personnelSchema } from '../../../schemas/personnelSchema';
+import { removeRedundantField } from '../../../utils/removeRedundantFieldsUtil';
 
 export const PersonnelFormPage = ({ action, department_name }) => {
     const navigate = useNavigate();
@@ -79,8 +80,8 @@ export const PersonnelFormPage = ({ action, department_name }) => {
 
     const onSubmit = async (payload) => {
         try {
-            const formatted = formatDates(payload);
-            const fullPayload = {
+            let formatted = formatDates(payload);
+            let fullPayload = {
                 personnel: {
                     personnel_name: formatted.personnel_name,
                     phone_number: formatted.phone_number,
@@ -93,7 +94,6 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                     faculty: formatted.faculty,
                     major: formatted.major,
                     class: formatted.class,
-                    avatar_url: formatted.avatar_url,
                     cv_type: formatted.cv_type,
                     cv_link: formatted.cv_link,
                     cohort_name: formatted.cohort_name
@@ -105,6 +105,12 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                     personnel_status: formatted.personnel_status
                 }
             }
+
+            fullPayload = {
+                personnel: removeRedundantField(fullPayload.personnel),
+                status: removeRedundantField(fullPayload.status)
+            }
+            
             if (action === "create") {
                 const response = await createPersonnel(fullPayload);
                 setIsOpenDialog(true);
@@ -255,6 +261,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                 />
 
                                 <SelectController
+                                    disabled
                                     name="department_name"
                                     control={control}
                                     label="Ban hoạt động"

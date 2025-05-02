@@ -40,8 +40,6 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
     const fetchData = useCallback(async () => {
         try {
             const { data } = await getAllPersonnels(personnel_status, getDepartmentNameUtil(department_name));
-            console.log(data);
-            
             setPersonnel(data);
             setFilteredPersonnel(data);
         } catch (error) {

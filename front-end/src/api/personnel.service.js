@@ -55,9 +55,9 @@ const deletePersonnelById = async (id) => {
   }
 };
 
-const deletePersonnels = async (ids) => {
+const deletePersonnels = async (personnelIds) => {
   try {
-    const response = await api.delete("/personnels/bulk-delete", { data: { ids } });
+    const response = await api.delete("/personnels/bulk-delete", { data: { personnelIds } });
     return response.data;
   } catch (error) {
     console.error(error);
