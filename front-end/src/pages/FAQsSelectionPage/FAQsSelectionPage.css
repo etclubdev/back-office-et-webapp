@@ -1,0 +1,16 @@
+.faqs-selection-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.faqs-list-section{
+    height: 90vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 2vw 0;
+}
+

@@ -1,0 +1,6 @@
+.partner-card-list{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}

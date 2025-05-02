@@ -25,7 +25,7 @@ export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) 
                         </div>
                     )
                 }
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
