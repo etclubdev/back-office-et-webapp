@@ -40,9 +40,9 @@ const deleteAchievementById = async (id) => {
     }
 };
 
-const deleteAchievements = async (ids) => {
+const deleteAchievements = async (achievements) => {
     try {
-        const response = await api.delete('/achievements/bulk-delete', { data: { ids } });
+        const response = await api.delete('/achievements/bulk-delete', { data: { achievements } });
         return response.data;
     } catch (error) {
         console.error("Lỗi khi xóa thành tựu:", error);

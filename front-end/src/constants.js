@@ -52,6 +52,7 @@ const navbarContents = [
 ];
 
 const breadcrumbNameMap = {
+    "profile": "Thông tin cá nhân",
     "accounts": "Quản lý tài khoản",
     "partners": "Quản lý đối tác",
     "tech": "Ban Kỹ thuật - Công nghệ",
@@ -73,5 +74,7 @@ const breadcrumbNameMap = {
     "edit": "Chỉnh sửa"
 };
 
+const UPLOAD_PRESET = "first_upload";
+const CLOUD_NAME = "dgqolusci";
 
-export { navbarContents, breadcrumbNameMap }
+export { breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }
