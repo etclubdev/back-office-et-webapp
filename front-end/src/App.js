@@ -17,7 +17,9 @@ import { PersonalProfilePage } from './pages/PersonalProfilePage';
 import { PartnersOverviewPage } from './pages/PartnersManagementPage/PartnersOverviewPage';
 import { PartnersFormPage } from './pages/PartnersManagementPage/PartnersFormPage';
 import { AchievementsSelectionPage } from './pages/AchievementsSelectionPage'
-import { PartnersSelectionPage } from './pages/PartnersSelectionPage'
+import { PartnersSelectionPage } from './pages/PartnersSelectionPage';
+import { BannersFormPage } from './pages/BannersManagementPage/BannersFormPage';
+import { BannersOverviewPage } from './pages/BannersManagementPage/BannersOverviewPage';
 
 function App() {
   useEffect(() => {
@@ -77,15 +79,10 @@ function App() {
                   <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
                   <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
                   <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
-                  {/*
-
-
-
-
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />
                   <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
                   <Route path="/homepage-banners/edit/:id" element={<BannersFormPage action="edit" />} />
-
+                  {/*
                   <Route path="/faqs" element={<FAQsOverviewPage />} />
                   <Route path="/faqs/edit/:id" element={<FAQsFormPage action="edit"/>} />
                   <Route path="/faqs/create" element={<FAQsFormPage action="create"/>} />
