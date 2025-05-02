@@ -8,6 +8,7 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { FAQsSelectionPage } from './pages/FAQsSelectionPage'
 import { PersonnelOverviewPage } from './pages/PersonnelManagementPage/PersonnelOverviewPage';
 import { PersonnelFormPage } from './pages/PersonnelManagementPage/PersonnelFormPage';
 import { AccountsFormPage } from './pages/AccountsManagementPage/AccountsFormPage';
@@ -75,9 +76,9 @@ function App() {
                   
                   <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
                   <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
+                  <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
                   {/*
 
-                  <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
 
 
 
