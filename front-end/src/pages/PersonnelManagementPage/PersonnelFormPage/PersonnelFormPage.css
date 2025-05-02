@@ -7,8 +7,8 @@
 }
 
 .personnel-form-page .form-container{
-    margin-top: 3vw;
-    width: 80%;
+    padding-top: 2vw;
+    width: 100%;
     display: flex;
     align-self: center;
     flex-direction: column;
@@ -17,7 +17,7 @@
 
 .personnel-form-page .form{
     margin: 2%;
-    width: 85%;
+    width: 70%;
     align-self: center;
     display: flex;
     flex-direction: column;

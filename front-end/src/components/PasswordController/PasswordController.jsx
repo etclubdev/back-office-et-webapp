@@ -29,7 +29,9 @@ export const PasswordController = ({ control, name, label, setValue, errors, siz
       control={control}
       render={({ field }) => (
         <FormControl size={size} variant="outlined" fullWidth error={!!errors[name]}>
-          <InputLabel htmlFor={`outlined-adornment-${name}`}>{label}</InputLabel>
+          <InputLabel htmlFor={`outlined-adornment-${name}`}>
+            {label}
+          </InputLabel>
           <OutlinedInput
             {...field}
             onChange={handleChange}

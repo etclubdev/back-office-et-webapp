@@ -4,7 +4,11 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    gap: 1vw
+    gap: 1vw;
+}
+
+.image-upload-container h6{
+    font-family: "BeVietnamPro";
 }
 
 .image-upload-box{
