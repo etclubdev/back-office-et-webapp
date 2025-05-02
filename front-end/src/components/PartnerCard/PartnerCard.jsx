@@ -16,7 +16,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
-import { updatePartners } from "../../api/partner.service";
+import { updateVisible } from "../../api/partner.service";
 import { ConfirmedDialog } from "../ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../utils/confirmDialogUtil";
 
@@ -37,7 +37,7 @@ export const PartnerCard = ({ category, data, setData }) => {
     };
 
     const onConfirm = async (destination) => {
-        const response = await updatePartners(getPayload(destination === "visible"));
+        const response = await updateVisible(getPayload(destination === "visible"));
         const fromList = destination === "visible" ? "invisible" : "visible";
         setData({
             [destination]: [...data[destination], ...selectedItems],

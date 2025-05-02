@@ -78,5 +78,4 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
             )}
         </div>
     );
-
 };

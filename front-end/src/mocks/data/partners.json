@@ -1,167 +1,179 @@
 {
-  "Đối tác doanh nghiệp": {
-    "visible": [
-      {
-        "partner_id": "PTNR001",
-        "partner_name": "Công ty TNHH ABC",
-        "avatar_url": "https://example.com/avatar1.jpg",
-        "short_description": "Đối tác cung cấp dịch vụ",
-        "email": "contact@abc.com",
-        "phone_number": "0123456789",
-        "note": "Đối tác lâu năm",
-        "created_on": "2024-03-20T10:00:00Z",
-        "last_modified_on": "2024-03-20T12:00:00Z"
-      },
-      {
-        "partner_id": "PTNR003",
-        "partner_name": "Công ty TNHH DEF",
-        "avatar_url": "https://example.com/avatar3.jpg",
-        "short_description": "Tư vấn tài chính",
-        "email": "contact@def.com",
-        "phone_number": "0934567890",
-        "note": "Đối tác chiến lược",
-        "created_on": "2024-03-18T07:45:00Z",
-        "last_modified_on": "2024-03-18T10:00:00Z"
-      },
-      {
-        "partner_id": "PTNR004",
-        "partner_name": "Công ty TNHH GHI",
-        "avatar_url": "https://example.com/avatar4.jpg",
-        "short_description": "Đối tác xuất nhập khẩu",
-        "email": "contact@ghi.com",
-        "phone_number": "0976543210",
-        "note": "Đối tác uy tín",
-        "created_on": "2024-03-17T11:00:00Z",
-        "last_modified_on": "2024-03-17T13:30:00Z"
-      }
+    "Đối tác doanh nghiệp": [
+        {
+            "partner_id": "PTNR001",
+            "partner_name": "Công ty TNHH ABC",
+            "partner_category_name": "Đối tác doanh nghiệp",
+            "avatar_url": "https://example.com/avatar1.jpg",
+            "short_description": "Đối tác cung cấp dịch vụ",
+            "email": "contact@abc.com",
+            "phone_number": "0123456789",
+            "note": "Đối tác lâu năm",
+            "visible": true,
+            "created_on": "2024-03-20T10:00:00Z",
+            "last_modified_on": "2024-03-20T12:00:00Z"
+        },
+        {
+            "partner_id": "PTNR003",
+            "partner_name": "Công ty TNHH DEF",
+            "partner_category_name": "Đối tác doanh nghiệp",
+            "avatar_url": "https://example.com/avatar3.jpg",
+            "short_description": "Tư vấn tài chính",
+            "email": "contact@def.com",
+            "phone_number": "0934567890",
+            "note": "Đối tác chiến lược",
+            "visible": true,
+            "created_on": "2024-03-18T07:45:00Z",
+            "last_modified_on": "2024-03-18T10:00:00Z"
+        },
+        {
+            "partner_id": "PTNR004",
+            "partner_name": "Công ty TNHH GHI",
+            "partner_category_name": "Đối tác doanh nghiệp",
+            "avatar_url": "https://example.com/avatar4.jpg",
+            "short_description": "Đối tác xuất nhập khẩu",
+            "email": "contact@ghi.com",
+            "phone_number": "0976543210",
+            "note": "Đối tác uy tín",
+            "visible": true,
+            "created_on": "2024-03-17T11:00:00Z",
+            "last_modified_on": "2024-03-17T13:30:00Z"
+        },
+        {
+            "partner_id": "PTNR002",
+            "partner_name": "Công ty CP XYZ",
+            "partner_category_name": "Đối tác doanh nghiệp",
+            "avatar_url": "https://example.com/avatar2.jpg",
+            "short_description": "Nhà cung cấp phần mềm",
+            "email": "support@xyz.com",
+            "phone_number": "0987654321",
+            "note": "Đối tác mới ký kết",
+            "visible": true,
+            "created_on": "2024-03-19T08:30:00Z",
+            "last_modified_on": "2024-03-19T09:15:00Z"
+        }
     ],
-    "invisible": [
-      {
-        "partner_id": "PTNR002",
-        "partner_name": "Công ty CP XYZ",
-        "avatar_url": "https://example.com/avatar2.jpg",
-        "short_description": "Nhà cung cấp phần mềm",
-        "email": "support@xyz.com",
-        "phone_number": "0987654321",
-        "note": "Đối tác mới ký kết",
-        "created_on": "2024-03-19T08:30:00Z",
-        "last_modified_on": "2024-03-19T09:15:00Z"
-      }
+    "Đối tác chuyên gia": [
+        {
+            "partner_id": "PTNR005",
+            "partner_name": "TS. Nguyễn Văn A",
+            "partner_category_name": "Đối tác chuyên gia",
+            "avatar_url": "https://example.com/avatar5.jpg",
+            "short_description": "Chuyên gia kinh tế",
+            "email": "nguyenvana@expert.com",
+            "phone_number": "0912345678",
+            "note": "Cố vấn tài chính",
+            "visible": true,
+            "created_on": "2024-03-16T09:20:00Z",
+            "last_modified_on": "2024-03-16T10:00:00Z"
+        },
+        {
+            "partner_id": "PTNR006",
+            "partner_name": "GS. Trần B",
+            "partner_category_name": "Đối tác chuyên gia",
+            "avatar_url": "https://example.com/avatar6.jpg",
+            "short_description": "Chuyên gia CNTT",
+            "email": "tranb@expert.com",
+            "phone_number": "0981234567",
+            "note": "Diễn giả công nghệ",
+            "visible": true,
+            "created_on": "2024-03-15T08:30:00Z",
+            "last_modified_on": "2024-03-15T09:45:00Z"
+        },
+        {
+            "partner_id": "PTNR007",
+            "partner_name": "TS. Lê C",
+            "partner_category_name": "Đối tác chuyên gia",
+            "avatar_url": "https://example.com/avatar7.jpg",
+            "short_description": "Chuyên gia Marketing",
+            "email": "lec@expert.com",
+            "phone_number": "0962345678",
+            "note": "Tư vấn chiến lược",
+            "visible": true,
+            "created_on": "2024-03-14T10:10:00Z",
+            "last_modified_on": "2024-03-14T11:30:00Z"
+        }
+    ],
+    "Đối tác Truyền thông": [
+        {
+            "partner_id": "PTNR009",
+            "partner_name": "Báo ABC",
+            "partner_category_name": "Đối tác Truyền thông",
+            "avatar_url": "https://example.com/avatar9.jpg",
+            "short_description": "Đơn vị truyền thông",
+            "email": "contact@baoabc.com",
+            "phone_number": "0945671234",
+            "note": "Hợp tác báo chí",
+            "visible": true,
+            "created_on": "2024-03-12T08:00:00Z",
+            "last_modified_on": "2024-03-12T10:00:00Z"
+        },
+        {
+            "partner_id": "PTNR010",
+            "partner_name": "Đài Truyền hình XYZ",
+            "partner_category_name": "Đối tác Truyền thông",
+            "avatar_url": "https://example.com/avatar10.jpg",
+            "short_description": "Kênh truyền hình",
+            "email": "contact@xyztv.com",
+            "phone_number": "0934567123",
+            "note": "Truyền thông sự kiện",
+            "visible": true,
+            "created_on": "2024-03-11T09:30:00Z",
+            "last_modified_on": "2024-03-11T11:45:00Z"
+        },
+        {
+            "partner_id": "PTNR011",
+            "partner_name": "Tạp chí DEF",
+            "partner_category_name": "Đối tác Truyền thông",
+            "avatar_url": "https://example.com/avatar11.jpg",
+            "short_description": "Xuất bản nội dung",
+            "email": "contact@defmagazine.com",
+            "phone_number": "0923456789",
+            "note": "Hợp tác nội dung",
+            "visible": true,
+            "created_on": "2024-03-10T10:20:00Z",
+            "last_modified_on": "2024-03-10T12:30:00Z"
+        },
+        {
+            "partner_id": "PTNR012",
+            "partner_name": "Công ty Truyền thông GHI",
+            "partner_category_name": "Đối tác Truyền thông",
+            "avatar_url": "https://example.com/avatar12.jpg",
+            "short_description": "Quảng cáo và PR",
+            "email": "contact@ghiagency.com",
+            "phone_number": "0915672345",
+            "note": "Chiến lược marketing",
+            "visible": true,
+            "created_on": "2024-03-09T11:10:00Z",
+            "last_modified_on": "2024-03-09T13:40:00Z"
+        }
+    ],
+    "Nghệ sĩ khách mời": [
+        {
+            "partner_id": "PTNR013",
+            "partner_name": "Ca sĩ A",
+            "partner_category_name": "Nghệ sĩ khách mời",
+            "avatar_url": "https://example.com/avatar13.jpg",
+            "short_description": "Ca sĩ nổi tiếng",
+            "email": "contact@casia.com",
+            "phone_number": "0901234567",
+            "note": "Hợp tác biểu diễn",
+            "visible": true,
+            "created_on": "2024-03-08T14:00:00Z",
+            "last_modified_on": "2024-03-08T16:00:00Z"
+        },
+        {
+            "partner_id": "PTNR014",
+            "partner_name": "Diễn viên B",
+            "partner_category_name": "Nghệ sĩ khách mời",
+            "avatar_url": "https://example.com/avatar14.jpg",
+            "short_description": "Diễn viên điện ảnh",
+            "email": "contact@dienvienb.com",
+            "phone_number": "0987654321",
+            "note": "Hợp tác quảng bá",
+            "visible": true,
+            "created_on": "2024-03-07T15:10:00Z",
+            "last_modified_on": "2024-03-07T17:30:00Z"
+        }
     ]
-  },
-  "Đối tác chuyên gia": {
-    "visible": [
-      {
-        "partner_id": "PTNR005",
-        "partner_name": "TS. Nguyễn Văn A",
-        "avatar_url": "https://example.com/avatar5.jpg",
-        "short_description": "Chuyên gia kinh tế",
-        "email": "nguyenvana@expert.com",
-        "phone_number": "0912345678",
-        "note": "Cố vấn tài chính",
-        "created_on": "2024-03-16T09:20:00Z",
-        "last_modified_on": "2024-03-16T10:00:00Z"
-      },
-      {
-        "partner_id": "PTNR006",
-        "partner_name": "GS. Trần B",
-        "avatar_url": "https://example.com/avatar6.jpg",
-        "short_description": "Chuyên gia CNTT",
-        "email": "tranb@expert.com",
-        "phone_number": "0981234567",
-        "note": "Diễn giả công nghệ",
-        "created_on": "2024-03-15T08:30:00Z",
-        "last_modified_on": "2024-03-15T09:45:00Z"
-      }
-    ],
-    "invisible": [
-      {
-        "partner_id": "PTNR007",
-        "partner_name": "TS. Lê C",
-        "avatar_url": "https://example.com/avatar7.jpg",
-        "short_description": "Chuyên gia Marketing",
-        "email": "lec@expert.com",
-        "phone_number": "0962345678",
-        "note": "Tư vấn chiến lược",
-        "created_on": "2024-03-14T10:10:00Z",
-        "last_modified_on": "2024-03-14T11:30:00Z"
-      }
-    ]
-  },
-  "Đối tác Truyền thông": {
-    "visible": [
-      {
-        "partner_id": "PTNR009",
-        "partner_name": "Báo ABC",
-        "avatar_url": "https://example.com/avatar9.jpg",
-        "short_description": "Đơn vị truyền thông",
-        "email": "contact@baoabc.com",
-        "phone_number": "0945671234",
-        "note": "Hợp tác báo chí",
-        "created_on": "2024-03-12T08:00:00Z",
-        "last_modified_on": "2024-03-12T10:00:00Z"
-      },
-      {
-        "partner_id": "PTNR010",
-        "partner_name": "Đài Truyền hình XYZ",
-        "avatar_url": "https://example.com/avatar10.jpg",
-        "short_description": "Kênh truyền hình",
-        "email": "contact@xyztv.com",
-        "phone_number": "0934567123",
-        "note": "Truyền thông sự kiện",
-        "created_on": "2024-03-11T09:30:00Z",
-        "last_modified_on": "2024-03-11T11:45:00Z"
-      },
-      {
-        "partner_id": "PTNR011",
-        "partner_name": "Tạp chí DEF",
-        "avatar_url": "https://example.com/avatar11.jpg",
-        "short_description": "Xuất bản nội dung",
-        "email": "contact@defmagazine.com",
-        "phone_number": "0923456789",
-        "note": "Hợp tác nội dung",
-        "created_on": "2024-03-10T10:20:00Z",
-        "last_modified_on": "2024-03-10T12:30:00Z"
-      },
-      {
-        "partner_id": "PTNR012",
-        "partner_name": "Công ty Truyền thông GHI",
-        "avatar_url": "https://example.com/avatar12.jpg",
-        "short_description": "Quảng cáo và PR",
-        "email": "contact@ghiagency.com",
-        "phone_number": "0915672345",
-        "note": "Chiến lược marketing",
-        "created_on": "2024-03-09T11:10:00Z",
-        "last_modified_on": "2024-03-09T13:40:00Z"
-      }
-    ],
-    "invisible": []
-  },
-  "Nghệ sĩ khách mời": {
-    "visible": [
-      {
-        "partner_id": "PTNR013",
-        "partner_name": "Ca sĩ A",
-        "avatar_url": "https://example.com/avatar13.jpg",
-        "short_description": "Ca sĩ nổi tiếng",
-        "email": "contact@casia.com",
-        "phone_number": "0901234567",
-        "note": "Hợp tác biểu diễn",
-        "created_on": "2024-03-08T14:00:00Z",
-        "last_modified_on": "2024-03-08T16:00:00Z"
-      },
-      {
-        "partner_id": "PTNR014",
-        "partner_name": "Diễn viên B",
-        "avatar_url": "https://example.com/avatar14.jpg",
-        "short_description": "Diễn viên điện ảnh",
-        "email": "contact@dienvienb.com",
-        "phone_number": "0987654321",
-        "note": "Hợp tác quảng bá",
-        "created_on": "2024-03-07T15:10:00Z",
-        "last_modified_on": "2024-03-07T17:30:00Z"
-      }
-    ],
-    "invisible": []
-  }
 }

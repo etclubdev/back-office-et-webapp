@@ -1,1 +1,1 @@
-export * from "./ConfirmedDialog"
+export * from './ConfirmedDialog'
