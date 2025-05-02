@@ -60,6 +60,7 @@ export const AccountsFormPage = ({ action }) => {
 
     const handleClose = () => {
         setIsOpenConfirmedDialog(false);
+        navigate('/accounts');
     }
 
     const onSubmit = async (payload) => {

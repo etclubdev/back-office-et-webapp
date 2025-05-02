@@ -49,6 +49,7 @@ export const BannersFormPage = ({ action }) => {
 
     const handleClose = () => {
         setIsOpenDialog(false);
+        navigate('/homepage-banners');
     }
 
     const handleCancel = () => {

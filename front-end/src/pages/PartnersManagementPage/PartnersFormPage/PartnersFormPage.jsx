@@ -65,6 +65,7 @@ export const PartnersFormPage = ({ action }) => {
 
     const handleClose = () => {
         setIsOpenDialog(false);
+        navigate('/partners');
     }
 
     const onSubmit = async (payload) => {

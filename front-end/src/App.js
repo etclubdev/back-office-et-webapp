@@ -8,6 +8,8 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { FAQsOverviewPage } from './pages/FAQsManagementPages/FAQsOverviewPage';
+import { FAQsFormPage } from './pages/FAQsManagementPages/FAQsFormPage';
 import { FAQsSelectionPage } from './pages/FAQsSelectionPage'
 import { PersonnelOverviewPage } from './pages/PersonnelManagementPage/PersonnelOverviewPage';
 import { PersonnelFormPage } from './pages/PersonnelManagementPage/PersonnelFormPage';
@@ -82,11 +84,11 @@ function App() {
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />
                   <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
                   <Route path="/homepage-banners/edit/:id" element={<BannersFormPage action="edit" />} />
-                  {/*
+                  
                   <Route path="/faqs" element={<FAQsOverviewPage />} />
                   <Route path="/faqs/edit/:id" element={<FAQsFormPage action="edit"/>} />
                   <Route path="/faqs/create" element={<FAQsFormPage action="create"/>} />
-                  */}
+                 
                 </Route>
 
                 {/* Head Event */}

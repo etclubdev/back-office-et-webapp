@@ -77,6 +77,10 @@ export const PersonnelFormPage = ({ action, department_name }) => {
         navigate(`/${department_name}`);
     }
 
+    const handleClose = () => {
+        setIsOpenDialog(false);
+        navigate(`/${department_name}`);
+    }
 
     const onSubmit = async (payload) => {
         try {
@@ -137,7 +141,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                 isOpenDialog && (
                     <ConfirmedDialog 
                         {...message}
-                        onClose={() => setIsOpenDialog(false)}
+                        onClose={handleClose}
                     />
                 )
             }
