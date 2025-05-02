@@ -1,0 +1,33 @@
+[
+    {
+      "achievement_id": "ACHV001",
+      "achievement_name": "Top Sales",
+      "highlight_number": "5000",
+      "visible": true
+    },
+    {
+      "achievement_id": "ACHV002",
+      "achievement_name": "Best Employee",
+      "highlight_number": "2024",
+      "visible": true
+    },
+    {
+      "achievement_id": "ACHV003",
+      "achievement_name": "Customer Favorite",
+      "highlight_number": "99%",
+      "visible": false
+    },
+    {
+      "achievement_id": "ACHV004",
+      "achievement_name": "Most Projects",
+      "highlight_number": "150",
+      "visible": true
+    },
+    {
+      "achievement_id": "ACHV005",
+      "achievement_name": "Fastest Response",
+      "highlight_number": "2s",
+      "visible": false
+    }
+  ]
+  

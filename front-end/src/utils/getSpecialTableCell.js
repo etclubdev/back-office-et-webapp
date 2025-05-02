@@ -6,7 +6,6 @@ export const getSpecialTableCell = (row, col) => {
       return <img src={row[col.field]} alt="" style={{ width: "50px" }} />;
     case "visible":
       return <>{row[col.field] ? "Có" : "Không"}</>;
-    case "dob":
     case "start_date":
     case "end_date":
     case "created_on":

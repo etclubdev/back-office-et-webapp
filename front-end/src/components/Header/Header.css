@@ -45,6 +45,7 @@
   .header-breadcrumbs a {
     text-decoration: none;
     color: inherit;
+    font-family: 'BeVietnamPro';
   }
 
   .header-breadcrumbs a:hover{
@@ -55,6 +56,7 @@
     font-weight: 600;
     text-decoration: underline;
     color: inherit;
+    font-family: 'BeVietnamPro';
   }
 
 

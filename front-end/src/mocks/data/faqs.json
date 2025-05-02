@@ -1,120 +1,128 @@
 {
-    "aboutETClub": [
+    "Về ET Club": [
       {
         "faq_id": "FAQS001",
         "question": "ET Club là gì?",
-        "faq_category": "Về ET Club",
         "answer": "ET Club là câu lạc bộ chuyên tổ chức các sự kiện và hoạt động dành cho cộng đồng yêu thích công nghệ và đổi mới sáng tạo.",
         "visible": true
       },
       {
         "faq_id": "FAQS002",
         "question": "ET Club có những hoạt động nào?",
-        "faq_category": "Về ET Club",
         "answer": "ET Club tổ chức hội thảo, workshop, cuộc thi và các sự kiện giao lưu giữa các thành viên.",
         "visible": true
       },
       {
         "faq_id": "FAQS003",
         "question": "Ai có thể tham gia ET Club?",
-        "faq_category": "Về ET Club",
         "answer": "Bất kỳ ai quan tâm đến công nghệ, đổi mới sáng tạo và phát triển bản thân đều có thể tham gia.",
         "visible": true
       },
       {
         "faq_id": "FAQS004",
         "question": "ET Club có chi nhánh ở đâu?",
-        "faq_category": "Về ET Club",
         "answer": "Hiện tại, ET Club có mặt tại nhiều thành phố lớn như Hà Nội, TP.HCM và Đà Nẵng.",
         "visible": false
       }
     ],
-    "aboutActivities": [
+    "Về hoạt động và sự kiện": [
       {
         "faq_id": "FAQS005",
         "question": "Làm thế nào để biết về các sự kiện sắp diễn ra?",
-        "faq_category": "Về hoạt động và sự kiện",
         "answer": "Bạn có thể theo dõi trang web chính thức của ET Club hoặc fanpage trên Facebook để cập nhật lịch sự kiện.",
         "visible": true
       },
       {
         "faq_id": "FAQS006",
         "question": "Có mất phí khi tham gia sự kiện không?",
-        "faq_category": "Về hoạt động và sự kiện",
         "answer": "Một số sự kiện miễn phí, một số sự kiện có phí tham gia. Thông tin chi tiết sẽ được thông báo trước trên trang web.",
         "visible": true
       },
       {
         "faq_id": "FAQS007",
         "question": "Tôi có thể đăng ký sự kiện bằng cách nào?",
-        "faq_category": "Về hoạt động và sự kiện",
         "answer": "Bạn có thể đăng ký trực tuyến trên trang web của ET Club hoặc đăng ký trực tiếp tại sự kiện.",
         "visible": true
       },
       {
         "faq_id": "FAQS008",
         "question": "ET Club có tổ chức sự kiện online không?",
-        "faq_category": "Về hoạt động và sự kiện",
         "answer": "Có, ET Club thường tổ chức hội thảo trực tuyến qua Zoom hoặc Google Meet.",
         "visible": false
       }
     ],
-    "aboutMembership": [
+    "Về quy trình tham gia": [
       {
         "faq_id": "FAQS009",
         "question": "Làm thế nào để trở thành thành viên của ET Club?",
-        "faq_category": "Về quy trình tham gia",
         "answer": "Bạn có thể đăng ký qua biểu mẫu trên website hoặc đến trực tiếp văn phòng của ET Club để đăng ký.",
         "visible": true
       },
       {
         "faq_id": "FAQS010",
         "question": "Thành viên có quyền lợi gì?",
-        "faq_category": "Về quy trình tham gia",
         "answer": "Thành viên được tham gia các sự kiện, workshop và có cơ hội kết nối với cộng đồng chuyên gia.",
         "visible": true
       },
       {
         "faq_id": "FAQS011",
         "question": "ET Club có yêu cầu kinh nghiệm để tham gia không?",
-        "faq_category": "Về quy trình tham gia",
         "answer": "Không, ET Club chào đón tất cả mọi người, dù bạn là người mới hay đã có kinh nghiệm.",
         "visible": true
       },
       {
         "faq_id": "FAQS012",
         "question": "Tôi có thể tham gia ET Club với tư cách tình nguyện viên không?",
-        "faq_category": "Về quy trình tham gia",
         "answer": "Có, ET Club thường xuyên tuyển tình nguyện viên cho các sự kiện và chương trình.",
         "visible": false
       }
     ],
-    "others": [
+    "Khác": [
       {
         "faq_id": "FAQS013",
         "question": "Tôi có thể liên hệ ET Club bằng cách nào?",
-        "faq_category": "Khác",
         "answer": "Bạn có thể gửi email tới support@etclub.com hoặc gọi hotline 1900-123-456.",
         "visible": true
       },
       {
         "faq_id": "FAQS014",
         "question": "ET Club có hỗ trợ trực tuyến không?",
-        "faq_category": "Khác",
         "answer": "Có, bạn có thể liên hệ với đội ngũ hỗ trợ qua chatbot trên website hoặc fanpage Facebook.",
         "visible": false
       },
       {
         "faq_id": "FAQS015",
         "question": "ET Club có tài trợ cho các dự án cá nhân không?",
-        "faq_category": "Khác",
         "answer": "ET Club có thể tài trợ hoặc hỗ trợ nếu dự án của bạn phù hợp với định hướng và giá trị của câu lạc bộ.",
         "visible": true
       },
       {
         "faq_id": "FAQS016",
         "question": "Làm thế nào để hợp tác với ET Club?",
-        "faq_category": "Khác",
+        "answer": "Bạn có thể gửi đề xuất hợp tác qua email partnerships@etclub.com.",
+        "visible": true
+      },
+      {
+        "faq_id": "FAQS017",
+        "question": "Tôi có thể liên hệ ET Club bằng cách nào?",
+        "answer": "Bạn có thể gửi email tới support@etclub.com hoặc gọi hotline 1900-123-456.",
+        "visible": true
+      },
+      {
+        "faq_id": "FAQS018",
+        "question": "ET Club có hỗ trợ trực tuyến không?",
+        "answer": "Có, bạn có thể liên hệ với đội ngũ hỗ trợ qua chatbot trên website hoặc fanpage Facebook.",
+        "visible": false
+      },
+      {
+        "faq_id": "FAQS019",
+        "question": "ET Club có tài trợ cho các dự án cá nhân không?",
+        "answer": "ET Club có thể tài trợ hoặc hỗ trợ nếu dự án của bạn phù hợp với định hướng và giá trị của câu lạc bộ.",
+        "visible": true
+      },
+      {
+        "faq_id": "FAQS020",
+        "question": "Làm thế nào để hợp tác với ET Club?",
         "answer": "Bạn có thể gửi đề xuất hợp tác qua email partnerships@etclub.com.",
         "visible": true
       }
