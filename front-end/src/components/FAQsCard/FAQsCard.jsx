@@ -3,7 +3,7 @@ import "./FAQsCard.css";
 import { Switch } from "@mui/material";
 import { updateFAQsById } from '../../api/faq.service';
 import { ConfirmedDialog } from '../ConfirmedDialog';
-import { getConfirmDialogConfig } from '../../utils/comfirmDialogUtils';
+import { getConfirmDialogConfig } from '../../utils/confirmDialogUtil';
 
 export const FAQsCard = ({faq_id, question, answer, visible}) => {
     const [checked, setChecked] = useState(visible);

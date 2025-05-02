@@ -3,6 +3,7 @@ import "./FAQsCardList.css";
 
 import { FAQsCard } from '../FAQsCard/FAQsCard';
 import { getAllFAQs } from '../../api/faq.service';
+import { sortedEntries } from '../../utils/sortedEntriesUtil';
 
 export const FAQsCardList = () => {
     const [faqs, setFAQs] = useState({});
@@ -50,9 +51,9 @@ export const FAQsCardList = () => {
                 const { data } = await getAllFAQs();
                 if (data && Object.keys(data).length > 0) {
                     const [firstKey, firstValue] = Object.entries(data)[0]; 
-                    setFAQs(data);
+                    const sortedFaqMap = Object.fromEntries(sortedEntries(data, "Khác"));
+                    setFAQs(sortedFaqMap);
                     setFilteredFAQs(firstValue);
-                    
                 }
             } catch (error) {
                 console.error("Error fetching FAQs:", error);
