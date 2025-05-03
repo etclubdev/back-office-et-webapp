@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getSpecialTableCell } from "../../utils/getSpecialTableCell";
+import { getSpecialTableCell } from "../../utils/getSpecialTableCellUtil";
 import "./DataTable.css";
 import {
   Table,
@@ -52,15 +52,15 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
   const paginatedData = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <Paper sx={{ width: "100%", padding: 2, minHeight: "300px", boxSizing: "border-box" }}>
-      <TableContainer className="data-table-container" sx={{ maxHeight: "400px", overflowY: "auto" }}>
+    <Paper className="data-paper-container" sx={{ width: "100%", padding: 2, minHeight: "300px", boxSizing: "border-box" }}>
+      <TableContainer className="data-table-container" sx={{ minHeight: "300px", maxHeight: "400px", overflowY: "auto" }}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
                   indeterminate={selected.length > 0 && selected.length < data.length}
-                  checked={selected.length === data.length}
+                  checked={selected.length === data.length && data.length > 0}
                   onChange={() => setSelected(selected.length === data.length ? [] : data.map((row) => row[itemId]))}
                   color="primary"
                 />

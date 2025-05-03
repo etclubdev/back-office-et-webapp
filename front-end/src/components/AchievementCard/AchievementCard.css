@@ -1,0 +1,26 @@
+.achievement-card {
+    width: 20%;
+    max-width: 250px;
+    height: auto;
+    min-width: 180px;
+    aspect-ratio: 21/9;
+    padding: 1em 1.5em;
+    border-radius: 0.5em;
+    border: 0.05vw solid rgba(0, 0, 0, 0.23);
+    transition: all 0.1s ease-in-out;
+}
+
+.achievement-card.selected {
+    outline: 0.2vw solid #1976D2;
+    border: 0.05vw solid rgba(0, 0, 0, 0.23); 
+}
+
+.achievement-card .card-top{
+    width: 100%;
+    font-family: 'BeVietnamPro';
+    font-size: 32px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

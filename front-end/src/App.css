@@ -5,3 +5,7 @@ body::-webkit-scrollbar {
 body{
   margin: 0;
 }
+
+input, button, label, p, li, div{
+  font-family: "BeVietnamPro" !important;
+}

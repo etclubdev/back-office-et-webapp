@@ -76,6 +76,7 @@ export const ActivitiesFormPage = ({ action }) => {
 
     const handleClose = () => {
         setIsOpenDialog(false);
+        navigate('/activities');
     }
 
     const onSubmit = async (payload) => {

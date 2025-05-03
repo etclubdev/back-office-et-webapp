@@ -1,0 +1,48 @@
+.faqs-form-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.faqs-form{
+    align-self: center;
+    width: 80%;
+    height: 60%;
+    margin-top: 5vw;
+}
+
+.faqs-form form{
+    height: 80%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.faqs-form-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.faqs-form-left, .faqs-form-right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.faqs-form-bottom{
+    display: flex;
+    height: 30%;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.faqs-form-button{
+    display: flex;
+    align-self: flex-end;
+    gap: 2vw;
+}

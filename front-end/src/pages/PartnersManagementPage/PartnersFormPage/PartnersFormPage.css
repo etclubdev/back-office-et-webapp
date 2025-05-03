@@ -1,0 +1,95 @@
+.form-page{
+    width: 100%;
+    overflow-x: hidden;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-page .form-container{
+    margin-top: 5vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    overflow-y: auto;
+}
+
+.form-page .form{
+    margin: 2%;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-page .form .form-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+}
+
+.form-page .form .form-top{
+    .form-left{
+        width: 40%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .form-right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        gap: 1vw;
+    }
+
+}
+
+.date-controller{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-controller .date-item {
+    width: 45%;
+}
+
+.rich-text-editor{
+    width: 100%;
+}
+
+.form-page .form .form-bottom {
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.form-button{
+    align-self: flex-end;
+    display: flex;
+    gap: 2vw;
+}
+
+.form-page .form-container::-webkit-scrollbar {
+    width: 0.4vw;
+ }
+ 
+ .form-page .form-container::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 0.1vw;
+ }
+ 
+ .form-page .form-container::-webkit-scrollbar-thumb {
+    background: #178DE2;
+    border-radius: 0.1vw;
+ }
+ 
+ .form-page .form-container::-webkit-scrollbar-thumb:hover {
+    background: #2886ca;
+ }
