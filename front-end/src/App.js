@@ -28,6 +28,7 @@ import { BannersFormPage } from './pages/BannersManagementPage/BannersFormPage';
 import { BannersOverviewPage } from './pages/BannersManagementPage/BannersOverviewPage';
 import { ETNewsFormPage } from './pages/ETNewsManagementPage/ETNewsFormPage';
 import { ETNewsOverviewPage } from './pages/ETNewsManagementPage/ETNewsOverviewPage';
+import { ComingSoonPage } from './pages/ComingSoonPage';
 
 
 function App() {
@@ -64,8 +65,9 @@ function App() {
                   <Route path="/et-blog" element={<ETBlogOverviewPage />} />
                   <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
                   <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
-                  {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
-                  <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
+                  
+                  <Route path="/collaborator-status" element={<ComingSoonPage />} />
+                  <Route path="/collaborator-archive" element={<ComingSoonPage />} />
                 </Route>
 
                 {/* Account Management */}
