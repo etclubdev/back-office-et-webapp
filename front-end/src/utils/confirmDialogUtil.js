@@ -4,13 +4,13 @@ export const getConfirmDialogConfig = (actionType) => {
         return {
           title: "Xác nhận thay đổi",
           desc: "Bạn có chắc chắn muốn thay đổi không?",
-          alertType: "info",
+          alertType: "warning",
         };
       case "delete":
         return {
           title: "Xác nhận xóa",
           desc: "Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác!",
-          alertType: "warning",
+          alertType: "delete",
         };
       default:
         return {

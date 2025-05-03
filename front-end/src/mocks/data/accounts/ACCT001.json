@@ -1,0 +1,12 @@
+{
+    "account_id": "ACCT001",
+    "sysrole_id": "SRLE001",
+    "sysrole_name": "Administration", 
+    "personnel_name": "ET Admin",
+    "student_id": "",
+    "username": "admin@example.com",
+    "password": "hashed_password_1",
+    "personnel_id": "PERS001",
+    "created_on": "2025-04-03T10:00:00Z",
+    "last_modified_on": "2025-04-03T10:00:00Z"
+}

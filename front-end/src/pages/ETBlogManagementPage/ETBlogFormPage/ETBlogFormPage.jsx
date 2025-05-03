@@ -68,6 +68,7 @@ export const ETBlogFormPage = ({ action }) => {
 
     const handleCloseDialog = () => {
         setIsOpenDialog(false);
+        navigate('/et-blog');
     };
 
     const onSubmit = async (payload) => {
