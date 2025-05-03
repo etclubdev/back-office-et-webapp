@@ -24,6 +24,9 @@ import { AchievementsSelectionPage } from './pages/AchievementsSelectionPage'
 import { PartnersSelectionPage } from './pages/PartnersSelectionPage';
 import { BannersFormPage } from './pages/BannersManagementPage/BannersFormPage';
 import { BannersOverviewPage } from './pages/BannersManagementPage/BannersOverviewPage';
+import { ETNewsFormPage } from './pages/ETNewsManagementPage/ETNewsFormPage';
+import { ETNewsOverviewPage } from './pages/ETNewsManagementPage/ETNewsOverviewPage';
+
 
 function App() {
   useEffect(() => {
@@ -51,6 +54,10 @@ function App() {
                   <Route path="/activities" element={<ActivitiesOverviewPage />} />
                   <Route path="/activities/create" element={<ActivitiesFormPage action="create" />} />
                   <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
+                  <Route path="/et-news" element={<ETNewsOverviewPage />} />
+                  <Route path="/et-news/create" element={<ETNewsFormPage action="create" />} />
+                  <Route path="/et-news/edit/:id" element={<ETNewsFormPage action="edit" />} />
+         
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
                 </Route>
