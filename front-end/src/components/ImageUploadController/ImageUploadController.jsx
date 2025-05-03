@@ -19,7 +19,6 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                             onClick={() => document.getElementById("fileInput").click()}
                         >
                             <input
-                            
                                 id="fileInput"
                                 type="file"
                                 accept="image/jpeg, image/png"

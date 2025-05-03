@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-export const SelectController = ({ name, control, label, menuItems = [] }) => {
+export const SelectController = ({ disabled, name, control, label, menuItems = [] }) => {
   const [itemIdKey, itemNameKey] = menuItems.length > 0 && typeof menuItems[0] === "object"
     ? Object.keys(menuItems[0])
     : [null, null];
@@ -37,6 +37,7 @@ export const SelectController = ({ name, control, label, menuItems = [] }) => {
             label={label}
             value={field.value ?? ""}
             onChange={field.onChange}
+            disabled={disabled}
           >
             {menuItems.map((item, index) => renderMenuItem(item, index))}
           </Select>

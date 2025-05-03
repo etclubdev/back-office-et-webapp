@@ -68,6 +68,7 @@ export const ETNewsFormPage = ({ action }) => {
 
     const handleClose = () => {
         setIsOpenDialog(false);
+        navigate('/et-news');
     }
 
     const onSubmit = async (payload) => {

@@ -1,0 +1,42 @@
+.banner-overview-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-container{
+    margin-top: 3vw;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    gap: 1vw;
+}
+
+.banner-toolbars{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner-toolbars .action-container{
+    width: fit-content;
+    display: flex;
+    gap: 1vw;
+}
+
+.banner-division{
+    width: 100%;
+    border: none;
+    height: 0.05vw;
+    background-color: #ccc;
+    margin: 0;
+}
+
+.banner-overview-page td img {
+    width: 10vw;
+    height: auto;
+    aspect-ratio: 16/9;
+}
