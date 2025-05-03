@@ -1,0 +1,12 @@
+{
+    "blog_id": "EBLG001",
+    "title": "Lập trình React cơ bản",
+    "thumbnail_image_url": "https://example.com/thumbnails/react.jpg",
+    "blog_author": "Nguyễn Văn A",
+    "meta_description": "Bài viết này cung cấp kiến thức cơ bản về React và cách sử dụng nó trong dự án web.",
+    "visible": true,
+    "content": "<p>React là một thư viện JavaScript mạnh mẽ cho việc xây dựng giao diện người dùng. Bài viết này sẽ giới thiệu các khái niệm cơ bản của React như <strong>Components</strong>, <strong>Props</strong>, <strong>State</strong> và cách sử dụng chúng để xây dựng ứng dụng web tương tác.</p><p>Để bắt đầu với React, bạn cần cài đặt Node.js và NPM. Sau đó, bạn có thể tạo một ứng dụng React mới bằng lệnh <code>npx create-react-app my-app</code>.</p>",
+    "view_count": 120,
+    "created_on": "2025-04-01T10:00:00",
+    "last_modified_on": "2025-04-01T10:00:00"
+}

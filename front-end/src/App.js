@@ -8,6 +8,8 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { ETBlogOverviewPage } from './pages/ETBlogManagementPage/ETBlogOverviewPage';
+import { ETBlogFormPage } from './pages/ETBlogManagementPage/ETBlogFormPage';
 import { ActivitiesFormPage } from './pages/ActivitiesManagementPage/ActivitiesFormPage';
 import { ActivitiesOverviewPage } from './pages/ActivitiesManagementPage/ActivitiesOverviewPage';
 import { FAQsOverviewPage } from './pages/FAQsManagementPages/FAQsOverviewPage';
@@ -54,10 +56,14 @@ function App() {
                   <Route path="/activities" element={<ActivitiesOverviewPage />} />
                   <Route path="/activities/create" element={<ActivitiesFormPage action="create" />} />
                   <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
+                  
                   <Route path="/et-news" element={<ETNewsOverviewPage />} />
                   <Route path="/et-news/create" element={<ETNewsFormPage action="create" />} />
                   <Route path="/et-news/edit/:id" element={<ETNewsFormPage action="edit" />} />
          
+                  <Route path="/et-blog" element={<ETBlogOverviewPage />} />
+                  <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
+                  <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
                 </Route>
