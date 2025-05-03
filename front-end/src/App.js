@@ -8,6 +8,8 @@ import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import { MainLayout } from './layouts/MainLayout/MainLayout';
 import { WelcomePage } from './pages/WelcomePage';
 import { UnauthorizedPage } from './pages/UnauthorizedPage';
+import { ActivitiesFormPage } from './pages/ActivitiesManagementPage/ActivitiesFormPage';
+import { ActivitiesOverviewPage } from './pages/ActivitiesManagementPage/ActivitiesOverviewPage';
 import { FAQsOverviewPage } from './pages/FAQsManagementPages/FAQsOverviewPage';
 import { FAQsFormPage } from './pages/FAQsManagementPages/FAQsFormPage';
 import { FAQsSelectionPage } from './pages/FAQsSelectionPage'
@@ -45,6 +47,10 @@ function App() {
                 <Route element={<RequireAuth />}>
                   <Route path="/" element={<WelcomePage />} />
                   <Route path="/profile" element={<PersonalProfilePage />} />
+
+                  <Route path="/activities" element={<ActivitiesOverviewPage />} />
+                  <Route path="/activities/create" element={<ActivitiesFormPage action="create" />} />
+                  <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
                   {/* <Route path="/collaborator-status" element={<CollaboratorStatusPage />} />
                   <Route path="/collaborator-archive" element={<CollaboratorArchivePage />} />*/}
                 </Route>
