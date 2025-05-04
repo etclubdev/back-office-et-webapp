@@ -1,0 +1,11 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body{
+  margin: 0;
+}
+
+input, button, label, p, li, div{
+  font-family: "BeVietnamPro" !important;
+}

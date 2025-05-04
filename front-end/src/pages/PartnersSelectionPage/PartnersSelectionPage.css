@@ -1,0 +1,38 @@
+.partner-selection-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.partner-selection-page .header{
+    flex-shrink: 0;
+}
+
+.partner-list-section {
+    box-sizing: content-box;
+    flex-grow: 1; 
+    overflow-y: auto; 
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.partner-list-section::-webkit-scrollbar {
+    width: 0.4vw;
+ }
+ 
+ .partner-list-section::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 0.1vw;
+ }
+ 
+ .partner-list-section::-webkit-scrollbar-thumb {
+    background: #178DE2;
+    border-radius: 0.1vw;
+ }
+ 
+ .partner-list-section::-webkit-scrollbar-thumb:hover {
+    background: #2886ca;
+ } 

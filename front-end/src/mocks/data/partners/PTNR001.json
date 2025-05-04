@@ -1,0 +1,13 @@
+{
+    "partner_id": "PTNR001",
+    "partner_name": "Công ty TNHH ABC",
+    "partner_category_name": "Đối tác doanh nghiệp",
+    "avatar_url": "https://example.com/avatar1.jpg",
+    "short_description": "Đối tác cung cấp dịch vụ",
+    "email": "contact@abc.com",
+    "phone_number": "0123456789",
+    "note": "Đối tác lâu năm",
+    "visible": true,
+    "created_on": "2024-03-20T10:00:00Z",
+    "last_modified_on": "2024-03-20T12:00:00Z"
+}

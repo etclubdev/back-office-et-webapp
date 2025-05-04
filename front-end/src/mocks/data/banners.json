@@ -1,0 +1,32 @@
+[
+    {
+        "banner_id": "BANR001",
+        "banner_name": "Spring Sale",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+        "visible": true
+    },
+    {
+        "banner_id": "BANR002",
+        "banner_name": "Black Friday",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+        "visible": true
+    },
+    {
+        "banner_id": "BANR003",
+        "banner_name": "Cyber Monday",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+        "visible": false
+    },
+    {
+        "banner_id": "BANR004",
+        "banner_name": "Christmas Special",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+        "visible": true
+    },
+    {
+        "banner_id": "BANR005",
+        "banner_name": "New Year Discount",
+        "image_url": "https://res.cloudinary.com/dgqolusci/image/upload/v1743520749/bcagv1kyyzd7jthodd7t.png",
+        "visible": false
+    }
+]

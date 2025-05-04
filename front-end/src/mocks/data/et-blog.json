@@ -1,0 +1,174 @@
+{
+    "highlighted": [
+        {
+            "blog_id": "EBLG001",
+            "title": "Lập trình React cơ bản",
+            "thumbnail_image_url": "https://example.com/thumbnails/react.jpg",
+            "blog_author": "Nguyễn Văn A",
+            "meta_description": "Bài viết này cung cấp kiến thức cơ bản về React và cách sử dụng nó trong dự án web.",
+            "visible": true,
+            "content": "<p>React là một thư viện JavaScript mạnh mẽ cho việc xây dựng giao diện người dùng. Bài viết này sẽ giới thiệu các khái niệm cơ bản của React như <strong>Components</strong>, <strong>Props</strong>, <strong>State</strong> và cách sử dụng chúng để xây dựng ứng dụng web tương tác.</p><p>Để bắt đầu với React, bạn cần cài đặt Node.js và NPM. Sau đó, bạn có thể tạo một ứng dụng React mới bằng lệnh <code>npx create-react-app my-app</code>.</p>",
+            "view_count": 120,
+            "created_on": "2025-04-01T10:00:00",
+            "last_modified_on": "2025-04-01T10:00:00"
+        },
+        {
+            "blog_id": "EBLG002",
+            "title": "Tìm hiểu về Node.js",
+            "thumbnail_image_url": "https://example.com/thumbnails/nodejs.jpg",
+            "blog_author": "Trần Thị B",
+            "meta_description": "Node.js là một nền tảng phát triển phần mềm được sử dụng phổ biến trong việc xây dựng các ứng dụng web hiệu suất cao.",
+            "visible": true,
+            "content": "<p>Node.js là một môi trường chạy JavaScript phía server, cho phép bạn sử dụng JavaScript để phát triển ứng dụng web server-side. Trong bài viết này, chúng ta sẽ tìm hiểu cách Node.js hoạt động và ứng dụng của nó trong thực tế.</p><ul><li>Node.js hỗ trợ non-blocking I/O</li><li>Node.js sử dụng V8 JavaScript Engine</li><li>Node.js được sử dụng trong các ứng dụng web thời gian thực</li></ul>",
+            "view_count": 85,
+            "created_on": "2025-03-28T14:30:00",
+            "last_modified_on": "2025-03-28T14:30:00"
+        },
+        {
+            "blog_id": "EBLG003",
+            "title": "Giới thiệu về Machine Learning",
+            "thumbnail_image_url": "https://example.com/thumbnails/ml.jpg",
+            "blog_author": "Lê Minh C",
+            "meta_description": "Bài viết này sẽ giúp bạn hiểu cơ bản về Machine Learning và ứng dụng của nó trong các lĩnh vực khác nhau.",
+            "visible": true,
+            "content": "<p>Machine Learning (ML) là một nhánh của trí tuệ nhân tạo, nơi các hệ thống có thể học và cải thiện qua thời gian mà không cần lập trình rõ ràng. Bài viết này sẽ giới thiệu về các thuật toán Machine Learning cơ bản và các ứng dụng phổ biến của chúng.</p><h2>Các thuật toán Machine Learning</h2><ul><li>Học giám sát</li><li>Học không giám sát</li><li>Học sâu (Deep Learning)</li></ul>",
+            "view_count": 150,
+            "created_on": "2025-03-30T09:00:00",
+            "last_modified_on": "2025-03-30T09:00:00"
+        },
+        {
+            "blog_id": "EBLG004",
+            "title": "Xây dựng ứng dụng với Angular",
+            "thumbnail_image_url": "https://example.com/thumbnails/angular.jpg",
+            "blog_author": "Phạm Hương D",
+            "meta_description": "Hướng dẫn cách sử dụng Angular để xây dựng các ứng dụng web đơn giản.",
+            "visible": true,
+            "content": "<p>Angular là một framework mạnh mẽ do Google phát triển, giúp bạn xây dựng ứng dụng web một cách nhanh chóng và hiệu quả. Bài viết này sẽ chỉ cho bạn cách cài đặt và cấu hình một dự án Angular cơ bản.</p><p>Bước đầu tiên là cài đặt Angular CLI bằng lệnh <code>npm install -g @angular/cli</code>, sau đó tạo một dự án mới bằng <code>ng new my-angular-app</code>.</p>",
+            "view_count": 200,
+            "created_on": "2025-03-29T08:45:00",
+            "last_modified_on": "2025-03-29T08:45:00"
+        }
+    ],
+    "alldata": [
+        {
+            "blog_id": "EBLG001",
+            "title": "Lập trình React cơ bản",
+            "thumbnail_image_url": "https://example.com/thumbnails/react.jpg",
+            "blog_author": "Nguyễn Văn A",
+            "meta_description": "Bài viết này cung cấp kiến thức cơ bản về React và cách sử dụng nó trong dự án web.",
+            "visible": true,
+            "content": "<p>React là một thư viện JavaScript mạnh mẽ cho việc xây dựng giao diện người dùng. Bài viết này sẽ giới thiệu các khái niệm cơ bản của React như <strong>Components</strong>, <strong>Props</strong>, <strong>State</strong> và cách sử dụng chúng để xây dựng ứng dụng web tương tác.</p><p>Để bắt đầu với React, bạn cần cài đặt Node.js và NPM. Sau đó, bạn có thể tạo một ứng dụng React mới bằng lệnh <code>npx create-react-app my-app</code>.</p>",
+            "view_count": 120,
+            "created_on": "2025-04-01T10:00:00",
+            "last_modified_on": "2025-04-01T10:00:00"
+        },
+        {
+            "blog_id": "EBLG002",
+            "title": "Tìm hiểu về Node.js",
+            "thumbnail_image_url": "https://example.com/thumbnails/nodejs.jpg",
+            "blog_author": "Trần Thị B",
+            "meta_description": "Node.js là một nền tảng phát triển phần mềm được sử dụng phổ biến trong việc xây dựng các ứng dụng web hiệu suất cao.",
+            "visible": true,
+            "content": "<p>Node.js là một môi trường chạy JavaScript phía server, cho phép bạn sử dụng JavaScript để phát triển ứng dụng web server-side. Trong bài viết này, chúng ta sẽ tìm hiểu cách Node.js hoạt động và ứng dụng của nó trong thực tế.</p><ul><li>Node.js hỗ trợ non-blocking I/O</li><li>Node.js sử dụng V8 JavaScript Engine</li><li>Node.js được sử dụng trong các ứng dụng web thời gian thực</li></ul>",
+            "view_count": 85,
+            "created_on": "2025-03-28T14:30:00",
+            "last_modified_on": "2025-03-28T14:30:00"
+        },
+        {
+            "blog_id": "EBLG003",
+            "title": "Giới thiệu về Machine Learning",
+            "thumbnail_image_url": "https://example.com/thumbnails/ml.jpg",
+            "blog_author": "Lê Minh C",
+            "meta_description": "Bài viết này sẽ giúp bạn hiểu cơ bản về Machine Learning và ứng dụng của nó trong các lĩnh vực khác nhau.",
+            "visible": true,
+            "content": "<p>Machine Learning (ML) là một nhánh của trí tuệ nhân tạo, nơi các hệ thống có thể học và cải thiện qua thời gian mà không cần lập trình rõ ràng. Bài viết này sẽ giới thiệu về các thuật toán Machine Learning cơ bản và các ứng dụng phổ biến của chúng.</p><h2>Các thuật toán Machine Learning</h2><ul><li>Học giám sát</li><li>Học không giám sát</li><li>Học sâu (Deep Learning)</li></ul>",
+            "view_count": 150,
+            "created_on": "2025-03-30T09:00:00",
+            "last_modified_on": "2025-03-30T09:00:00"
+        },
+        {
+            "blog_id": "EBLG004",
+            "title": "Xây dựng ứng dụng với Angular",
+            "thumbnail_image_url": "https://example.com/thumbnails/angular.jpg",
+            "blog_author": "Phạm Hương D",
+            "meta_description": "Hướng dẫn cách sử dụng Angular để xây dựng các ứng dụng web đơn giản.",
+            "visible": true,
+            "content": "<p>Angular là một framework mạnh mẽ do Google phát triển, giúp bạn xây dựng ứng dụng web một cách nhanh chóng và hiệu quả. Bài viết này sẽ chỉ cho bạn cách cài đặt và cấu hình một dự án Angular cơ bản.</p><p>Bước đầu tiên là cài đặt Angular CLI bằng lệnh <code>npm install -g @angular/cli</code>, sau đó tạo một dự án mới bằng <code>ng new my-angular-app</code>.</p>",
+            "view_count": 200,
+            "created_on": "2025-03-29T08:45:00",
+            "last_modified_on": "2025-03-29T08:45:00"
+        },
+        {
+            "blog_id": "EBLG005",
+            "title": "Giới thiệu về Python",
+            "thumbnail_image_url": "https://example.com/thumbnails/python.jpg",
+            "blog_author": "Trần Đức E",
+            "meta_description": "Bài viết này giới thiệu ngắn gọn về Python, một ngôn ngữ lập trình phổ biến và dễ học.",
+            "visible": true,
+            "content": "<p>Python là một ngôn ngữ lập trình mạnh mẽ và dễ học, được sử dụng trong nhiều lĩnh vực khác nhau như web development, machine learning, và automation.</p><p>Có thể bắt đầu học Python bằng cách cài đặt Python từ trang chủ chính thức và sử dụng IDLE để viết mã nguồn đầu tiên.</p>",
+            "view_count": 180,
+            "created_on": "2025-03-30T11:00:00",
+            "last_modified_on": "2025-03-30T11:00:00"
+        },
+        {
+            "blog_id": "EBLG006",
+            "title": "Tìm hiểu về Blockchain",
+            "thumbnail_image_url": "https://example.com/thumbnails/blockchain.jpg",
+            "blog_author": "Nguyễn Thị F",
+            "meta_description": "Khám phá công nghệ Blockchain và các ứng dụng của nó trong thực tế.",
+            "visible": true,
+            "content": "<p>Blockchain là một công nghệ tiên tiến cho phép lưu trữ dữ liệu một cách bảo mật và không thể thay đổi. Các ứng dụng của Blockchain hiện nay rất phong phú, từ tiền điện tử đến quản lý chuỗi cung ứng.</p><p>Trong bài viết này, chúng ta sẽ tìm hiểu cách Blockchain hoạt động và các ứng dụng thực tế của nó.</p>",
+            "view_count": 90,
+            "created_on": "2025-03-25T15:20:00",
+            "last_modified_on": "2025-03-25T15:20:00"
+        },
+        {
+            "blog_id": "EBLG007",
+            "title": "Học lập trình với Java",
+            "thumbnail_image_url": "https://example.com/thumbnails/java.jpg",
+            "blog_author": "Lê Quang G",
+            "meta_description": "Giới thiệu về Java, ngôn ngữ lập trình phổ biến cho phát triển ứng dụng web và Android.",
+            "visible": true,
+            "content": "<p>Java là một trong những ngôn ngữ lập trình phổ biến nhất và được sử dụng rộng rãi trong phát triển ứng dụng Android và ứng dụng web. Với tính năng <strong>Write Once, Run Anywhere</strong>, Java rất thuận tiện trong việc phát triển các ứng dụng cross-platform.</p><p>Để bắt đầu, bạn có thể tải xuống Java Development Kit (JDK) và cài đặt nó trên máy tính của mình.</p>",
+            "view_count": 300,
+            "created_on": "2025-03-22T10:00:00",
+            "last_modified_on": "2025-03-22T10:00:00"
+        },
+        {
+            "blog_id": "EBLG008",
+            "title": "Cách tối ưu hóa website",
+            "thumbnail_image_url": "https://example.com/thumbnails/website.jpg",
+            "blog_author": "Nguyễn Thị H",
+            "meta_description": "Bài viết này cung cấp các phương pháp tối ưu hóa website để cải thiện tốc độ tải trang và trải nghiệm người dùng.",
+            "visible": true,
+            "content": "<p>Website của bạn có thể tải chậm vì nhiều lý do khác nhau, bao gồm ảnh không nén, mã JavaScript không tối ưu và nhiều yêu cầu HTTP. Trong bài viết này, chúng tôi sẽ giới thiệu một số phương pháp tối ưu hóa giúp cải thiện tốc độ tải trang của website.</p><ul><li>Nén ảnh để giảm kích thước file</li><li>Tối ưu hóa mã JavaScript và CSS</li><li>Sử dụng caching hiệu quả</li></ul>",
+            "view_count": 250,
+            "created_on": "2025-03-20T13:00:00",
+            "last_modified_on": "2025-03-20T13:00:00"
+        },
+        {
+            "blog_id": "EBLG009",
+            "title": "Kỹ thuật lập trình với C++",
+            "thumbnail_image_url": "https://example.com/thumbnails/cpp.jpg",
+            "blog_author": "Vũ Minh I",
+            "meta_description": "Bài viết về các kỹ thuật lập trình nâng cao với C++ và các ứng dụng của nó trong phần mềm hệ thống.",
+            "visible": true,
+            "content": "<p>C++ là một ngôn ngữ lập trình mạnh mẽ, được sử dụng trong phát triển phần mềm hệ thống và các ứng dụng có yêu cầu về hiệu suất cao. Bài viết này sẽ giới thiệu một số kỹ thuật lập trình nâng cao trong C++ như <em>Memory Management</em>, <em>Object-Oriented Programming</em>, và <em>Concurrency</em>.</p>",
+            "view_count": 170,
+            "created_on": "2025-03-18T12:30:00",
+            "last_modified_on": "2025-03-18T12:30:00"
+        },
+        {
+            "blog_id": "EBLG010",
+            "title": "Quản lý dự án Agile",
+            "thumbnail_image_url": "https://example.com/thumbnails/agile.jpg",
+            "blog_author": "Đào Minh K",
+            "meta_description": "Giới thiệu về phương pháp quản lý dự án Agile và các nguyên lý cơ bản của nó.",
+            "visible": true,
+            "content": "<p>Agile là một phương pháp quản lý dự án linh hoạt, được sử dụng rộng rãi trong phát triển phần mềm. Với Agile, các dự án được chia thành các sprint ngắn để có thể nhanh chóng phản hồi các thay đổi từ khách hàng.</p><p>Trong bài viết này, chúng ta sẽ tìm hiểu các nguyên lý cơ bản của Agile và cách áp dụng chúng trong quản lý dự án phần mềm.</p>",
+            "view_count": 320,
+            "created_on": "2025-03-15T14:00:00",
+            "last_modified_on": "2025-03-15T14:00:00"
+        }
+    ]
+}

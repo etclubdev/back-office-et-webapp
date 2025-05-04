@@ -1,0 +1,102 @@
+.partner-card{
+    width: 100%;
+    min-width: 500px;
+    border-radius: 0.5vw;
+    font-family: 'BeVietnamPro';
+}
+
+.partner-card .transfer-list{
+    width: 100%;
+    height: fit-content;
+    display: none;
+    flex-wrap: wrap; 
+    min-width: 100%;
+    padding: 4vw;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.partner-card .card-name{
+    padding: 0.5vw;
+}
+
+
+.partner-card .transfer-list .transfer-button{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.partner-card .card-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 2vw;
+    border-radius: 0.5vw;
+    background-color: #fff;
+    box-shadow: 0 0.2vw 0.8vw #0000005e;
+    color: #000;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.partner-card .card-icon{
+    transition: all 0.2s ease-in-out;
+}
+
+.partner-card .card-top:hover{
+    background-color: #1976D2;
+    color: #fff;
+}
+
+.partner-card.active{
+    box-shadow: 0 0.2vw 0.8vw #0000005e;
+}
+
+.partner-card.active .card-icon{
+    transform: rotate(180deg);
+}
+
+.partner-card.active .transfer-list{
+    display: flex;
+}
+
+.partner-card.active .card-top{
+    background-color: #1976D2;
+    color: #fff;
+}
+
+.partner-card .card-name{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+
+.transfer-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.transfer-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+.transfer-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+.transfer-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
