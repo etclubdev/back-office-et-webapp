@@ -91,7 +91,7 @@ export const ETNewsFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="etnews-form-page">
             {
                 isOpenDialog && (
                     <ConfirmedDialog 

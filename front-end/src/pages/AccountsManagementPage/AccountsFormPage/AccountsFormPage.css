@@ -53,13 +53,13 @@
 
 .account-form-page .form-control{
     position: relative;
+}
 
-    .select-button{
-        position: absolute;
-        right: 1%;
-        top: 50%; 
-        transform: translateY(-50%); 
-    }
+.account-form-page .form-control .select-button{
+    position: absolute;
+    right: 1%;
+    top: 50%; 
+    transform: translateY(-50%); 
 }
 
 .account-form-page .form-button {
