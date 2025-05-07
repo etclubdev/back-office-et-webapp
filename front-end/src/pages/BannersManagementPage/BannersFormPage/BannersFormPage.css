@@ -1,12 +1,12 @@
-.form-page{
+.banners-form-page{
     width: 100%;
     overflow-x: hidden;
-    max-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.form-page .form-container{
+.banners-form-page .form-container{
     margin-top: 3vw;
     width: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.form-page .form{
+.banners-form-page .form{
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,30 +23,28 @@
     flex-direction: column;
 }
 
-.form-page .form .form-top{
+.banners-form-page .form .form-top{
     display: flex;
+    height: 50vh;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.form-page .form .form-top{
-    .form-left{
-        width: 40%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-    }
+.banners-form-page .form .form-top .form-left{
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
-    .form-right {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        gap: 1vw;
-    }
-
+.banners-form-page .form .form-top .form-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 1vw;
 }
 
 .date-controller{
@@ -63,7 +61,7 @@
     width: 100%;
 }
 
-.form-page .form .form-bottom {
+.banners-form-page .form .form-bottom {
     max-width: 80vw;
     display: flex;
     flex-direction: column;
@@ -76,20 +74,20 @@
     gap: 2vw;
 }
 
-.form-page .form-container::-webkit-scrollbar {
+.banners-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-track {
+ .banners-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-thumb {
+ .banners-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
  }
  
- .form-page .form-container::-webkit-scrollbar-thumb:hover {
+ .banners-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
  }

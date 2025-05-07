@@ -75,7 +75,7 @@ export const BannersFormPage = ({ action }) => {
         }
     };
     return (
-        <div className="form-page">
+        <div className="banners-form-page">
             {
                 isOpenDialog && (
                     <ConfirmedDialog

@@ -91,7 +91,7 @@ export const ETBlogFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="etblog-form-page">
             {isOpenDialog && (
                 <ConfirmedDialog
                     title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
