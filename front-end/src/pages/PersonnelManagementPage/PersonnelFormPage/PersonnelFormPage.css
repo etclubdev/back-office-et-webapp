@@ -30,28 +30,25 @@
     gap: 3vw
 }
 
-.personnel-form-page .form .form-top{
+.personnel-form-page .form .form-top .form-right{
+    width: 30%;
+}
 
-    .form-right{
-        width: 30%;
-    }
+.personnel-form-page .form .form-top .form-left{
+    width: 60%;
+}
 
-    .form-left{
-        width: 60%;
-    }
+.personnel-form-page .form .form-top .form-right, 
+.personnel-form-page .form .form-top .form-left {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1vw;
+}
 
-    .form-right, .form-left {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        gap: 1vw;
-
-        .form-group {
-            display: flex;
-            gap: 1vw;
-        }
-    }
-
+.personnel-form-page .form .form-group {
+    display: flex;
+    gap: 1vw;
 }
 
 .personnel-form-page .date-controller{
