@@ -47,8 +47,6 @@
     display: flex;
 }
 
-.accounts-container {
-    .MuiPaper-root{
-        box-sizing: border-box;
-    }
+.accounts-container .MuiPaper-root{
+    box-sizing: border-box;
 }

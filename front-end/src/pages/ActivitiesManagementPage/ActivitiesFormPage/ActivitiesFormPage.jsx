@@ -100,7 +100,7 @@ export const ActivitiesFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="activities-form-page">
             {
                 isOpenDialog && (
                     <ConfirmedDialog
