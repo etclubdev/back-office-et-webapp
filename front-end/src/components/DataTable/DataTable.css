@@ -1,11 +1,8 @@
-.data-paper-container {
-
-   td,
-   span,
-   div,
-   p {
-      font-family: "BeVietnamPro";
-   }
+.data-paper-container td,
+.data-paper-container span,
+.data-paper-container div,
+.data-paper-container p {
+   font-family: "BeVietnamPro";
 }
 
 .data-table-container::-webkit-scrollbar {
