@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormControl, Button } from "@mui/material";
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog';
 import { SelectController } from '../../../components/SelectController';
 import { ImageUploadController } from '../../../components/ImageUploadController';
 import { DatePickerController } from '../../../components/DatePickerController';
@@ -12,7 +11,6 @@ import { TextFieldController } from '../../../components/TextFieldController';
 import { Header } from "../../../components/Header";
 import { RichTextEditor } from '../../../components/RichTextEditor/RichTextEditor';
 import { SwitchController } from '../../../components/SwitchController';
-import { UPLOAD_PRESET, CLOUD_NAME } from '../../../constants';
 import { getActivityById, createActivity, updateActivity } from '../../../api/activity.service';
 import { activitySchema } from '../../../schemas/activitySchema';
 import { formatDates } from '../../../utils/formatDatesUtil';
@@ -38,7 +36,6 @@ export const ActivitiesFormPage = ({ action }) => {
     const [editorContent, setEditorContent] = useState("");
     const [uploadImages, setUploadImages] = useState([]);
     const [preview, setPreview] = useState(null);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -70,12 +67,7 @@ export const ActivitiesFormPage = ({ action }) => {
         }
     }, [defaultItems, reset]);
 
-    const handleCancel = () => {
-        navigate('/activities');
-    }
-
     const handleClose = () => {
-        setIsOpenDialog(false);
         navigate('/activities');
     }
 
@@ -88,10 +80,10 @@ export const ActivitiesFormPage = ({ action }) => {
 
             if (action === "create") {
                 const response = await createActivity(fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updateActivity(id, fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -101,15 +93,6 @@ export const ActivitiesFormPage = ({ action }) => {
 
     return (
         <div className="form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
             <Header>{action === "create" ? "Thêm Hoạt động mới" : "Chỉnh sửa Hoạt động"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -205,11 +188,11 @@ export const ActivitiesFormPage = ({ action }) => {
 
                             <div className="form-bottom">
                                 <div className="form-button">
-                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                         Hủy bỏ
                                     </Button>
                                     <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                                        {isSubmitting ? "Đang lưu..." : "Gửi"}
+                                        {isSubmitting ? "Đang lưu..." : "Lưu"}
                                     </Button>
                                 </div>
                             </div>

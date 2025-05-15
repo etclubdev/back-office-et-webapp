@@ -30,7 +30,6 @@ export const PartnersFormPage = ({ action }) => {
     });
 
     const [preview, setPreview] = useState(null);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -59,12 +58,7 @@ export const PartnersFormPage = ({ action }) => {
         }
     }, [defaultItems, reset]);
 
-    const handleCancel = () => {
-        navigate('/partners');
-    }
-
     const handleClose = () => {
-        setIsOpenDialog(false);
         navigate('/partners');
     }
 
@@ -77,10 +71,10 @@ export const PartnersFormPage = ({ action }) => {
             
             if (action === "create") {
                 const response = await createPartner(fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updatePartner(id, fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -89,15 +83,6 @@ export const PartnersFormPage = ({ action }) => {
 
     return (
         <div className="form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
             <Header>{action === "create" ? "Thêm Đối tác mới" : "Chỉnh sửa Đối tác"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -136,7 +121,7 @@ export const PartnersFormPage = ({ action }) => {
                                     menuItems={[
                                         "Đối tác doanh nghiệp",
                                         "Đối tác chuyên gia",
-                                        "Đối tác Truyền thông",
+                                        "Đối tác truyền thông",
                                         "Nghệ sĩ khách mời"
                                     ]}
                                     errors={errors}
@@ -174,11 +159,11 @@ export const PartnersFormPage = ({ action }) => {
                         <div className="form-bottom">
                             <div className="form-bottom">
                                 <div className="form-button">
-                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                         Hủy bỏ
                                     </Button>
                                     <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                                        {isSubmitting ? "Đang lưu..." : "Gửi"}
+                                        {isSubmitting ? "Đang lưu..." : "Lưu"}
                                     </Button>
                                 </div>
                             </div>

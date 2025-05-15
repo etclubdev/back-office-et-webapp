@@ -21,8 +21,6 @@ export const PersonnelFormPage = ({ action, department_name }) => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [terms, setTerms] = useState([]);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
-    const [message, setMessage] = useState({});
 
     const {
         control,
@@ -73,12 +71,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
         fetchData();
     }, [id]);
 
-    const handleCancel = () => {
-        navigate(`/${department_name}`);
-    }
-
     const handleClose = () => {
-        setIsOpenDialog(false);
         navigate(`/${department_name}`);
     }
 
@@ -117,18 +110,11 @@ export const PersonnelFormPage = ({ action, department_name }) => {
             
             if (action === "create") {
                 const response = await createPersonnel(fullPayload);
-                setIsOpenDialog(true);
-                setMessage({
-                    title: "Thêm nhân sự thành công",
-                    alertType: "info"
-                })
+               handleClose();
+                
             } else if (action === "edit") {
                 const response = await updatePersonnel(id, fullPayload);
-                setIsOpenDialog(true);
-                setMessage({
-                    title: "Chỉnh sửa nhân sự thành công",
-                    alertType: "info"
-                })
+               handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -137,14 +123,6 @@ export const PersonnelFormPage = ({ action, department_name }) => {
 
     return (
         <div className="personnel-form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog 
-                        {...message}
-                        onClose={handleClose}
-                    />
-                )
-            }
             <Header>{action === "create" ? "Thêm Nhân sự mới" : "Chỉnh sửa Nhân sự"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -320,7 +298,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                         <div className="form-bottom">
                             <div className="form-bottom">
                                 <div className="form-button">
-                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                         Hủy bỏ
                                     </Button>
                                     <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">

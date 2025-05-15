@@ -71,7 +71,6 @@ const breadcrumbNameMap = {
     "collaborator-status": "Cập nhật trạng thái",
     "collaborator-archive": "Lưu trữ",
     "create": "Thêm mới",
-    "edit": "Chỉnh sửa"
 };
 
 const UPLOAD_PRESET = "first_upload";

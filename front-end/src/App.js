@@ -29,7 +29,7 @@ import { BannersOverviewPage } from './pages/BannersManagementPage/BannersOvervi
 import { ETNewsFormPage } from './pages/ETNewsManagementPage/ETNewsFormPage';
 import { ETNewsOverviewPage } from './pages/ETNewsManagementPage/ETNewsOverviewPage';
 import { ComingSoonPage } from './pages/ComingSoonPage';
-
+import { ToastNotifier } from './components/ToastNotifier';
 
 function App() {
   useEffect(() => {
@@ -39,6 +39,8 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
+                    <ToastNotifier />
+        
         <Router>
           <div className="root-container">
             <Routes>

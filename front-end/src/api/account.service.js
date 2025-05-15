@@ -1,30 +1,35 @@
 import { api } from "./index";
+import { handleHttpSuccess, handleHttpError } from "../utils/handleHttpStatus";
 
 const getAllAccounts = async () => {
   try {
     const response = await api.get("/accounts");
     return response.data;
   } catch (error) {
+    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
 };
 
 const getAccountById = async (id) => {
-    try {
-      const response = await api.get(`/accounts/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
+  try {
+    const response = await api.get(`/accounts/${id}`);
+    return response.data;
+  } catch (error) {
+    handleHttpError(error?.status);
+    console.error(error);
+    throw error;
+  }
+};
 
 const createAccount = async (payload) => {
   try {
     const response = await api.post("/accounts", payload);
+    handleHttpSuccess("Thêm tài khoản thành công!");
     return response.data;
   } catch (error) {
+    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
@@ -33,8 +38,10 @@ const createAccount = async (payload) => {
 const updateAccount = async (id, payload) => {
   try {
     const response = await api.put(`/accounts/${id}`, payload);
+    handleHttpSuccess("Chỉnh sửa tài khoản thành công!");
     return response.data;
   } catch (error) {
+    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
@@ -43,8 +50,10 @@ const updateAccount = async (id, payload) => {
 const deleteAccountById = async (id) => {
   try {
     const response = await api.delete(`/accounts/${id}`);
+    handleHttpSuccess("Xóa tài khoản thành công!");
     return response.data;
   } catch (error) {
+    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
@@ -53,8 +62,10 @@ const deleteAccountById = async (id) => {
 const deleteAccounts = async (accounts) => {
   try {
     const response = await api.delete("/accounts/bulk-delete", { data: { accounts } });
+    handleHttpSuccess("Xóa tài khoản thành công!");
     return response.data;
   } catch (error) {
+    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
@@ -62,14 +73,16 @@ const deleteAccounts = async (accounts) => {
 
 const updatePassword = async (id, oldPassword, newPassword) => {
   try {
-      const response = await api.put(`/accounts/change-password/${id}`, {
-          oldPassword,
-          newPassword
-      });
-      return response.data;
+    const response = await api.put(`/accounts/change-password/${id}`, {
+      oldPassword,
+      newPassword
+    });
+    handleHttpSuccess("Thay đổi mật khẩu thành công!");
+    return response.data;
   } catch (error) {
-      console.error(error);
-      throw error;
+    handleHttpError(error?.status);
+    console.error(error);
+    throw error;
   }
 };
 

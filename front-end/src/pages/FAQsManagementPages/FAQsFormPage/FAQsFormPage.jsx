@@ -5,8 +5,6 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Select, MenuItem, FormControl, InputLabel, Switch, FormControlLabel, Button } from "@mui/material";
 import { createFAQSchema, updateFAQSchema } from "../../../schemas/faqsSchema";
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog';
-
 import { Header } from "../../../components/Header";
 
 import { createFAQs, updateFAQsById, getFAQsById } from '../../../api/faq.service';
@@ -14,7 +12,6 @@ import { createFAQs, updateFAQsById, getFAQsById } from '../../../api/faq.servic
 export const FAQsFormPage = ({ action }) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -41,12 +38,7 @@ export const FAQsFormPage = ({ action }) => {
         fetchData();
     }, [id]);
 
-    const handleCancel = () => {
-        navigate('/faqs');
-    }
-
     const handleClose = () => {
-        setIsOpenDialog(false);
         navigate('/faqs');
     }
 
@@ -54,11 +46,11 @@ export const FAQsFormPage = ({ action }) => {
         try {
             if (action === "create") {
                 const response = await createFAQs(payload);
-                setIsOpenDialog(true);
+                handleClose();
 
             } else if (action === "edit") {
                 const response = await updateFAQsById(id, payload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -67,16 +59,6 @@ export const FAQsFormPage = ({ action }) => {
 
     return (
         <div className="faqs-form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
-
             <Header>{action === "create" ? "Thêm FAQs mới" : "Chỉnh sửa FAQs"}</Header>
             <div className="faqs-form">
                 <form onSubmit={handleSubmit(onSubmit)} >
@@ -129,7 +111,7 @@ export const FAQsFormPage = ({ action }) => {
                         />
 
                         <div className="faqs-form-button">
-                            <Button variant="outlined" color="primary" onClick={handleCancel}>
+                            <Button variant="outlined" color="primary" onClick={handleClose}>
                                 Hủy bỏ
                             </Button>
                             <Button type="submit" variant="contained" color="primary">
