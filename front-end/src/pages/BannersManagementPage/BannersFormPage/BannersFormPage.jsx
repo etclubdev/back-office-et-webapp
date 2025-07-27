@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog';
 import { SwitchController } from '../../../components/SwitchController'
 import { ImageUploadController } from '../../../components/ImageUploadController';
 import { TextFieldController } from '../../../components/TextFieldController';
@@ -18,7 +17,6 @@ export const BannersFormPage = ({ action }) => {
     const { id } = useParams();
 
     const [preview, setPreview] = useState(null);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -48,11 +46,6 @@ export const BannersFormPage = ({ action }) => {
     }, [fetchData, id]);
 
     const handleClose = () => {
-        setIsOpenDialog(false);
-        navigate('/homepage-banners');
-    }
-
-    const handleCancel = () => {
         navigate('/homepage-banners');
     }
 
@@ -65,26 +58,17 @@ export const BannersFormPage = ({ action }) => {
 
             if (action === "create") {
                 const response = await createBanner(fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updateBanner(id, fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
         }
     };
     return (
-        <div className="banners-form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
+        <div className="banner-form-page">
             <Header>{action === "create" ? "Thêm Banner mới" : "Chỉnh sửa Banner"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -119,7 +103,7 @@ export const BannersFormPage = ({ action }) => {
                         </div>
                         <div className="form-bottom">
                             <div className="form-button">
-                                <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                     Hủy bỏ
                                 </Button>
                                 <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">

@@ -100,3 +100,31 @@
     transform: translateY(-20px);
     transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
+
+@media (max-width: 480px) {
+    .partner-card {
+        max-width: 90%;
+        min-width: auto;
+    }
+
+    .partner-card .card-top {
+        padding: 10px 15px;
+    }
+
+    #visible-list, #invisible-list {
+        width: 100%;
+    }
+    
+    .partner-card .transfer-list {
+        flex-direction: column;
+    }
+    
+    .transfer-button {
+        transform: rotate(90deg);
+    }
+
+    .transfer-button button {
+        width: 50px;
+        aspect-ratio: 1/1;
+    }
+}

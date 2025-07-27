@@ -7,7 +7,6 @@ import { SelectController } from '../../components/SelectController';
 import { ImageUploadController } from '../../components/ImageUploadController';
 import { DatePickerController } from '../../components/DatePickerController';
 import { TextFieldController } from '../../components/TextFieldController';
-import { ConfirmedDialog } from '../../components/ConfirmedDialog';
 import { Header } from '../../components/Header';
 import { useAuth } from '../../context/useAuth';
 import { formatDates } from '../../utils/formatDatesUtil';
@@ -25,34 +24,17 @@ export const PersonalProfilePage = () => {
     const [activeTab, setActiveTab] = useState(0);
     const progressBarRef = useRef(null);
     const tabsRef = useRef([]);
+
     const handleClick = (e, index) => {
         setActiveTab(index);
-        const element = e.target;
-
-        if (progressBarRef.current) {
-            progressBarRef.current.style.transform = `translateX(${element.offsetLeft}px)`;
-            progressBarRef.current.style.width = `${element.offsetWidth}px`;
-        }
     }
 
-    const updateProgressBar = () => {
+    useEffect(() => {
         const activeTabElement = tabsRef.current[activeTab];
         if (activeTabElement && progressBarRef.current) {
             progressBarRef.current.style.transform = `translateX(${activeTabElement.offsetLeft}px)`;
             progressBarRef.current.style.width = `${activeTabElement.offsetWidth}px`;
         }
-    };
-
-    useEffect(() => {
-        const handleResize = () => {
-            updateProgressBar();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, [activeTab]);
 
     return (
@@ -92,10 +74,8 @@ export const PersonalProfilePage = () => {
 }
 
 const PersonalInformation = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [preview, setPreview] = useState(null);
-    const [isDialogOpen, setIsDialogOpen] = useState(null);
-    const [message, setMessage] = useState("");
 
     const {
         control,
@@ -123,13 +103,9 @@ const PersonalInformation = () => {
     });
 
     const fetchData = useCallback(async () => {
-        try {
-            if (!user) return;
-            const response = await getPersonnelById(user?.personnel_id);
-            reset(response.data);
-        } catch (error) {
-            console.log(error);
-        }
+        if (!user) return;
+        const response = await getPersonnelById(user?.personnel_id);
+        reset(response.data);
     }, [])
 
     useEffect(() => {
@@ -163,22 +139,13 @@ const PersonalInformation = () => {
                 },
             }
             user && await updatePersonnel(user.personnel_id, fullPayload);
-            setIsDialogOpen(true);
+
         } catch (error) {
             console.log(error);
         }
     };
     return (
         <div className="form">
-            {
-                isDialogOpen && (
-                    <ConfirmedDialog
-                        title="Thay đổi thành công"
-                        alertType="info"
-                        onClose={() => setIsDialogOpen(false)}
-                    />
-                )
-            }
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className="form-top">
                     <div className="form-left">
@@ -305,8 +272,7 @@ const PersonalInformation = () => {
 }
 
 const PasswordUpdate = () => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [message, setMessage] = useState("");
 
     const {
@@ -338,29 +304,13 @@ const PasswordUpdate = () => {
                 payload.new_password
             );
 
-            setMessage({
-                title: "Chỉnh sửa thành công",
-                alertType: "info"
-            });
-            setIsDialogOpen(true);
         } catch (error) {
-            console.error("Update password error:", error);
-            setMessage({
-                title: "Chỉnh sửa thất bại",
-                desc: "Mật khẩu hiện tại không chính xác",
-                alertType: "warning"
-            });
-            setIsDialogOpen(true);
+            console.error(error);
         }
     }
 
     return (
         <div className="form">
-            {isDialogOpen &&
-                <ConfirmedDialog
-                    {...message}
-                    onClose={() => { setIsDialogOpen(false); }}
-                />}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="password-container">
                     <PasswordController

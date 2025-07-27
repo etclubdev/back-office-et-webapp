@@ -40,3 +40,66 @@
     gap: 1vw;
 
 }
+
+@media (max-width: 480px) {
+    .achievements-overview-page {
+        max-width: 100%;
+    }
+
+    .achievements-container {
+        width: 100%;
+        max-width: 85%;
+    }
+
+    .achievements-toolbars {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .achievements-toolbars .action-container {
+        width: 100%;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .achievements-toolbars button, .search-container button {
+        font-size: 10px;
+        height: 30px;
+        min-width: 80px;
+    }
+
+    .achievements-toolbars .search-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .achievements-selection-page .achievement-card-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .achievements-selection-page .achievement-card {
+        width: 100%;
+        height: 80px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px)  {
+    .achievements-overview-page {
+        max-width: 100%;
+    }
+
+    .achievements-container {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .achievements-toolbars {
+        flex-direction: row;
+    }
+
+    .achievements-toolbars button {
+        font-size: 10px;
+    }
+}

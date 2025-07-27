@@ -1,4 +1,4 @@
-.partners-form-page{
+.partners-form-page {
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.partners-form-page .form-container{
+.partners-form-page .form-container {
     margin-top: 5vw;
     width: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.partners-form-page .form{
+.partners-form-page .form {
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,13 +23,13 @@
     flex-direction: column;
 }
 
-.partners-form-page .form .form-top{
+.partners-form-page .form .form-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.partners-form-page .form .form-top .form-left{
+.partners-form-page .form .form-top .form-left {
     width: 40%;
     height: auto;
     display: flex;
@@ -46,7 +46,7 @@
     gap: 1vw;
 }
 
-.date-controller{
+.date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -56,7 +56,7 @@
     width: 45%;
 }
 
-.rich-text-editor{
+.rich-text-editor {
     width: 100%;
 }
 
@@ -67,7 +67,7 @@
     gap: 2vw;
 }
 
-.form-button{
+.form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
@@ -75,18 +75,35 @@
 
 .partners-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .partners-form-page .form-container::-webkit-scrollbar-track {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .partners-form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .partners-form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .partners-form-page form .form-top {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .partners-form-page .form .form-top .form-left,
+    .partners-form-page .form .form-top .form-right {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .partners-form-page .form .form-top .form-left .image-upload-container {
+        width: 100%;
+    }
+}

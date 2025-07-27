@@ -1,12 +1,12 @@
-.banners-form-page{
+.banner-form-page {
     width: 100%;
     overflow-x: hidden;
-    height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.banners-form-page .form-container{
+.banner-form-page .form-container {
     margin-top: 3vw;
     width: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.banners-form-page .form{
+.banner-form-page .form {
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,31 +23,33 @@
     flex-direction: column;
 }
 
-.banners-form-page .form .form-top{
+.banner-form-page .form .form-top {
     display: flex;
-    height: 50vh;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.banners-form-page .form .form-top .form-left{
-    width: 40%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+.banner-form-page .form .form-top {
+    .form-left {
+        width: 40%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .form-right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        gap: 1vw;
+    }
+
 }
 
-.banners-form-page .form .form-top .form-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    gap: 1vw;
-}
-
-.date-controller{
+.date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -57,37 +59,57 @@
     width: 45%;
 }
 
-.rich-text-editor{
+.rich-text-editor {
     width: 100%;
 }
 
-.banners-form-page .form .form-bottom {
+.banner-form-page .form .form-bottom {
     max-width: 80vw;
     display: flex;
     flex-direction: column;
     gap: 2vw;
 }
 
-.form-button{
+.form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
 }
 
-.banners-form-page .form-container::-webkit-scrollbar {
+.banner-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .banners-form-page .form-container::-webkit-scrollbar-track {
+}
+
+.banner-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .banners-form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.banner-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .banners-form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.banner-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .banner-form-page .form-container .form form .form-top {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .banner-form-page .form-container .form form .form-top .form-left,
+    .banner-form-page .form-container .form form .form-top .form-right {
+        width: 100%;
+    }
+
+    .banner-form-page .form-container .form form .form-top .form-left .image-upload-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

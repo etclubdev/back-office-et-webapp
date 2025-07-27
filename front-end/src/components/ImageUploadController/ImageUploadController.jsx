@@ -12,7 +12,7 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                 <>
                     <div className="image-upload-container">
                         <Typography variant="h6" fontWeight="bold" color="primary">
-                            Tải Ảnh Bìa <span style={{ color: "red" }}>*</span>
+                            Tải ảnh <span style={{ color: "red" }}>*</span>
                         </Typography>
                         <Box
                             className="image-upload-box"

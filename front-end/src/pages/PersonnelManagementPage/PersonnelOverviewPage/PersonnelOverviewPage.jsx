@@ -43,13 +43,9 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
             setPersonnel(data);
             setFilteredPersonnel(data);
         } catch (error) {
-            if (axios.isAxiosError(error)) {
-                if (error.response?.status === 404) {
-                    setPersonnel([]);
-                    setFilteredPersonnel([]);
-                    return;
-                }
-            }
+            setPersonnel([]);
+            setFilteredPersonnel([]);
+            return;
         }
     }, [personnel_status, department_name])
 

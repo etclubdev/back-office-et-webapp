@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
-
 import { TableDialog } from '../../../components/TableDialog';
 import BaseButton from '../../../components/Buttons/BaseButton';
 import { SelectController } from '../../../components/SelectController';
@@ -13,8 +12,6 @@ import { Header } from "../../../components/Header";
 import { getAccountById, createAccount, updateAccount } from '../../../api/account.service';
 import { getAllSysRoles } from '../../../api/sysrole.service';
 import { accountSchema } from '../../../schemas/accountSchema';
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog/ConfirmedDialog';
-
 
 export const AccountsFormPage = ({ action }) => {
     const navigate = useNavigate();
@@ -22,7 +19,6 @@ export const AccountsFormPage = ({ action }) => {
     const [sysrole, setSysrole] = useState([]);
 
     const [isOpenTableDialog, setIsOpenTableDialog] = useState(false);
-    const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
 
     const {
         control,
@@ -54,12 +50,7 @@ export const AccountsFormPage = ({ action }) => {
         fetchData();
     }, [id]);
 
-    const handleCancel = () => {
-        navigate('/accounts');
-    }
-
     const handleClose = () => {
-        setIsOpenConfirmedDialog(false);
         navigate('/accounts');
     }
 
@@ -71,10 +62,10 @@ export const AccountsFormPage = ({ action }) => {
 
             if (action === "create") {
                 const response = await createAccount(fullPayload);
-                setIsOpenConfirmedDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updateAccount(id, { sysrole_id });
-                setIsOpenConfirmedDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -83,15 +74,6 @@ export const AccountsFormPage = ({ action }) => {
 
     return (
         <div className="account-form-page">
-            {
-                isOpenConfirmedDialog && (
-                    <ConfirmedDialog
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
             {
                 isOpenTableDialog && (
                     <TableDialog
@@ -142,7 +124,7 @@ export const AccountsFormPage = ({ action }) => {
                         </div>
                         <div className="form-bottom">
                             <div className="form-button">
-                                <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                     Hủy bỏ
                                 </Button>
                                 <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">

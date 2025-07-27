@@ -89,10 +89,13 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
                       backgroundColor: isSelected ? "#e3f2fd" : "inherit",
                       cursor: "pointer",
                     }}
+                    onClick={() => handleSelect(row[itemId])}
+                    // onDoubleClick={() => handleSelect(row[itemId])}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={selected.includes(row[itemId])}
+                        onClick={() => handleSelect(row[itemId])}
                         onChange={() => handleSelect(row[itemId])}
                         color="primary"
                       />

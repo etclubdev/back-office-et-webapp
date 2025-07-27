@@ -4,14 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormControl, Button } from "@mui/material";
-
 import { SwitchController } from '../../../components/SwitchController';
 import { ImageUploadController } from '../../../components/ImageUploadController';
 import { TextFieldController } from '../../../components/TextFieldController';
 import { Header } from "../../../components/Header";
 import { RichTextEditor } from '../../../components/RichTextEditor/RichTextEditor';
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog';
-
 import { getETBlogById, createETBlog, updateETBlog } from '../../../api/etBlog.service';
 import { etBlogSchema } from '../../../schemas/etBlogSchema';
 import { handleImageUpload, handleRichTextUpload } from '../../../utils/handleUploadUtil';
@@ -32,7 +29,6 @@ export const ETBlogFormPage = ({ action }) => {
     const [editorContent, setEditorContent] = useState("");
     const [uploadImages, setUploadImages] = useState([]);
     const [preview, setPreview] = useState(null);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -62,12 +58,7 @@ export const ETBlogFormPage = ({ action }) => {
         }
     }, [defaultItems, reset]);
 
-    const handleCancel = () => {
-        navigate('/et-blog');
-    };
-
-    const handleCloseDialog = () => {
-        setIsOpenDialog(false);
+    const handleClose = () => {
         navigate('/et-blog');
     };
 
@@ -79,10 +70,10 @@ export const ETBlogFormPage = ({ action }) => {
 
             if (action === "create") {
                 const response = await createETBlog(fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updateETBlog(id, fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -91,14 +82,7 @@ export const ETBlogFormPage = ({ action }) => {
     };
 
     return (
-        <div className="etblog-form-page">
-            {isOpenDialog && (
-                <ConfirmedDialog
-                    title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                    alertType="info"
-                    onClose={handleCloseDialog}
-                />
-            )}
+        <div className="form-page">
             <Header>{action === "create" ? "Thêm ET Blog" : "Chỉnh sửa ET Blog"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -154,11 +138,11 @@ export const ETBlogFormPage = ({ action }) => {
                             </FormControl>
 
                             <div className="form-button">
-                                <Button disabled={isSubmitting} variant="outlined" onClick={handleCancel}>
+                                <Button disabled={isSubmitting} variant="outlined" onClick={handleClose}>
                                     Hủy bỏ
                                 </Button>
                                 <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                                    {isSubmitting ? "Đang lưu..." : "Gửi"}
+                                    {isSubmitting ? "Đang lưu..." : "Lưu"}
                                 </Button>
                             </div>
                         </div>

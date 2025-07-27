@@ -44,3 +44,31 @@
     width: 20%;
     font-size: 1vw;
 }
+
+@media (max-width: 480px) {
+
+    .unauthorized-page {
+        gap: 20px;
+    }
+
+    .unauthorized-page img {
+        width: 60%;
+    }
+
+    .unauthorized-page .content {
+        width: 90%;
+    }
+
+    .unauthorized-page .error {
+        font-size: 14px;
+    }
+
+    .unauthorized-page .error-desc {
+        font-size: 10px;
+    }
+
+    .unauthorized-page .button {
+        width: 50%;
+        font-size: 10px;
+    }
+}
