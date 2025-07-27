@@ -4,14 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormControl, Button } from "@mui/material";
-import { ConfirmedDialog } from '../../../components/ConfirmedDialog';
 import { SwitchController } from '../../../components/SwitchController'
 import { SelectController } from '../../../components/SelectController';
 import { ImageUploadController } from '../../../components/ImageUploadController';
 import { TextFieldController } from '../../../components/TextFieldController';
 import { Header } from "../../../components/Header";
 import { RichTextEditor } from '../../../components/RichTextEditor/RichTextEditor';
-import { UPLOAD_PRESET, CLOUD_NAME } from '../../../constants';
 import { getETNewsById, createETNews, updateETNews } from '../../../api/etNews.service';
 import { etNewsSchema } from '../../../schemas/etNewsSchema';
 import { handleImageUpload, handleRichTextUpload } from '../../../utils/handleUploadUtil';
@@ -32,7 +30,6 @@ export const ETNewsFormPage = ({ action }) => {
     const [editorContent, setEditorContent] = useState("");
     const [uploadImages, setUploadImages] = useState([]);
     const [preview, setPreview] = useState(null);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const {
         control,
@@ -62,12 +59,7 @@ export const ETNewsFormPage = ({ action }) => {
         }
     }, [defaultItems, reset]);
 
-    const handleCancel = () => {
-        navigate('/et-news');
-    }
-
     const handleClose = () => {
-        setIsOpenDialog(false);
         navigate('/et-news');
     }
 
@@ -79,10 +71,10 @@ export const ETNewsFormPage = ({ action }) => {
 
             if (action === "create") {
                 const response = await createETNews(fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             } else if (action === "edit") {
                 const response = await updateETNews(id, fullPayload);
-                setIsOpenDialog(true);
+                handleClose();
             }
         } catch (error) {
             console.log(error);
@@ -91,16 +83,7 @@ export const ETNewsFormPage = ({ action }) => {
     };
 
     return (
-        <div className="etnews-form-page">
-            {
-                isOpenDialog && (
-                    <ConfirmedDialog 
-                        title={`${action === "create" ? "Thêm" : "Sửa"} thành công`}
-                        alertType="info"
-                        onClose={handleClose}
-                    />
-                )
-            }
+        <div className="form-page">
             <Header>{action === "create" ? "Thêm ET News" : "Chỉnh sửa ET News"}</Header>
             <div className="form-container">
                 <div className="form">
@@ -174,11 +157,11 @@ export const ETNewsFormPage = ({ action }) => {
 
                             <div className="form-bottom">
                                 <div className="form-button">
-                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleCancel}>
+                                    <Button disabled={isSubmitting} variant="outlined" color="primary" onClick={handleClose}>
                                         Hủy bỏ
                                     </Button>
                                     <Button disabled={isSubmitting} type="submit" variant="contained" color="primary">
-                                        {isSubmitting ? "Đang lưu..." : "Gửi"}
+                                        {isSubmitting ? "Đang lưu..." : "Lưu"}
                                     </Button>
                                 </div>
                             </div>

@@ -71,3 +71,21 @@
 .faq-list-container::-webkit-scrollbar-thumb:hover {
   background: #2886ca;
 }
+
+@media (max-width: 480px) {
+  .faq-card-list .tabs-container {
+    width: 90%;
+  }
+
+  .faq-card-list .tab-item {
+    font-size: 9px;
+  }
+
+  .faq-card-list .tabs-container .progress-bar {
+    width: 105px;
+  }
+
+  .faq-card-list .no-data {
+    font-size: 8px;
+  }
+}

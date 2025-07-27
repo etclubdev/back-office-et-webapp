@@ -69,3 +69,19 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@media (max-width: 480px) {
+  .header {
+    height: 50px;
+  }
+
+  .header-breadcrumbs li,
+  .header-breadcrumbs p {
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-weight: 700;
+    font-size: 14px;
+  }
+}

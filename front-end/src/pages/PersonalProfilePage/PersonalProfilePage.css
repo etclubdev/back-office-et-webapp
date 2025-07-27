@@ -7,7 +7,8 @@
     flex-direction: column;
 }
 
-.tabs-container, .form-container {
+.tabs-container,
+.form-container {
     margin-top: 1vw;
     width: 90%;
     align-self: center;
@@ -157,7 +158,51 @@
     gap: 2vw;
 }
 
-.personal-profile-page .image-upload-container .thumbnail-img{
+.personal-profile-page .image-upload-container .thumbnail-img {
     object-fit: cover;
     aspect-ratio: 1/1;
+}
+
+@media (max-width: 480px) {
+    .tab-item {
+        font-size: 12px;
+    }
+    
+    .personal-profile-page .form .form-top {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .personal-profile-page .form .form-top .form-left {
+        width: 100%;
+    }
+
+    .personal-profile-page .form .form-top .form-left .image-upload-container {
+        justify-content: center;
+        height: 320px;
+    }
+
+    .personal-profile-page .form .form-top .form-left .image-upload-box {
+        max-height: 100%;
+    }
+
+    .personal-profile-page .form .form-top .form-right {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .personal-profile-page .form .form-top .form-right .form-control{
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .personal-profile-page .form {
+        margin-top: 10px;
+    }
+
+    .personal-profile-page .password-container {
+        width: 100%;
+    }
 }

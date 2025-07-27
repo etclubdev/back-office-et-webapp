@@ -29,8 +29,6 @@ const refreshAccessToken = async () => {
     }
   );
   const newToken = response.data;
-  console.log(newToken);
-  
   setAccessToken(newToken.accessToken);
   setRefreshToken(newToken.refreshToken);
   return newToken;

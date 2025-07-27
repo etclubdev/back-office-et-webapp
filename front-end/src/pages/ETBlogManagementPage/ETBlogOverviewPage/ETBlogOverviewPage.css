@@ -34,3 +34,56 @@
     background-color: #ccc;
     margin: 0;
 }
+
+@media (max-width: 480px) {
+    .etblog-overview-page {
+        max-width: 100%;
+    }
+
+    .etblog-container {
+        width: 100%;
+        max-width: 85%;
+    }
+
+    .etblog-toolbars {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .etblog-toolbars .action-container {
+        width: 100%;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .etblog-toolbars button, .search-container button {
+        font-size: 10px;
+        height: 30px;
+        min-width: 80px;
+    }
+
+    .etblog-toolbars .search-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px)  {
+    .etblog-overview-page {
+        max-width: 100%;
+    }
+
+    .etblog-container {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .etblog-toolbars {
+        flex-direction: row;
+    }
+
+    .etblog-toolbars button {
+        font-size: 10px;
+    }
+}

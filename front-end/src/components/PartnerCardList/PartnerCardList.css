@@ -4,3 +4,12 @@
     flex-direction: column;
     gap: 2vw;
 }
+
+@media (max-width: 480px) {
+    .partner-card-list {
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+    }
+    
+}

@@ -1,4 +1,4 @@
-.faq-card{
+.faq-card {
     width: 65%;
     height: auto;
     display: flex;
@@ -11,17 +11,34 @@
     line-height: 1.5;
 }
 
-.faq-top{
+.faq-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.faq-top span{
+.faq-top span {
     font-size: 1.2vw;
 }
 
-.faq-answer{
+.faq-answer {
     font-size: 1vw;
     color: rgba(0, 0, 0, 0.60);
+}
+
+@media (max-width: 480px) {
+    .faq-card {
+        width: 90%;
+        padding: 10px;
+        border-radius: 7px;
+    }
+
+    .faq-top span {
+        font-size: 12px;
+    }
+
+    .faq-answer {
+        font-size: 10px;
+    }
+
 }

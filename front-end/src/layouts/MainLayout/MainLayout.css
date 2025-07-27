@@ -14,6 +14,11 @@
   box-sizing: border-box;
 }
 
+.main-layout .mobile-navbar {
+  width: 45px;
+  min-height: 100vh;
+}
+
 .main-layout main::-webkit-scrollbar {
   width: 5px;
 }
