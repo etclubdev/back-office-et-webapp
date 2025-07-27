@@ -198,7 +198,13 @@ const TransferList = ({ cardId, title, data, selectedCard, setSelectedCard, setS
                     </TableHead>
                     <TableBody>
                         {filteredData?.map((row) => (
-                            <TableRow key={row.partner_id}>
+                            <TableRow key={row.partner_id}
+                                onClick={() => handleSelected(row.partner_id)}
+                                sx={{
+                                    backgroundColor: selected.includes(row.partner_id) ? "#e3f2fd" : "inherit",
+                                    cursor: "pointer",
+                                }}
+                            >
                                 <TableCell padding="checkbox">
                                     <Checkbox
                                         disabled={selectedCard && selectedCard !== cardId}
