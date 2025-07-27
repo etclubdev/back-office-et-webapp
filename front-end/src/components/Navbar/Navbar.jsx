@@ -1,4 +1,5 @@
-import React, { use, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
@@ -14,11 +15,12 @@ export const Navbar = () => {
     const { user } = useAuth();
     const [userInfo, setUserInfo] = useState({});
 
+    const location = useLocation();
+
     const fetchUser = useCallback(async () => {
         if (!user) return;
         const response = await getPersonnelById(user.personnel_id);
         setUserInfo(response.data);
-        
     }, [user])
 
     const handleResize = useCallback(() => {
@@ -27,6 +29,12 @@ export const Navbar = () => {
             setIsExpanded(!isExpanded);
         }
     }, [isExpanded]);
+
+    useEffect(() => {
+        if (isExpanded && isMobile) {
+            setIsExpanded(false);
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         const handleResizeWindow = () => {
@@ -53,10 +61,10 @@ export const Navbar = () => {
                 )
             }
             <div className="navbar-items">
-                <NavbarItem userInfo={userInfo}/>
+                <NavbarItem userInfo={userInfo} />
                 <div className="navbar-items-wrapper">
                     {navbarContents.map(item => (
-                        <NavbarItem key={item.id} {...item} setIsExpanded={ isMobile ? setIsExpanded : {}} />
+                        <NavbarItem key={item.id} {...item} setIsExpanded={isMobile ? setIsExpanded : {}} />
                     ))}
                 </div>
                 <NavbarItem isLogoutItem />
