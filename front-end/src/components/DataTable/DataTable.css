@@ -1,24 +1,25 @@
-.data-paper-container {
-   td, span, div, p {
-      font-family: "BeVietnamPro";
-   }
+.data-paper-container td,
+.data-paper-container span,
+.data-paper-container div,
+.data-paper-container p {
+   font-family: "BeVietnamPro";
 }
 
 .data-table-container::-webkit-scrollbar {
-    width: 0.4vw;
-    height: 0.4vw;
- }
+   width: 0.4vw;
+   height: 0.4vw;
+}
 
- .data-table-container::-webkit-scrollbar-track {
-    background: #ffffff;
-    border-radius: 0.1vw;
- }
+.data-table-container::-webkit-scrollbar-track {
+   background: #ffffff;
+   border-radius: 0.1vw;
+}
 
- .data-table-container::-webkit-scrollbar-thumb {
-    background: #178DE2;
-    border-radius: 0.1vw;
- }
+.data-table-container::-webkit-scrollbar-thumb {
+   background: #178DE2;
+   border-radius: 0.1vw;
+}
 
- .data-table-container::-webkit-scrollbar-thumb:hover {
-    background: #2886ca;
- } 
+.data-table-container::-webkit-scrollbar-thumb:hover {
+   background: #2886ca;
+}
