@@ -1,4 +1,4 @@
-.personnel-form-page{
+.personnel-form-page {
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.personnel-form-page .form-container{
+.personnel-form-page .form-container {
     padding-top: 2vw;
     width: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.personnel-form-page .form{
+.personnel-form-page .form {
     margin: 2%;
     width: 70%;
     align-self: center;
@@ -23,38 +23,35 @@
     flex-direction: column;
 }
 
-.personnel-form-page .form .form-top{
+.personnel-form-page .form .form-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
     gap: 3vw
 }
 
-.personnel-form-page .form .form-top{
-
-    .form-right{
-        width: 30%;
-    }
-
-    .form-left{
-        width: 60%;
-    }
-
-    .form-right, .form-left {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        gap: 1vw;
-
-        .form-group {
-            display: flex;
-            gap: 1vw;
-        }
-    }
-
+.personnel-form-page .form .form-top .form-right {
+    width: 30%;
 }
 
-.personnel-form-page .date-controller{
+.personnel-form-page .form .form-top .form-left {
+    width: 60%;
+}
+
+.personnel-form-page .form .form-top .form-right,
+.personnel-form-page .form .form-top .form-left {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1vw;
+}
+
+.personnel-form-page .form .form-top .form-left .form-group {
+    display: flex;
+    gap: 1vw;
+}
+
+.personnel-form-page .date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -64,7 +61,7 @@
     width: 45%;
 }
 
-.personnel-form-page .rich-text-editor{
+.personnel-form-page .rich-text-editor {
     width: 100%;
 }
 
@@ -75,7 +72,7 @@
     gap: 2vw;
 }
 
-.personnel-form-page .form-button{
+.personnel-form-page .form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
@@ -83,18 +80,36 @@
 
 .personnel-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .personnel-form-page .form-container::-webkit-scrollbar-track {
+}
+
+.personnel-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .personnel-form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.personnel-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .personnel-form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.personnel-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .personnel-form-page .form {
+        width: 90%;
+    }
+
+    .personnel-form-page .form .form-top {
+        width: 100%;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .personnel-form-page .form .form-top .form-left,
+    .personnel-form-page .form .form-top .form-right {
+        width: 100%;
+        gap: 10px;
+    }
+}

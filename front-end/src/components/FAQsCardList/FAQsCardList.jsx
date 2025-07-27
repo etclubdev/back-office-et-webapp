@@ -14,13 +14,6 @@ export const FAQsCardList = () => {
 
     const handleClick = (e, index) => {
         setActiveTab(index);
-        const element = e.target;
-        
-        if (progressBarRef.current) {
-            progressBarRef.current.style.transform = `translateX(${element.offsetLeft}px)`;
-            progressBarRef.current.style.width = `${element.offsetWidth}px`;
-        }
-
         const key = Object.keys(faqs)[index];
         setFilteredFAQs(faqs[key] || []);
     }
@@ -34,15 +27,8 @@ export const FAQsCardList = () => {
     };
 
     useEffect(() => {
-        const handleResize = () => {
-            updateProgressBar();
-        };
+        updateProgressBar();
 
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, [activeTab]);
 
     useEffect(() => {
@@ -50,7 +36,7 @@ export const FAQsCardList = () => {
             try {
                 const { data } = await getAllFAQs();
                 if (data && Object.keys(data).length > 0) {
-                    const [firstKey, firstValue] = Object.entries(data)[0]; 
+                    const [firstKey, firstValue] = Object.entries(data)[0];
                     const sortedFaqMap = Object.fromEntries(sortedEntries(data, "Khác"));
                     setFAQs(sortedFaqMap);
                     setFilteredFAQs(firstValue);
@@ -67,10 +53,10 @@ export const FAQsCardList = () => {
         <div className="faq-card-list">
             <div className="tabs-container">
                 {Object.keys(faqs).map((category, index) => (
-                    <div 
+                    <div
                         ref={(el) => tabsRef.current[index] = el}
-                        key={index} 
-                        className={`tab-item ${activeTab === index ? "active" : ""}`} 
+                        key={index}
+                        className={`tab-item ${activeTab === index ? "active" : ""}`}
                         onClick={(e) => handleClick(e, index)}
                     >
                         {category}
@@ -84,7 +70,7 @@ export const FAQsCardList = () => {
                 ) : (
                     <p className="no-data">Không có câu hỏi nào.</p>
                 )}
-                <div style={{height: "20px"}}></div>
+                <div style={{ height: "20px" }}></div>
             </div>
         </div>
     );

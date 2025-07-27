@@ -1,8 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./Header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import { breadcrumbNameMap } from "../../constants";

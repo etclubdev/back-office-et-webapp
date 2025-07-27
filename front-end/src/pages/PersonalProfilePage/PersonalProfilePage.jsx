@@ -24,34 +24,17 @@ export const PersonalProfilePage = () => {
     const [activeTab, setActiveTab] = useState(0);
     const progressBarRef = useRef(null);
     const tabsRef = useRef([]);
+
     const handleClick = (e, index) => {
         setActiveTab(index);
-        const element = e.target;
-
-        if (progressBarRef.current) {
-            progressBarRef.current.style.transform = `translateX(${element.offsetLeft}px)`;
-            progressBarRef.current.style.width = `${element.offsetWidth}px`;
-        }
     }
 
-    const updateProgressBar = () => {
+    useEffect(() => {
         const activeTabElement = tabsRef.current[activeTab];
         if (activeTabElement && progressBarRef.current) {
             progressBarRef.current.style.transform = `translateX(${activeTabElement.offsetLeft}px)`;
             progressBarRef.current.style.width = `${activeTabElement.offsetWidth}px`;
         }
-    };
-
-    useEffect(() => {
-        const handleResize = () => {
-            updateProgressBar();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, [activeTab]);
 
     return (

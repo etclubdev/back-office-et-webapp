@@ -1,28 +1,33 @@
 :root {
-    --scrollbar-color: #178DE2;
-  }
-
-.main-layout{
-    display: flex;
-    overflow-y: hidden;
+  --scrollbar-color: #178DE2;
 }
 
-.main-layout main{
-    max-height: 100vh;
-    flex: 1;
-    overflow-y: auto;
-    box-sizing: border-box;
+.main-layout {
+  display: flex;
+  overflow-y: hidden;
+}
+
+.main-layout main {
+  max-height: 100vh;
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.main-layout .mobile-navbar {
+  width: 45px;
+  min-height: 100vh;
 }
 
 .main-layout main::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  .main-layout main::-webkit-scrollbar-track {
-    background: transparent
-  }
-  
-  .main-layout main::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-color); 
-    border-radius: 4px;
-  }
+  width: 5px;
+}
+
+.main-layout main::-webkit-scrollbar-track {
+  background: transparent
+}
+
+.main-layout main::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 4px;
+}

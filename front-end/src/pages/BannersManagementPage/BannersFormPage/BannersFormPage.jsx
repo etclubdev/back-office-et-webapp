@@ -68,7 +68,7 @@ export const BannersFormPage = ({ action }) => {
         }
     };
     return (
-        <div className="form-page">
+        <div className="banner-form-page">
             <Header>{action === "create" ? "Thêm Banner mới" : "Chỉnh sửa Banner"}</Header>
             <div className="form-container">
                 <div className="form">

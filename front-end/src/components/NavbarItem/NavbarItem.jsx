@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/useAuth";
 
-export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isLogoutItem }) => {
+export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isLogoutItem, setIsExpanded }) => {
     const { user, logout } = useAuth();
 
     if (userInfo) {
@@ -51,6 +51,9 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
                             const item = document.getElementById(id);
                             dropdown?.classList.toggle("show");
                             item?.classList.toggle("show");
+                            if (typeof setIsExpanded === "function") {
+                                setIsExpanded(true);
+                            }
                         }}
                     >
                         <FontAwesomeIcon className="navbar-item-icon" icon={icon} />
@@ -69,7 +72,7 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
                                         `dropdown-item ${isActive ? "active" : ""}`
                                     }
                                 >
-                                    {item.label}
+                                    <p>{item.label}</p>
                                 </NavLink>
                             );
                         })}

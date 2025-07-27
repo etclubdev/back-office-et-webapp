@@ -1,4 +1,4 @@
-.form-page{
+.partners-form-page {
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.form-page .form-container{
+.partners-form-page .form-container {
     margin-top: 5vw;
     width: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 
-.form-page .form{
+.partners-form-page .form {
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,33 +23,30 @@
     flex-direction: column;
 }
 
-.form-page .form .form-top{
+.partners-form-page .form .form-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.form-page .form .form-top{
-    .form-left{
-        width: 40%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-    }
-
-    .form-right {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        gap: 1vw;
-    }
-
+.partners-form-page .form .form-top .form-left {
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.date-controller{
+.partners-form-page .form .form-top .form-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 1vw;
+}
+
+.date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -59,37 +56,54 @@
     width: 45%;
 }
 
-.rich-text-editor{
+.rich-text-editor {
     width: 100%;
 }
 
-.form-page .form .form-bottom {
+.partners-form-page .form .form-bottom {
     max-width: 80vw;
     display: flex;
     flex-direction: column;
     gap: 2vw;
 }
 
-.form-button{
+.form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
 }
 
-.form-page .form-container::-webkit-scrollbar {
+.partners-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .form-page .form-container::-webkit-scrollbar-track {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.partners-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .partners-form-page form .form-top {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .partners-form-page .form .form-top .form-left,
+    .partners-form-page .form .form-top .form-right {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .partners-form-page .form .form-top .form-left .image-upload-container {
+        width: 100%;
+    }
+}

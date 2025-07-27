@@ -68,7 +68,7 @@ export const PartnersFormPage = ({ action }) => {
 
             const fullPayload = { ...payload, avatar_url: avatarUrl };
             console.log(fullPayload);
-            
+
             if (action === "create") {
                 const response = await createPartner(fullPayload);
                 handleClose();
@@ -82,7 +82,7 @@ export const PartnersFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="partners-form-page">
             <Header>{action === "create" ? "Thêm Đối tác mới" : "Chỉnh sửa Đối tác"}</Header>
             <div className="form-container">
                 <div className="form">

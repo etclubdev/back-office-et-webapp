@@ -34,3 +34,56 @@
     background-color: #ccc;
     margin: 0;
 }
+
+@media (max-width: 480px) {
+    .etnews-overview-page {
+        max-width: 100%;
+    }
+
+    .etnews-container {
+        width: 100%;
+        max-width: 85%;
+    }
+
+    .etnews-toolbars {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .etnews-toolbars .action-container {
+        width: 100%;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .etnews-toolbars button, .search-container button {
+        font-size: 10px;
+        height: 30px;
+        min-width: 80px;
+    }
+
+    .etnews-toolbars .search-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px)  {
+    .etnews-overview-page {
+        max-width: 100%;
+    }
+
+    .etnews-container {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .etnews-toolbars {
+        flex-direction: row;
+    }
+
+    .etnews-toolbars button {
+        font-size: 10px;
+    }
+}
