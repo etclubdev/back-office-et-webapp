@@ -1,4 +1,4 @@
-.accounts-overview-page{
+.accounts-overview-page {
     max-width: 85vw;
     width: 100%;
     height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.accounts-container{
+.accounts-container {
     margin-top: 3vw;
     width: 85%;
     box-sizing: border-box;
@@ -17,19 +17,19 @@
     gap: 1vw;
 }
 
-.accounts-toolbars{
+.accounts-toolbars {
     width: 100%;
     display: flex;
     justify-content: space-between;
 
 }
 
-.accounts-toolbars .action-container{
+.accounts-toolbars .action-container {
     display: flex;
     gap: 1vw;
 }
 
-.accounts-division{
+.accounts-division {
     width: 100%;
     border: none;
     height: 0.05vw;
@@ -43,14 +43,12 @@
     aspect-ratio: 16/9;
 }
 
-.search-container{
+.search-container {
     display: flex;
 }
 
-.accounts-container {
-    .MuiPaper-root{
-        box-sizing: border-box;
-    }
+.accounts-container .MuiPaper-root {
+    box-sizing: border-box;
 }
 
 @media (max-width: 480px) {
@@ -75,7 +73,8 @@
         justify-content: space-between;
     }
 
-    .accounts-toolbars button, .search-container button {
+    .accounts-toolbars button,
+    .search-container button {
         font-size: 10px;
         height: 30px;
         min-width: 80px;
@@ -87,7 +86,7 @@
     }
 }
 
-@media (min-width: 480px) and (max-width: 768px)  {
+@media (min-width: 480px) and (max-width: 768px) {
     .accounts-overview-page {
         max-width: 100%;
     }

@@ -83,7 +83,7 @@ export const ETNewsFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="etnews-form-page">
             <Header>{action === "create" ? "Thêm ET News" : "Chỉnh sửa ET News"}</Header>
             <div className="form-container">
                 <div className="form">

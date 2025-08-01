@@ -47,6 +47,7 @@ export const FAQsCardList = () => {
         };
 
         fetchData();
+        updateProgressBar();
     }, []);
 
     return (
