@@ -46,20 +46,6 @@
     gap: 1vw;
 }
 
-.date-controller {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.date-controller .date-item {
-    width: 45%;
-}
-
-.rich-text-editor {
-    width: 100%;
-}
-
 .partners-form-page .form .form-bottom {
     max-width: 80vw;
     display: flex;

@@ -121,14 +121,14 @@
     background: #2886ca;
 }
 
-.tabs-container {
+.personal-profile-page .tabs-container {
     display: flex;
     box-sizing: content-box;
     border-bottom: 0.1vw solid #ccc;
     position: relative;
 }
 
-.tab-item {
+.personal-profile-page .tab-item {
     font-size: 1vw;
     color: gray;
     padding: 1vw 2vw;
@@ -137,12 +137,12 @@
     box-sizing: content-box;
 }
 
-.tab-item.active {
+.personal-profile-page .tab-item.active {
     color: #1976D2;
     font-weight: 700;
 }
 
-.tabs-container .progress-bar {
+.personal-profile-page .tabs-container .progress-bar {
     width: 13.5vw;
     height: 0.1vw;
     background-color: #1976D2;
