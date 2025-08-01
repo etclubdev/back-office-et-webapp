@@ -1,4 +1,4 @@
-.etnews-form-page{
+.etnews-form-page {
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.etnews-form-page .form-container{
+.etnews-form-page .form-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     overflow-y: auto;
 }
 
-.etnews-form-page .form{
+.etnews-form-page .form {
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -22,17 +22,17 @@
     flex-direction: column;
 }
 
-.etnews-form-page  .image-upload-box{
+.etnews-form-page .image-upload-box {
     padding: 3vw;
 }
 
-.etnews-form-page .form .form-top{
+.etnews-form-page .form .form-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.etnews-form-page .form .form-top .form-left{
+.etnews-form-page .form .form-top .form-left {
     width: 40%;
     height: auto;
     display: flex;
@@ -49,17 +49,17 @@
     gap: 1vw;
 }
 
-.date-controller{
+.etnews-form-page .date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.date-controller .date-item {
+.etnews-form-page .date-controller .date-item {
     width: 45%;
 }
 
-.rich-text-editor{
+.etnews-form-page .rich-text-editor {
     width: 100%;
 }
 
@@ -70,7 +70,7 @@
     gap: 2vw;
 }
 
-.form-button{
+.etnews-form-page .form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
@@ -78,18 +78,49 @@
 
 .etnews-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .etnews-form-page .form-container::-webkit-scrollbar-track {
+}
+
+.etnews-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .etnews-form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.etnews-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .etnews-form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.etnews-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .etnews-form-page .form {
+        width: 90%;
+    }
+
+    .etnews-form-page .form .image-upload-container {
+        width: 100%;
+    }
+
+    .etnews-form-page .form .form-top {
+        flex-direction: column;
+    }
+
+    .etnews-form-page .form .form-top .form-left,
+    .etnews-form-page .form .form-top .form-right {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .etnews-form-page .sun-editor {
+        width: 100% !important;
+        min-width: auto !important;
+    }
+
+    .etnews-form-page .date-controller {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
