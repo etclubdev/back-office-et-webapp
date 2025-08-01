@@ -92,7 +92,7 @@ export const ActivitiesFormPage = ({ action }) => {
     };
 
     return (
-        <div className="form-page">
+        <div className="activities-form-page">
             <Header>{action === "create" ? "Thêm Hoạt động mới" : "Chỉnh sửa Hoạt động"}</Header>
             <div className="form-container">
                 <div className="form">

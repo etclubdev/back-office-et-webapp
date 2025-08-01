@@ -1,4 +1,4 @@
-.etblog-form-page{
+.etblog-form-page {
     width: 100%;
     overflow-x: hidden;
     max-height: 100vh;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.etblog-form-page .form-container{
+.etblog-form-page .form-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     overflow-y: auto;
 }
 
-.etblog-form-page .form{
+.etblog-form-page .form {
     margin: 2%;
     width: 85%;
     align-self: center;
@@ -23,17 +23,17 @@
 }
 
 
-.etblog-form-page  .image-upload-box{
+.etblog-form-page .image-upload-box {
     padding: 3vw;
 }
 
-.etblog-form-page .form .form-top{
+.etblog-form-page .form .form-top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.etblog-form-page .form .form-top .form-left{
+.etblog-form-page .form .form-top .form-left {
     width: 40%;
     height: auto;
     display: flex;
@@ -50,17 +50,17 @@
     gap: 1vw;
 }
 
-.date-controller{
+.etblog-form-page .date-controller {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.date-controller .date-item {
+.etblog-form-page .date-controller .date-item {
     width: 45%;
 }
 
-.rich-text-editor{
+.etblog-form-page .rich-text-editor {
     width: 100%;
 }
 
@@ -71,7 +71,7 @@
     gap: 2vw;
 }
 
-.form-button{
+.etblog-form-page .form-button {
     align-self: flex-end;
     display: flex;
     gap: 2vw;
@@ -79,18 +79,49 @@
 
 .etblog-form-page .form-container::-webkit-scrollbar {
     width: 0.4vw;
- }
- 
- .etblog-form-page .form-container::-webkit-scrollbar-track {
+}
+
+.etblog-form-page .form-container::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 0.1vw;
- }
- 
- .etblog-form-page .form-container::-webkit-scrollbar-thumb {
+}
+
+.etblog-form-page .form-container::-webkit-scrollbar-thumb {
     background: #178DE2;
     border-radius: 0.1vw;
- }
- 
- .etblog-form-page .form-container::-webkit-scrollbar-thumb:hover {
+}
+
+.etblog-form-page .form-container::-webkit-scrollbar-thumb:hover {
     background: #2886ca;
- }
+}
+
+@media (max-width: 480px) {
+    .etblog-form-page .form {
+        width: 90%;
+    }
+
+    .etblog-form-page .form .image-upload-container {
+        width: 100%;
+    }
+
+    .etblog-form-page .form .form-top {
+        flex-direction: column;
+    }
+
+    .etblog-form-page .form .form-top .form-left,
+    .etblog-form-page .form .form-top .form-right {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .etblog-form-page .sun-editor {
+        width: 100% !important;
+        min-width: auto !important;
+    }
+
+    .etblog-form-page .date-controller {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
