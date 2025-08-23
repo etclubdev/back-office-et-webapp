@@ -52,7 +52,9 @@ export const Navbar = () => {
     }, [fetchUser])
     return (
         <div className={`navbar-section ${isExpanded ? 'expanded' : ''}`}>
-            <img className="navbar-logo" src={isMobile && !isExpanded ? noTextLogo : horizontalLogo} alt="ET Club" />
+            <div className='navbar-logo-container'>
+                <img className="navbar-logo" src={isMobile && !isExpanded ? noTextLogo : horizontalLogo} alt="ET Club" />
+            </div>
             {
                 isMobile && (
                     <div className="expand-container" onClick={handleResize}>

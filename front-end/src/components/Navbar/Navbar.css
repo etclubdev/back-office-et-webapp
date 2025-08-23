@@ -15,11 +15,6 @@
    text-decoration: none;
 }
 
-.navbar-logo {
-   width: 80%;
-   margin-top: 10px;
-}
-
 .navbar-items,
 .navbar-items-wrapper {
    width: 100%;
@@ -78,8 +73,20 @@
    pointer-events: none;
 }
 
+.navbar-logo-container {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-sizing: border-box;
+   height: 50px;
+}
+
+.navbar-logo {
+   width: 80%;
+}
+
 .navbar-item.user {
-   margin-top: 10px;
    border-top: 1px solid #D9D9D9;
    border-bottom: 1px solid #D9D9D9;
 }

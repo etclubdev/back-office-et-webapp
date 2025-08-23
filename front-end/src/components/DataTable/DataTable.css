@@ -3,6 +3,7 @@
 .data-paper-container div,
 .data-paper-container p {
    font-family: "BeVietnamPro";
+   font-size: 12px;
 }
 
 .data-table-container::-webkit-scrollbar {
