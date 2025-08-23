@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/useAuth";
+import { ConfirmedDialog } from "../ConfirmedDialog";
 
 export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isLogoutItem, setIsExpanded }) => {
     const { user, logout } = useAuth();
+    const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
+
+    const handleLogout = () => {
+        logout();
+        setIsConfirmingLogout(false);
+    }
 
     if (userInfo) {
         return user ? (
@@ -21,10 +28,21 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
 
     if (isLogoutItem) {
         return (
-            <NavLink onClick={logout} to="/" className="navbar-item" id="navbar-logout">
-                <FontAwesomeIcon className="navbar-item-icon" icon={faArrowRightFromBracket} />
-                <p className="navbar-item-label">Đăng xuất</p>
-            </NavLink>
+            <>
+                {isConfirmingLogout &&
+                    <ConfirmedDialog
+                        title="Xác nhận đăng xuất"
+                        alertType="warning"
+                        desc="Bạn có chắc chắn muốn đăng xuất?"
+                        onConfirm={handleLogout}
+                        onClose={() => setIsConfirmingLogout(false)}
+                    />
+                }
+                <div onClick={() => { setIsConfirmingLogout(true) }} className="navbar-item" id="navbar-logout">
+                    <FontAwesomeIcon className="navbar-item-icon" icon={faArrowRightFromBracket} />
+                    <p className="navbar-item-label">Đăng xuất</p>
+                </div>
+            </>
         );
     }
 
