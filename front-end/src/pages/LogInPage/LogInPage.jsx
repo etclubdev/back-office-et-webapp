@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LogInPage.css"
 import { loginUser } from "../../api/auth.service";
 import { useAuth } from "../../context/useAuth";
@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { logInSchema } from "../../schemas/logInSchema";
 import { TextFieldController } from "../../components/TextFieldController";
 import { PasswordController } from "../../components/PasswordController";
+import { CircularLoading } from "../../components/CircularLoading";
 
 import { noTextLogo } from '../../assets/images/logos';
 
@@ -20,14 +21,14 @@ export const LogInPage = () => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
+    watch,
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(logInSchema),
     defaultValues: {
       username: "",
       password: ""
-    },
-    mode: "onBlur"
+    }
   });
 
   const handleLogin = async (payload) => {
@@ -43,6 +44,17 @@ export const LogInPage = () => {
       setServerError("Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
     }
   };
+
+  const username = watch("username");
+  const password = watch("password");
+
+  useEffect(() => {
+    if (serverError && (username.length == 0 || password.length == 0)) {
+      console.log(serverError);
+      
+      setServerError("");
+    }
+  }, [username, password, serverError]);
 
   return (
     <div className="log-in-page">
@@ -73,9 +85,11 @@ export const LogInPage = () => {
             />
           </div>
           {serverError && <p className="log-in-error">{serverError}</p>}
-          <button className="submit-button" type="submit">Đăng nhập</button>
+          <button className="submit-button" type="submit" disabled={isSubmitting}>Đăng nhập</button>
+
         </form>
       </div>
+          {isSubmitting && <CircularLoading />}
     </div>
   );
 };
