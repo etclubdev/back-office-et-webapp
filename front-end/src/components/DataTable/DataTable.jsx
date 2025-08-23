@@ -114,7 +114,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
       </TableContainer>
 
       <TablePagination
-        rowsPerPageOptions={[5, 10, 15]}
+        rowsPerPageOptions={[5, 10, 20]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
