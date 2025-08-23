@@ -36,16 +36,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vw 2vw;
+    padding: 10px 20px;
     border-radius: 0.5vw;
     background-color: #fff;
-    box-shadow: 0 0.2vw 0.8vw #0000005e;
+    box-shadow: 0 1px 5px #0000005e;
     color: #000;
     position: relative;
     z-index: 1;
     box-sizing: border-box;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    font-size: 14px;
 }
 
 .partner-card .card-icon{
@@ -99,6 +100,25 @@
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+/* Scrollbar */
+.partner-card .table-container::-webkit-scrollbar {
+   width: 0.25vw;
+}
+
+.partner-card .table-container::-webkit-scrollbar-track {
+   background: #fff;
+   border-radius: 0.1vw;
+}
+
+.partner-card .table-container::-webkit-scrollbar-thumb {
+   background: #178DE2;
+   border-radius: 0.1vw;
+}
+
+.partner-card .table-container::-webkit-scrollbar-thumb:hover {
+   background: #2886ca;
 }
 
 @media (max-width: 480px) {

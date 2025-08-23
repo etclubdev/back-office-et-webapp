@@ -4,7 +4,7 @@
   font-family: 'BeVietnamPro';
   align-items: center;
   height: 50px;
-  padding: 0 1.5em;
+  padding: 0.5em 1.5em;
   box-shadow: 0 0 4px #292d327c;
   z-index: 8;
   box-sizing: border-box;
@@ -51,6 +51,7 @@
 @media (max-width: 480px) {
   .header {
     height: 50px;
+    padding: 1.5em;
   }
 
   .header-breadcrumbs li,
@@ -67,6 +68,7 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .header {
     height: 50px;
+    padding: 1.5em;
   }
 
   .header-breadcrumbs li,
@@ -84,5 +86,6 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {
     height: 50px;
+    padding: 1.5em;
   }
 }

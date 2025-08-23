@@ -91,7 +91,7 @@ export const PartnerCard = ({ category, data, setData }) => {
                     <TransferList
                         cardId="invisible-list"
                         data={invisible}
-                        title="Danh sách ẩn"
+                        title="Danh sách hiện có"
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         setSelectedItems={setSelectedItems}
@@ -101,7 +101,7 @@ export const PartnerCard = ({ category, data, setData }) => {
                             onClick={() => handleTransfer("visible")}
                             size="small"
                             variant="contained"
-                            disabled={selectedCard && selectedCard === "visible-list"}
+                            disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "visible-list")}
                         >
                             {">"}
                         </Button>
@@ -109,14 +109,14 @@ export const PartnerCard = ({ category, data, setData }) => {
                             onClick={() => handleTransfer("invisible")}
                             size="small"
                             variant="outlined"
-                            disabled={selectedCard && selectedCard === "invisible-list"}
+                            disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "invisible-list")}
                         >
                             {"<"}
                         </Button>
                     </div>
                     <TransferList
                         cardId="visible-list"
-                        title="Danh sách hiện có"
+                        title="Danh sách hiển thị"
                         data={visible}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
@@ -178,7 +178,7 @@ const TransferList = ({ cardId, title, data, selectedCard, setSelectedCard, setS
                 size="small"
                 onChange={handleSearch}
             />
-            <TableContainer sx={{ maxHeight: "300px", overflowY: "auto" }}>
+            <TableContainer className="table-container" sx={{ maxHeight: "300px", overflowY: "auto" }}>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
@@ -192,7 +192,7 @@ const TransferList = ({ cardId, title, data, selectedCard, setSelectedCard, setS
                                 />
                             </TableCell>
                             <TableCell>
-                                <strong>{title}</strong>
+                                <strong style={{fontFamily: 'BeVietnamPro'}}>{title}</strong>
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -209,12 +209,12 @@ const TransferList = ({ cardId, title, data, selectedCard, setSelectedCard, setS
                                     <Checkbox
                                         disabled={selectedCard && selectedCard !== cardId}
                                         checked={selected.includes(row.partner_id)}
-                                        onClick={() => handleSelected(row.partner_id)}
+                                        onClick={(e) => { e.stopPropagation(); handleSelected(row.partner_id); }}
                                         color="primary"
                                         inputProps={{ "aria-label": `select ${row.partner_name}` }}
                                     />
                                 </TableCell>
-                                <TableCell>{row.partner_name}</TableCell>
+                                <TableCell style={{fontFamily: 'BeVietnamPro'}}>{row.partner_name}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
