@@ -25,18 +25,18 @@ export const AccountsOverviewPage = () => {
     const navigate = useNavigate();
     const [accounts, setAccounts] = useState([]);
     const [filteredAccounts, setFilteredAccounts] = useState([]);
-    const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
+    const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState({ delete: false, resetPassword: false });
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
     const fetchData = useCallback(async () => {
-        const accountRes = await getAllAccounts();    
+        const accountRes = await getAllAccounts();
         const roleRes = await getAllSysRoles();
 
         const fullData = accountRes.data.map(account => {
             const roles = roleRes.data;
             const role = roles.filter(r => r.sysrole_id === account.sysrole_id)[0];
-            return {...account, ...role}
+            return { ...account, ...role }
         })
         setAccounts(fullData);
         setFilteredAccounts(fullData);
@@ -47,7 +47,11 @@ export const AccountsOverviewPage = () => {
     }, [fetchData]);
 
     const onClose = () => {
-        setIsOpenConfirmedDialog(false);
+        setIsOpenConfirmedDialog(prev => ({ ...prev, delete: false, resetPassword: false }));
+    }
+
+    const onClickConfirmedDialog = (action) => {
+        setIsOpenConfirmedDialog(prev => ({ ...prev, [action]: true }));
     }
 
     const handleClick = (action) => {
@@ -58,18 +62,24 @@ export const AccountsOverviewPage = () => {
         }
     }
 
-    const handleConfirmDialog = async () => {
+    const handleConfirmDialog = async (action) => {
         if (selected.length > 0) {
             try {
-                if (selected.length === 1) {
-                    await deleteAccountById(selected[0]);
-                } else {
-                    await deleteAccounts(selected);
-                }
+                if (action === "delete") {
+                    if (selected.length === 1) {
+                        await deleteAccountById(selected[0]);
+                    } else {
+                        await deleteAccounts(selected);
+                    }
 
-                setAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
-                setFilteredAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
-                setSelected([]);
+                    setAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
+                    setFilteredAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
+                    setSelected([]);
+                } else if (action === "resetPassword") {
+                    console.log(1);
+                    
+                    await resetPassword(selected[0]);
+                }
             } catch (error) {
                 console.error("Errors: ", error);
             }
@@ -93,23 +103,22 @@ export const AccountsOverviewPage = () => {
         setFilteredAccounts(filtered);
     };
 
-    const handleResetPassword = async () => {
-        try {
-            console.log(1);
-            await resetPassword(selected[0]);
-            
-        } catch (error) {
-            console.error("Errors: ", error);
-        }
-    }
-
     return (
         <div className="accounts-overview-page">
-            {isOpenConfirmedDialog && (
+            {isOpenConfirmedDialog.delete && (
                 <ConfirmedDialog
                     onClose={onClose}
-                    onConfirm={handleConfirmDialog}
+                    onConfirm={() => handleConfirmDialog("delete")}
                     {...getConfirmDialogConfig("delete")}
+                />
+            )}
+            {isOpenConfirmedDialog.resetPassword && (
+                <ConfirmedDialog
+                    onClose={onClose}
+                    onConfirm={() => handleConfirmDialog("resetPassword")}
+                    title={"Xác nhận khởi tạo lại mật khẩu"}
+                    desc={`Bạn có chắc chắn muốn khởi tạo lại mật khẩu tài khoản đã chọn?`}
+                    alertType={"warning"}
                 />
             )}
             <Header />
@@ -119,10 +128,10 @@ export const AccountsOverviewPage = () => {
                         <div className="action-container-item">
                             <AddButton onClick={() => handleClick("create")} />
                             <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
-                            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
+                            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && onClickConfirmedDialog("delete")} />
                         </div>
                         <div className="action-container-item">
-                            <ResetPasswordButton disabled={selected.length != 1} onClick={handleResetPassword} />
+                            <ResetPasswordButton disabled={selected.length != 1} onClick={() => selected.length > 0 && onClickConfirmedDialog("resetPassword")} />
                         </div>
                     </div>
                     <div className="search-container">
