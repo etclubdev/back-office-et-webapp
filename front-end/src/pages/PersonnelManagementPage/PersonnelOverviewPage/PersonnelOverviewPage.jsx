@@ -59,9 +59,9 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
 
     const handleClick = (action) => {
         if (action === "edit") {
-            navigate(`/${department_name}/edit/${selected[0]}`);
+            navigate(`/colleague/${department_name}/edit/${selected[0]}`);
         } else if (action === "create") {
-            navigate(`/${department_name}/create`);
+            navigate(`/colleague/${department_name}/create`);
         }
     }
 

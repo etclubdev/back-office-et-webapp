@@ -20,12 +20,17 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-
 }
 
 .accounts-toolbars .action-container {
     display: flex;
-    gap: 1vw;
+    width: 75%;
+    justify-content: space-between;    
+}
+
+.accounts-container .action-container .action-container-item {
+    display: flex;
+    gap: 10px;
 }
 
 .accounts-division {
@@ -44,6 +49,7 @@
 
 .search-container {
     display: flex;
+    max-width: 300px;
 }
 
 .accounts-container .MuiPaper-root {

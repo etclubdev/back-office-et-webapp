@@ -21,7 +21,7 @@ export const Header = ({children}) => {
                         let isLast = index === pathnames.length - 1;
                         const displayName = breadcrumbNameMap[value] || value;
 
-                        if (displayName === "edit") return;
+                        if (displayName === "edit" || displayName === "colleague") return;
 
                         return isLast ? (
                             <Typography key={to} color="textPrimary">

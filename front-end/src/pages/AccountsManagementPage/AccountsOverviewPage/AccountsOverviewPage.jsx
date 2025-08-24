@@ -4,13 +4,14 @@ import { Header } from "../../../components/Header";
 import AddButton from "../../../components/Buttons/AddButton";
 import EditButton from "../../../components/Buttons/EditButton";
 import DeleteButton from "../../../components/Buttons/DeleteButton";
+import ResetPasswordButton from '../../../components/Buttons/ResetPasswordButton';
 import { SearchBar } from "../../../components/SearchBar";
 import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil"
 import "./AccountsOverviewPage.css";
 
-import { getAllAccounts, deleteAccountById, deleteAccounts } from '../../../api/account.service';
+import { getAllAccounts, deleteAccountById, deleteAccounts, resetPassword } from '../../../api/account.service';
 import { getAllSysRoles } from '../../../api/sysrole.service';
 
 const columns = [
@@ -92,6 +93,16 @@ export const AccountsOverviewPage = () => {
         setFilteredAccounts(filtered);
     };
 
+    const handleResetPassword = async () => {
+        try {
+            console.log(1);
+            await resetPassword(selected[0]);
+            
+        } catch (error) {
+            console.error("Errors: ", error);
+        }
+    }
+
     return (
         <div className="accounts-overview-page">
             {isOpenConfirmedDialog && (
@@ -105,9 +116,14 @@ export const AccountsOverviewPage = () => {
             <div className="accounts-container">
                 <div className="accounts-toolbars">
                     <div className="action-container">
-                        <AddButton onClick={() => handleClick("create")} />
-                        <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
-                        <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
+                        <div className="action-container-item">
+                            <AddButton onClick={() => handleClick("create")} />
+                            <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
+                            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
+                        </div>
+                        <div className="action-container-item">
+                            <ResetPasswordButton disabled={selected.length != 1} onClick={handleResetPassword} />
+                        </div>
                     </div>
                     <div className="search-container">
                         <SearchBar onSearch={handleSearch} />
