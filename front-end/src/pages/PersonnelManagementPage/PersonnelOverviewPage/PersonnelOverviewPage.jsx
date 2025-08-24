@@ -116,8 +116,8 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
                 <div className="personnel-toolbars">
                     <div className="action-container">
                         <AddButton onClick={() => handleClick("create")} />
-                        <EditButton onClick={() => selected.length === 1 && handleClick("edit")} />
-                        <DeleteButton onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
+                        <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
+                        <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
                         <SearchBar onSearch={handleSearch} />

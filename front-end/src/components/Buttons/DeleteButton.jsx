@@ -1,7 +1,7 @@
 import BaseButton from "./BaseButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const DeleteButton = ({ onClick }) => {
+const DeleteButton = ({ onClick, disabled }) => {
     return (
         <BaseButton
             onClick={onClick}
@@ -12,6 +12,7 @@ const DeleteButton = ({ onClick }) => {
                 "&:hover": { backgroundColor: "#BDBDBD" }, 
                 boxShadow: "none",
               }}
+            disabled={disabled}
         >
             Xóa
         </BaseButton>

@@ -129,8 +129,8 @@ export const AchievementsSelectionPage = () => {
         <div className="achievements-toolbars">
           <div className="action-container">
             <AddButton onClick={() => openInputDialog("add")} />
-            <EditButton onClick={() => selected.length === 1 && openInputDialog("edit")} />
-            <DeleteButton onClick={() => selected.length > 0 && openConfirmDialog("delete")} />
+            <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && openInputDialog("edit")} />
+            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && openConfirmDialog("delete")} />
           </div>
           <div className="search-container">
             <SearchBar onSearch={handleSearch} />

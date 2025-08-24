@@ -103,8 +103,8 @@ export const ETNewsOverviewPage = () => {
         <div className="etnews-toolbars">
           <div className="action-container">
             <AddButton onClick={() => handleClick("create")} />
-            <EditButton onClick={() => handleClick("edit")} disabled={selected.length !== 1} />
-            <DeleteButton onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
+            <EditButton disabled={selected.length != 1} onClick={() => handleClick("edit")} disabled={selected.length !== 1} />
+            <DeleteButton disabled={selected.length < 1}  onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
           </div>
           <div className="search-container">
             <SearchBar onSearch={handleSearch} value={searchTerm} />
