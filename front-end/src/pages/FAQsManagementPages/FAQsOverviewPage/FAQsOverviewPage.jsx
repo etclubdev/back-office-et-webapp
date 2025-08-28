@@ -14,7 +14,10 @@ import { getAllFAQs } from '../../../api/faq.service';
 import { deleteFAQs, deleteFAQsById } from '../../../api/faq.service';
 
 import { convertToArray } from '../../../utils/convertToArray';
-import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil"
+import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
+
+import { Filter } from '../../../components/Filter';
+import { filterChipData } from '../../../constants';
 
 const columns = [
     { field: 'question', headerName: 'Câu hỏi' },
@@ -30,13 +33,23 @@ export const FAQsOverviewPage = () => {
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedChips, setSelectedChips] = useState([]);
+
 
     const fetchData = useCallback(async () => {
-        const { data }  = await getAllFAQs();
-        const array = convertToArray(data);
-        setFAQs(array);
-        setFilteredFAQs(array);
-    }, [])
+        try {
+            const faqCategory = selectedChips.length === 0 ? null : selectedChips;
+            const { data } = await getAllFAQs(faqCategory);
+            let dataArray;
+            dataArray = !Array.isArray(data) ? convertToArray(data) : data;
+            setFAQs(dataArray);
+            setFilteredFAQs(dataArray);
+        } catch (error) {
+            setFAQs([]);
+            setFilteredFAQs([]);
+            return;
+        }
+    }, [selectedChips])
 
     useEffect(() => {
         fetchData();
@@ -62,7 +75,7 @@ export const FAQsOverviewPage = () => {
                 } else {
                     await deleteFAQs(selected);
                 }
-                
+
                 setFAQs(prev => prev.filter(item => !selected.includes(item.faq_id)));
                 setFilteredFAQs(prev => prev.filter(item => !selected.includes(item.faq_id)));
                 setSelected([]);
@@ -105,9 +118,10 @@ export const FAQsOverviewPage = () => {
                     <div className="action-container">
                         <AddButton onClick={() => handleClick("create")} />
                         <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
-                        <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)}/>
+                        <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
+                        <Filter chipdata={filterChipData.faqs} setSelectedChips={setSelectedChips} />
                         <SearchBar onSearch={handleSearch} />
                     </div>
                 </div>

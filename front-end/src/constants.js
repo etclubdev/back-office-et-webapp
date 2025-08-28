@@ -76,6 +76,7 @@ const breadcrumbNameMap = {
 const filterChipData = {
     partners: ['Đối tác doanh nghiệp', 'Đối tác chuyên gia', 'Đối tác Truyền thông', 'Nghệ sĩ khách mời'],
     personnelStatus: ['Đang hoạt động', 'Cựu thành viên'],
+    faqs: ['Về ET Club', 'Về hoạt động và sự kiện', 'Về quy trình tham gia', 'Khác'],
 };
 
 const UPLOAD_PRESET = "first_upload";
