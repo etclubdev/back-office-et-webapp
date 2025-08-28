@@ -9,6 +9,8 @@ import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import { getDepartmentNameUtil } from '../../../utils/getDepartmentNameUtil';
+import { Filter } from '../../../components/Filter';
+import { filterChipData } from '../../../constants';
 import "./PersonnelOverviewPage.css";
 
 import { getAllPersonnels, deletePersonnelById, deletePersonnels } from '../../../api/personnel.service';
@@ -23,17 +25,19 @@ const columns = [
     { field: 'department_name', headerName: 'Ban hoạt động' },
 ]
 
-export const PersonnelOverviewPage = ({ personnel_status, department_name }) => {
+export const PersonnelOverviewPage = ({ department_name }) => {
     const navigate = useNavigate();
     const [personnel, setPersonnel] = useState([]);
     const [filteredPersonnel, setFilteredPersonnel] = useState([]);
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedChips, setSelectedChips] = useState([]);
 
     const fetchData = useCallback(async () => {
         try {
-            const { data } = await getAllPersonnels(personnel_status, getDepartmentNameUtil(department_name));
+            const personnelStatus = selectedChips.length === 0 ? null : selectedChips;
+            const { data } = await getAllPersonnels(personnelStatus, getDepartmentNameUtil(department_name));
             setPersonnel(data);
             setFilteredPersonnel(data);
         } catch (error) {
@@ -41,7 +45,7 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
             setFilteredPersonnel([]);
             return;
         }
-    }, [personnel_status, department_name])
+    }, [department_name, selectedChips])
 
     useEffect(() => {
         fetchData();
@@ -114,6 +118,7 @@ export const PersonnelOverviewPage = ({ personnel_status, department_name }) => 
                         <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
+                        <Filter chipdata={filterChipData.personnelStatus} setSelectedChips={setSelectedChips}/>
                         <SearchBar onSearch={handleSearch} />
                     </div>
                 </div>

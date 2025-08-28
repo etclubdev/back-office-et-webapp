@@ -11,7 +11,6 @@ const getAllPersonnels = async (personnel_status, department_name) => {
     });
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
     console.error(error);
   }
 };

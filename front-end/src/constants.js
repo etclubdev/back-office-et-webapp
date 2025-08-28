@@ -75,6 +75,7 @@ const breadcrumbNameMap = {
 
 const filterChipData = {
     partners: ['Đối tác doanh nghiệp', 'Đối tác chuyên gia', 'Đối tác Truyền thông', 'Nghệ sĩ khách mời'],
+    personnelStatus: ['Đang hoạt động', 'Cựu thành viên'],
 };
 
 const UPLOAD_PRESET = "first_upload";
