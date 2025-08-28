@@ -1,12 +1,17 @@
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 import { api } from "./index";
 
-const getAllPartners = async () => {
+const getAllPartners = async (category) => {
   try {
-    const response = await api.get("/partners");
+    console.log(category);
+    
+    const response = await api.get("/partners", {
+      params: {
+        category
+      },
+    });
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }

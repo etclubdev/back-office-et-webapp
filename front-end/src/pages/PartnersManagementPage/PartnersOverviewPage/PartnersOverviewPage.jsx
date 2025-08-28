@@ -9,6 +9,8 @@ import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import { convertToArray } from "../../../utils/convertToArrayUtil";
+import { Filter } from '../../../components/Filter';
+import { filterChipData } from '../../../constants';
 import "./PartnersOverviewPage.css";
 
 import {
@@ -33,17 +35,21 @@ export const PartnersOverviewPage = () => {
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedChips, setSelectedChips] = useState([]);
 
     const fetchData = useCallback(async () => {
         try {
-            const { data } = await getAllPartners();
-            const dataArray = convertToArray(data);
+            const { data } = await getAllPartners(selectedChips);
+            let dataArray;
+            dataArray = !Array.isArray(data) ? convertToArray(data) : data;
             setPartners(dataArray);
             setFilteredPartners(dataArray);
         } catch (error) {
+            setPartners([]);
+            setFilteredPartners([]);
             console.error("Fetch partners failed:", error);
         }
-    }, []);
+    }, [selectedChips]);
 
     useEffect(() => {
         fetchData();
@@ -109,6 +115,7 @@ export const PartnersOverviewPage = () => {
                         <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
+                        <Filter chipdata={filterChipData.partners} setSelectedChips={setSelectedChips}/>
                         <SearchBar onSearch={handleSearch} />
                     </div>
                 </div>
