@@ -72,7 +72,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
     }, [id]);
 
     const handleClose = () => {
-        navigate(`/${department_name}`);
+        navigate(`/colleague/${department_name}`);
     }
 
     const onSubmit = async (payload) => {

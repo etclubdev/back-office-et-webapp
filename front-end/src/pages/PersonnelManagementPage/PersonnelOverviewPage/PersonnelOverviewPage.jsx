@@ -10,20 +10,14 @@ import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import { getDepartmentNameUtil } from '../../../utils/getDepartmentNameUtil';
 import "./PersonnelOverviewPage.css";
-import axios from 'axios';
 
 import { getAllPersonnels, deletePersonnelById, deletePersonnels } from '../../../api/personnel.service';
 
 const columns = [
     { field: 'personnel_name', headerName: 'Họ và tên' },
     { field: 'dob', headerName: 'Ngày sinh' },
-    { field: 'address', headerName: 'Địa chỉ' },
+    { field: 'email', headerName: 'Email' },
     { field: 'gender', headerName: 'Giới tính' },
-    { field: 'student_id', headerName: 'MSSV' },
-    { field: 'faculty', headerName: 'Khoa' },
-    { field: 'university', headerName: 'Trường' },
-    { field: 'major', headerName: 'Chuyên ngành' },
-    { field: 'class', headerName: 'Lớp' },
     { field: 'cohort_name', headerName: 'Khóa đào tạo' },
     { field: 'position_name', headerName: 'Chức vụ' },
     { field: 'department_name', headerName: 'Ban hoạt động' },
