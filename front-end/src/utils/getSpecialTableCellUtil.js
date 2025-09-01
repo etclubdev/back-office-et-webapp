@@ -1,3 +1,5 @@
+import { trimText } from "./trimText"
+
 export const getSpecialTableCell = (row, col) => {
     switch (col.field) {
         case "image_url":
@@ -14,6 +16,6 @@ export const getSpecialTableCell = (row, col) => {
             return new Date(row[col.field]).toLocaleDateString('en-GB')
 
         default:
-            return row[col.field]
+            return trimText(row[col.field], 60);
     }
 }
