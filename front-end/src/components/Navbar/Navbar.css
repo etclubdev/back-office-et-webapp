@@ -181,7 +181,7 @@
    background: #2886ca;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
    .navbar-section{
       width: 45px;
       max-width: 45px;

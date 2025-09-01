@@ -13,3 +13,15 @@
     }
     
 }
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .partner-card-list{
+        width: 90%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .partner-card-list{
+        width: 90%;
+    }
+}

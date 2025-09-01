@@ -18,19 +18,6 @@ export const FAQsCardList = () => {
         setFilteredFAQs(faqs[key] || []);
     }
 
-    const updateProgressBar = () => {
-        const activeTabElement = tabsRef.current[activeTab];
-        if (activeTabElement && progressBarRef.current) {
-            progressBarRef.current.style.transform = `translateX(${activeTabElement.offsetLeft}px)`;
-            progressBarRef.current.style.width = `${activeTabElement.offsetWidth}px`;
-        }
-    };
-
-    useEffect(() => {
-        updateProgressBar();
-
-    }, [activeTab]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -47,8 +34,15 @@ export const FAQsCardList = () => {
         };
 
         fetchData();
-        updateProgressBar();
     }, []);
+
+    useEffect(() => {
+        const activeTabElement = tabsRef.current[activeTab];
+        if (activeTabElement && progressBarRef.current) {
+            progressBarRef.current.style.transform = `translateX(${activeTabElement.offsetLeft}px)`;
+            progressBarRef.current.style.width = `${activeTabElement.offsetWidth}px`;
+        }
+    }, [activeTab, faqs]);
 
     return (
         <div className="faq-card-list">
