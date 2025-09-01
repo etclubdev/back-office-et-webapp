@@ -13,6 +13,9 @@ import "./ActivitiesOverviewPage.css";
 
 import { getAllActivities, deleteActivities, deleteActivity } from "../../../api/activity.service";
 
+import { Filter } from '../../../components/Filter';
+import { filterChipData } from '../../../constants';
+
 const columns = [
     { field: 'title', headerName: 'Tên hoạt động' },
     { field: 'meta_description', headerName: 'Mô tả' },
@@ -29,10 +32,11 @@ export const ActivitiesOverviewPage = () => {
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedChips, setSelectedChips] = useState([]);
 
     const fetchData = useCallback(async () => {
         try {
-            const { data } = await getAllActivities();
+            const { data } = await getAllActivities(selectedChips);
             let dataArray = convertToArray(data?.completed || []);
 
             if (data?.ongoing?.length > 0) {
@@ -41,9 +45,10 @@ export const ActivitiesOverviewPage = () => {
             setActivities(dataArray);
             setFilteredActivities(dataArray);
         } catch (error) {
-            console.error("Fetch failed:", error);
+            setActivities([]);
+            setFilteredActivities([]);
         }
-    }, []);
+    }, [selectedChips]);
 
     useEffect(() => {
         fetchData();
@@ -81,16 +86,16 @@ export const ActivitiesOverviewPage = () => {
 
 
     const handleSearch = useCallback((query) => {
-            setSearchTerm(query);
-            if (query.trim() === "") {
-                setFilteredActivities(activities);
-            } else {
-                const filtered = activities.filter(item =>
-                    item.title.toLowerCase().includes(query.toLowerCase())
-                );
-                setFilteredActivities(filtered);
-            }
-        }, [activities]);
+        setSearchTerm(query);
+        if (query.trim() === "") {
+            setFilteredActivities(activities);
+        } else {
+            const filtered = activities.filter(item =>
+                item.title.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredActivities(filtered);
+        }
+    }, [activities]);
 
     return (
         <div className="activities-overview-page">
@@ -110,6 +115,7 @@ export const ActivitiesOverviewPage = () => {
                         <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
+                        <Filter chipdata={filterChipData.activities} setSelectedChips={setSelectedChips} />
                         <SearchBar onSearch={handleSearch} />
                     </div>
                 </div>

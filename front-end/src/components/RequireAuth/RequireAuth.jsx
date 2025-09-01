@@ -16,7 +16,6 @@ export const RequireAuth = ({ allowedRoles }) => {
             if (!user) {
                 try {
                     const newToken = await refreshAccessToken();
-                    console.log("New tokens:", newToken);
                 } catch (err) {
                     console.error("Refresh token failed:", err);
                 }

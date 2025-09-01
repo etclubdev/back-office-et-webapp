@@ -14,6 +14,9 @@ import { convertToArray } from "../../../utils/convertToArrayUtil";
 
 import { getAllETNews, deleteETNewsById, deleteETNews } from "../../../api/etNews.service";
 
+import { Filter } from '../../../components/Filter';
+import { filterChipData } from '../../../constants';
+
 import "./ETNewsOverviewPage.css";
 
 const columns = [
@@ -32,17 +35,19 @@ export const ETNewsOverviewPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState([]);
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
+  const [selectedChips, setSelectedChips] = useState([]);
 
   const fetchData = useCallback(async () => {
     try {
-      const { data } = await getAllETNews();
+      const { data } = await getAllETNews(selectedChips);
       const dataArray = convertToArray(data.groupedNews);
       setETNews(dataArray);
       setFilteredETNews(dataArray);
     } catch (error) {
-      console.error("Lỗi khi lấy ETNews:", error);
+      setETNews([]);
+      setFilteredETNews([]);
     }
-  }, []);
+  }, [selectedChips]);
 
   useEffect(() => {
     fetchData();
@@ -104,9 +109,10 @@ export const ETNewsOverviewPage = () => {
           <div className="action-container">
             <AddButton onClick={() => handleClick("create")} />
             <EditButton disabled={selected.length != 1} onClick={() => handleClick("edit")} disabled={selected.length !== 1} />
-            <DeleteButton disabled={selected.length < 1}  onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
+            <DeleteButton disabled={selected.length < 1} onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
           </div>
           <div className="search-container">
+            <Filter chipdata={filterChipData.etNews} setSelectedChips={setSelectedChips} />
             <SearchBar onSearch={handleSearch} value={searchTerm} />
           </div>
         </div>

@@ -1,12 +1,15 @@
 import { api } from "./index";
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 
-const getAllActivities = async () => {
+const getAllActivities = async (activity_category) => {
     try {
-        const response = await api.get('/activities');
+        const response = await api.get('/activities', {
+            params: {
+                activity_category
+            }
+        });
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
         console.error(error);
         throw error;
     }

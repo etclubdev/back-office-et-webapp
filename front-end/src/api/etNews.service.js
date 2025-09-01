@@ -1,12 +1,15 @@
 import { api } from "./index";
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 
-const getAllETNews = async () => {
+const getAllETNews = async (etnews_category) => {
     try {
-        const response = await api.get('/et-news');
+        const response = await api.get('/et-news', {
+            params: {
+                etnews_category
+            }
+        });
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
         console.error(error);
         throw error;
     }
