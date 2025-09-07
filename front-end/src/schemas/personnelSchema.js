@@ -27,7 +27,7 @@ const personnelSchema = yup.object().shape({
         .required("Vui lòng chọn giới tính.")
         .oneOf(["Nam", "Nữ", "Khác"], "Giới tính không hợp lệ."),
 
-    address: yup.string().nullable(),
+    address: yup.string().nullable().default(""),
 
     student_id: yup
         .string()
