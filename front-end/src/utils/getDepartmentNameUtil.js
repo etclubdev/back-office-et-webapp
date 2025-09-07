@@ -1,5 +1,5 @@
 const departments = {
-    "tech": "Ban Kỹ thuật - Công nghệ",
+    "tech": "Ban Chuyên môn",
     "event": "Ban Sự kiện",
     "hr": "Ban Nhân sự - Tổ chức",
     "fer": "Ban Tài chính - Đối ngoại",

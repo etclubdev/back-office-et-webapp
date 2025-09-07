@@ -8,6 +8,7 @@ export const partnerSchema = yup.object().shape({
     
     partner_category_name: yup
         .string()
+        .required("Danh mục đối tác là bắt buộc.")
         .oneOf(
             [
                 "Đối tác doanh nghiệp",
@@ -15,9 +16,8 @@ export const partnerSchema = yup.object().shape({
                 "Đối tác Truyền thông",
                 "Nghệ sĩ khách mời"
             ],
-            "Danh mục đối tác không hợp lệ."
-        )
-        .required("Danh mục đối tác là bắt buộc."),
+            "Danh mục đối tác là bắt buộc."
+        ),
 
     short_description: yup
         .string()

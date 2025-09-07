@@ -33,12 +33,7 @@ export const AchievementsSelectionPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    setFilteredAchievements(achievements)
   }, [achievements]);
-
 
   const handleSearch = (query) => {
     setSearchTerm(query);
@@ -78,7 +73,6 @@ export const AchievementsSelectionPage = () => {
           await deleteAchievements(selected);
         }
         setSelected([]);
-        fetchData();
       } catch (error) {
         console.error("Lỗi khi xóa thành tựu:", error);
       }

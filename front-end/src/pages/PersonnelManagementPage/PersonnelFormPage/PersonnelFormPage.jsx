@@ -141,6 +141,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     control={control}
                                     label="SĐT"
                                     errors={errors}
+                                    required={false}
                                 />
 
 
@@ -175,6 +176,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     control={control}
                                     label="Địa chỉ"
                                     errors={errors}
+                                    required={false}
                                 />
 
                                 <TextFieldController
@@ -248,7 +250,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     control={control}
                                     label="Ban hoạt động"
                                     menuItems={[
-                                        "Ban Kỹ thuật - Công nghệ",
+                                        "Ban Chuyên môn",
                                         "Ban Truyền thông",
                                         "Ban Nhân sự - Tổ chức",
                                         "Ban Sự kiện",
@@ -272,6 +274,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                         "CV tự thiết kế"
                                     ]}
                                     errors={errors}
+                                    required={false}
                                 />
 
                                 <TextFieldController
@@ -279,6 +282,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     control={control}
                                     label="Link CV"
                                     errors={errors}
+                                    required={false}
                                 />
 
                                 <SelectController
@@ -287,9 +291,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     label="Trạng thái"
                                     menuItems={[
                                         "Đang hoạt động",
-                                        "Cựu thành viên",
-                                        "Ứng viên",
-                                        "Ứng viên bị loại"
+                                        "Cựu thành viên"
                                     ]}
                                     errors={errors}
                                 />
