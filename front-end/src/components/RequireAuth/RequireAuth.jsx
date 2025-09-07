@@ -5,21 +5,21 @@ import { useAuth } from "../../context/useAuth";
 import { refreshAccessToken } from "../../api/auth.service";
 
 export const RequireAuth = ({ allowedRoles }) => {
-    const { user } = useAuth();
+    const { user, login } = useAuth();
     const location = useLocation();
     const [loading, setLoading] = useState(true); // State to track loading process
 
     useEffect(() => {
         const verifyAuth = async () => {
             const token = getAccessToken();
-            
             if (!user) {
                 try {
                     const newToken = await refreshAccessToken();
+                    login(newToken);
                 } catch (err) {
                     console.error("Refresh token failed:", err);
                 }
-            } 
+            }
             setLoading(false);
         };
         verifyAuth();

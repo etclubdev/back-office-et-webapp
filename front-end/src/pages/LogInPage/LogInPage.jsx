@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./LogInPage.css"
 import { loginUser } from "../../api/auth.service";
 import { useAuth } from "../../context/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate,useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { logInSchema } from "../../schemas/logInSchema";
@@ -13,7 +13,7 @@ import { CircularLoading } from "../../components/CircularLoading";
 import { noTextLogo } from '../../assets/images/logos';
 
 export const LogInPage = () => {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
 
@@ -36,7 +36,7 @@ export const LogInPage = () => {
 
     try {
       const token = await loginUser({ username, password });
-      
+
       login(token);
       navigate('/');
     } catch (error) {
@@ -50,11 +50,16 @@ export const LogInPage = () => {
 
   useEffect(() => {
     if (serverError && (username.length == 0 || password.length == 0)) {
-      console.log(serverError);
-      
       setServerError("");
     }
   }, [username, password, serverError]);
+
+  const location = useLocation();
+
+  if (user) {
+    const from = location.state?.from?.pathname || "/";
+    return <Navigate to={from} replace />;
+  }
 
   return (
     <div className="log-in-page">
@@ -89,7 +94,7 @@ export const LogInPage = () => {
 
         </form>
       </div>
-          {isSubmitting && <CircularLoading />}
+      {isSubmitting && <CircularLoading />}
     </div>
   );
 };
