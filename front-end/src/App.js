@@ -39,8 +39,7 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-                    <ToastNotifier />
-        
+        <ToastNotifier />
         <Router>
           <div className="root-container">
             <Routes>
@@ -53,32 +52,35 @@ function App() {
               <Route element={<MainLayout />}>
                 {/* All roles */}
                 <Route element={<RequireAuth />}>
+                  {/* Unauthorized */}
+                  <Route path="/unauthorized" element={<UnauthorizedPage />} />
+
                   <Route path="/" element={<WelcomePage />} />
                   <Route path="/profile" element={<PersonalProfilePage />} />
 
                   <Route path="/activities" element={<ActivitiesOverviewPage />} />
                   <Route path="/activities/create" element={<ActivitiesFormPage action="create" />} />
                   <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
-                  
+
                   <Route path="/et-news" element={<ETNewsOverviewPage />} />
                   <Route path="/et-news/create" element={<ETNewsFormPage action="create" />} />
                   <Route path="/et-news/edit/:id" element={<ETNewsFormPage action="edit" />} />
-         
+
                   <Route path="/et-blog" element={<ETBlogOverviewPage />} />
                   <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
                   <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
-                  
+
                   <Route path="/collaborator-status" element={<ComingSoonPage />} />
                   <Route path="/collaborator-archive" element={<ComingSoonPage />} />
                 </Route>
 
                 {/* Account Management */}
                 <Route element={<RequireAuth allowedRoles={['Administrator']} />}>
-                  <Route path="/accounts" element={<AccountsOverviewPage />} /> 
+                  <Route path="/accounts" element={<AccountsOverviewPage />} />
                   <Route path="/accounts/create" element={<AccountsFormPage action="create" />} />
                   <Route path="/accounts/edit/:id" element={<AccountsFormPage action="edit" />} />
                 </Route>
-                
+
                 {/* Except CTV/TV */}
                 <Route element={<RequireAuth allowedRoles={[
                   'Administrator', 'Trưởng ban Tech', 'Trưởng ban HR', 'Trưởng ban Event', 'Trưởng ban FER', 'Trưởng ban PR'
@@ -89,7 +91,7 @@ function App() {
                   <Route path="/colleague/fer" element={<PersonnelOverviewPage department_name="fer" />} />
                   <Route path="/colleague/pr" element={<PersonnelOverviewPage department_name="pr" />} />
                 </Route>
-                
+
                 {/* Head Tech */}
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban Tech']} />}>
                   <Route path="/colleague/tech/create" element={<PersonnelFormPage action="create" department_name="tech" />} />
@@ -100,18 +102,18 @@ function App() {
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban PR']} />}>
                   <Route path="/colleague/pr/create" element={<PersonnelFormPage action="create" department_name="pr" />} />
                   <Route path="/colleague/pr/edit/:id" element={<PersonnelFormPage action="edit" department_name="pr" />} />
-                  
+
                   <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
                   <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
                   <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
                   <Route path="/homepage-banners" element={<BannersOverviewPage />} />
                   <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
                   <Route path="/homepage-banners/edit/:id" element={<BannersFormPage action="edit" />} />
-                  
+
                   <Route path="/faqs" element={<FAQsOverviewPage />} />
-                  <Route path="/faqs/edit/:id" element={<FAQsFormPage action="edit"/>} />
-                  <Route path="/faqs/create" element={<FAQsFormPage action="create"/>} />
-                 
+                  <Route path="/faqs/edit/:id" element={<FAQsFormPage action="edit" />} />
+                  <Route path="/faqs/create" element={<FAQsFormPage action="create" />} />
+
                 </Route>
 
                 {/* Head Event */}
@@ -123,22 +125,21 @@ function App() {
                 {/* Head FER */}
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban FER']} />}>
                   <Route path="/colleague/fer/create" element={<PersonnelFormPage action="create" department_name="fer" />} />
-                  <Route path="/colleague/fer/edit/:id" element={<PersonnelFormPage action="edit" department_name="fer" />} /> 
-                  
+                  <Route path="/colleague/fer/edit/:id" element={<PersonnelFormPage action="edit" department_name="fer" />} />
+
                   <Route path="/partners" element={<PartnersOverviewPage />} />
-                  <Route path="/partners/create" element={<PartnersFormPage action="create"/>} />
-                  <Route path="/partners/edit/:id" element={<PartnersFormPage action="edit"/>} />
-                 
+                  <Route path="/partners/create" element={<PartnersFormPage action="create" />} />
+                  <Route path="/partners/edit/:id" element={<PartnersFormPage action="edit" />} />
+
                 </Route>
 
                 {/* Head HR */}
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban HR']} />}>
-                  <Route path="/personnel/hr/create" element={<PersonnelFormPage action="create" department_name="hr" />} />
-                  <Route path="/personnel/hr/edit/:id" element={<PersonnelFormPage action="edit" department_name="hr" />} />
+                  <Route path="/colleague/hr/create" element={<PersonnelFormPage action="create" department_name="hr" />} />
+                  <Route path="/colleague/hr/edit/:id" element={<PersonnelFormPage action="edit" department_name="hr" />} />
                 </Route>
 
-                {/* Unauthorized */}
-                <Route path="/unauthorized" element={<UnauthorizedPage />} />
+                
               </Route>
             </Routes>
           </div>

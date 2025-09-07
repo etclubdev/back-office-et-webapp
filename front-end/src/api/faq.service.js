@@ -19,7 +19,7 @@ const getFAQsById = async (id) => {
         const response = await api.get(`/faqs/${id}`);
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.log(error);
     }
 }
@@ -30,7 +30,7 @@ const createFAQs = async (payload) => {
         handleHttpSuccess("Thêm FAQs thành công!")
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi tạo thành tựu:", error);
         throw error;
     }
@@ -42,7 +42,7 @@ const updateFAQsById = async (id, payload) => {
         handleHttpSuccess("Chỉnh sửa FAQs thành công!")
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.log(error);
     }
 }
@@ -53,7 +53,7 @@ const deleteFAQsById = async (id) => {
         handleHttpSuccess("Xóa FAQs thành công!")
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi xóa thành tựu:", error);
         throw error;
     }
@@ -65,7 +65,7 @@ const deleteFAQs = async (ids) => {
         handleHttpSuccess("Xóa FAQs thành công!")
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi xóa thành tựu:", error);
         throw error;
     }

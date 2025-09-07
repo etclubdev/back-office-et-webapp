@@ -20,7 +20,7 @@ const getActivityById = async (id) => {
         const response = await api.get(`/activities/${id}`);
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -32,7 +32,7 @@ const createActivity = async (payload) => {
         handleHttpSuccess("Thêm hoạt động thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -44,7 +44,7 @@ const updateActivity = async (id, payload) => {
         handleHttpSuccess("Chỉnh sửa hoạt động thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -56,7 +56,7 @@ const deleteActivity = async (id) => {
         handleHttpSuccess("Xóa hoạt động thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -68,7 +68,7 @@ const deleteActivities = async (activities) => {
         handleHttpSuccess("Xóa hoạt động thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
