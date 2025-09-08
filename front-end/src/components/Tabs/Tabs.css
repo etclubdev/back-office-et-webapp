@@ -1,0 +1,31 @@
+.tabs-container {
+    display: flex;
+    box-sizing: content-box;
+    border-bottom: 0.1vw solid #ccc;
+    position: relative;
+    margin: 0;
+    width: 100%;
+}
+
+.tab-item {
+    font-size: 14px;
+    color: gray;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    box-sizing: content-box;
+}
+
+.tab-item.active {
+    color: #1976D2;
+    font-weight: 700;
+}
+
+.tabs-container .progress-bar {
+    width: 40px;
+    height: 0.1vw;
+    background-color: #1976D2;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.2s ease-in-out;
+}

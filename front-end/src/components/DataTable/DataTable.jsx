@@ -90,7 +90,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
                       cursor: "pointer",
                     }}
                     onClick={() => handleSelect(row[itemId])}
-                    // onDoubleClick={() => handleSelect(row[itemId])}
+                    onDoubleClick={() => handleSelect(row[itemId])}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox

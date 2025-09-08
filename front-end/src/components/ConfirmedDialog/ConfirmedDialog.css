@@ -14,9 +14,9 @@
 
 .modal-container {
     background-color: white;
-    border-radius: 20px;
-    width: 40%;
-    max-width: 400px;
+    border-radius: 5px;
+    width: 45%;
+    max-width: 450px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
@@ -128,7 +128,7 @@
     background-color: #f0f0f0;
     color: #555;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -140,7 +140,7 @@
     padding: 15px 30px;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;

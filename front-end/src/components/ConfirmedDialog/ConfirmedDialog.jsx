@@ -1,7 +1,6 @@
-import React from 'react';
 import './ConfirmedDialog.css';
 
-export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) => {
+export const ConfirmedDialog = ({ title, desc, icon, alertType, onClose, onConfirm }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-container">

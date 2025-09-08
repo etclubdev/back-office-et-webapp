@@ -45,8 +45,9 @@ const navbarContents = [
         icon: faFaceSmile,
         label: "Quản lý Tìm kiếm CTV",
         dropdownContent: [
-            { id: "dropdown-status", to: "collaborator-status", label: "Trạng thái" },
-            { id: "dropdown-archive", to: "collaborator-archive", label: "Lưu trữ" },
+            { id: "dropdown-overview", to: "/collaborator/overview", label: "Tổng quan" },
+            { id: "dropdown-approve", to: "/collaborator/approve", label: "Phê duyệt" },
+            { id: "dropdown-archive", to: "/collaborator/archive", label: "Lưu trữ" },
         ],
     },
 ];
@@ -68,8 +69,10 @@ const breadcrumbNameMap = {
     "et-news": "Quản lý ET News",
     "et-blog": "Quản lý ET Blog",
     "activities": "Quản lý Hoạt động",
-    "collaborator-status": "Cập nhật trạng thái",
-    "collaborator-archive": "Lưu trữ",
+    "collaborator": "Quản lý Tìm kiếm CTV",
+    "overview": "Tổng quan",
+    "approve": "Phê duyệt",
+    "archive": "Lưu trữ",
     "create": "Thêm mới",
 };
 
@@ -78,11 +81,41 @@ const filterChipData = {
     personnelStatus: ['Đang hoạt động', 'Cựu thành viên'],
     faqs: ['Về ET Club', 'Về hoạt động và sự kiện', 'Về quy trình tham gia', 'Khác'],
     etNews: ['Công nghệ Việt Nam', 'Công nghệ thế giới', 'Chính phủ số', 'Khác'],
-    activities: ['Talkshow/Workshop', 'Cuộc thi', 'Game', 'Hoạt động truyền thông', 'Hoạt động nội bộ'
-    ]
+    activities: ['Talkshow/Workshop', 'Cuộc thi', 'Game', 'Hoạt động truyền thông', 'Hoạt động nội bộ'],
+    collaborators: ['Ban Chuyên môn', "Ban Sự kiện", "Ban Nhân sự - Tổ chức", "Ban Tài chính - Đối ngoại", "Ban Truyền thông"]
 };
+
+const confirmContents = {
+    collaborators: {
+        openForm: {
+            title: "Xác nhận thay đổi trạng thái",
+            desc: "Bạn có chắc chắn muốn khởi động “chương trình tìm kiếm CTV” trên trang chủ không?"
+        },
+        approve: {
+            title: "Xác nhận phê duyệt",
+            desc: "Bạn chắc chắn đồng ý phê duyệt CTV này? Sau khi xác nhận, dữ liệu này di chuyển sang vòng tiếp theo."
+        },
+        approveLastRound: {
+            title: "Xác nhận phê duyệt",
+            desc: "Bạn chắc chắn đồng ý phê duyệt CTV này trở thành thành viên chính thức? Sau khi xác nhận, dữ liệu này sẽ được đồng bộ vào bảng nhân sự."
+        },
+        restore: {
+            title: "Xác nhận khôi phục",
+            desc: "Bạn có chắc chắn muốn đưa ứng viên này trở lại danh sách chờ phê duyệt Vòng 1 - CV không?"
+        },
+        archive: {
+            title: "Xác nhận lưu trữ",
+            desc: "Bạn có chắc chắn muốn loại ứng viên này khỏi chương trình tìm kiếm CTV và chuyển vào mục lưu trữ không?"
+        },
+        deleteMsg: {
+            title: "Xác nhận xóa vĩnh viễn",
+            desc: "Bạn chắc chắn muốn xóa thông tin ứng viên này khỏi hệ thống? Sau khi xóa, dữ liệu này sẽ không thể khôi phục lại."
+        }
+    }
+};
+
 
 const UPLOAD_PRESET = "first_upload";
 const CLOUD_NAME = "dgqolusci";
 
-export { filterChipData, breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }
+export { confirmContents, filterChipData, breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }

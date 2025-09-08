@@ -28,6 +28,7 @@ import { BannersFormPage } from './pages/BannersManagementPage/BannersFormPage';
 import { BannersOverviewPage } from './pages/BannersManagementPage/BannersOverviewPage';
 import { ETNewsFormPage } from './pages/ETNewsManagementPage/ETNewsFormPage';
 import { ETNewsOverviewPage } from './pages/ETNewsManagementPage/ETNewsOverviewPage';
+import { CollaboratorsManagementPage } from './pages/CollaboratorsSeekingPage/CollaboratorsManagementPage'  
 import { ComingSoonPage } from './pages/ComingSoonPage';
 import { ToastNotifier } from './components/ToastNotifier';
 
@@ -60,8 +61,9 @@ function App() {
                   <Route path="/" element={<WelcomePage />} />
                   <Route path="/profile" element={<PersonalProfilePage />} />
 
-                  <Route path="/collaborator-status" element={<ComingSoonPage />} />
-                  <Route path="/collaborator-archive" element={<ComingSoonPage />} />
+                  <Route path="/collaborator/overview" element={<ComingSoonPage />} />
+                  <Route path="/collaborator/approve" element={<CollaboratorsManagementPage isApprovingPage={true} />} />
+                  <Route path="/collaborator/archive" element={<CollaboratorsManagementPage isApprovingPage={false} />} />
                 </Route>
                 {/* Activities Management */}
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban HR', 'Trưởng ban Event', 'CTV/TV']} />}>

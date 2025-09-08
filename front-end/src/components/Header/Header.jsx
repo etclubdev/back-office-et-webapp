@@ -23,6 +23,13 @@ export const Header = ({children}) => {
 
                         if (displayName === "edit" || displayName === "colleague") return;
 
+                        if (displayName === "Quản lý Tìm kiếm CTV") 
+                            return (
+                            <Typography key={to} color="textPrimary" style={{ textDecoration: "none"}}>
+                                {displayName}
+                            </Typography>
+                        ) 
+
                         return isLast ? (
                             <Typography key={to} color="textPrimary">
                                 {children ? children : displayName}

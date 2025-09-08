@@ -15,6 +15,9 @@ export const getSpecialTableCell = (row, col) => {
         case "last_modified_on":
             return new Date(row[col.field]).toLocaleDateString('en-GB')
 
+        case "cv_link":
+            return <a href={row[col.field]} target="_blank" rel="noopener noreferrer">CV</a>
+
         default:
             return trimText(row[col.field], 60);
     }
