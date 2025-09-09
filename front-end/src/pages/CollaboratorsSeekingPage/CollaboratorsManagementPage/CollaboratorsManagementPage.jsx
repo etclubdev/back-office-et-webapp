@@ -13,9 +13,7 @@ import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { Tabs } from '../../../components/Tabs';
 
-import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
-
-import { getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications } from '../../../api/application.service';
+import { getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications } from '../../../api/application.service';
 
 import { Filter } from '../../../components/Filter';
 import { filterChipData } from '../../../constants';
@@ -57,9 +55,6 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     onConfirm: () => { }
   });
 
-  console.log(dialogProps);
-  
-
   const cacheRef = useRef({});
 
   const fetchData = useCallback(async () => {
@@ -80,7 +75,6 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
           department_name: selectedChips,
           status: "Rejected"
         });
-      console.log(isApprovingPage, data);
 
       cacheRef.current[key] = data;
       setApplications(data);
@@ -141,6 +135,23 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     setIsOpenConfirmedDialog(true);
   }
 
+  const handleExport = async () => {
+    try {
+      isApprovingPage
+        ? await exportApplications({
+          round: activeTab + 1,
+          department_name: selectedChips,
+          status: "Pending"
+        })
+        : await exportApplications({
+          department_name: selectedChips,
+          status: "Rejected"
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className={`collaborators-overview-page ${isApprovingPage && "approving-page"}`}>
       {isOpenConfirmedDialog && (
@@ -168,6 +179,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
               selected={selected}
               handleSetDialogProps={handleSetDialogProps}
               activeTab={activeTab}
+              handleExport={handleExport}
             />
           ) : (
             <ArchivingToolBar
@@ -175,6 +187,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
               handleDataAfterActions={handleDataAfterActions}
               selected={selected}
               handleSetDialogProps={handleSetDialogProps}
+              handleExport={handleExport}
             />
           )}
           <div className="search-container">
@@ -197,7 +210,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
   );
 };
 
-const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogProps, activeTab }) => {
+const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogProps, activeTab, handleExport }) => {
   const handleApprove = async () => {
     try {
       await approveApplication(selected);
@@ -216,11 +229,6 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
     }
   }
 
-  const handleExport = async () => {
-
-  }
-
-
   return (
     <div className="action-container">
       <ExportButton onClick={handleExport} />
@@ -230,11 +238,7 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
   )
 }
 
-const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, handleSetDialogProps }) => {
-  const handleExport = async () => {
-
-  }
-
+const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, handleSetDialogProps, handleExport }) => {
   const handleRestore = async () => {
     await restoreApplication(selected);
     await handleDataAfterActions();

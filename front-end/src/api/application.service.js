@@ -82,7 +82,35 @@ const deleteApplications = async (ids) => {
     }
 }
 
+const exportApplications = async ({ round, department_name, status }) => {
+  try {
+    const response = await api.get("/applications/export", {
+      params: {
+        round,
+        department_name,
+        status,
+      },
+      responseType: "blob", 
+    });
 
-export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications}
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "applications.xlsx"); 
+    document.body.appendChild(link);
+    link.click();
+
+    link.remove();
+    window.URL.revokeObjectURL(url);
+
+    return true;
+  } catch (error) {
+    console.error("Export failed", error);
+    throw error;
+  }
+};
+
+
+export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications}
 
 
