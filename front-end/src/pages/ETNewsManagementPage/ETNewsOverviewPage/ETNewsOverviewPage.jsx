@@ -15,9 +15,11 @@ import { convertToArray } from "../../../utils/convertToArrayUtil";
 import { getAllETNews, deleteETNewsById, deleteETNews } from "../../../api/etNews.service";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData } from '../../../constants';
+import { filterChipData, confirmContents } from '../../../constants';
 
 import "./ETNewsOverviewPage.css";
+
+const contents = confirmContents.etNews;
 
 const columns = [
   { field: 'title', headerName: 'Tiêu đề' },
@@ -98,7 +100,7 @@ export const ETNewsOverviewPage = () => {
         <ConfirmedDialog
           onClose={onClose}
           onConfirm={handleConfirmDialog}
-          {...getConfirmDialogConfig("delete")}
+          {...contents.delete}
         />
       )}
 

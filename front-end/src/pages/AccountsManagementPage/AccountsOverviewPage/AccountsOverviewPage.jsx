@@ -14,6 +14,8 @@ import "./AccountsOverviewPage.css";
 import { getAllAccounts, deleteAccountById, deleteAccounts, resetPassword } from '../../../api/account.service';
 import { getAllSysRoles } from '../../../api/sysrole.service';
 
+import { confirmContents } from '../../../constants';
+
 const columns = [
     { field: 'username', headerName: 'Tên tài khoản' },
     { field: 'sysrole_name', headerName: 'Vai trò' },
@@ -21,13 +23,21 @@ const columns = [
     { field: 'last_modified_on', headerName: 'Chỉnh sửa gần nhất' },
 ]
 
+const contents = confirmContents.accounts;
+
 export const AccountsOverviewPage = () => {
     const navigate = useNavigate();
     const [accounts, setAccounts] = useState([]);
     const [filteredAccounts, setFilteredAccounts] = useState([]);
-    const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState({ delete: false, resetPassword: false });
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+
+    // dialog state
+    const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
+    const [dialogProps, setDialogProps] = useState({
+        contents: { title: "", desc: "", Icon: null, alertType: "" },
+        onConfirm: () => {}
+    });
 
     const fetchData = useCallback(async () => {
         const accountRes = await getAllAccounts();
@@ -47,12 +57,13 @@ export const AccountsOverviewPage = () => {
     }, [fetchData]);
 
     const onClose = () => {
-        setIsOpenConfirmedDialog(prev => ({ ...prev, delete: false, resetPassword: false }));
+        setIsOpenConfirmedDialog(false);
     }
 
-    const onClickConfirmedDialog = (action) => {
-        setIsOpenConfirmedDialog(prev => ({ ...prev, [action]: true }));
-    }
+    const handleSetDialogProps = (contents, onConfirm) => {
+        setDialogProps({ contents, onConfirm });
+        setIsOpenConfirmedDialog(true);
+    };
 
     const handleClick = (action) => {
         if (action === "edit") {
@@ -62,31 +73,21 @@ export const AccountsOverviewPage = () => {
         }
     }
 
-    const handleConfirmDialog = async (action) => {
-        if (selected.length > 0) {
-            try {
-                if (action === "delete") {
-                    if (selected.length === 1) {
-                        await deleteAccountById(selected[0]);
-                    } else {
-                        await deleteAccounts(selected);
-                    }
-
-                    setAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
-                    setFilteredAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
-                    setSelected([]);
-                } else if (action === "resetPassword") {
-                    console.log(1);
-                    
-                    await resetPassword(selected[0]);
-                }
-            } catch (error) {
-                console.error("Errors: ", error);
-            }
+    const handleDelete = async () => {
+        if (selected.length === 1) {
+            await deleteAccountById(selected[0]);
+        } else {
+            await deleteAccounts(selected);
         }
-        onClose();
+
+        setAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
+        setFilteredAccounts(prev => prev.filter(item => !selected.includes(item.account_id)));
+        setSelected([]);
     };
 
+    const handleResetPassword = async () => {
+        await resetPassword(selected[0]);
+    }
 
     const handleSearch = (query) => {
         setSearchTerm(query);
@@ -105,22 +106,20 @@ export const AccountsOverviewPage = () => {
 
     return (
         <div className="accounts-overview-page">
-            {isOpenConfirmedDialog.delete && (
+            {isOpenConfirmedDialog && (
                 <ConfirmedDialog
                     onClose={onClose}
-                    onConfirm={() => handleConfirmDialog("delete")}
-                    {...getConfirmDialogConfig("delete")}
+                    onConfirm={async () => {
+                        try {
+                            await dialogProps.onConfirm();
+                        } finally {
+                            onClose();
+                        }
+                    }}
+                    {...dialogProps.contents}
                 />
             )}
-            {isOpenConfirmedDialog.resetPassword && (
-                <ConfirmedDialog
-                    onClose={onClose}
-                    onConfirm={() => handleConfirmDialog("resetPassword")}
-                    title={"Xác nhận khởi tạo lại mật khẩu"}
-                    desc={`Bạn có chắc chắn muốn khởi tạo lại mật khẩu tài khoản đã chọn?`}
-                    alertType={"warning"}
-                />
-            )}
+
             <Header />
             <div className="accounts-container">
                 <div className="accounts-toolbars">
@@ -128,10 +127,10 @@ export const AccountsOverviewPage = () => {
                         <div className="action-container-item">
                             <AddButton onClick={() => handleClick("create")} />
                             <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
-                            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && onClickConfirmedDialog("delete")} />
+                            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && handleSetDialogProps(contents.delete, handleDelete)} />
                         </div>
                         <div className="action-container-item">
-                            <ResetPasswordButton disabled={selected.length != 1} onClick={() => selected.length > 0 && onClickConfirmedDialog("resetPassword")} />
+                            <ResetPasswordButton disabled={selected.length != 1} onClick={() => selected.length > 0 && handleSetDialogProps(contents.resetPassword, handleResetPassword)} />
                         </div>
                     </div>
                     <div className="search-container">

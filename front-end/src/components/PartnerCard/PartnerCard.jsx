@@ -19,113 +19,119 @@ import { CSSTransition } from "react-transition-group";
 import { updateVisible } from "../../api/partner.service";
 import { ConfirmedDialog } from "../ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../utils/confirmDialogUtil";
+import { filterChipData, confirmContents } from '../../constants';
+
+const contents = confirmContents.partners;
 
 export const PartnerCard = ({ category, data, setData }) => {
-    const { visible, invisible } = useMemo(() => data, [data]);
-    const [selectedCard, setSelectedCard] = useState("");
-    const [selectedItems, setSelectedItems] = useState([]);
-    const [isActive, setIsActive] = useState(false);
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
-    const [toList, setToList] = useState(null);
+  const { visible, invisible } = useMemo(() => data, [data]);
+  const [selectedCard, setSelectedCard] = useState("");
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
-    const transferListRef = useRef(null);
+  // dialog state
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [dialogProps, setDialogProps] = useState({
+    contents: { title: "", desc: "", Icon: null, alertType: "" },
+    onConfirm: () => {}
+  });
 
-    const handleTransfer = async (destination) => {
-        if (selectedItems?.length === 0) return;
-        setToList(destination);
-        setIsOpenDialog(true);
-    };
+  const transferListRef = useRef(null);
 
-    const onConfirm = async (destination) => {
+  const handleSetDialogProps = (contents, onConfirm) => {
+    setDialogProps({ contents, onConfirm });
+    setIsOpenDialog(true);
+  };
+
+  const handleTransfer = (destination) => {
+    if (selectedItems?.length === 0) return;
+    handleSetDialogProps(
+      contents.update,
+      async () => {
         const response = await updateVisible(getPayload(destination === "visible"));
         const fromList = destination === "visible" ? "invisible" : "visible";
         setData({
-            [destination]: [...data[destination], ...selectedItems],
-            [fromList]: data[fromList].filter(item => !selectedItems.includes(item))
+          [destination]: [...data[destination], ...selectedItems],
+          [fromList]: data[fromList].filter(item => !selectedItems.includes(item))
         });
-    };
-
-    const getPayload = (isVisible) => {
-        return selectedItems.map(item => ({
-            partner_id: item.partner_id,
-            visible: isVisible,
-        }));
-    };
-
-    const handleCardClick = () => {
-        setIsActive(prev => !prev);
-    };
-
-    return (
-        <div className={`partner-card ${isActive ? "active" : ""}`}>
-            {isOpenDialog && (
-                <ConfirmedDialog
-                    {...getConfirmDialogConfig("switch")}
-                    onClose={() => {
-                        setIsOpenDialog(false);
-                        setToList(null);
-                    }}
-                    onConfirm={async () => {
-                        await onConfirm(toList);
-                        setIsOpenDialog(false);
-                        setToList(null);
-                    }}
-                />
-            )}
-
-            <div className="card-top" onClick={handleCardClick}>
-                <div className="card-name">
-                    <FontAwesomeIcon className="card-icon" icon={faChevronDown} />
-                    <span>{category}</span>
-                </div>
-            </div>
-
-            <CSSTransition
-                in={isActive}
-                timeout={300}
-                classNames="transfer"
-                unmountOnExit
-                nodeRef={transferListRef}
-            >
-                <div className="transfer-list" ref={transferListRef}>
-                    <TransferList
-                        cardId="invisible-list"
-                        data={invisible}
-                        title="Danh sách hiện có"
-                        selectedCard={selectedCard}
-                        setSelectedCard={setSelectedCard}
-                        setSelectedItems={setSelectedItems}
-                    />
-                    <div className="transfer-button">
-                        <Button
-                            onClick={() => handleTransfer("visible")}
-                            size="small"
-                            variant="contained"
-                            disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "visible-list")}
-                        >
-                            {">"}
-                        </Button>
-                        <Button
-                            onClick={() => handleTransfer("invisible")}
-                            size="small"
-                            variant="outlined"
-                            disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "invisible-list")}
-                        >
-                            {"<"}
-                        </Button>
-                    </div>
-                    <TransferList
-                        cardId="visible-list"
-                        title="Danh sách hiển thị"
-                        data={visible}
-                        selectedCard={selectedCard}
-                        setSelectedCard={setSelectedCard}
-                        setSelectedItems={setSelectedItems}
-                    />
-                </div>
-            </CSSTransition>
-        </div>
+        setSelectedItems([]);
+      }
     );
+  };
+
+  const getPayload = (isVisible) => {
+    return selectedItems.map(item => ({
+      partner_id: item.partner_id,
+      visible: isVisible,
+    }));
+  };
+
+  return (
+    <div className={`partner-card ${isActive ? "active" : ""}`}>
+      {isOpenDialog && (
+        <ConfirmedDialog
+          onClose={() => setIsOpenDialog(false)}
+          onConfirm={async () => {
+            try { await dialogProps.onConfirm(); }
+            finally { setIsOpenDialog(false); }
+          }}
+          {...dialogProps.contents}
+        />
+      )}
+
+      <div className="card-top" onClick={() => setIsActive(prev => !prev)}>
+        <div className="card-name">
+          <FontAwesomeIcon className="card-icon" icon={faChevronDown} />
+          <span>{category}</span>
+        </div>
+      </div>
+
+      <CSSTransition
+        in={isActive}
+        timeout={300}
+        classNames="transfer"
+        unmountOnExit
+        nodeRef={transferListRef}
+      >
+        <div className="transfer-list" ref={transferListRef}>
+          <TransferList
+            cardId="invisible-list"
+            data={invisible}
+            title="Danh sách hiện có"
+            selectedCard={selectedCard}
+            setSelectedCard={setSelectedCard}
+            setSelectedItems={setSelectedItems}
+          />
+          <div className="transfer-button">
+            <Button
+              onClick={() => handleTransfer("visible")}
+              size="small"
+              variant="contained"
+              disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "visible-list")}
+            >
+              {">"}
+            </Button>
+            <Button
+              onClick={() => handleTransfer("invisible")}
+              size="small"
+              variant="outlined"
+              disabled={selectedItems.length == 0 || (selectedCard && selectedCard === "invisible-list")}
+            >
+              {"<"}
+            </Button>
+          </div>
+          <TransferList
+            cardId="visible-list"
+            title="Danh sách hiển thị"
+            data={visible}
+            selectedCard={selectedCard}
+            setSelectedCard={setSelectedCard}
+            setSelectedItems={setSelectedItems}
+          />
+        </div>
+      </CSSTransition>
+    </div>
+  );
 };
 
 const TransferList = ({ cardId, title, data, selectedCard, setSelectedCard, setSelectedItems }) => {

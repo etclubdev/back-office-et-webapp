@@ -10,15 +10,22 @@ import { SearchBar } from "../../components/SearchBar";
 import { AchievementCardList } from "../../components/AchievementCardList";
 import { getAllAchievements, createAchievement, updateAchievementById, deleteAchievementById, deleteAchievements } from '../../api/achievement.service';
 
-import { getConfirmDialogConfig } from "../../utils/confirmDialogUtil"
+import { confirmContents } from '../../constants';
+
+const contents = confirmContents.achievements;
 
 export const AchievementsSelectionPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [achievements, setAchievements] = useState([]);
   const [filteredAchievements, setFilteredAchievements] = useState([]);
   const [selected, setSelected] = useState([]);
+
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
   const [isOpenInputDialog, setIsOpenInputDialog] = useState(false);
+  const [dialogProps, setDialogProps] = useState({
+    contents: { title: "", desc: "", Icon: null, alertType: "" },
+    onConfirm: () => {}
+  });
   const [actionType, setActionType] = useState("");
 
   const fetchData = useCallback(async () => {
@@ -54,35 +61,22 @@ export const AchievementsSelectionPage = () => {
     setIsOpenInputDialog(false);
   };
 
-  const openConfirmDialog = (type) => {
-    setActionType(type);
+  const handleSetDialogProps = (contents, onConfirm) => {
+    setDialogProps({ contents, onConfirm });
     setIsOpenConfirmedDialog(true);
   };
 
-  const openInputDialog = (type) => {
-    setActionType(type);
-    setIsOpenInputDialog(true);
-  };
-
-  const handleConfirmDialog = async () => {
-    if (actionType === "delete" && selected.length > 0) {
-      try {
-        if (selected.length === 1) {
-          await deleteAchievementById(selected[0]);
-        } else {
-          await deleteAchievements(selected);
-        }
-        setSelected([]);
-      } catch (error) {
-        console.error("Lỗi khi xóa thành tựu:", error);
-      }
+  const handleDelete = async () => {
+    if (selected.length === 1) {
+      await deleteAchievementById(selected[0]);
+    } else {
+      await deleteAchievements(selected);
     }
-    onClose();
+    setSelected([]);
+    fetchData();
   };
 
   const handleInputDialogConfirm = async (input) => {
-    console.log(input);
-    
     try {
       if (actionType === "add" && achievements.length < 6) {
         const newAchievement = await createAchievement(input);
@@ -102,8 +96,11 @@ export const AchievementsSelectionPage = () => {
       {isOpenConfirmedDialog && (
         <ConfirmedDialog
           onClose={onClose}
-          onConfirm={handleConfirmDialog}
-          {...getConfirmDialogConfig(actionType)}
+          onConfirm={async () => {
+            try { await dialogProps.onConfirm(); } 
+            finally { onClose(); }
+          }}
+          {...dialogProps.contents}
         />
       )}
 
@@ -122,9 +119,12 @@ export const AchievementsSelectionPage = () => {
       <div className="achievements-container">
         <div className="achievements-toolbars">
           <div className="action-container">
-            <AddButton onClick={() => openInputDialog("add")} />
-            <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && openInputDialog("edit")} />
-            <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && openConfirmDialog("delete")} />
+            <AddButton onClick={() => { setActionType("add"); setIsOpenInputDialog(true); }} />
+            <EditButton disabled={selected.length != 1} onClick={() => { setActionType("edit"); setIsOpenInputDialog(true); }} />
+            <DeleteButton
+              disabled={selected.length < 1}
+              onClick={() => handleSetDialogProps(contents.delete, handleDelete)}
+            />
           </div>
           <div className="search-container">
             <SearchBar onSearch={handleSearch} />

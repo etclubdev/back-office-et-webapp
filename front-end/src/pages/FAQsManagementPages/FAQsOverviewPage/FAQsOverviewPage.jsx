@@ -17,7 +17,7 @@ import { convertToArray } from '../../../utils/convertToArray';
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData } from '../../../constants';
+import { filterChipData, confirmContents } from '../../../constants';
 
 const columns = [
     { field: 'question', headerName: 'Câu hỏi' },
@@ -25,6 +25,8 @@ const columns = [
     { field: 'faq_category', headerName: 'Nhóm câu hỏi' },
     { field: 'visible', headerName: 'Hiển thị trang chủ' },
 ]
+
+const contents = confirmContents.faqs;
 
 export const FAQsOverviewPage = () => {
     const navigate = useNavigate();
@@ -109,7 +111,7 @@ export const FAQsOverviewPage = () => {
                 <ConfirmedDialog
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
-                    {...getConfirmDialogConfig("delete")}
+                    {...contents.delete}
                 />
             )}
             <Header />

@@ -51,10 +51,14 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     contents: {
       title: "",
       desc: "",
-      actionType: ""
+      Icon: null,
+      alertType: ""
     },
     onConfirm: () => { }
   });
+
+  console.log(dialogProps);
+  
 
   const cacheRef = useRef({});
 
@@ -143,7 +147,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
         <ConfirmedDialog
           onClose={onClose}
           onConfirm={handleConfirmDialog}
-          {...getConfirmDialogConfig(dialogProps.contents)}
+          {...dialogProps.contents}
         />
       )}
 

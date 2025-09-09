@@ -14,7 +14,9 @@ import "./ActivitiesOverviewPage.css";
 import { getAllActivities, deleteActivities, deleteActivity } from "../../../api/activity.service";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData } from '../../../constants';
+import { filterChipData, confirmContents } from '../../../constants';
+
+const contents = confirmContents.activities;
 
 const columns = [
     { field: 'title', headerName: 'Tên hoạt động' },
@@ -103,7 +105,7 @@ export const ActivitiesOverviewPage = () => {
                 <ConfirmedDialog
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
-                    {...getConfirmDialogConfig("delete")}
+                    {...contents.delete}
                 />
             )}
             <Header />
