@@ -110,7 +110,16 @@ const exportApplications = async ({ round, department_name, status }) => {
   }
 };
 
+const getStatisticsData = async () => {
+    try {
+        const response = await api.get('/applications/statistics');
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
-export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications}
+export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications, getStatisticsData}
 
 

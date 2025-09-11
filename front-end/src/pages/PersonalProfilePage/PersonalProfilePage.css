@@ -7,8 +7,8 @@
     flex-direction: column;
 }
 
-.tabs-container,
-.form-container {
+.personal-profile-page .tabs-container,
+.personal-profile-page .form-container {
     margin-top: 10px;
     width: 95%;
     align-self: center;

@@ -9,3 +9,8 @@ const departments = {
 export const getDepartmentNameUtil = (to) => {
     return departments[to];
 }
+
+export const getDepartmentShortName = (fullName) => {
+    const entry = Object.entries(departments).find(([key, value]) => value === fullName);
+    return entry ? entry[0].toUpperCase() : fullName;
+}
