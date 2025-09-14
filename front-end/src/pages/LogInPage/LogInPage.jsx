@@ -80,6 +80,7 @@ export const LogInPage = () => {
               control={control}
               label="Tên tài khoản"
               errors={errors}
+              required={false}
             />
             <PasswordController
               name="password"
