@@ -12,12 +12,14 @@ import { SearchBar } from "../../../components/SearchBar";
 import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { Tabs } from '../../../components/Tabs';
+import { RecordDialog } from '../RecordDialog';
 
-import { getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications } from '../../../api/application.service';
+import { getApplicationById, getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications } from '../../../api/application.service';
+import { getAllTerms } from '../../../api/term.service';
 
 import { Filter } from '../../../components/Filter';
 import { filterChipData } from '../../../constants';
-import { confirmContents } from '../../../constants'
+import { confirmContents } from '../../../constants';
 
 import './CollaboratorsManagementPage.css';
 
@@ -54,6 +56,8 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     },
     onConfirm: () => { }
   });
+
+  const [openedRecord, setOpenedRecord] = useState("");
 
   const cacheRef = useRef({});
 
@@ -152,8 +156,21 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     }
   }
 
+  const handleOpenRecord = () => {
+
+  }
+
   return (
     <div className={`collaborators-overview-page ${isApprovingPage && "approving-page"}`}>
+      {
+        openedRecord != "" && (
+          <RecordDialog
+            setOpenedRecord={setOpenedRecord}
+            id={openedRecord}
+          />
+        )
+      }
+
       {isOpenConfirmedDialog && (
         <ConfirmedDialog
           onClose={onClose}
@@ -204,6 +221,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
           itemId="application_id"
           selected={selected}
           setSelected={setSelected}
+          setOpenedRecord={setOpenedRecord}
         />
       </div>
     </div>
@@ -255,7 +273,7 @@ const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, ha
       <RestoreButton disabled={selected.length < 1} onClick={() => { handleSetDialogProps(restore, handleRestore) }} />
       <DeleteButton color="#D32F2F"
         disabled={!isAdministator || selected.length < 1}
-        onClick={ () => {handleSetDialogProps(deleteMsg, handleDelete)} }
+        onClick={() => { handleSetDialogProps(deleteMsg, handleDelete) }}
       />
     </div>
   )

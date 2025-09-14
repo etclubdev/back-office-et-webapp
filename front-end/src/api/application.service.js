@@ -1,10 +1,8 @@
 import { api } from "./index";
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 
-const getAllApplications = async ({round, department_name, status}) => {
+const getAllApplications = async ({ round, department_name, status }) => {
     try {
-        console.log(round, department_name, status);
-        
         const response = await api.get('/applications', {
             params: {
                 round,
@@ -83,31 +81,32 @@ const deleteApplications = async (ids) => {
 }
 
 const exportApplications = async ({ round, department_name, status }) => {
-  try {
-    const response = await api.get("/applications/export", {
-      params: {
-        round,
-        department_name,
-        status,
-      },
-      responseType: "blob", 
-    });
+    try {
+        const response = await api.get("/applications/export", {
+            params: {
+                round,
+                department_name,
+                status,
+            },
+            responseType: "blob",
+        });
 
-    const url = window.URL.createObjectURL(new Blob([response.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "applications.xlsx"); 
-    document.body.appendChild(link);
-    link.click();
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "applications.xlsx");
+        document.body.appendChild(link);
+        link.click();
 
-    link.remove();
-    window.URL.revokeObjectURL(url);
+        link.remove();
+        window.URL.revokeObjectURL(url);
 
-    return true;
-  } catch (error) {
-    console.error("Export failed", error);
-    throw error;
-  }
+        return true;
+    } catch (error) {
+        handleHttpError(error.response.data.message || error.response.data);
+        console.error("Export failed", error);
+        throw error;
+    }
 };
 
 const getStatisticsData = async () => {
@@ -120,6 +119,18 @@ const getStatisticsData = async () => {
     }
 }
 
-export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications, getStatisticsData}
+const updateApplicationNote = async (id, note) => {
+    try {
+        const response = await api.put(`/applications/note/${id}`, { note });
+        handleHttpSuccess("Thay đổi ghi chú thành công");
+        return response.data;
+    } catch (error) {
+        handleHttpError(error.response.data.message || error.response.data);
+        console.error(error);
+        throw error;
+    }
+}
+
+export { getAllApplications, getApplicationById, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications, getStatisticsData, updateApplicationNote }
 
 

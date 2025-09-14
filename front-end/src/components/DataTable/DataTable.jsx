@@ -15,7 +15,7 @@ import {
   TableSortLabel,
 } from "@mui/material";
 
-export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
+export const DataTable = ({ data, columns, itemId, selected, setSelected, setOpenedRecord }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [sortConfig, setSortConfig] = useState({ key: "title", direction: "asc" });
@@ -90,7 +90,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
                       cursor: "pointer",
                     }}
                     onClick={() => handleSelect(row[itemId])}
-                    onDoubleClick={() => handleSelect(row[itemId])}
+                    onDoubleClick={() => setOpenedRecord ? setOpenedRecord(row[itemId]) : {}}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
