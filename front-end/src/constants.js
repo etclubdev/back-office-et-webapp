@@ -216,6 +216,18 @@ const confirmContents = {
             alertType: "danger"
         }
     },
+    recruitment: {
+        opened: {
+            title: "Xác nhận thay đổi trạng thái",
+            desc: "Bạn có chắc chắn muốn khởi động “Chương trình tìm kiếm CTV” trên trang chủ không?",
+            alertType: "danger"
+        },
+        closed: {
+            title: "Xác nhận thay đổi trạng thái",
+            desc: "Bạn có chắc chắn muốn đóng “Chương trình tìm kiếm CTV” trên trang chủ không?",
+            alertType: "danger"
+        }
+    }
 };
 
 

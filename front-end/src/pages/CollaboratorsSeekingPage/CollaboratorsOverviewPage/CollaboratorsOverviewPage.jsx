@@ -2,14 +2,20 @@ import { useCallback, useEffect, useState } from "react";
 import "./CollaboratorsOverviewPage.css";
 import { PieChart, BarChart } from "@mui/x-charts";
 import { getStatisticsData } from "../../../api/application.service";
+import { getStatusOfFirstRecruitment, updateStatusOfRecruitment } from "../../../api/recruitment.service";
 import {
   dataForPieChart,
   dataForBarChart,
 } from "../../../utils/converDataForChart";
 import { Header } from "../../../components/Header";
+import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { Switch } from '@mui/material';
 import { getMaxValue } from "../../../utils/getMaxValue";
 import { useAuth } from "../../../context/useAuth";
+
+import { confirmContents } from '../../../constants';
+
+const contents = confirmContents.recruitment;
 
 export const CollaboratorsOverviewPage = () => {
   const { user } = useAuth();
@@ -25,9 +31,17 @@ export const CollaboratorsOverviewPage = () => {
     },
   });
 
+  const [recruitment, setRecruitment] = useState({
+    recruitment_id: "",
+    is_open: false
+  });
+
+  const [isOpenConfirmDialog, setIsOpenConfirmDialog] = useState(false);
+
   const fetchData = useCallback(async () => {
     try {
       const { data } = await getStatisticsData();
+      const recruitmentRes = await getStatusOfFirstRecruitment();
 
       setStatisticsData({
         ...data,
@@ -53,25 +67,41 @@ export const CollaboratorsOverviewPage = () => {
           data.by_gender || []
         ),
       });
+      setRecruitment(recruitmentRes.data);
     } catch (error) {
       console.error("Error fetching statistics data:", error);
     }
-  }, []);
-
-  function wrapText(text, maxLength = 8) {
-    const lines = [];
-    for (let i = 0; i < text.length; i += maxLength) {
-      lines.push(text.slice(i, i + maxLength));
-    }
-    return lines.join("\n");
-  }
+  }, [recruitment]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
+  const handleUpdateForm = () => {
+    updateStatusOfRecruitment(recruitment.recruitment_id);
+    setIsOpenConfirmDialog(false);
+  }
+
+  const handleContentOfDiaglog = useCallback(() => {
+    if (recruitment.is_open) {
+      return contents.closed;
+    } else {
+      return contents.opened;
+    }
+  }, [recruitment, contents])
+
+  const contentOfDiaglog = useCallback(handleContentOfDiaglog(), [handleContentOfDiaglog])
+
   return (
     <div className="collaborators-overview-page">
+      {isOpenConfirmDialog && (
+        <ConfirmedDialog
+          onClose={() => setIsOpenConfirmDialog(false)}
+          onConfirm={handleUpdateForm}
+          {...contentOfDiaglog}
+        />
+      )}
+
       <Header>Tổng quan</Header>
       <div className="collaborators-overview-section">
         <div className="cards-container">
@@ -79,6 +109,8 @@ export const CollaboratorsOverviewPage = () => {
             <div className="title">
               <p>Tìm kiếm Cộng tác viên</p>
               <Switch
+                onClick={() => { setIsOpenConfirmDialog(true) }}
+                checked={recruitment.is_open}
                 disabled={!isAdministator}
                 sx={{
                   '& .MuiSwitch-switchBase.Mui-checked': {
@@ -167,7 +199,6 @@ export const CollaboratorsOverviewPage = () => {
                   {
                     scaleType: "band",
                     dataKey: "x",
-                    tickLabelFormatter: (value) => wrapText(value, 8),
                   },
                 ]}
                 xAxis={[
