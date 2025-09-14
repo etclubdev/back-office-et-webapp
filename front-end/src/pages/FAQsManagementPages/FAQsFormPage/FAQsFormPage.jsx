@@ -78,9 +78,9 @@ export const FAQsFormPage = ({ action }) => {
                                 control={control}
                                 label="Nhóm câu hỏi"
                                 menuItems={[
-                                    "Về ET Club",
-                                    "Về hoạt động và sự kiện",
-                                    "Về quy trình tham gia",
+                                    "ET Club",
+                                    "Hoạt động và sự kiện",
+                                    "Quy trình tham gia",
                                     "Khác",
                                 ]}
                                 errors={errors}

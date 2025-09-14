@@ -4,7 +4,7 @@ const faqSchemaBase = yup.object({
     faq_category: yup.string()
         .required("Vui lòng chọn danh mục câu hỏi")
         .oneOf(
-            ["Về ET Club", "Về hoạt động và sự kiện", "Về quy trình tham gia", "Khác"],
+            ["ET Club", "Hoạt động và sự kiện", "Quy trình tham gia", "Khác"],
             "Vui lòng chọn danh mục câu hỏi"
         ),
 
