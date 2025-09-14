@@ -9,12 +9,10 @@ const faqSchemaBase = yup.object({
         ),
 
     question: yup.string()
-        .required("Vui lòng nhập câu hỏi")
-        .max(255, "Câu hỏi không được vượt quá 255 ký tự"),
+        .required("Vui lòng nhập câu hỏi"),
 
     answer: yup.string()
-        .required("Vui lòng nhập câu trả lời")
-        .min(1, "Câu trả lời không được để trống"),
+        .required("Vui lòng nhập câu trả lời"),
 
     visible: yup.boolean()
         .default(true),

@@ -3,7 +3,6 @@ import * as yup from 'yup';
 export const partnerSchema = yup.object().shape({
     partner_name: yup
         .string()
-        .max(100, "Tên đối tác không được vượt quá 100 ký tự.")
         .required("Tên đối tác là bắt buộc."),
     
     partner_category_name: yup
@@ -21,7 +20,6 @@ export const partnerSchema = yup.object().shape({
 
     short_description: yup
         .string()
-        .max(50, "Mô tả không được vượt quá 50 ký tự.")
         .nullable(),
         
     email: yup
@@ -31,7 +29,7 @@ export const partnerSchema = yup.object().shape({
         .required("Email là bắt buộc."),
         
     phone_number: yup.string()
-        .matches(/^0[0-9]{9}$/, "Số điện thoại không hợp lệ")
+        .matches(/^0[0-9]{9,10}$/, "Số điện thoại không hợp lệ")
         .required(),
     
     avatar_url: yup
