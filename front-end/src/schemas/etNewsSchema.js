@@ -3,7 +3,7 @@ import * as yup from 'yup';
 export const etNewsSchema = yup.object().shape({
     title: yup
         .string()
-        .max(60, "Tiêu đề không được vượt quá 60 ký tự.")
+        .max(250, "Tiêu đề không được vượt quá 250 ký tự.")
         .required("Tiêu đề là bắt buộc."),
 
     etnews_category: yup
