@@ -7,12 +7,12 @@
 }
 
 .collaborators-overview-section {
-  margin: 50px 0;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  overflow-y: scroll;
 }
 
 .MuiChartsAxis-directionY .MuiChartsAxis-tickLabel {
@@ -116,6 +116,19 @@
 .no-data p {
   font-size: 12px;
   color: #6e6e6e;
+}
+
+.collaborators-overview-section::-webkit-scrollbar {
+  width: 5px;
+}
+
+.collaborators-overview-section::-webkit-scrollbar-track {
+  background: transparent
+}
+
+.collaborators-overview-section::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 4px;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

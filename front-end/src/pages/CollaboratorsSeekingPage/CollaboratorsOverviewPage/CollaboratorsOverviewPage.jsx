@@ -105,6 +105,7 @@ export const CollaboratorsOverviewPage = () => {
 
       <Header>Tổng quan</Header>
       <div className="collaborators-overview-section">
+        <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
         <div className="cards-container">
           <div className="card form">
             <div className="title">
@@ -246,8 +247,8 @@ export const CollaboratorsOverviewPage = () => {
               )}
           </div>
         </div>
+        <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
       </div>
-      <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
     </div>
   );
 };
