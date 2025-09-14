@@ -70,12 +70,15 @@ function App() {
                   <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
                 </Route>
 
-                {/* Posts Management */}
+                {/* ET News Management */}
                 <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban HR', 'CTV/TV']} />}>
                   <Route path="/et-news" element={<ETNewsOverviewPage />} />
                   <Route path="/et-news/create" element={<ETNewsFormPage action="create" />} />
                   <Route path="/et-news/edit/:id" element={<ETNewsFormPage action="edit" />} />
+                </Route>
 
+                {/* ET Blog Management */}
+                <Route element={<RequireAuth allowedRoles={['Administrator', 'Trưởng ban HR', 'Trưởng ban Tech', 'CTV/TV']} />}>
                   <Route path="/et-blog" element={<ETBlogOverviewPage />} />
                   <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
                   <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
