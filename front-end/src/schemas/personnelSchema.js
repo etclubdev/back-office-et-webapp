@@ -51,8 +51,7 @@ const personnelSchema = yup.object().shape({
 
     avatar_url: yup
         .string()
-        .nullable()
-        .url("Đường dẫn avatar không hợp lệ."),
+        .nullable(),
 
     cv_type: yup
         .string()
