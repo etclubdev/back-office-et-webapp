@@ -16,7 +16,7 @@ const refreshAccessToken = async () => {
   const refreshToken = getRefreshToken();
   
   if (!refreshToken) {
-    throw new Error("Refresh token không tồn tại");
+    return;
   }
 
   const response = await api.post(

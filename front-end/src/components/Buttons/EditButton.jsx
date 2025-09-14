@@ -1,7 +1,7 @@
 import BaseButton from "./BaseButton";
 import EditIcon from "@mui/icons-material/Edit";
 
-const EditButton = ({ onClick }) => {
+const EditButton = ({ onClick, disabled }) => {
     return (
         <BaseButton
             onClick={onClick}
@@ -12,6 +12,7 @@ const EditButton = ({ onClick }) => {
                 "&:hover": { backgroundColor: "#BDBDBD" }, 
                 boxShadow: "none",
               }}
+            disabled={disabled}
         >
             Chỉnh sửa
         </BaseButton>

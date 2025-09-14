@@ -14,7 +14,12 @@ import { convertToArray } from "../../../utils/convertToArrayUtil";
 
 import { getAllETNews, deleteETNewsById, deleteETNews } from "../../../api/etNews.service";
 
+import { Filter } from '../../../components/Filter';
+import { filterChipData, confirmContents } from '../../../constants';
+
 import "./ETNewsOverviewPage.css";
+
+const contents = confirmContents.etNews;
 
 const columns = [
   { field: 'title', headerName: 'Tiêu đề' },
@@ -32,17 +37,19 @@ export const ETNewsOverviewPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState([]);
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
+  const [selectedChips, setSelectedChips] = useState([]);
 
   const fetchData = useCallback(async () => {
     try {
-      const { data } = await getAllETNews();
+      const { data } = await getAllETNews(selectedChips);
       const dataArray = convertToArray(data.groupedNews);
       setETNews(dataArray);
       setFilteredETNews(dataArray);
     } catch (error) {
-      console.error("Lỗi khi lấy ETNews:", error);
+      setETNews([]);
+      setFilteredETNews([]);
     }
-  }, []);
+  }, [selectedChips]);
 
   useEffect(() => {
     fetchData();
@@ -93,7 +100,7 @@ export const ETNewsOverviewPage = () => {
         <ConfirmedDialog
           onClose={onClose}
           onConfirm={handleConfirmDialog}
-          {...getConfirmDialogConfig("delete")}
+          {...contents.delete}
         />
       )}
 
@@ -103,10 +110,11 @@ export const ETNewsOverviewPage = () => {
         <div className="etnews-toolbars">
           <div className="action-container">
             <AddButton onClick={() => handleClick("create")} />
-            <EditButton onClick={() => handleClick("edit")} disabled={selected.length !== 1} />
-            <DeleteButton onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
+            <EditButton disabled={selected.length != 1} onClick={() => handleClick("edit")} disabled={selected.length !== 1} />
+            <DeleteButton disabled={selected.length < 1} onClick={() => setIsOpenConfirmedDialog(true)} disabled={selected.length === 0} />
           </div>
           <div className="search-container">
+            <Filter chipdata={filterChipData.etNews} setSelectedChips={setSelectedChips} />
             <SearchBar onSearch={handleSearch} value={searchTerm} />
           </div>
         </div>

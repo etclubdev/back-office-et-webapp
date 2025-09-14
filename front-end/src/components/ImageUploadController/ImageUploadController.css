@@ -1,37 +1,123 @@
-.image-upload-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 1vw;
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
 }
 
-.image-upload-container h6{
-    font-family: "BeVietnamPro";
+.image-upload-container h6 {
+  font-family: "BeVietnamPro", sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.image-upload-box{
-    width: 100%;
-    height: 80%;
-    aspect-ratio: 1/1;
-    border: 2px dashed #ddd;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #fafafa;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.image-upload-box {
+  width: 300px;             
+  min-height: 300px;         
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  overflow: hidden;
 }
 
-.image-upload-box:hover{
-    background-color: #f0f0f0;
+.image-upload-box:hover {
+  background-color: #f5f9ff;
+  border-color: #1976d2;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
 }
 
-.image-upload-container .thumbnail-img{
-    max-height: 100%;
-    object-fit: contain;
+.image-upload-container .thumbnail-img {
+  width: 100%;
+  height: auto;      
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.image-upload-container .thumbnail-img:hover {
+  transform: scale(1.02);
+}
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+}
+
+.image-upload-container h6 {
+  font-family: "BeVietnamPro", sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.image-upload-box {
+  width: 300px;              /* Default fallback */
+  min-height: 200px;
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.image-upload-box:hover {
+  background-color: #f5f9ff;
+  border-color: #1976d2;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+}
+
+.image-upload-container .thumbnail-img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.image-upload-container .thumbnail-img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 486px) {
+  .image-upload-box {
+    width: 95%;            
+    min-height: 160px;
+  }
+}
+
+@media (min-width: 487px) and (max-width: 768px) {
+  .image-upload-box {
+    width: 80%;            
+    max-width: 280px;
+    min-height: 180px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .image-upload-box {
+    width: 200px;
+    min-height: 200px;
+  }
 }

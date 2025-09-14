@@ -6,7 +6,7 @@ const getAllETBlogs = async () => {
         const response = await api.get('/et-blog');
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -17,7 +17,7 @@ const getETBlogById = async (id) => {
         const response = await api.get(`/et-blog/${id}`);
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -29,7 +29,7 @@ const createETBlog = async (payload) => {
         handleHttpSuccess("Thêm blog thành công");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -41,7 +41,7 @@ const updateETBlog = async (id, payload) => {
         handleHttpSuccess("Chỉnh sửa blog thành công");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -53,7 +53,7 @@ const deleteETBlogById = async (id) => {
         handleHttpSuccess("Xóa blog thành công");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -65,7 +65,7 @@ const deleteETBlogs = async (etBlogs) => {
         handleHttpSuccess("Xóa blog thành công");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }

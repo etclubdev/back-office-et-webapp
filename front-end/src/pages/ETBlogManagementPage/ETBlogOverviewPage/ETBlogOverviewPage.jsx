@@ -11,6 +11,7 @@ import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import "./ETBlogOverviewPage.css";
 
 import { getAllETBlogs, deleteETBlogById, deleteETBlogs } from '../../../api/etBlog.service';
+import { confirmContents } from '../../../constants';
 
 const columns = [
     { field: 'title', headerName: 'Tiêu đề' },
@@ -18,6 +19,8 @@ const columns = [
     { field: 'blog_author', headerName: 'Tác giả' },
     { field: 'visible', headerName: 'Hiển thị trang chủ' },
 ];
+
+const contents = confirmContents.etBlog;
 
 export const ETBlogOverviewPage = () => {
     const navigate = useNavigate();
@@ -89,7 +92,7 @@ export const ETBlogOverviewPage = () => {
                 <ConfirmedDialog
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
-                    {...getConfirmDialogConfig("delete")}
+                    {...contents.delete}
                 />
             )}
             <Header />
@@ -97,8 +100,8 @@ export const ETBlogOverviewPage = () => {
                 <div className="etblog-toolbars">
                     <div className="action-container">
                         <AddButton onClick={() => handleClick("create")} />
-                        <EditButton onClick={() => selected.length === 1 && handleClick("edit")} />
-                        <DeleteButton onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
+                        <EditButton disabled={selected.length != 1} onClick={() => selected.length === 1 && handleClick("edit")} />
+                        <DeleteButton disabled={selected.length < 1} onClick={() => selected.length > 0 && setIsOpenConfirmedDialog(true)} />
                     </div>
                     <div className="search-container">
                         <SearchBar onSearch={handleSearch} />

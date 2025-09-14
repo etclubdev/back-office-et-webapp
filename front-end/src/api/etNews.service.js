@@ -1,12 +1,15 @@
 import { api } from "./index";
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 
-const getAllETNews = async () => {
+const getAllETNews = async (etnews_category) => {
     try {
-        const response = await api.get('/et-news');
+        const response = await api.get('/et-news', {
+            params: {
+                etnews_category
+            }
+        });
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
         console.error(error);
         throw error;
     }
@@ -17,7 +20,7 @@ const getETNewsById = async (id) => {
         const response = await api.get(`/et-news/${id}`);
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -29,7 +32,7 @@ const createETNews = async (payload) => {
         handleHttpSuccess("Thêm ET News thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -41,8 +44,9 @@ const updateETNews = async (id, payload) => {
         handleHttpSuccess("Chỉnh sửa ET News thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
-        console.error(error);
+
+        handleHttpError(error.response.data.message || error.response.data);
+        console.error(error.response.data);
         throw error;
     }
 }
@@ -53,7 +57,7 @@ const deleteETNewsById = async (id) => {
         handleHttpSuccess("Xóa ET News thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }
@@ -65,7 +69,7 @@ const deleteETNews = async (etNews) => {
         handleHttpSuccess("Xóa ET News thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error(error);
         throw error;
     }

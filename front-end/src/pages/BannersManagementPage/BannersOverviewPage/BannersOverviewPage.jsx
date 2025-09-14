@@ -15,11 +15,15 @@ import {
 } from '../../../api/banner.service';
 import "./BannersOverviewPage.css";
 
+import { confirmContents } from '../../../constants';
+
 const columns = [
   { field: 'banner_name', headerName: 'Tên banner' },
   { field: 'image_url', headerName: 'Banner' },
   { field: 'visible', headerName: 'Hiển thị trang chủ' },
 ];
+
+const contents = confirmContents.banners;
 
 export const BannersOverviewPage = () => {
   const navigate = useNavigate();
@@ -82,7 +86,7 @@ export const BannersOverviewPage = () => {
         <ConfirmedDialog
           onClose={() => setIsOpenConfirmDialog(false)}
           onConfirm={handleConfirmDelete}
-          {...getConfirmDialogConfig("delete")}
+          {...contents.delete}
         />
       )}
 

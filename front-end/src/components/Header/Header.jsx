@@ -21,7 +21,14 @@ export const Header = ({children}) => {
                         let isLast = index === pathnames.length - 1;
                         const displayName = breadcrumbNameMap[value] || value;
 
-                        if (displayName === "edit") return;
+                        if (displayName === "edit" || displayName === "colleague") return;
+
+                        if (displayName === "Quản lý Tìm kiếm CTV") 
+                            return (
+                            <Typography key={to} color="textPrimary" style={{ textDecoration: "none"}}>
+                                {displayName}
+                            </Typography>
+                        ) 
 
                         return isLast ? (
                             <Typography key={to} color="textPrimary">

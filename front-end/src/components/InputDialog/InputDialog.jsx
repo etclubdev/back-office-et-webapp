@@ -26,15 +26,15 @@ export const InputDialog = ({ open, onClose, onConfirm, title, defaultValues = {
         <DialogContent>
           <div className="input-dialog-content">
             <TextFieldController 
-              name={"achievement_name"}
+              name="achievement_name"
               control={control}
-              label={"Tên thành tựu"}
+              label="Tên thành tựu"
               errors={errors}
             />
             <TextFieldController 
-              name={"highlight_number"}
+              name="highlight_number"
               control={control}
-              label={"Thành tích"}
+              label="Thành tích"
               errors={errors}
             />
           </div>

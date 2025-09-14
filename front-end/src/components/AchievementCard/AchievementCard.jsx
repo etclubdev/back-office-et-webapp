@@ -3,7 +3,10 @@ import './AchievementCard.css';
 import { Switch } from '@mui/material';
 import { ConfirmedDialog } from '../ConfirmedDialog';
 import { updateAchievementById } from '../../api/achievement.service';
-import { getConfirmDialogConfig } from '../../utils/confirmDialogUtil';
+
+import { confirmContents } from '../../constants';
+
+const contents = confirmContents.achievements;
 
 export const AchievementCard = ({ achievement_id, achievement_name, highlight_number, visible, selected, setSelected }) => {
     const [checked, setChecked] = useState(visible);
@@ -37,7 +40,7 @@ export const AchievementCard = ({ achievement_id, achievement_name, highlight_nu
             {isOpen && <ConfirmedDialog 
                 onClose={onClose}
                 onConfirm={onConfirm}    
-                {...getConfirmDialogConfig("switch")}
+                {...contents.update}
             />}
             <div id={achievement_id} className="achievement-card" ref={cardRef} onClick={handleClick}>
                 <div className="card-top">

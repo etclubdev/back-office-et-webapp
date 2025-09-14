@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LogInPage.css"
 import { loginUser } from "../../api/auth.service";
 import { useAuth } from "../../context/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate,useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { logInSchema } from "../../schemas/logInSchema";
 import { TextFieldController } from "../../components/TextFieldController";
 import { PasswordController } from "../../components/PasswordController";
+import { CircularLoading } from "../../components/CircularLoading";
 
 import { noTextLogo } from '../../assets/images/logos';
 
 export const LogInPage = () => {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
 
@@ -20,14 +21,14 @@ export const LogInPage = () => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
+    watch,
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(logInSchema),
     defaultValues: {
       username: "",
       password: ""
-    },
-    mode: "onBlur"
+    }
   });
 
   const handleLogin = async (payload) => {
@@ -35,7 +36,7 @@ export const LogInPage = () => {
 
     try {
       const token = await loginUser({ username, password });
-      
+
       login(token);
       navigate('/');
     } catch (error) {
@@ -43,6 +44,22 @@ export const LogInPage = () => {
       setServerError("Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
     }
   };
+
+  const username = watch("username");
+  const password = watch("password");
+
+  useEffect(() => {
+    if (serverError && (username.length == 0 || password.length == 0)) {
+      setServerError("");
+    }
+  }, [username, password, serverError]);
+
+  const location = useLocation();
+
+  if (user) {
+    const from = location.state?.from?.pathname || "/";
+    return <Navigate to={from} replace />;
+  }
 
   return (
     <div className="log-in-page">
@@ -73,9 +90,11 @@ export const LogInPage = () => {
             />
           </div>
           {serverError && <p className="log-in-error">{serverError}</p>}
-          <button className="submit-button" type="submit">Đăng nhập</button>
+          <button className="submit-button" type="submit" disabled={isSubmitting}>Đăng nhập</button>
+
         </form>
       </div>
+      {isSubmitting && <CircularLoading />}
     </div>
   );
 };
