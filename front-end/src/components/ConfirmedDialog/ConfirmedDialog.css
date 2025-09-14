@@ -85,7 +85,7 @@
 /* Warning */
 .circle.warning {
   background: #fff3cd;
-  color: #b58900;
+  color: #ffc005;
 }
 
 /* Dark */
@@ -192,11 +192,11 @@
 
 /* Warning */
 .confirm-button.warning {
-  background-color: #b58900;
+  background-color: #ffc005;
   color: white;
 }
 .confirm-button.warning:hover {
-  background-color: #936f00;
+  background-color: #ad8305;
 }
 
 /* Dark */

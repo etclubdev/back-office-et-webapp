@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2vw;
   font-family: 'BeVietnamPro';
 }
@@ -75,6 +76,7 @@
 @media (max-width: 480px) {
   .faq-card-list .tabs-container {
     width: 90%;
+    margin-bottom: 20px;
   }
 
   .faq-card-list .tab-item {
