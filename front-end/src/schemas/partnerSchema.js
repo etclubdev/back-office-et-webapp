@@ -13,7 +13,7 @@ export const partnerSchema = yup.object().shape({
             [
                 "Đối tác doanh nghiệp",
                 "Đối tác chuyên gia",
-                "Đối tác Truyền thông",
+                "Đối tác truyền thông",
                 "Nghệ sĩ khách mời"
             ],
             "Danh mục đối tác là bắt buộc."
