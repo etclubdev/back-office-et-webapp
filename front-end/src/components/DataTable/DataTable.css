@@ -3,6 +3,7 @@
 .data-paper-container div,
 .data-paper-container p {
    font-family: "BeVietnamPro";
+   font-size: 12px;
 }
 
 .data-table-container::-webkit-scrollbar {
@@ -22,4 +23,40 @@
 
 .data-table-container::-webkit-scrollbar-thumb:hover {
    background: #2886ca;
+}
+
+@media (max-width: 427px) {
+   .data-paper-container{
+      height: 410px;
+      min-height: auto!important;
+   }
+
+   .data-table-container{
+      height: 340px;
+      max-height: 340px !important;
+      min-height: auto!important;
+
+   }
+}
+
+@media (min-width: 428px) and (max-width: 768px) {
+   .data-paper-container{
+      height: 740px;
+   }
+
+   .data-table-container{
+      height: 650px;
+      max-height: 650px !important;
+   }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+   .data-paper-container{
+      height: 880px;
+   }
+
+   .data-table-container{
+      height: 810px;
+      max-height: 810px !important;
+   }
 }

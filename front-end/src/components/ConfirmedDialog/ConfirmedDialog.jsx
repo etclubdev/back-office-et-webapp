@@ -1,7 +1,7 @@
-import React from 'react';
 import './ConfirmedDialog.css';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
-export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) => {
+export const ConfirmedDialog = ({ title, desc, Icon = PriorityHighIcon, alertType, onClose, onConfirm }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-container">
@@ -10,7 +10,7 @@ export const ConfirmedDialog = ({ title, desc, alertType, onClose, onConfirm }) 
                 </div>
                 <div className="modal-icon">
                     <div className={`circle ${alertType}`}>
-                        <span className="mark">!</span>
+                        <Icon className='icon'/>
                     </div>
                 </div>
                 <div className="modal-content">

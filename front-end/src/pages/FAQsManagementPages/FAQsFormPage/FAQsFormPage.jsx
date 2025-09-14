@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import "./FAQsFormPage.css";
 import { useParams, useNavigate } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField, Select, MenuItem, FormControl, InputLabel, Switch, FormControlLabel, Button } from "@mui/material";
-import { createFAQSchema, updateFAQSchema } from "../../../schemas/faqsSchema";
-import { Header } from "../../../components/Header";
+import { Button } from "@mui/material";
 
+import { Header } from "../../../components/Header";
+import { TextFieldController } from "../../../components/TextFieldController";
+import { SelectController } from "../../../components/SelectController";
+import { SwitchController } from "../../../components/SwitchController";
+
+import { createFAQSchema, updateFAQSchema } from "../../../schemas/faqsSchema";
 import { createFAQs, updateFAQsById, getFAQsById } from '../../../api/faq.service';
 
 export const FAQsFormPage = ({ action }) => {
@@ -17,14 +21,14 @@ export const FAQsFormPage = ({ action }) => {
         control,
         handleSubmit,
         reset,
-        formState: { errors },
+        formState: { errors, isSubmitting },
     } = useForm({
         resolver: yupResolver(action === "create" ? createFAQSchema : updateFAQSchema),
         defaultValues: {
             question: "",
             faq_category: "",
             answer: "",
-            visible: false,
+            visible: true,
         },
     });
 
@@ -36,22 +40,20 @@ export const FAQsFormPage = ({ action }) => {
             }
         };
         fetchData();
-    }, [id]);
+    }, [id, reset]);
 
     const handleClose = () => {
         navigate('/faqs');
-    }
+    };
 
     const onSubmit = async (payload) => {
         try {
             if (action === "create") {
-                const response = await createFAQs(payload);
-                handleClose();
-
+                await createFAQs(payload);
             } else if (action === "edit") {
-                const response = await updateFAQsById(id, payload);
-                handleClose();
+                await updateFAQsById(id, payload);
             }
+            handleClose();
         } catch (error) {
             console.log(error);
         }
@@ -61,67 +63,60 @@ export const FAQsFormPage = ({ action }) => {
         <div className="faqs-form-page">
             <Header>{action === "create" ? "Thêm FAQs mới" : "Chỉnh sửa FAQs"}</Header>
             <div className="faqs-form">
-                <form onSubmit={handleSubmit(onSubmit)} >
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="faqs-form-top">
                         <div className="faqs-form-left">
-                            <Controller
+                            <TextFieldController
                                 name="question"
                                 control={control}
-                                render={({ field }) => (
-                                    <TextField {...field} label="Câu hỏi" fullWidth error={!!errors.question} helperText={errors.question?.message} required />
-                                )}
+                                label="Câu hỏi"
+                                errors={errors}
                             />
 
-                            <FormControl fullWidth error={!!errors.faq_category}>
-                                <Controller
-                                    name="faq_category"
-                                    control={control}
-                                    render={({ field }) => (
-                                        <>
-                                            <InputLabel>Nhóm câu hỏi</InputLabel>
-                                            <Select {...field} label="Nhóm câu hỏi">
-                                                <MenuItem value="Về ET Club">Về ET Club</MenuItem>
-                                                <MenuItem value="Về hoạt động và sự kiện">Về hoạt động và sự kiện</MenuItem>
-                                                <MenuItem value="Về quy trình tham gia">Về quy trình tham gia</MenuItem>
-                                                <MenuItem value="Khác">Khác</MenuItem>
-                                            </Select>
-                                        </>
-                                    )}
-                                />
-                            </FormControl>
+                            <SelectController
+                                name="faq_category"
+                                control={control}
+                                label="Nhóm câu hỏi"
+                                menuItems={[
+                                    "ET Club",
+                                    "Hoạt động và sự kiện",
+                                    "Quy trình tham gia",
+                                    "Khác",
+                                ]}
+                                errors={errors}
+                            />
                         </div>
+
                         <div className="faqs-form-right">
-                            <Controller
+                            <SwitchController
                                 name="visible"
                                 control={control}
-                                render={({ field }) => (
-                                    <FormControlLabel control={<Switch {...field} checked={field.value} />} label="Hiển thị trang chủ" />
-                                )}
+                                label="Hiển thị trang chủ"
                             />
                         </div>
                     </div>
 
                     <div className="faqs-form-bottom">
-                        <Controller
+                        <TextFieldController
                             name="answer"
                             control={control}
-                            render={({ field }) => (
-                                <TextField {...field} label="Câu trả lời" multiline rows={8} fullWidth error={!!errors.answer} helperText={errors.answer?.message} required />
-                            )}
+                            label="Câu trả lời"
+                            errors={errors}
+                            multiline
+                            rows={8}
                         />
 
                         <div className="faqs-form-button">
                             <Button variant="outlined" color="primary" onClick={handleClose}>
                                 Hủy bỏ
                             </Button>
-                            <Button type="submit" variant="contained" color="primary">
-                                Lưu
+                            <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
+                                {isSubmitting ? "Đang lưu..." : "Lưu"}
                             </Button>
                         </div>
-
                     </div>
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};

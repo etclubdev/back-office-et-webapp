@@ -11,7 +11,6 @@ const getAllPersonnels = async (personnel_status, department_name) => {
     });
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
     console.error(error);
   }
 };
@@ -21,7 +20,7 @@ const getPersonnelById = async (id) => {
     const response = await api.get(`/personnels/${id}`);
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -33,7 +32,7 @@ const createPersonnel = async (payload) => {
     handleHttpSuccess("Thêm nhân sự thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -57,7 +56,7 @@ const deletePersonnelById = async (id) => {
     handleHttpSuccess("Xóa nhân sự thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -69,7 +68,7 @@ const deletePersonnels = async (personnelIds) => {
     handleHttpSuccess("Xóa nhân sự thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -80,7 +79,7 @@ const getUnregisteredAccount = async () => {
     const response = await api.get("/personnels/unregistered");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }

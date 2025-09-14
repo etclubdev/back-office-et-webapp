@@ -15,7 +15,7 @@ import {
   TableSortLabel,
 } from "@mui/material";
 
-export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
+export const DataTable = ({ data, columns, itemId, selected, setSelected, setOpenedRecord }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [sortConfig, setSortConfig] = useState({ key: "title", direction: "asc" });
@@ -52,8 +52,8 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
   const paginatedData = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <Paper className="data-paper-container" sx={{ width: "100%", padding: 2, minHeight: "300px", boxSizing: "border-box" }}>
-      <TableContainer className="data-table-container" sx={{ minHeight: "300px", maxHeight: "400px", overflowY: "auto" }}>
+    <Paper className="data-paper-container" sx={{ width: "100%", padding: 2, minHeight: "500px", boxSizing: "border-box" }}>
+      <TableContainer className="data-table-container" sx={{ minHeight: "460px", maxHeight: "460px", overflowY: "auto" }}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
@@ -90,7 +90,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
                       cursor: "pointer",
                     }}
                     onClick={() => handleSelect(row[itemId])}
-                    // onDoubleClick={() => handleSelect(row[itemId])}
+                    onDoubleClick={() => setOpenedRecord ? setOpenedRecord(row[itemId]) : {}}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -114,7 +114,7 @@ export const DataTable = ({ data, columns, itemId, selected, setSelected }) => {
       </TableContainer>
 
       <TablePagination
-        rowsPerPageOptions={[5, 10, 15]}
+        rowsPerPageOptions={[5, 10, 20]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}

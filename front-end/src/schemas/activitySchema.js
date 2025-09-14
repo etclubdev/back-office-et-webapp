@@ -3,7 +3,6 @@ import * as yup from 'yup';
 export const activitySchema = yup.object().shape({
     title: yup
         .string()
-        .matches(/^\p{L}/u, "Tiêu đề phải bắt đầu bằng chữ cái.")
         .max(60, "Tiêu đề không được vượt quá 60 ký tự.")
         .required("Tiêu đề là bắt buộc."),
 

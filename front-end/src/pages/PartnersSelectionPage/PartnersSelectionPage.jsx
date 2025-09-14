@@ -9,7 +9,9 @@ export const PartnersSelectionPage = () => {
     <div className="partner-selection-page">
       <Header>Lựa chọn Đối tác</Header>
       <div className="partner-list-section">
+        <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
         <PartnerCardList />
+        <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
       </div>
     </div>
   )

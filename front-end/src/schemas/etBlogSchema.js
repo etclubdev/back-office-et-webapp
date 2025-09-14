@@ -3,7 +3,7 @@ import * as yup from 'yup';
 export const etBlogSchema = yup.object().shape({
     title: yup
         .string()
-        .max(60, "Tiêu đề không được vượt quá 60 ký tự.")
+        .max(250, "Tiêu đề không được vượt quá 60 ký tự.")
         .required("Tiêu đề là bắt buộc."),
     
     blog_author: yup
@@ -13,8 +13,7 @@ export const etBlogSchema = yup.object().shape({
 
     meta_description: yup
         .string()
-        .max(160, "Mô tả meta không được vượt quá 160 ký tự.")
-        .nullable(),
+        .required("Mô tả là bắt buộc."),
 
     thumbnail_image_url: yup
         .string()

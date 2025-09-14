@@ -11,7 +11,7 @@
 }
 
 .achievements-container{
-    margin-top: 5vw;
+    margin-top: 30px;
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -42,8 +42,9 @@
 }
 
 @media (max-width: 480px) {
-    .achievements-overview-page {
+    .achievements-selection-page{
         max-width: 100%;
+        overflow-y: scroll;
     }
 
     .achievements-container {

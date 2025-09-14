@@ -1,0 +1,50 @@
+.filter-container {
+    position: relative;
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    font-size: 12px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.filter-icon:hover {
+    background-color: #C0C0C0;
+    cursor: pointer;
+}
+
+.filter-icon.active {
+    background-color: #A0A0A0;
+}
+
+.filter-chip-container {
+    min-width: 200px;
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    transform: translateX(-45%);
+}
+
+.filter-chip-container ul {
+    padding: 10px 20px;
+    justify-content: left;
+}
+
+.filter-chip-container.active {
+    display: block;
+    top: 45px;
+}
+
+.filter-button-container {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}

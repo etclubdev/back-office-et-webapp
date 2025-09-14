@@ -1,7 +1,7 @@
 import BaseButton from "./BaseButton";
 import AddIcon from "@mui/icons-material/Add";
 
-const AddButton = ({ onClick }) => {
+const AddButton = ({ onClick, disabled }) => {
     return (
         <BaseButton
             onClick={onClick}
@@ -11,6 +11,7 @@ const AddButton = ({ onClick }) => {
                 color: "white", 
                 "&:hover": { backgroundColor: "#0056b3" }, 
               }}
+            disabled={disabled}
         >
             Thêm mới
         </BaseButton>

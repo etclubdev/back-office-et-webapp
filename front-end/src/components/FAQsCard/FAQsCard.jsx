@@ -4,10 +4,16 @@ import { Switch } from "@mui/material";
 import { updateFAQsById } from '../../api/faq.service';
 import { ConfirmedDialog } from '../ConfirmedDialog';
 import { getConfirmDialogConfig } from '../../utils/confirmDialogUtil';
+import { confirmContents } from "../../constants";
+
+const contents = confirmContents.faqs;
 
 export const FAQsCard = ({faq_id, question, answer, visible}) => {
     const [checked, setChecked] = useState(visible);
-    const [isOpenDialog, setIsOpenDialog] = useState(false)
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
+
+    console.log(contents);
+    
 
     const onClose = () => {
         setIsOpenDialog(false);
@@ -17,7 +23,6 @@ export const FAQsCard = ({faq_id, question, answer, visible}) => {
         const response = await updateFAQsById(faq_id, {visible: !checked});
         setChecked(!checked);
         setIsOpenDialog(false);
-
     }
 
     const handleChange = () => {
@@ -29,7 +34,7 @@ export const FAQsCard = ({faq_id, question, answer, visible}) => {
             {
                 isOpenDialog && (
                     <ConfirmedDialog 
-                        {...getConfirmDialogConfig("switch")}
+                        {...contents.update}
                         onClose={onClose}
                         onConfirm={onConfirm}
                     />

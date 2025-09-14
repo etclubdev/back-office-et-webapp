@@ -10,7 +10,7 @@ import { useAuth } from "../../context/useAuth";
 import { getPersonnelById } from "../../api/personnel.service";
 
 export const Navbar = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
     const [isExpanded, setIsExpanded] = useState(false);
     const { user } = useAuth();
     const [userInfo, setUserInfo] = useState({});
@@ -24,7 +24,7 @@ export const Navbar = () => {
     }, [user])
 
     const handleResize = useCallback(() => {
-        setIsMobile(window.innerWidth <= 768);
+        setIsMobile(window.innerWidth <= 900);
         if (isMobile) {
             setIsExpanded(!isExpanded);
         }
@@ -38,8 +38,8 @@ export const Navbar = () => {
 
     useEffect(() => {
         const handleResizeWindow = () => {
-            setIsMobile(window.innerWidth <= 768);
-            if (window.innerWidth > 768) {
+            setIsMobile(window.innerWidth <= 900);
+            if (window.innerWidth > 900) {
                 setIsMobile(false);
             }
         };
@@ -52,7 +52,9 @@ export const Navbar = () => {
     }, [fetchUser])
     return (
         <div className={`navbar-section ${isExpanded ? 'expanded' : ''}`}>
-            <img className="navbar-logo" src={isMobile && !isExpanded ? noTextLogo : horizontalLogo} alt="ET Club" />
+            <div className='navbar-logo-container'>
+                <img className="navbar-logo" src={isMobile && !isExpanded ? noTextLogo : horizontalLogo} alt="ET Club" />
+            </div>
             {
                 isMobile && (
                     <div className="expand-container" onClick={handleResize}>

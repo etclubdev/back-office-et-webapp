@@ -6,7 +6,7 @@ const getAllTerms = async () => {
     const response = await api.get("/terms");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }

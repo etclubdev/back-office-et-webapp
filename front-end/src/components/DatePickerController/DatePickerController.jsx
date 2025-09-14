@@ -4,16 +4,28 @@ import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from 'dayjs';
 
-export const DatePickerController = ({ name, label, control }) => {
+export const DatePickerController = ({
+  name,
+  label,
+  control,
+  required = true,
+}) => {
+  const labelWithAsterisk = (
+    <span>
+      {label}
+      {required && <span style={{ color: 'red' }}> *</span>}
+    </span>
+  );
+
   return (
     <Controller
       name={name}
       control={control}
-      rules={{ required: "Vui lòng chọn ngày" }}
+      rules={required ? { required: "Vui lòng chọn ngày" } : {}}
       render={({ field, fieldState }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
-            label={label}
+            label={labelWithAsterisk}
             value={field.value ? dayjs(field.value) : null}
             format="DD-MM-YYYY"
             onChange={(newValue) => {
@@ -32,5 +44,5 @@ export const DatePickerController = ({ name, label, control }) => {
         </LocalizationProvider>
       )}
     />
-  )
-}
+  );
+};

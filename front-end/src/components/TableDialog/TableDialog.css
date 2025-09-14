@@ -44,6 +44,7 @@
 
 .table-modal-overlay .search-container{
     width: 95%;
+    max-width: none;
 }
 
 .table-modal-button{
@@ -56,10 +57,11 @@
 
 .table-modal-container .MuiPaper-root {
     width: 95% !important;
+    min-height: 400px !important;
 }
 
 .table-modal-container .MuiTableContainer-root {
-    max-height: 350px !important;
+    min-height: 400px !important;
 }
 
 .table-modal-container .MuiToolbar-root {

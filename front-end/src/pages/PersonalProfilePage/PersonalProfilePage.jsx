@@ -230,6 +230,7 @@ const PersonalInformation = () => {
                                 control={control}
                                 label="Địa chỉ"
                                 errors={errors}
+                                required={false}
                             />
                             <TextFieldController
                                 name="student_id"
@@ -305,7 +306,7 @@ const PasswordUpdate = () => {
             );
 
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
 

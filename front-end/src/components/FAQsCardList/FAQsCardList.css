@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2vw;
   font-family: 'BeVietnamPro';
 }
@@ -29,7 +30,7 @@
 }
 
 .faq-card-list .tabs-container .progress-bar {
-  width: 10vw;
+  width: 210px;
   height: 0.1vw;
   background-color: #1976D2;
   position: absolute;
@@ -75,6 +76,7 @@
 @media (max-width: 480px) {
   .faq-card-list .tabs-container {
     width: 90%;
+    margin-bottom: 20px;
   }
 
   .faq-card-list .tab-item {

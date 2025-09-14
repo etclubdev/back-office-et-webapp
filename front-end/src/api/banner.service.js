@@ -6,7 +6,7 @@ const getAllBannners = async () => {
     const response = await api.get("/banners");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -17,7 +17,7 @@ const getBannerById = async (id) => {
     const response = await api.get(`/banners/${id}`);
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -29,7 +29,7 @@ const createBanner = async (payload) => {
     handleHttpSuccess("Thêm banner thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -41,7 +41,7 @@ const updateBanner = async (id, payload) => {
     handleHttpSuccess("Chỉnh sửa banner thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -53,7 +53,7 @@ const deleteBannerById = async (id) => {
     handleHttpSuccess("Xóa banner thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -65,7 +65,7 @@ const deleteBannners = async (banners) => {
     handleHttpSuccess("Xóa banner thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }

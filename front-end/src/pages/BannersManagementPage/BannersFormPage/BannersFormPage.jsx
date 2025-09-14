@@ -29,6 +29,7 @@ export const BannersFormPage = ({ action }) => {
         defaultValues: {
             "banner_name": "",
             "image_url": "",
+            "hypertext_link": "",
             "visible": true
         },
     });
@@ -98,6 +99,14 @@ export const BannersFormPage = ({ action }) => {
                                     control={control}
                                     label="Tên Banner"
                                     errors={errors}
+                                />
+
+                                <TextFieldController
+                                    name="hypertext_link"
+                                    control={control}
+                                    label="Đường dẫn"
+                                    errors={errors}
+                                    required={false}
                                 />
                             </div>
                         </div>

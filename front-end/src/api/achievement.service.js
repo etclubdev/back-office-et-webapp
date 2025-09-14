@@ -6,7 +6,7 @@ const getAllAchievements = async () => {
         const response = await api.get('/achievements');
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi lấy danh sách thành tựu:", error);
         throw error;
     }
@@ -18,7 +18,7 @@ const createAchievement = async (payload) => {
         handleHttpSuccess("Thêm thành tựu thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi tạo thành tựu:", error);
         throw error;
     }
@@ -30,7 +30,7 @@ const updateAchievementById = async (id, payload) => {
         handleHttpSuccess("Chỉnh sửa thành tựu thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi cập nhật thành tựu:", error);
         throw error;
     }
@@ -42,7 +42,7 @@ const deleteAchievementById = async (id) => {
         handleHttpSuccess("Xóa thành tựu thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi xóa thành tựu:", error);
         throw error;
     }
@@ -54,7 +54,7 @@ const deleteAchievements = async (achievements) => {
         handleHttpSuccess("Xóa thành tựu thành công!");
         return response.data;
     } catch (error) {
-        handleHttpError(error?.status);
+        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi xóa thành tựu:", error);
         throw error;
     }

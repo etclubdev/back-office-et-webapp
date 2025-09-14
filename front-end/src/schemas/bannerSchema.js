@@ -10,6 +10,10 @@ const bannerSchema = yup.object({
     visible: yup
         .boolean()
         .required("Trạng thái hiển thị là bắt buộc."),
+    hypertext_link: yup
+        .string()
+        .nullable()
+        .url("Đường dẫn phải đúng định dạng")
 });
 
 export { bannerSchema };
