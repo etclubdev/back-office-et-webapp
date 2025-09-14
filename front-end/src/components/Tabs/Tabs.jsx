@@ -20,14 +20,14 @@ export const Tabs = ({ categories, activeTab, setActiveTab }) => {
     return (
         <div className="tabs-container">
             {categories.map((category, index) => (
-                <div
+                <p
                     ref={(el) => tabsRef.current[index] = el}
                     key={index}
                     className={`tab-item ${activeTab === index ? "active" : ""}`}
                     onClick={(e) => handleClick(e, index)}
                 >
                     {category}
-                </div>
+                </p>
             ))}
             <div className="progress-bar" ref={progressBarRef}></div>
         </div>

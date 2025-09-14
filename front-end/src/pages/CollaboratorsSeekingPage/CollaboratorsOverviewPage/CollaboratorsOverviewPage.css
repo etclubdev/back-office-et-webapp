@@ -1,6 +1,9 @@
 .collaborators-overview-page {
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .collaborators-overview-section {
@@ -24,6 +27,7 @@
 }
 
 .chart-container {
+  min-height: 300px;
   flex: 1;
   padding: 20px 30px;
   border-radius: 10px;
@@ -97,13 +101,31 @@
   border-bottom: #00379024 1.6px dashed;
 }
 
-@media (min-width: 769px) and (max-width: 1024px){
-  .collaborators-overview-page{
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+
+.no-data img {
+  height: 65%;
+}
+
+.no-data p {
+  font-size: 12px;
+  color: #6e6e6e;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .collaborators-overview-page {
     display: flex;
     align-items: center;
   }
 
-  .charts-container, .cards-container {
+  .charts-container,
+  .cards-container {
     width: 90%;
   }
 
@@ -113,13 +135,14 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px){
-  .collaborators-overview-page{
+@media (min-width: 481px) and (max-width: 768px) {
+  .collaborators-overview-page {
     display: flex;
     align-items: center;
   }
 
-  .charts-container, .cards-container {
+  .charts-container,
+  .cards-container {
     width: 90%;
   }
 
@@ -130,17 +153,22 @@
 }
 
 @media (max-width: 480px) {
-  .collaborators-overview-page{
+  .collaborators-overview-page {
     display: flex;
     align-items: center;
   }
 
-  .charts-container, .cards-container {
+  .charts-container,
+  .cards-container {
     width: 90%;
     flex-direction: column;
   }
 
   .chart-container {
     width: 80%;
+  }
+
+  .collaborators-overview-page button .css-1umw9bq-MuiSvgIcon-root {
+    font-size: 12px;
   }
 }

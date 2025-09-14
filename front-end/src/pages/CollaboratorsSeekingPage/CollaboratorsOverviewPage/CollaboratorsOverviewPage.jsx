@@ -13,6 +13,7 @@ import { Switch } from '@mui/material';
 import { getMaxValue } from "../../../utils/getMaxValue";
 import { useAuth } from "../../../context/useAuth";
 
+import { noDataForGraph } from "../../../assets/images/errors";
 import { confirmContents } from '../../../constants';
 
 const contents = confirmContents.recruitment;
@@ -140,29 +141,47 @@ export const CollaboratorsOverviewPage = () => {
         <div className="charts-container">
           <div className="chart-container" style={{ flex: 2.5 }}>
             <p className="title">ĐƠN ỨNG TUYỂN THEO BAN</p>
-            <BarChart
-              dataset={statisticsData.by_department}
-              xAxis={[{ scaleType: "band", dataKey: "x" }]}
-              yAxis={[
-                {
-                  colorMap: {
-                    type: 'piecewise',
-                    thresholds: getMaxValue(statisticsData.by_department),
-                    colors: ['#0077B6', '#90E0EF'],
-                  },
-                },
-              ]}
-              series={[{ dataKey: "y" }]}
-              height={300}
-            />
+            {
+              statisticsData.by_department?.length > 0 ? (
+                <BarChart
+                  dataset={statisticsData.by_department}
+                  xAxis={[{ scaleType: "band", dataKey: "x" }]}
+                  yAxis={[
+                    {
+                      colorMap: {
+                        type: 'piecewise',
+                        thresholds: getMaxValue(statisticsData.by_department),
+                        colors: ['#0077B6', '#90E0EF'],
+                      },
+                    },
+                  ]}
+                  series={[{ dataKey: "y" }]}
+                  height={300}
+                />
+              ) : (
+                <div className="no-data">
+                  <img src={noDataForGraph} alt="" />
+                  <p>Not enough data to show a graph yet.</p>
+                </div>
+              )
+            }
           </div>
           <div className="chart-container" style={{ flex: 1.5 }}>
             <p className="title">TỶ LỆ GIỚI TÍNH ỨNG VIÊN</p>
-            <PieChart
-              series={[{ data: statisticsData.by_gender }]}
-              height={300}
-              colors={['#0077B6', '#90E0EF']}
-            />
+            {
+              statisticsData.by_gender?.length > 0 ? (
+                <PieChart
+                  series={[{ data: statisticsData.by_gender }]}
+                  height={300}
+                  colors={['#0077B6', '#90E0EF']}
+                />
+              ) : (
+                <div className="no-data">
+                  <img src={noDataForGraph} alt="" />
+                  <p>Not enough data to show a graph yet.</p>
+                </div>
+              )
+            }
           </div>
         </div>
 
@@ -170,7 +189,7 @@ export const CollaboratorsOverviewPage = () => {
         <div className="charts-container">
           <div className="chart-container" style={{ flex: 1.5 }}>
             <p className="title">ĐƠN ỨNG TUYỂN THEO KHÓA</p>
-            {statisticsData.by_cohort?.length > 0 && (
+            {statisticsData.by_cohort?.length > 0 ? (
               <BarChart
                 dataset={statisticsData.by_cohort}
                 xAxis={[{
@@ -188,11 +207,16 @@ export const CollaboratorsOverviewPage = () => {
                 series={[{ dataKey: "y" }]}
                 height={300}
               />
-            )}
+            ) : (
+                <div className="no-data">
+                  <img src={noDataForGraph} alt="" />
+                  <p>Not enough data to show a graph yet.</p>
+                </div>
+              )}
           </div>
           <div className="chart-container" style={{ flex: 2.5 }}>
             <p className="title">ĐƠN ỨNG TUYỂN THEO CHUYÊN NGÀNH</p>
-            {statisticsData.by_major?.length > 0 && (
+            {statisticsData.by_major?.length > 0 ? (
               <BarChart
                 dataset={statisticsData.by_major}
                 yAxis={[
@@ -214,7 +238,12 @@ export const CollaboratorsOverviewPage = () => {
                 layout="horizontal"
                 height={300}
               />
-            )}
+            ) : (
+                <div className="no-data">
+                  <img src={noDataForGraph} alt="" />
+                  <p>Not enough data to show a graph yet.</p>
+                </div>
+              )}
           </div>
         </div>
       </div>

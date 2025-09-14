@@ -1,19 +1,29 @@
 .tabs-container {
     display: flex;
-    box-sizing: content-box;
-    border-bottom: 0.1vw solid #ccc;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
     position: relative;
     margin: 0;
     width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-item {
+    flex-shrink: 0;
+    margin: 0;
     font-size: 14px;
     color: gray;
     padding: 10px 20px;
     cursor: pointer;
     position: relative;
-    box-sizing: content-box;
+    white-space: nowrap;
 }
 
 .tab-item.active {
@@ -22,10 +32,20 @@
 }
 
 .tabs-container .progress-bar {
-    width: 40px;
-    height: 0.1vw;
+    height: 2px;
     background-color: #1976D2;
     position: absolute;
     bottom: 0;
     transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 480px) {
+    .tab-item {
+        white-space: nowrap;
+        padding: 10px;
+    }
+
+    .action-container {
+        margin-top: 10px;
+    }
 }
