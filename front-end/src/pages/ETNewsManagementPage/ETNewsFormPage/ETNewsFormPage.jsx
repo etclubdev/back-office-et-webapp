@@ -134,6 +134,7 @@ export const ETNewsFormPage = ({ action }) => {
                                     control={control}
                                     label="Mô tả"
                                     errors={errors}
+                                    required={false}
                                 />
                                 <TextFieldController
                                     name="source"

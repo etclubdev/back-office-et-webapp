@@ -1,12 +1,17 @@
 import { handleHttpError, handleHttpSuccess } from "../utils/handleHttpStatus";
 import { api } from "./index";
 
-const getAllPartners = async () => {
+const getAllPartners = async (category) => {
   try {
-    const response = await api.get("/partners");
+    console.log(category);
+    
+    const response = await api.get("/partners", {
+      params: {
+        category
+      },
+    });
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
     console.error(error);
     throw error;
   }
@@ -17,7 +22,7 @@ const getPartnerById = async (id) => {
     const response = await api.get(`/partners/${id}`);
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -29,7 +34,7 @@ const createPartner = async (payload) => {
     handleHttpSuccess("Thêm đối tác thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -41,7 +46,7 @@ const updatePartner = async (id, payload) => {
     handleHttpSuccess("Chỉnh sửa đối tác thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -53,7 +58,7 @@ const deletePartnerById = async (id) => {
     handleHttpSuccess("Xóa đối tác thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -65,7 +70,7 @@ const deletePartners = async (partners) => {
     handleHttpSuccess("Xóa đối tác thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }
@@ -77,7 +82,7 @@ const updateVisible = async (partners) => {
     handleHttpSuccess("Chỉnh sửa hiển thị đối tác thành công!");
     return response.data;
   } catch (error) {
-    handleHttpError(error?.status);
+    handleHttpError(error.response.data.message || error.response.data);
     console.error(error);
     throw error;
   }

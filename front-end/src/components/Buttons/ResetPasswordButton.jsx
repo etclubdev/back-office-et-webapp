@@ -1,16 +1,18 @@
 import BaseButton from "./BaseButton";
 import KeyIcon from '@mui/icons-material/Key';
 
-const ResetPasswordButton = ({ onClick }) => {
+const ResetPasswordButton = ({ onClick, disabled }) => {
     return (
         <BaseButton
             onClick={onClick}
             startIcon={<KeyIcon />}
             sx={{
-                backgroundColor: "#007bff", 
-                color: "white", 
-                "&:hover": { backgroundColor: "#0056b3" }, 
+                backgroundColor: "#E0E0E0", 
+                color: "#212121", 
+                "&:hover": { backgroundColor: "#BDBDBD" }, 
+                boxShadow: "none",
               }}
+            disabled={disabled}
         >
             Đặt lại mật khẩu
         </BaseButton>

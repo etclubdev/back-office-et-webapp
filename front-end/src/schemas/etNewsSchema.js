@@ -37,4 +37,7 @@ export const etNewsSchema = yup.object().shape({
         .min(50, "Nội dung phải có ít nhất 50 ký tự.")
         .required("Nội dung là bắt buộc."),
 
+    source: yup 
+        .string()
+        .required("Nguồn là bắt buộc."),
 });

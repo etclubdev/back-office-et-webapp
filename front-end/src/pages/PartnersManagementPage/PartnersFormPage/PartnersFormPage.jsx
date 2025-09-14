@@ -132,6 +132,7 @@ export const PartnersFormPage = ({ action }) => {
                                     control={control}
                                     label="Mô tả"
                                     errors={errors}
+                                    required={false}
                                 />
 
                                 <TextFieldController
@@ -153,6 +154,7 @@ export const PartnersFormPage = ({ action }) => {
                                     control={control}
                                     label="Ghi chú"
                                     errors={errors}
+                                    required={false}
                                 />
                             </div>
                         </div>

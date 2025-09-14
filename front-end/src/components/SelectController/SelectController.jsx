@@ -8,11 +8,18 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-export const SelectController = ({ disabled, name, control, label, menuItems = [] }) => {
+export const SelectController = ({
+  disabled,
+  name,
+  control,
+  label,
+  menuItems = [],
+  required = true
+}) => {
   const [itemIdKey, itemNameKey] = menuItems.length > 0 && typeof menuItems[0] === "object"
     ? Object.keys(menuItems[0])
     : [null, null];
-    
+
   const renderMenuItem = (item, index) => (
     <MenuItem
       key={`menu-item-${index}`}
@@ -20,6 +27,13 @@ export const SelectController = ({ disabled, name, control, label, menuItems = [
     >
       {itemNameKey ? item[itemNameKey] : item}
     </MenuItem>
+  );
+
+  const labelWithAsterisk = (
+    <span>
+      {label}
+      {required && <span style={{ color: 'red' }}> *</span>}
+    </span>
   );
 
   return (
@@ -32,7 +46,7 @@ export const SelectController = ({ disabled, name, control, label, menuItems = [
           fullWidth
           error={!!fieldState.error}
         >
-          <InputLabel>{label}</InputLabel>
+          <InputLabel>{labelWithAsterisk}</InputLabel>
           <Select
             label={label}
             value={field.value ?? ""}

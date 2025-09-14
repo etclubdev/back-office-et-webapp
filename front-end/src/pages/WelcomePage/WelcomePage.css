@@ -8,14 +8,14 @@
 }
 
 .welcome-page img{
-    width: 30%;
+    width: 300px !important;
     height: auto;
 }
 
 .welcome-page p {
     font-family: 'BeVietnamPro';
     font-weight: 700;
-    font-size: 2vw;
+    font-size: 24px !important;
     background: linear-gradient(180deg, #0083B0 0%, #00B4DB 100%);
     background-clip: text;
     -webkit-background-clip: text;

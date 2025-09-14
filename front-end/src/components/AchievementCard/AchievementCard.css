@@ -11,14 +11,14 @@
 }
 
 .achievement-card.selected {
-    outline: 0.2vw solid #1976D2;
-    border: 0.05vw solid rgba(0, 0, 0, 0.23); 
+    outline: 1px solid #1976D2;
+    border: 1px solid rgba(0, 0, 0, 0.23); 
 }
 
 .achievement-card .card-top{
     width: 100%;
     font-family: 'BeVietnamPro';
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     display: flex;
     align-items: center;

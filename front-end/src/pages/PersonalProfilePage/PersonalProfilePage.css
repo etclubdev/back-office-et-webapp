@@ -7,10 +7,10 @@
     flex-direction: column;
 }
 
-.tabs-container,
-.form-container {
-    margin-top: 1vw;
-    width: 90%;
+.personal-profile-page .tabs-container,
+.personal-profile-page .form-container {
+    margin-top: 10px;
+    width: 95%;
     align-self: center;
 }
 
@@ -42,8 +42,8 @@
 .personal-profile-page .form .form-top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2vw;
-    gap: 3vw;
+    margin-bottom: 10px;
+    gap: 20px;
 }
 
 .personal-profile-page .form .form-top .form-right {
@@ -67,13 +67,13 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    gap: 2vw;
+    gap: 30px;
 }
 
 .personal-profile-page .form .form-right .form-control,
 .personal-profile-page .form .form-left .form-control {
     display: flex;
-    gap: 2vw;
+    gap: 30px;
 }
 
 .date-controller {
@@ -94,13 +94,13 @@
     max-width: 80vw;
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 20px;
 }
 
 .form-button {
     align-self: flex-end;
     display: flex;
-    gap: 2vw;
+    gap: 20px;
 }
 
 .personal-profile-page .form-container::-webkit-scrollbar {
@@ -129,7 +129,7 @@
 }
 
 .personal-profile-page .tab-item {
-    font-size: 1vw;
+    font-size: 14px;
     color: gray;
     padding: 1vw 2vw;
     cursor: pointer;
@@ -143,7 +143,7 @@
 }
 
 .personal-profile-page .tabs-container .progress-bar {
-    width: 13.5vw;
+    width: 40px;
     height: 0.1vw;
     background-color: #1976D2;
     position: absolute;
@@ -155,7 +155,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    gap: 2vw;
+    gap: 20px;
 }
 
 .personal-profile-page .image-upload-container .thumbnail-img {

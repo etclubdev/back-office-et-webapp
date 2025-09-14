@@ -153,24 +153,28 @@ export const ActivitiesFormPage = ({ action }) => {
                                     control={control}
                                     label="Mô tả"
                                     errors={errors}
+                                    required={false}
                                 />
                                 <TextFieldController
                                     name="expense_money"
                                     control={control}
                                     label="Chi phí"
                                     errors={errors}
+                                    required={false}
                                 />
                                 <TextFieldController
                                     name="register_number"
                                     control={control}
                                     label="Số người đăng ký"
                                     errors={errors}
+                                    required={false}
                                 />
                                 <TextFieldController
                                     name="participated_number"
                                     control={control}
                                     label="Số người tham gia"
                                     errors={errors}
+                                    required={false}
                                 />
                             </div>
                         </div>

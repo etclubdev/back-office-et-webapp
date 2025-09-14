@@ -13,6 +13,7 @@
     "@mui/icons-material": "^7.0.0",
     "@mui/lab": "^7.0.0-beta.10",
     "@mui/material": "^7.0.1",
+    "@mui/x-charts": "^8.11.1",
     "@mui/x-date-pickers": "^7.28.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

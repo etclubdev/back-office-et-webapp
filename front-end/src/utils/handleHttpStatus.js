@@ -24,6 +24,6 @@ export const handleHttpError = (status, customMessage = "") => {
       notifyError(`Lỗi máy chủ (500)${suffix}`);
       break;
     default:
-      notifyError(`Lỗi không xác định (${status})${suffix}`);
+      notifyError(`${status}${suffix}`);
   }
 };

@@ -14,3 +14,11 @@
     margin: 2vw 0;
 }
 
+.faqs-selection-page .tabs-container{
+    margin: 0;
+    font-size: 12px;
+}
+
+.faqs-selection-page .tabs-container .tab-item{
+    font-size: 14px;
+}

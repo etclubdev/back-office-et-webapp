@@ -45,10 +45,10 @@ if (ENV !== 'local') {
         if (config.url !== "/auth/refresh-token") {
             const token = getAccessToken();
             if (token) {
-              config.headers.Authorization = `Bearer ${token}`;
+                config.headers.Authorization = `Bearer ${token}`;
             }
-          }
-        
+        }
+
         const traceId = getTraceId();
         if (traceId) {
             config.headers["X-Trace-Id"] = traceId;
@@ -62,27 +62,27 @@ if (ENV !== 'local') {
     api.interceptors.response.use(
         (response) => response,
         async (error) => {
-          const originalRequest = error.config;
-      
-          if (error.response.status === 401 && !originalRequest._retry) {
-            originalRequest._retry = true;
-      
-            try {
-              const newAccessToken = await refreshAccessToken();
-      
-              originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-      
-              return api(originalRequest);
-            } catch (refreshError) {
-              removeAccessToken();
-              removeRefreshToken();
-              return Promise.reject(refreshError);
+            const originalRequest = error.config;
+
+            if (error.response.status === 401) {
+                originalRequest._retry = true;
+
+                try {
+                    const { accessToken } = await refreshAccessToken();
+                    if (accessToken) {
+                        originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+                        return api(originalRequest);
+                    }
+                } catch (refreshError) {
+                    removeAccessToken();
+                    removeRefreshToken();
+                    return Promise.reject(refreshError);
+                }
             }
-          }
-      
-          return Promise.reject(error);
+
+            return Promise.reject(error);
         }
-      );
+    );
 }
 
 
