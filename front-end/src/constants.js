@@ -1,6 +1,5 @@
 import { faHandshake, faCircleQuestion, faFileLines, faObjectGroup, faShieldHalved, faUserGroup, faArrowRightFromBracket, faFaceSmile } from '@fortawesome/free-solid-svg-icons';
 import { FactCheck, Inventory, Delete, Restore } from '@mui/icons-material';
-import { resetPassword } from './api/account.service';
 
 const navbarContents = [
     { id: "navbar-account", to: "accounts", icon: faShieldHalved, label: "Quản lý tài khoản" },
@@ -10,8 +9,8 @@ const navbarContents = [
         icon: faUserGroup,
         label: "Quản lý nhân sự",
         dropdownContent: [
+            { id: "dropdown-tech", to: "/colleague/tech", label: "Ban Chuyên môn" },
             { id: "dropdown-hr", to: "/colleague/hr", label: "Ban Nhân sự - Tổ chức" },
-            { id: "dropdown-tech", to: "/colleague/tech", label: "Ban Kỹ thuật - Công nghệ" },
             { id: "dropdown-pr", to: "/colleague/pr", label: "Ban Truyền thông" },
             { id: "dropdown-event", to: "/colleague/event", label: "Ban Sự kiện" },
             { id: "dropdown-fer", to: "/colleague/fer", label: "Ban Tài chính - Đối ngoại" },
@@ -58,7 +57,7 @@ const breadcrumbNameMap = {
     "profile": "Thông tin cá nhân",
     "accounts": "Quản lý tài khoản",
     "partners": "Quản lý đối tác",
-    "tech": "Ban Kỹ thuật - Công nghệ",
+    "tech": "Ban Chuyên môn",
     "event": "Ban Sự kiện",
     "hr": "Ban Nhân sự - Tổ chức",
     "fer": "Ban Tài chính - Đối ngoại",

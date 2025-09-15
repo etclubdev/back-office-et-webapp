@@ -141,9 +141,7 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                     control={control}
                                     label="SĐT"
                                     errors={errors}
-                                    required={false}
                                 />
-
 
                                 <div className="form-group">
                                     <SelectController
