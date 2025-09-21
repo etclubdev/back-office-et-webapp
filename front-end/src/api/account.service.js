@@ -88,8 +88,6 @@ const updatePassword = async (id, oldPassword, newPassword) => {
 
 const resetPassword = async (id) => {
   try {
-    console.log(id);
-    
     const response = await api.put(`/accounts/reset-password/${id}`);
     handleHttpSuccess("Thay đổi mật khẩu thành công!");
     return response.data;

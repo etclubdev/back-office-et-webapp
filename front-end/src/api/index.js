@@ -6,7 +6,7 @@ import { refreshAccessToken } from "./auth.service";
 const ENV = process.env.REACT_APP_ENV.trim() || "development";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-console.log(`Running in ${ENV} mode`);
+// console.log(`Running in ${ENV} mode`);
 
 let api;
 
