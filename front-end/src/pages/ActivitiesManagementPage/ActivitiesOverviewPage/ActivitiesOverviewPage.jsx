@@ -35,6 +35,7 @@ export const ActivitiesOverviewPage = () => {
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedChips, setSelectedChips] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchData = useCallback(async () => {
         try {
@@ -68,7 +69,7 @@ export const ActivitiesOverviewPage = () => {
         }
     }
 
-    const handleConfirmDialog = async () => {
+    const handleDelete = async () => {
         if (selected.length > 0) {
             try {
                 if (selected.length === 1) {
@@ -83,7 +84,6 @@ export const ActivitiesOverviewPage = () => {
                 console.error("Errors: ", error);
             }
         }
-        onClose();
     };
 
 
@@ -99,6 +99,18 @@ export const ActivitiesOverviewPage = () => {
         }
     }, [activities]);
 
+    const handleConfirmDialog = async () => {
+        try {
+            setIsLoading(true);
+            await handleDelete();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="activities-overview-page">
             {isOpenConfirmedDialog && (
@@ -106,6 +118,7 @@ export const ActivitiesOverviewPage = () => {
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
                     {...contents.delete}
+                    isLoading={isLoading}
                 />
             )}
             <Header />

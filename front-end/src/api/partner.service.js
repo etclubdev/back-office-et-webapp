@@ -3,8 +3,6 @@ import { api } from "./index";
 
 const getAllPartners = async (category) => {
   try {
-    console.log(category);
-    
     const response = await api.get("/partners", {
       params: {
         category

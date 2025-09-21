@@ -150,7 +150,8 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                                         label="Giới tính"
                                         menuItems={[
                                             "Nam",
-                                            "Nữ"
+                                            "Nữ",
+                                            "Khác"
                                         ]}
                                         errors={errors}
 

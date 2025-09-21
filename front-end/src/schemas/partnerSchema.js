@@ -20,7 +20,7 @@ export const partnerSchema = yup.object().shape({
 
     short_description: yup
         .string()
-        .nullable(),
+        .transform((value) => value ?? ""),
         
     email: yup
         .string()
@@ -38,7 +38,7 @@ export const partnerSchema = yup.object().shape({
 
     note: yup
         .string()
-        .nullable(),
+        .transform((value) => value ?? ""),
 
     visible: yup
         .boolean()

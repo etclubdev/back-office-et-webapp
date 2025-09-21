@@ -36,6 +36,8 @@ export const PartnerCard = ({ category, data, setData }) => {
     onConfirm: () => {}
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const transferListRef = useRef(null);
 
   const handleSetDialogProps = (contents, onConfirm) => {
@@ -66,16 +68,30 @@ export const PartnerCard = ({ category, data, setData }) => {
     }));
   };
 
+  const onClose = () => {
+    setIsOpenDialog(false);
+  }
+
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await dialogProps.onConfirm();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={`partner-card ${isActive ? "active" : ""}`}>
       {isOpenDialog && (
         <ConfirmedDialog
-          onClose={() => setIsOpenDialog(false)}
-          onConfirm={async () => {
-            try { await dialogProps.onConfirm(); }
-            finally { setIsOpenDialog(false); }
-          }}
+          onClose={onClose}
+          onConfirm={handleConfirmDialog}
           {...dialogProps.contents}
+          isLoading={isLoading}
         />
       )}
 

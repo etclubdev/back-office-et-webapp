@@ -14,18 +14,18 @@ import { filterChipData, confirmContents } from '../../../constants';
 import "./PartnersOverviewPage.css";
 
 import {
-    getAllPartners,
-    deletePartnerById,
-    deletePartners
+  getAllPartners,
+  deletePartnerById,
+  deletePartners
 } from '../../../api/partner.service';
 
 const columns = [
-    { field: 'partner_name', headerName: 'Tên đối tác' },
-    { field: 'partner_category_name', headerName: 'Danh mục đối tác' },
-    { field: 'email', headerName: 'Email' },
-    { field: 'phone_number', headerName: 'Số điện thoại' },
-    { field: 'visible', headerName: 'Hiển thị' },
-    { field: 'note', headerName: 'Ghi chú' },
+  { field: 'partner_name', headerName: 'Tên đối tác' },
+  { field: 'partner_category_name', headerName: 'Danh mục đối tác' },
+  { field: 'email', headerName: 'Email' },
+  { field: 'phone_number', headerName: 'Số điện thoại' },
+  { field: 'visible', headerName: 'Hiển thị' },
+  { field: 'note', headerName: 'Ghi chú' },
 ];
 
 const contents = confirmContents.partners;
@@ -41,8 +41,10 @@ export const PartnersOverviewPage = () => {
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
   const [dialogProps, setDialogProps] = useState({
     contents: { title: "", desc: "", Icon: null, alertType: "" },
-    onConfirm: () => {}
+    onConfirm: () => { }
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -101,16 +103,30 @@ export const PartnersOverviewPage = () => {
     }
   }, [partners]);
 
+  const onClose = () => {
+    setIsOpenConfirmedDialog(false);
+  }
+
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await dialogProps.onConfirm();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="partners-overview-page">
       {isOpenConfirmedDialog && (
         <ConfirmedDialog
-          onClose={() => setIsOpenConfirmedDialog(false)}
-          onConfirm={async () => {
-            try { await dialogProps.onConfirm(); }
-            finally { setIsOpenConfirmedDialog(false); }
-          }}
+          onClose={onClose}
+          onConfirm={handleConfirmDialog}
           {...dialogProps.contents}
+          isLoading={isLoading}
         />
       )}
       <Header />
@@ -125,7 +141,7 @@ export const PartnersOverviewPage = () => {
             />
           </div>
           <div className="search-container">
-            <Filter chipdata={filterChipData.partners} setSelectedChips={setSelectedChips}/>
+            <Filter chipdata={filterChipData.partners} setSelectedChips={setSelectedChips} />
             <SearchBar onSearch={handleSearch} />
           </div>
         </div>
