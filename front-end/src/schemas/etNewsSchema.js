@@ -22,6 +22,7 @@ export const etNewsSchema = yup.object().shape({
     meta_description: yup
         .string()
         .max(160, "Mô tả meta không được vượt quá 160 ký tự.")
+        .transform((value) => value ?? "")
         .nullable(),
 
     thumbnail_image_url: yup

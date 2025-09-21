@@ -24,9 +24,10 @@ export const AchievementsSelectionPage = () => {
   const [isOpenInputDialog, setIsOpenInputDialog] = useState(false);
   const [dialogProps, setDialogProps] = useState({
     contents: { title: "", desc: "", Icon: null, alertType: "" },
-    onConfirm: () => {}
+    onConfirm: () => { }
   });
   const [actionType, setActionType] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -40,7 +41,7 @@ export const AchievementsSelectionPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, [achievements]);
+  }, []);
 
   const handleSearch = (query) => {
     setSearchTerm(query);
@@ -67,23 +68,25 @@ export const AchievementsSelectionPage = () => {
   };
 
   const handleDelete = async () => {
+    setAchievements(prev => prev.filter(a => !selected.includes(a.achievement_id)));
+setFilteredAchievements(prev => prev.filter(a => !selected.includes(a.achievement_id)));
     if (selected.length === 1) {
       await deleteAchievementById(selected[0]);
     } else {
       await deleteAchievements(selected);
     }
     setSelected([]);
-    fetchData();
+    await fetchData();
   };
 
   const handleInputDialogConfirm = async (input) => {
     try {
       if (actionType === "add" && achievements.length < 6) {
         const newAchievement = await createAchievement(input);
-        fetchData();
+        await fetchData();
       } else if (actionType === "edit" && selected.length === 1) {
         const updatedAchievement = await updateAchievementById(selected[0], input);
-        fetchData();
+        await fetchData();
       }
     } catch (error) {
       console.error("Lỗi khi xử lý thành tựu:", error);
@@ -91,16 +94,27 @@ export const AchievementsSelectionPage = () => {
     onClose();
   };
 
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await dialogProps.onConfirm();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   return (
     <div className="achievements-selection-page">
       {isOpenConfirmedDialog && (
         <ConfirmedDialog
           onClose={onClose}
-          onConfirm={async () => {
-            try { await dialogProps.onConfirm(); } 
-            finally { onClose(); }
-          }}
+          onConfirm={handleConfirmDialog}
           {...dialogProps.contents}
+          isLoading={isLoading}
         />
       )}
 

@@ -55,7 +55,6 @@ export const BannersFormPage = ({ action }) => {
             let imgUrl = await handleImageUpload(payload.image_url, "image_url", preview, setPreview, setValue);
 
             const fullPayload = { ...payload, image_url: imgUrl };
-            console.log(fullPayload);
 
             if (action === "create") {
                 const response = await createBanner(fullPayload);

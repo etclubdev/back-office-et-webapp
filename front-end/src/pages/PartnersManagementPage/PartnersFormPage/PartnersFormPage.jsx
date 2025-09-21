@@ -67,7 +67,6 @@ export const PartnersFormPage = ({ action }) => {
             let avatarUrl = await handleImageUpload(payload.avatar_url, "avatar_url", preview, setPreview, setValue);
 
             const fullPayload = { ...payload, avatar_url: avatarUrl };
-            console.log(fullPayload);
 
             if (action === "create") {
                 const response = await createPartner(fullPayload);

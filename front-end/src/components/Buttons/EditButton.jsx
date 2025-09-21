@@ -7,10 +7,9 @@ const EditButton = ({ onClick, disabled }) => {
             onClick={onClick}
             startIcon={<EditIcon />}
             sx={{
-                backgroundColor: "#E0E0E0", 
-                color: "#212121", 
-                "&:hover": { backgroundColor: "#BDBDBD" }, 
-                boxShadow: "none",
+                backgroundColor: "#0F9960", 
+                color: "white", 
+                "&:hover": { backgroundColor: "#0b8150ff" }, 
               }}
             disabled={disabled}
         >

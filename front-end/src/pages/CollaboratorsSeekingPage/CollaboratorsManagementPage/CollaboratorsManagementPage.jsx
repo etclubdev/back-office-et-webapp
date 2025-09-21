@@ -13,9 +13,9 @@ import { DataTable } from "../../../components/DataTable";
 import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { Tabs } from '../../../components/Tabs';
 import { RecordDialog } from '../RecordDialog';
+// import { CircularLoading } from '../../../components/CircularLoading';
 
 import { getApplicationById, getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications } from '../../../api/application.service';
-import { getAllTerms } from '../../../api/term.service';
 
 import { Filter } from '../../../components/Filter';
 import { filterChipData } from '../../../constants';
@@ -58,6 +58,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
   });
 
   const [openedRecord, setOpenedRecord] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const cacheRef = useRef({});
 
@@ -118,11 +119,13 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
 
   const handleConfirmDialog = async () => {
     try {
+      setIsLoading(true);
       await dialogProps.onConfirm();
+      onClose();
     } catch (error) {
       console.error("Error deleting application:", error);
     } finally {
-      onClose();
+      setIsLoading(false);
     }
   };
 
@@ -156,12 +159,9 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     }
   }
 
-  const handleOpenRecord = () => {
-
-  }
-
   return (
     <div className={`collaborators-overview-page ${isApprovingPage && "approving-page"}`}>
+      {/* {isLoading && <CircularLoading />} */}
       {
         openedRecord != "" && (
           <RecordDialog
@@ -175,6 +175,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
         <ConfirmedDialog
           onClose={onClose}
           onConfirm={handleConfirmDialog}
+          isLoading={isLoading}
           {...dialogProps.contents}
         />
       )}
@@ -197,6 +198,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
               handleSetDialogProps={handleSetDialogProps}
               activeTab={activeTab}
               handleExport={handleExport}
+              setIsLoading={setIsLoading}
             />
           ) : (
             <ArchivingToolBar
@@ -205,6 +207,7 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
               selected={selected}
               handleSetDialogProps={handleSetDialogProps}
               handleExport={handleExport}
+              setIsLoading={setIsLoading}
             />
           )}
           <div className="search-container">
@@ -228,14 +231,14 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
   );
 };
 
-const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogProps, activeTab, handleExport }) => {
+const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogProps, activeTab, handleExport, setIsLoading }) => {
   const handleApprove = async () => {
     try {
-      await approveApplication(selected);
+      await approveApplication(selected, activeTab + 1);
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    }
+    } 
   }
 
   const handleReject = async () => {
@@ -244,7 +247,7 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    }
+    } 
   }
 
   return (
@@ -256,15 +259,23 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
   )
 }
 
-const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, handleSetDialogProps, handleExport }) => {
+const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, handleSetDialogProps, handleExport, setIsLoading }) => {
   const handleRestore = async () => {
-    await restoreApplication(selected);
-    await handleDataAfterActions();
+    try {
+      await restoreApplication(selected);
+      await handleDataAfterActions();
+    } catch (error) {
+      console.log(error);
+    } 
   }
 
   const handleDelete = async () => {
-    await deleteApplications(selected);
-    await handleDataAfterActions();
+    try {
+      await deleteApplications(selected);
+      await handleDataAfterActions();
+    } catch (error) {
+      console.log(error);
+    } 
   }
 
   return (

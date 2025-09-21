@@ -6,7 +6,6 @@ const getAllAchievements = async () => {
         const response = await api.get('/achievements');
         return response.data;
     } catch (error) {
-        handleHttpError(error.response.data.message || error.response.data);
         console.error("Lỗi khi lấy danh sách thành tựu:", error);
         throw error;
     }

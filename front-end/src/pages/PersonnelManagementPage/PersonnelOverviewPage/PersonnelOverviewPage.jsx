@@ -34,11 +34,12 @@ export const PersonnelOverviewPage = ({ department_name }) => {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedChips, setSelectedChips] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
   const [dialogProps, setDialogProps] = useState({
     contents: { title: "", desc: "", Icon: null, alertType: "" },
-    onConfirm: () => {}
+    onConfirm: () => { }
   });
 
   const fetchData = useCallback(async () => {
@@ -102,16 +103,30 @@ export const PersonnelOverviewPage = ({ department_name }) => {
     setFilteredPersonnel(filtered);
   };
 
+  const onClose = () => {
+    setIsOpenConfirmedDialog(false);
+  }
+
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await dialogProps.onConfirm();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="personnel-overview-page">
       {isOpenConfirmedDialog && (
         <ConfirmedDialog
-          onClose={() => setIsOpenConfirmedDialog(false)}
-          onConfirm={async () => {
-            try { await dialogProps.onConfirm(); }
-            finally { setIsOpenConfirmedDialog(false); }
-          }}
+          onClose={onClose}
+          onConfirm={handleConfirmDialog}
           {...dialogProps.contents}
+          isLoading={isLoading}
         />
       )}
       <Header />
