@@ -36,7 +36,7 @@ export const FAQsOverviewPage = () => {
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedChips, setSelectedChips] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchData = useCallback(async () => {
         try {
@@ -69,7 +69,7 @@ export const FAQsOverviewPage = () => {
         }
     }
 
-    const handleConfirmDialog = async () => {
+    const handleDelete = async () => {
         if (selected.length > 0) {
             try {
                 if (selected.length === 1) {
@@ -85,7 +85,6 @@ export const FAQsOverviewPage = () => {
                 console.error("Lỗi khi xóa thành tựu:", error);
             }
         }
-        onClose();
     };
 
 
@@ -105,6 +104,18 @@ export const FAQsOverviewPage = () => {
         setFilteredFAQs(filtered);
     };
 
+    const handleConfirmDialog = async () => {
+        try {
+            setIsLoading(true);
+            await handleDelete();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="faqs-overview-page">
             {isOpenConfirmedDialog && (
@@ -112,6 +123,7 @@ export const FAQsOverviewPage = () => {
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
                     {...contents.delete}
+                    isLoading={isLoading}
                 />
             )}
             <Header />

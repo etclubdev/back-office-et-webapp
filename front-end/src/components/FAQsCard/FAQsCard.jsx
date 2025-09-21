@@ -8,19 +8,17 @@ import { confirmContents } from "../../constants";
 
 const contents = confirmContents.faqs;
 
-export const FAQsCard = ({faq_id, question, answer, visible}) => {
+export const FAQsCard = ({ faq_id, question, answer, visible }) => {
     const [checked, setChecked] = useState(visible);
     const [isOpenDialog, setIsOpenDialog] = useState(false);
-
-    console.log(contents);
-    
+    const [isLoading, setIsLoading] = useState(false);
 
     const onClose = () => {
         setIsOpenDialog(false);
     }
 
     const onConfirm = async () => {
-        const response = await updateFAQsById(faq_id, {visible: !checked});
+        const response = await updateFAQsById(faq_id, { visible: !checked });
         setChecked(!checked);
         setIsOpenDialog(false);
     }
@@ -29,20 +27,33 @@ export const FAQsCard = ({faq_id, question, answer, visible}) => {
         setIsOpenDialog(true);
     }
 
+    const handleConfirmDialog = async () => {
+        try {
+            setIsLoading(true);
+            await onConfirm();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div id={faq_id} className="faq-card">
             {
                 isOpenDialog && (
-                    <ConfirmedDialog 
+                    <ConfirmedDialog
                         {...contents.update}
                         onClose={onClose}
-                        onConfirm={onConfirm}
+                        onConfirm={handleConfirmDialog}
+                        isLoading={isLoading}
                     />
                 )
             }
             <div className="faq-top">
                 <span><strong>{question}</strong></span>
-                <Switch 
+                <Switch
                     checked={checked}
                     onChange={handleChange}
                     size="small"

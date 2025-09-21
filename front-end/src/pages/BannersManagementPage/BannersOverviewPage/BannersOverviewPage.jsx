@@ -31,6 +31,7 @@ export const BannersOverviewPage = () => {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpenConfirmDialog, setIsOpenConfirmDialog] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -70,7 +71,6 @@ export const BannersOverviewPage = () => {
     } catch (err) {
       console.error("Delete failed", err);
     }
-    setIsOpenConfirmDialog(false);
   }, [selected, fetchData]);
 
   const filteredBanners = useMemo(() => {
@@ -80,13 +80,31 @@ export const BannersOverviewPage = () => {
     );
   }, [banners, searchTerm]);
 
+  const onClose = () => {
+    setIsOpenConfirmDialog(false);
+  }
+
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await handleConfirmDelete();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   return (
     <div className="banner-overview-page">
       {isOpenConfirmDialog && (
         <ConfirmedDialog
-          onClose={() => setIsOpenConfirmDialog(false)}
-          onConfirm={handleConfirmDelete}
+          onClose={onClose}
+          onConfirm={handleConfirmDialog}
           {...contents.delete}
+          isLoading={isLoading}
         />
       )}
 

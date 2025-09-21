@@ -11,9 +11,12 @@ import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { Switch } from '@mui/material';
 import { getMaxValue } from "../../../utils/getMaxValue";
 import { useAuth } from "../../../context/useAuth";
+import { CircularLoading } from '../../../components/CircularLoading';
 
 import { noDataForGraph } from "../../../assets/images/errors";
 import { confirmContents } from '../../../constants';
+
+// import { CircularProgress } from "@mui/material";
 
 const contents = confirmContents.recruitment;
 
@@ -23,11 +26,13 @@ export const CollaboratorsOverviewPage = () => {
 
   const queryClient = useQueryClient();
   const [isOpenConfirmDialog, setIsOpenConfirmDialog] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Query: fetch statistics
   const { data: statisticsData, isLoading: statsLoading, isError: statsError } = useQuery({
     queryKey: ["statisticsData"],
     queryFn: async () => {
+      // await delay(3000);
       const { data } = await getStatisticsData();
       return {
         ...data,
@@ -52,22 +57,31 @@ export const CollaboratorsOverviewPage = () => {
 
   // Mutation: update recruitment status
   const updateRecruitmentMutation = useMutation({
-    mutationFn: (id: string) => updateStatusOfRecruitment(id),
+    mutationFn: (id) => updateStatusOfRecruitment(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["recruitmentStatus"] });
-      setIsOpenConfirmDialog(false);
     },
   });
 
-  const handleUpdateForm = () => {
-    if (recruitment?.recruitment_id) {
-      updateRecruitmentMutation.mutate(recruitment.recruitment_id);
+  // const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  const handleUpdateForm = async () => {
+    if (!recruitment?.recruitment_id) return;
+
+    try {
+      setIsLoading(true);
+      // await delay(3000);
+      await updateRecruitmentMutation.mutateAsync(recruitment.recruitment_id);
+      setIsOpenConfirmDialog(false);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const contentOfDiaglog = recruitment?.is_open ? contents.closed : contents.opened;
 
-  if (statsLoading) return <p>Loading...</p>;
   if (statsError) return <p>Something went wrong when fetching data.</p>;
 
   return (
@@ -77,13 +91,16 @@ export const CollaboratorsOverviewPage = () => {
           onClose={() => setIsOpenConfirmDialog(false)}
           onConfirm={handleUpdateForm}
           {...contentOfDiaglog}
+          isLoading={isLoading}
         />
       )}
 
       <Header>Tổng quan</Header>
       <div className="collaborators-overview-section">
         <span style={{ width: "100%", height: "50px", opacity: 0 }}>_</span>
-
+        {
+          statsLoading && <CircularLoading />
+        }
         {/* Cards */}
         <div className="cards-container">
           <div className="card form">
