@@ -54,7 +54,6 @@ export const ActivitiesFormPage = ({ action }) => {
             if (id) {
                 const { data } = await getActivityById(id);
                 setDefaultItems(data);
-                console.log(data);
 
             }
         };

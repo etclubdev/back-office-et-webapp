@@ -38,6 +38,7 @@ export const ETNewsOverviewPage = () => {
   const [selected, setSelected] = useState([]);
   const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
   const [selectedChips, setSelectedChips] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -76,7 +77,7 @@ export const ETNewsOverviewPage = () => {
     }
   }, [etNews]);
 
-  const handleConfirmDialog = async () => {
+  const handleDelete = async () => {
     try {
       if (selected.length === 1) {
         await deleteETNewsById(selected[0]);
@@ -87,12 +88,22 @@ export const ETNewsOverviewPage = () => {
       setSelected([]);
     } catch (error) {
       console.error("Lỗi khi xóa ETNews:", error);
-    } finally {
-      setIsOpenConfirmedDialog(false);
     }
   };
 
   const onClose = () => setIsOpenConfirmedDialog(false);
+
+  const handleConfirmDialog = async () => {
+    try {
+      setIsLoading(true);
+      await handleDelete();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="etnews-overview-page">
@@ -101,6 +112,7 @@ export const ETNewsOverviewPage = () => {
           onClose={onClose}
           onConfirm={handleConfirmDialog}
           {...contents.delete}
+          isLoading={isLoading}
         />
       )}
 

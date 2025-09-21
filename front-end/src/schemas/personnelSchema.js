@@ -9,7 +9,7 @@ const personnelSchema = yup.object().shape({
     phone_number: yup
         .string()
         .required("Vui lòng nhập số điện thoại.")
-        .matches(/^0\d{9}$/, "Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số."),
+        .matches(/^0\d{9,10}$/, "Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số."),
 
     email: yup
         .string()
@@ -51,6 +51,7 @@ const personnelSchema = yup.object().shape({
 
     avatar_url: yup
         .string()
+        .transform((value) => value ?? "")
         .nullable(),
 
     cv_type: yup
@@ -61,6 +62,7 @@ const personnelSchema = yup.object().shape({
 
     cv_link: yup
         .string()
+        .transform((value) => value ?? "")
         .nullable()
         .url("Đường dẫn CV không hợp lệ."),
 

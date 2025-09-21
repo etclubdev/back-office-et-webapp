@@ -12,6 +12,7 @@ const bannerSchema = yup.object({
     hypertext_link: yup
         .string()
         .nullable()
+        .transform((value) => value ?? "")
         .url("Đường dẫn phải đúng định dạng")
 });
 

@@ -15,6 +15,5 @@ export const removeTraceId = () => {
 export const generateTraceId = () => {
     const traceId = uuidv4();
     setTraceId(traceId);
-    console.log(`Generated traceId: ${traceId}`);
     return traceId;
 };

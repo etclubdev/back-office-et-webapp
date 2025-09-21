@@ -29,11 +29,12 @@ export const ETBlogOverviewPage = () => {
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchData = useCallback(async () => {
         try {
             const { data } = await getAllETBlogs();
-            
+
             setETBlog(data.all);
             setFilteredETBlog(data.all);
         } catch (error) {
@@ -57,7 +58,7 @@ export const ETBlogOverviewPage = () => {
         }
     };
 
-    const handleConfirmDialog = async () => {
+    const handleDelete = async () => {
         if (selected.length > 0) {
             try {
                 if (selected.length === 1) {
@@ -86,6 +87,18 @@ export const ETBlogOverviewPage = () => {
         }
     }, [etBlog]);
 
+    const handleConfirmDialog = async () => {
+        try {
+            setIsLoading(true);
+            await handleDelete();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="etblog-overview-page">
             {isOpenConfirmedDialog && (
@@ -93,6 +106,7 @@ export const ETBlogOverviewPage = () => {
                     onClose={onClose}
                     onConfirm={handleConfirmDialog}
                     {...contents.delete}
+                    isLoading={isLoading}
                 />
             )}
             <Header />

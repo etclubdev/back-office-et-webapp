@@ -1,61 +1,61 @@
 .modal-overlay {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-container {
-    background-color: white;
-    border-radius: 5px;
-    width: 45%;
-    max-width: 450px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    position: relative;
+  background-color: white;
+  border-radius: 5px;
+  width: 45%;
+  max-width: 450px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  position: relative;
 }
 
 .modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .close-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #000;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
 }
 
 .modal-icon {
-    margin: 20px auto 15px;
-    display: flex;
-    justify-content: center;
+  margin: 20px auto 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .circle .icon {
-    position: relative;
-    font-size: 40px;
+  position: relative;
+  font-size: 40px;
 }
 
 /* Default */
@@ -95,149 +95,193 @@
 }
 
 .mark {
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    position: relative;
-    z-index: 1;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
 }
 
 .modal-content {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .modal-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #444;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #444;
 }
 
 .modal-text {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-    margin: 0 auto;
-    max-width: 450px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 450px;
 }
 
 .modal-actions {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .cancel-button {
-    font-family: 'Montserrat';
-    padding: 15px 30px;
-    background-color: #f0f0f0;
-    color: #555;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    width: 45%;
+  font-family: 'Montserrat';
+  padding: 15px 30px;
+  background-color: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 45%;
 }
 
 .confirm-button {
-    font-family: 'Montserrat';
-    padding: 15px 30px;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    width: 45%;
+  font-family: 'Montserrat';
+  padding: 15px 30px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 45%;
+}
+
+/* Loading button */
+.loading-button {
+  position: relative;
+  font-family: 'Montserrat';
+  padding: 15px 30px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: not-allowed;
+  opacity: 0.8;
+  width: 45%;
+  overflow: hidden;
+}
+
+.loading-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 
 /* Default */
-.confirm-button.default {
+.confirm-button.default,
+.loading-button.default {
   background-color: #f1f1f1;
   color: #555;
 }
+
 .confirm-button.default:hover {
   background-color: #e0e0e0;
 }
 
 /* Success */
-.confirm-button.success {
+.confirm-button.success,
+.loading-button.success {
   background-color: #2d8a34;
   color: white;
 }
+
 .confirm-button.success:hover {
   background-color: #247028;
 }
 
 /* Info */
-.confirm-button.info {
+.confirm-button.info,
+.loading-button.info {
   background-color: #1778c9;
   color: white;
 }
+
 .confirm-button.info:hover {
   background-color: #1360a3;
 }
 
 /* Danger */
-.confirm-button.danger {
+.confirm-button.danger,
+.loading-button.danger {
   background-color: #d93025;
   color: white;
 }
+
 .confirm-button.danger:hover {
   background-color: #b3241b;
 }
 
 /* Warning */
-.confirm-button.warning {
+.confirm-button.warning,
+.loading-button.warning {
   background-color: #ffc005;
   color: white;
 }
+
 .confirm-button.warning:hover {
   background-color: #ad8305;
 }
 
 /* Dark */
-.confirm-button.dark {
+.confirm-button.dark,
+.loading-button.dark {
   background-color: #333;
   color: white;
 }
+
 .confirm-button.dark:hover {
   background-color: #222;
 }
 
 @media (max-width: 480px) {
-    .modal-container {
-        width: 80%;
-        padding: 15px;
-    }
+  .modal-container {
+    width: 80%;
+    padding: 15px;
+  }
 
-    .modal-title {
-        font-size: 20px;
-    }
+  .modal-title {
+    font-size: 20px;
+  }
 
-    .modal-text {
-        font-size: 12px;
-    }
+  .modal-text {
+    font-size: 12px;
+  }
 
-    .cancel-button, .confirm-button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
+  .cancel-button,
+  .confirm-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 
-    .circle {
-        width: 50px;
-        height: 50px;
-    }
+  .circle {
+    width: 50px;
+    height: 50px;
+  }
 
-    .circle:before {
-        width: 35px;
-        height: 35px;
-    }
+  .circle:before {
+    width: 35px;
+    height: 35px;
+  }
 
-    .mark {
-        font-size: 20px;
-    }
+  .mark {
+    font-size: 20px;
+  }
 }

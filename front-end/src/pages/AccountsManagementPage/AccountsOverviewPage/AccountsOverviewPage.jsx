@@ -31,12 +31,13 @@ export const AccountsOverviewPage = () => {
     const [filteredAccounts, setFilteredAccounts] = useState([]);
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     // dialog state
     const [isOpenConfirmedDialog, setIsOpenConfirmedDialog] = useState(false);
     const [dialogProps, setDialogProps] = useState({
         contents: { title: "", desc: "", Icon: null, alertType: "" },
-        onConfirm: () => {}
+        onConfirm: () => { }
     });
 
     const fetchData = useCallback(async () => {
@@ -104,19 +105,27 @@ export const AccountsOverviewPage = () => {
         setFilteredAccounts(filtered);
     };
 
+    const handleConfirmDialog = async () => {
+        try {
+            setIsLoading(true);
+            await dialogProps.onConfirm();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
     return (
         <div className="accounts-overview-page">
             {isOpenConfirmedDialog && (
                 <ConfirmedDialog
                     onClose={onClose}
-                    onConfirm={async () => {
-                        try {
-                            await dialogProps.onConfirm();
-                        } finally {
-                            onClose();
-                        }
-                    }}
+                    onConfirm={handleConfirmDialog}
                     {...dialogProps.contents}
+                    isLoading={isLoading}
                 />
             )}
 
