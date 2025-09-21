@@ -58,7 +58,6 @@ export const AccountsFormPage = ({ action }) => {
         try {
             const { personnel_id, sysrole_id, username } = payload
             const fullPayload = { personnel_id, sysrole_id, username }
-            console.log(fullPayload);
 
             if (action === "create") {
                 const response = await createAccount(fullPayload);
