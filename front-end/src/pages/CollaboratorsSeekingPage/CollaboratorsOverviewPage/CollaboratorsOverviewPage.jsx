@@ -103,7 +103,7 @@ export const CollaboratorsOverviewPage = () => {
         }
         {/* Cards */}
         <div className="cards-container">
-          <div className="card form">
+          <div className={`card form ${!recruitment?.is_open && "closed"}`}>
             <div className="title">
               <p>Tìm kiếm Cộng tác viên</p>
               <Switch
