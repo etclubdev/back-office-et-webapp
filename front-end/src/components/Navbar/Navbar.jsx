@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
@@ -16,6 +16,7 @@ export const Navbar = () => {
     const [userInfo, setUserInfo] = useState({});
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const fetchUser = useCallback(async () => {
         if (!user) return;
@@ -52,7 +53,7 @@ export const Navbar = () => {
     }, [fetchUser])
     return (
         <div className={`navbar-section ${isExpanded ? 'expanded' : ''}`}>
-            <div className='navbar-logo-container'>
+            <div onClick={() => {navigate("/")}} className='navbar-logo-container'>
                 <img className="navbar-logo" src={isMobile && !isExpanded ? noTextLogo : horizontalLogo} alt="ET Club" />
             </div>
             {
