@@ -73,6 +73,10 @@
   background: linear-gradient(107deg, #3493C8 44.83%, #6AB8E0 68.38%);
 }
 
+.cards-container .card.form.closed {
+  background: linear-gradient(90deg, rgba(103, 103, 104, 0.60) 0%, rgba(154, 154, 154, 0.50) 51.17%, rgba(96, 96, 96, 0.25) 97.67%);
+}
+
 .cards-container .card.form .title {
   border-bottom: #ffffff8a 1.6px dashed;
   font-size: 14px;
