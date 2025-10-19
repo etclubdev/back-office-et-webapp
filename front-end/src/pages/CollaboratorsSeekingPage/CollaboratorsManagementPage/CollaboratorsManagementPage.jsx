@@ -94,8 +94,6 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
       cacheRef.current[key] = data;
       setApplications(data);
 
-      console.log(data);
-      
     } catch (err) {
       console.error("Fetch error:", err);
       setApplications([]);
@@ -157,16 +155,24 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
 
   const handleExport = async () => {
     try {
-      isApprovingPage
-        ? await exportApplications({
-          round: activeTab + 1,
+      if (activeTab === 3) {
+        await exportApplications({
+          round: activeTab,
           department_name: selectedChips,
-          status: "Pending"
+          status: "Approved"
         })
-        : await exportApplications({
-          department_name: selectedChips,
-          status: "Rejected"
-        });
+      } else {
+        isApprovingPage
+          ? await exportApplications({
+            round: activeTab + 1,
+            department_name: selectedChips,
+            status: "Pending"
+          })
+          : await exportApplications({
+            department_name: selectedChips,
+            status: "Rejected"
+          });
+      }
     } catch (error) {
       console.log(error);
     }
