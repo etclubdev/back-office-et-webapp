@@ -6,6 +6,8 @@ import { getApplicationById, updateApplicationNote } from "../../../api/applicat
 import BaseButton from "../../../components/Buttons/BaseButton";
 import "./RecordDialog.css";
 
+import dayjs from 'dayjs';
+
 export const RecordDialog = ({ setOpenedRecord, id }) => {
     const [application, setApplication] = useState(null);
     const [note, setNote] = useState("");
@@ -87,7 +89,7 @@ export const RecordDialog = ({ setOpenedRecord, id }) => {
                         />
                         <TextField
                             label="Ngày sinh"
-                            value={application.dob || ""}
+                            value={dayjs(application.dob).format("DD-MM-YYYY") || ""}
                             InputProps={{
                                 readOnly: true,
                             }}

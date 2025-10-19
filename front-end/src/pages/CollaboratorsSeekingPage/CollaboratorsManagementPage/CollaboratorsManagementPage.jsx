@@ -33,7 +33,7 @@ const columns = [
   { field: 'cv_link', headerName: 'Link CV' },
 ];
 
-const categories = ['Vòng 1 - CV', 'Vòng 2 - Teamwork', 'Vòng 3 - Phỏng vấn'];
+const categories = ['Vòng 1 - CV', 'Vòng 2 - Teamwork', 'Vòng 3 - Phỏng vấn', 'Kết quả'];
 
 const { approve, approveLastRound, archive, deleteMsg, restore } = confirmContents.collaborators;
 
@@ -70,19 +70,32 @@ export const CollaboratorsManagementPage = ({ isApprovingPage }) => {
     }
 
     try {
-      const { data } = isApprovingPage
-        ? await getAllApplications({
-          round: activeTab + 1,
+      let data;
+      if (activeTab === 3) {
+        const res = await getAllApplications({
+          round: activeTab,
           department_name: selectedChips,
-          status: "Pending"
+          status: "Approved"
         })
-        : await getAllApplications({
-          department_name: selectedChips,
-          status: "Rejected"
-        });
-
+        data = res.data;
+      } else {
+        const res = isApprovingPage
+          ? await getAllApplications({
+            round: activeTab + 1,
+            department_name: selectedChips,
+            status: "Pending"
+          })
+          : await getAllApplications({
+            department_name: selectedChips,
+            status: "Rejected"
+          });
+        data = res.data;
+      }
       cacheRef.current[key] = data;
       setApplications(data);
+
+      console.log(data);
+      
     } catch (err) {
       console.error("Fetch error:", err);
       setApplications([]);
@@ -238,7 +251,7 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
 
   const handleReject = async () => {
@@ -247,7 +260,7 @@ const ApprovingToolBar = ({ handleDataAfterActions, selected, handleSetDialogPro
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
 
   return (
@@ -266,7 +279,7 @@ const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, ha
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
 
   const handleDelete = async () => {
@@ -275,7 +288,7 @@ const ArchivingToolBar = ({ isAdministator, handleDataAfterActions, selected, ha
       await handleDataAfterActions();
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
 
   return (
