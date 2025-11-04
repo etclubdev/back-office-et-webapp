@@ -67,6 +67,8 @@ export const LogInPage = () => {
 
   return (
     <div className="log-in-page">
+      <div className="top-gradient" />
+      <div className="bottom-gradient" />
       <div className="log-in-form">
         <div className="log-in-form-item">
           <img className='log-in-logo' src={noTextLogo} alt="ET Club" />

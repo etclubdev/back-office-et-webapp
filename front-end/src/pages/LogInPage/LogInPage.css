@@ -8,35 +8,40 @@
     overflow: hidden;
 }
 
-@keyframes floatTop {
-    0% {
-        transform: translateY(0) rotate(0deg);
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(-25%) translateY(0);
+    }
+    25% {
+        transform: translateX(-15%) translateY(-10px);
     }
     50% {
-        transform: translateY(-20px) rotate(1deg);
+        transform: translateX(-25%) translateY(-5px);
     }
-    100% {
-        transform: translateY(0) rotate(0deg);
+    75% {
+        transform: translateX(-35%) translateY(-15px);
     }
 }
 
-@keyframes floatBottom {
-    0% {
-        transform: translateY(0) rotate(0deg);
+@keyframes wave2 {
+    0%, 100% {
+        transform: translateX(25%) translateY(0);
+    }
+    25% {
+        transform: translateX(35%) translateY(10px);
     }
     50% {
-        transform: translateY(20px) rotate(-1deg);
+        transform: translateX(25%) translateY(5px);
     }
-    100% {
-        transform: translateY(0) rotate(0deg);
+    75% {
+        transform: translateX(15%) translateY(15px);
     }
 }
 
-/* Top blue gradient */
-.log-in-page::before {
+.log-in-page .top-gradient {
     content: '';
     position: absolute;
-    top: -20%;
+    top: -30%;
     right: -10%;
     width: 120%;
     height: 55%;
@@ -47,15 +52,14 @@
     );
     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
     z-index: 0;
-    filter: blur(40px);
-    animation: floatTop 8s ease-in-out infinite;
+    filter: blur(40px) contrast(1.5);
+    animation: wave 15s ease-in-out infinite;
 }
 
-/* Bottom yellow gradient */
-.log-in-page::after {
+.log-in-page .bottom-gradient {
     content: '';
     position: absolute;
-    bottom: -20%;
+    bottom: -30%;
     left: -10%;
     width: 120%;
     height: 55%;
@@ -66,14 +70,14 @@
     );
     clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
     z-index: 0;
-    filter: blur(40px);
-    animation: floatBottom 8s ease-in-out infinite;
+    filter: blur(40px) contrast(1.5);
+    animation: wave2 15s ease-in-out infinite;
 }
 
 
 .log-in-form {
     flex: 1;
-    max-width: 468px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
