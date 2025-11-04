@@ -37,6 +37,7 @@
     "suneditor": "^2.47.5",
     "suneditor-react": "^3.6.1",
     "web-vitals": "^2.1.4",
+    "webpack-dev-server": "^5.2.2",
     "yup": "^1.6.1"
   },
   "scripts": {

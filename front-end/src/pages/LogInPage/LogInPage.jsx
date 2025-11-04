@@ -16,6 +16,7 @@ export const LogInPage = () => {
   const { login, user } = useAuth();
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     control,
@@ -33,15 +34,18 @@ export const LogInPage = () => {
 
   const handleLogin = async (payload) => {
     const { username, password } = payload;
+    setIsLoading(true);
+    setServerError("");
 
     try {
       const token = await loginUser({ username, password });
-
       login(token);
       navigate('/');
     } catch (error) {
       console.error("Login failed:", error);
       setServerError("Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,7 +53,7 @@ export const LogInPage = () => {
   const password = watch("password");
 
   useEffect(() => {
-    if (serverError && (username.length == 0 || password.length == 0)) {
+    if (serverError && (username.length === 0 || password.length === 0)) {
       setServerError("");
     }
   }, [username, password, serverError]);

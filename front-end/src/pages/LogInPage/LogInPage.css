@@ -1,110 +1,214 @@
-.log-in-page{
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(0deg, #FDFDFD 16.63%, #AEE8FF 110.04%);
+.log-in-page {
     display: flex;
-     align-items: center;
-     justify-content: center;
-    
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+    position: relative;
+    overflow: hidden;
 }
 
+@keyframes floatTop {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(1deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes floatBottom {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-1deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Top blue gradient */
+.log-in-page::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 120%;
+    height: 55%;
+    background: linear-gradient(45deg, 
+        rgba(29, 173, 231, 0.9) 0%,
+        rgba(18, 129, 224, 0.95) 50%,
+        rgba(29, 173, 231, 0.8) 100%
+    );
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+    z-index: 0;
+    filter: blur(40px);
+    animation: floatTop 8s ease-in-out infinite;
+}
+
+/* Bottom yellow gradient */
+.log-in-page::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 120%;
+    height: 55%;
+    background: linear-gradient(45deg, 
+        rgba(250, 242, 18, 0.8) 0%,
+        rgba(231, 181, 17, 0.9) 50%,
+        rgba(250, 242, 18, 0.7) 100%
+    );
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+    filter: blur(40px);
+    animation: floatBottom 8s ease-in-out infinite;
+}
+
+
 .log-in-form {
-    width: 38%;
-    height: 38vw;
-    padding: 1.5vw;
-    border-radius: 1vw;
-    background: #FDFDFD;
-    box-shadow: 0vw 0.2vw 2vw 1vw rgba(0, 0, 0, 0.25);
+    flex: 1;
+    max-width: 468px;
     display: flex;
     flex-direction: column;
     align-items: center;
- }
+    padding: 2.5rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    margin: 2rem;
+}
  
  
  .log-in-form-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50%;
-    gap: 1.5vw;
-    font-family: 'BeVietnamPro';
- }
- 
- .log-in-logo {
-    margin-top: 2vw;
-    width: 9vw;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.log-in-logo {
+    width: 80px;
     height: auto;
- }
- 
- .log-in-welcome {
-    background: linear-gradient(135deg, #47A8B4 0%, #5D3E91 100%);
+    margin-bottom: 1rem;
+    animation: float 6s ease-in-out infinite;
+    -webkit-box-reflect: below 10px linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(255, 255, 255, 0.1)
+    );
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.log-in-welcome {
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.8vw;
-    font-weight: 900;
+    font-size: 1.8rem;
+    font-weight: 800;
     margin: 0;
- }
- 
- .log-in-division {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(29, 173, 231, 0.1);
+}
+
+.log-in-division {
     display: flex;
-    flex-wrap: nowrap;
+    width: 100%;
     align-items: center;
- }
- 
- .log-in-division-bar {
-    width: 5vw;
-    height: 0.1vw;
-    background: rgba(0, 0, 0, 0.10);
- }
- 
- .log-in-desc {
-    margin: 0 1vw;
-    color: rgba(0, 0, 0, 0.40);
-    font-size: 0.9vw;
- }
+    margin: 1rem 0;
+}
+
+.log-in-division-bar {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.log-in-desc {
+    margin: 0 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
  
  .log-in-form form {
-    flex: 1;
-    width: 90%;
-    margin-top: 1.5vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
- }
+    gap: 1.5rem;
+}
 
- .log-in-form .form-input{
+.log-in-form .form-input {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 1vw;
- }
- 
- .log-in-form-control {
-    width: 27vw;
-    height: 5.5vw;
-    margin-bottom: 1.2vw;
-    display: flex;
-    flex-direction: column;
- }
- 
- .log-in-form-control label {
-    margin-bottom: 0.5vw;
-    color: #000;
-    font-size: 1.2vw;
-    font-weight: 500;
- }
- 
- .log-in-form-control input {
-    width: 90%;
-    height: 2.5vw;
-    padding-right: 2.5vw;
-    border: 0.07vw solid #000;
-    border-radius: 0.5vw;
-    color: #000;
-    font-family: 'Montserrat';
-    font-size: 1vw;
-    text-indent: 1vw;
- }
+    gap: 1rem;
+}
+
+.log-in-form-control {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.log-in-form-control label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.log-in-form-control input {
+    width: 100%;
+    height: 56px;
+    padding: 16.5px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+    background: #ffffff;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.log-in-form-control input::placeholder {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.log-in-form-control input:hover {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+.log-in-form-control input:focus {
+    border-color: #1dade7;
+    border-width: 2px;
+    padding: 15.5px 13px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 173, 231, 0.1);
+}
+
+.log-in-form-control input:focus + label {
+    color: #1dade7;
+}
+    
  
  .log-in-form .password-input {
     position: relative;
@@ -133,130 +237,134 @@
  
  .log-in-form .submit-button {
     width: 100%;
-    height: 2.7vw;
-    background: linear-gradient(135deg, #47A8B4 0%, #5D3E91 100%);
+    height: 42px;
+    background: linear-gradient(90deg, #1dade7 0%, #1281e0 100%);
     border: none;
-    border-radius: 0.5vw;
-    color: #fff;
-    font-family: 'BeVietnamPro';
-    font-weight: 800;
-    font-size: 1.2vw;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    margin-top: 1vw;
- }
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.log-in-form .submit-button:hover {
+    background: linear-gradient(90deg, #1281e0 0%, #1dade7 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29, 173, 231, 0.2);
+}
+
+.log-in-form .submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(18, 129, 224, 0.2);
+}
+
+.log-in-form .submit-button:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 
 
 /* Tablet (<= 1024px) */
 @media (max-width: 1024px) {
     .log-in-form {
-      width: 70%;
-      height: auto;
-      padding: 8vw 2vw;
+        width: 420px;
+        padding: 2rem;
     }
 
     .log-in-logo {
-        width: 15vw;
+        width: 70px;
     }
 
     .log-in-welcome {
-        font-size: 3vw;
+        font-size: 1.5rem;
         text-align: center;
-      }
-    
-      .log-in-division-bar {
-        display: none;
-      }
-    
-      .log-in-desc {
-        font-size: 1.5vw;
-      }
-  
-    .log-in-form-control {
-      width: 100%;
-      height: auto;
-    }
-  
-    .log-in-form-control input {
-      height: 3.5vw;
-      font-size: 1.5vw;
-    }
-  
-    .log-in-form .submit-button {
-      height: 3.5vw;
-      font-size: 1.5vw;
     }
 
-    .log-in-form .form-input{
-        margin: 3vw 0;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 2vw;
+    .log-in-division-bar {
+        display: block;
+        width: 60px;
     }
-  }
+
+    .log-in-desc {
+        font-size: 0.9rem;
+    }
+
+    .log-in-form-control {
+        margin-bottom: 1.25rem;
+    }
+
+    .log-in-form-control input {
+        height: 42px;
+        font-size: 0.95rem;
+    }
+
+    .log-in-form .form-input {
+        margin: 1rem 0;
+        gap: 1rem;
+    }
+}
   
   /* Mobile (<= 600px) */
   @media (max-width: 600px) {
     .log-in-form {
-      width: 78%;
-      padding: 10vw 5vw;
-      border-radius: 3vw;
+        width: 90%;
+        padding: 1.5rem;
     }
   
     .log-in-logo {
-      width: 18vw;
+        width: 60px;
     }
   
     .log-in-welcome {
-      font-size: 4vw;
-      text-align: center;
+        font-size: 1.3rem;
     }
   
     .log-in-division-bar {
-      display: none;
+        width: 40px;
     }
   
     .log-in-desc {
-      font-size: 2vw;
+        font-size: 0.85rem;
     }
   
     .log-in-form-control {
-      width: 100%;
-      height: auto;
+        margin-bottom: 1rem;
     }
   
     .log-in-form-control label {
-      font-size: 3.5vw;
+        font-size: 0.85rem;
     }
   
     .log-in-form-control input {
-      height: 6vw;
-      font-size: 3.5vw;
-      text-indent: 2vw;
+        height: 40px;
+        font-size: 0.9rem;
+        padding: 0 0.75rem;
     }
   
     .log-in-form .password-eye {
-      font-size: 5vw;
-      top: 25%;
+        font-size: 1rem;
     }
   
     .log-in-error {
-      font-size: 3vw;
+        font-size: 0.8rem;
     }
   
     .log-in-form .submit-button {
-      height: 6.5vw;
-      font-size: 3vw;
-      margin-top: 3vw;
+        height: 40px;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
     }
 
-    
-    .log-in-form .form-input{
-        margin-top: 3vw;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 4vw;
+    .log-in-form .form-input {
+        margin-top: 1rem;
+        gap: 1rem;
     }
-  }
+}
   
