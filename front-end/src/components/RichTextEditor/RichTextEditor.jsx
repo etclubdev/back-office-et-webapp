@@ -60,6 +60,8 @@ export const RichTextEditor = ({ name, control, setValue, setEditorContent, setU
                   lineWrapping: true,
                 },
               },
+              font: ["Be Vietnam Pro", "Montserrat", "Arial", "Comic Sans MS", "Courier New", "Georgia", "Tahoma", "Times New Roman", "Verdana"],
+              defaultStyle: "font-family: 'Be Vietnam Pro'",
               buttonList: [
                 ["undo", "redo"],
                 ["font", "fontSize", "formatBlock"],
@@ -96,6 +98,7 @@ export const RichTextEditor = ({ name, control, setValue, setEditorContent, setU
                 }
               ]
             }}
+            
             onImageUploadBefore={handleImageInsert}
             onChange={onChange}
           />
