@@ -37,7 +37,8 @@ export const ETNewsFormPage = ({ action }) => {
         setValue,
         reset,
         register,
-        formState: { errors, isSubmitting, isSubmitSuccessful },
+        setError,
+        formState: { errors, isSubmitting },
     } = useForm({
         resolver: yupResolver(etNewsSchema),
         defaultValues: defaultItems,
@@ -96,6 +97,7 @@ export const ETNewsFormPage = ({ action }) => {
                                     preview={preview}
                                     setPreview={setPreview}
                                     setValue={setValue}
+                                    setError={setError}
                                 />
 
                             </div>

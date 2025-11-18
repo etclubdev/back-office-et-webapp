@@ -233,4 +233,6 @@ const confirmContents = {
 const UPLOAD_PRESET = "first_upload";
 const CLOUD_NAME = "dgqolusci";
 
-export { confirmContents, filterChipData, breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME }
+const MAX_MB_IMAGE_UPLOAD = 2;
+
+export { confirmContents, filterChipData, breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME, MAX_MB_IMAGE_UPLOAD }

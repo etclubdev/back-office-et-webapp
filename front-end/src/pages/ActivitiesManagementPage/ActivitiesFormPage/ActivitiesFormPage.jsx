@@ -43,6 +43,7 @@ export const ActivitiesFormPage = ({ action }) => {
         setValue,
         reset,
         register,
+        setError,
         formState: { errors, isSubmitting, isSubmitSuccessful },
     } = useForm({
         resolver: yupResolver(activitySchema),
@@ -104,6 +105,7 @@ export const ActivitiesFormPage = ({ action }) => {
                                     preview={preview}
                                     setPreview={setPreview}
                                     setValue={setValue}
+                                    setError={setError}
                                 />
 
                             </div>

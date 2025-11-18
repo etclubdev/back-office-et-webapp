@@ -35,7 +35,7 @@ export const ETBlogFormPage = ({ action }) => {
         handleSubmit,
         setValue,
         reset,
-        register,
+        setError,
         formState: { errors, isSubmitting },
     } = useForm({
         resolver: yupResolver(etBlogSchema),
@@ -95,6 +95,7 @@ export const ETBlogFormPage = ({ action }) => {
                                     preview={preview}
                                     setPreview={setPreview}
                                     setValue={setValue}
+                                    setError={setError}
                                 />
                             </div>
 

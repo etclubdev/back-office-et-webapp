@@ -22,6 +22,7 @@ export const BannersFormPage = ({ action }) => {
         control,
         handleSubmit,
         setValue,
+        setError,
         reset,
         formState: { errors, isSubmitting },
     } = useForm({
@@ -82,6 +83,7 @@ export const BannersFormPage = ({ action }) => {
                                     setPreview={setPreview}
                                     setValue={setValue}
                                     errors={errors}
+                                    setError={setError}
                                 />
 
                             </div>

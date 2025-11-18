@@ -36,6 +36,7 @@ export const PartnersFormPage = ({ action }) => {
         handleSubmit,
         setValue,
         reset,
+        setError,
         formState: { errors, isSubmitting },
     } = useForm({
         resolver: yupResolver(partnerSchema),
@@ -95,6 +96,7 @@ export const PartnersFormPage = ({ action }) => {
                                     setPreview={setPreview}
                                     setValue={setValue}
                                     errors={errors}
+                                    setError={setError}
                                 />
 
                             </div>
