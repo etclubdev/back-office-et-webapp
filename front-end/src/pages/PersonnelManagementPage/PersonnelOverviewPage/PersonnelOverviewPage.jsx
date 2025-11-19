@@ -20,9 +20,9 @@ const columns = [
   { field: 'dob', headerName: 'Ngày sinh' },
   { field: 'email', headerName: 'Email' },
   { field: 'gender', headerName: 'Giới tính' },
+  { field: 'major', headerName: 'Chuyên ngành' },
   { field: 'cohort_name', headerName: 'Khóa đào tạo' },
   { field: 'position_name', headerName: 'Chức vụ' },
-  { field: 'department_name', headerName: 'Ban hoạt động' },
 ];
 
 const contents = confirmContents.personnels;
