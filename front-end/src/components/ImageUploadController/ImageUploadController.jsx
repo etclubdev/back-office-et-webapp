@@ -1,9 +1,10 @@
 import { Box, Typography, FormHelperText } from "@mui/material";
 import { Controller } from "react-hook-form";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import "./ImageUploadController.css"
+import "./ImageUploadController.css";
+import { MAX_MB_IMAGE_UPLOAD } from '../../constants';
 
-export const ImageUploadController = ({ name, control, preview, setPreview, setValue }) => {
+export const ImageUploadController = ({ name, control, preview, setPreview, setValue, setError, maxMBImageUpload = MAX_MB_IMAGE_UPLOAD }) => {
     return (
         <Controller
             name={name}
@@ -25,22 +26,33 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                                 style={{ display: "none" }}
                                 onChange={(event) => {
                                     const file = event.target.files[0];
+
+                                    const MAX_SIZE = maxMBImageUpload * 1024 * 1024;
+
+                                    if (file.size > MAX_SIZE) {
+                                        setError(name, {
+                                            type: "manual",
+                                            message: `Vui lòng chọn hình ảnh có dung lượng <= ${maxMBImageUpload}MB`,
+                                        });
+                                        return;
+                                    }
+
                                     if (file) {
                                         setPreview(file);
                                         setValue(name, URL.createObjectURL(file));
                                     }
                                 }}
                             />
-                            {(preview || field.value)? (
-                                <img 
+                            {(preview || field.value) ? (
+                                <img
                                     className="thumbnail-img"
                                     src={
                                         preview
-                                          ? preview instanceof File
-                                            ? URL.createObjectURL(preview)
-                                            : preview
-                                          : field.value
-                                      }
+                                            ? preview instanceof File
+                                                ? URL.createObjectURL(preview)
+                                                : preview
+                                            : field.value
+                                    }
                                     alt="Preview"
                                     style={{ width: "100%", borderRadius: "4px" }}
                                 />
@@ -57,7 +69,7 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                                 </>
                             )}
                         </Box>
-                    <FormHelperText error>{fieldState.error?.message}</FormHelperText>
+                        <FormHelperText error>{fieldState.error?.message}</FormHelperText>
                     </div>
                 </>
             )}

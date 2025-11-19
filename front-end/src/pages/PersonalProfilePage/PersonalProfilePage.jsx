@@ -81,6 +81,7 @@ const PersonalInformation = () => {
         control,
         handleSubmit,
         setValue,
+        setError,
         reset,
         formState: { errors, isSubmitting },
     } = useForm({
@@ -156,6 +157,7 @@ const PersonalInformation = () => {
                             setPreview={setPreview}
                             setValue={setValue}
                             errors={errors}
+                            setError={setError}
                         />
 
                     </div>
