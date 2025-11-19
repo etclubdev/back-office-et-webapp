@@ -11,6 +11,7 @@ import { Header } from "../../../components/Header";
 import { getBannerById, createBanner, updateBanner } from '../../../api/banner.service';
 import { bannerSchema } from '../../../schemas/bannerSchema';
 import { handleImageUpload } from '../../../utils/handleUploadUtil';
+import { MAX_MB_BANNER_UPLOAD } from '../../../constants'
 
 export const BannersFormPage = ({ action }) => {
     const navigate = useNavigate();
@@ -84,6 +85,7 @@ export const BannersFormPage = ({ action }) => {
                                     setValue={setValue}
                                     errors={errors}
                                     setError={setError}
+                                    maxMBImageUpload={MAX_MB_BANNER_UPLOAD}
                                 />
 
                             </div>

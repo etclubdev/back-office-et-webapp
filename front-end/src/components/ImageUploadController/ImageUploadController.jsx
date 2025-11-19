@@ -4,7 +4,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import "./ImageUploadController.css";
 import { MAX_MB_IMAGE_UPLOAD } from '../../constants';
 
-export const ImageUploadController = ({ name, control, preview, setPreview, setValue, setError }) => {
+export const ImageUploadController = ({ name, control, preview, setPreview, setValue, setError, maxMBImageUpload = MAX_MB_IMAGE_UPLOAD }) => {
     return (
         <Controller
             name={name}
@@ -27,12 +27,12 @@ export const ImageUploadController = ({ name, control, preview, setPreview, setV
                                 onChange={(event) => {
                                     const file = event.target.files[0];
 
-                                    const MAX_SIZE = MAX_MB_IMAGE_UPLOAD * 1024 * 1024;
+                                    const MAX_SIZE = maxMBImageUpload * 1024 * 1024;
 
                                     if (file.size > MAX_SIZE) {
                                         setError(name, {
                                             type: "manual",
-                                            message: `Vui lòng chọn hình ảnh có dung lượng <= ${MAX_MB_IMAGE_UPLOAD}MB`,
+                                            message: `Vui lòng chọn hình ảnh có dung lượng <= ${maxMBImageUpload}MB`,
                                         });
                                         return;
                                     }
