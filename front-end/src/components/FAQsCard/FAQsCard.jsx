@@ -4,7 +4,7 @@ import { Switch } from "@mui/material";
 import { updateFAQsById } from '../../api/faq.service';
 import { ConfirmedDialog } from '../ConfirmedDialog';
 import { getConfirmDialogConfig } from '../../utils/confirmDialogUtil';
-import { confirmContents } from "../../constants";
+import { confirmContents } from "../../config/confirmContents";
 
 const contents = confirmContents.faqs;
 

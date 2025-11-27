@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
 import { horizontalLogo, noTextLogo } from '../../assets/images/logos';
 import { NavbarItem } from '../NavbarItem/NavbarItem';
-import { navbarContents } from '../../constants';
+import { navbarContents } from '../../config/navbarContents';
 import { useAuth } from "../../context/useAuth";
 import { getPersonnelById } from "../../api/personnel.service";
 

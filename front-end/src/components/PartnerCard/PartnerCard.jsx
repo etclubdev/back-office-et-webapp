@@ -19,7 +19,7 @@ import { CSSTransition } from "react-transition-group";
 import { updateVisible } from "../../api/partner.service";
 import { ConfirmedDialog } from "../ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../utils/confirmDialogUtil";
-import { filterChipData, confirmContents } from '../../constants';
+import { confirmContents } from '../../config/confirmContents';
 
 const contents = confirmContents.partners;
 

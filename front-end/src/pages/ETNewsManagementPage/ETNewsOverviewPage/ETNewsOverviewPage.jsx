@@ -15,7 +15,8 @@ import { convertToArray } from "../../../utils/convertToArrayUtil";
 import { getAllETNews, deleteETNewsById, deleteETNews } from "../../../api/etNews.service";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData, confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 
 import "./ETNewsOverviewPage.css";
 

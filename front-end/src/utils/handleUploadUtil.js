@@ -1,4 +1,4 @@
-import { UPLOAD_PRESET, CLOUD_NAME } from "../constants";
+import { UPLOAD_PRESET, CLOUD_NAME } from "../config/cloudinary";
 
 const handleUploadToCloud = async ({ isContent, preview, editorContent, setEditorContent, uploadImages, setUploadImages }) => {
     if (isContent) {

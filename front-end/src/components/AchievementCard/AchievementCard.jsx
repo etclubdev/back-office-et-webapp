@@ -4,7 +4,7 @@ import { Switch } from '@mui/material';
 import { ConfirmedDialog } from '../ConfirmedDialog';
 import { updateAchievementById } from '../../api/achievement.service';
 
-import { confirmContents } from '../../constants';
+import { confirmContents } from '../../config/confirmContents';
 
 const contents = confirmContents.achievements;
 

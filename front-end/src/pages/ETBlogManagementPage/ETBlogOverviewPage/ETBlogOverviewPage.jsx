@@ -11,7 +11,7 @@ import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import "./ETBlogOverviewPage.css";
 
 import { getAllETBlogs, deleteETBlogById, deleteETBlogs } from '../../../api/etBlog.service';
-import { confirmContents } from '../../../constants';
+import { confirmContents } from '../../../config/confirmContents';
 
 const columns = [
     { field: 'title', headerName: 'Tiêu đề' },
