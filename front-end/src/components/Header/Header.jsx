@@ -5,16 +5,16 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import { breadcrumbNameMap } from "../../constants";
 
-export const Header = ({children}) => {
+export const Header = ({ children }) => {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
-    
+
     const lastDisplayName = breadcrumbNameMap[pathnames[pathnames.length - 1]] || "Trang chủ";
 
     return (
         <div className="header">
             <div className="header-content">
-                <Breadcrumbs className="header-breadcrumbs" aria-label="breadcrumb">
+                {/* <Breadcrumbs className="header-breadcrumbs" aria-label="breadcrumb">
                     <Link to="/">Trang chủ</Link>
                     {pathnames.map((value, index) => {
                         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
@@ -40,7 +40,7 @@ export const Header = ({children}) => {
                             </Link>
                         );
                     })}
-                </Breadcrumbs>
+                </Breadcrumbs> */}
                 <span className="header-title">{children ? children : lastDisplayName}</span>
             </div>
         </div>

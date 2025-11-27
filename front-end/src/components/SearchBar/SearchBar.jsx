@@ -11,14 +11,21 @@ export const SearchBar = ({ onSearch }) => {
         onSearch(query);
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    }
+
+
     return (
         <>
             <TextField
                 placeholder="Search..."
-                variant="standard" 
+                variant="standard"
                 fullWidth
                 InputProps={{
-                    disableUnderline: false, 
+                    disableUnderline: false,
                     startAdornment: (
                         <InputAdornment position="start">
                             <SearchIcon style={{ color: "gray" }} />
@@ -26,9 +33,10 @@ export const SearchBar = ({ onSearch }) => {
                     ),
                 }}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyPress={handleKeyPress}
             />
-            <BaseButton 
-                sx={{ whiteSpace: "nowrap" , paddingX: 2, backgroundColor: "#007bff", "&:hover": { backgroundColor: "#0056b3" }}}
+            <BaseButton
+                sx={{ whiteSpace: "nowrap", paddingX: 2, backgroundColor: "#007bff", "&:hover": { backgroundColor: "#0056b3" } }}
                 onClick={handleSearch}
             >
                 Tìm kiếm

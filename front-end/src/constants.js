@@ -2,12 +2,12 @@ import { faHandshake, faCircleQuestion, faFileLines, faObjectGroup, faShieldHalv
 import { FactCheck, Inventory, Delete, Restore } from '@mui/icons-material';
 
 const navbarContents = [
-    { id: "navbar-account", to: "accounts", icon: faShieldHalved, label: "Quản lý tài khoản" },
+    { id: "navbar-account", to: "accounts", icon: faShieldHalved, label: "Tài khoản" },
     {
         id: "navbar-hr",
         to: "",
         icon: faUserGroup,
-        label: "Quản lý nhân sự",
+        label: "Nhân sự",
         dropdownContent: [
             { id: "dropdown-tech", to: "/colleague/tech", label: "Ban Chuyên môn" },
             { id: "dropdown-hr", to: "/colleague/hr", label: "Ban Nhân sự - Tổ chức" },
@@ -16,11 +16,11 @@ const navbarContents = [
             { id: "dropdown-fer", to: "/colleague/fer", label: "Ban Tài chính - Đối ngoại" },
         ],
     },
-    { id: "navbar-partners", to: "partners", icon: faHandshake, label: "Quản lý đối tác" },
+    { id: "navbar-partners", to: "partners", icon: faHandshake, label: "Đối tác" },
     {
         id: "navbar-homepage",
         icon: faObjectGroup,
-        label: "Quản lý trang chủ",
+        label: "Trang chủ",
         dropdownContent: [
             { id: "dropdown-achievements", to: "homepage-achievements", label: "Thành tựu" },
             { id: "dropdown-partners", to: "homepage-partners", label: "Đối tác" },
@@ -28,12 +28,12 @@ const navbarContents = [
             { id: "dropdown-banners", to: "homepage-banners", label: "Banner" },
         ],
     },
-    { id: "navbar-faqs", to: "faqs", icon: faCircleQuestion, label: "Quản lý FAQs" },
+    { id: "navbar-faqs", to: "faqs", icon: faCircleQuestion, label: "FAQs" },
     {
         id: "navbar-posts",
         to: "",
         icon: faFileLines,
-        label: "Quản lý Bài đăng",
+        label: "Bài đăng",
         dropdownContent: [
             { id: "dropdown-activities", to: "activities", label: "Hoạt động" },
             { id: "dropdown-etnews", to: "et-news", label: "ET News" },
@@ -44,7 +44,7 @@ const navbarContents = [
         id: "navbar-collaborator",
         to: "",
         icon: faFaceSmile,
-        label: "Quản lý Tìm kiếm CTV",
+        label: "Tìm kiếm CTV",
         dropdownContent: [
             { id: "dropdown-overview", to: "/collaborator/overview", label: "Tổng quan" },
             { id: "dropdown-approve", to: "/collaborator/approve", label: "Phê duyệt" },
