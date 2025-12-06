@@ -1,0 +1,7 @@
+const UPLOAD_PRESET = "first_upload";
+const CLOUD_NAME = "dgqolusci";
+
+const MAX_MB_IMAGE_UPLOAD = 2;
+const MAX_MB_BANNER_UPLOAD = 5;
+
+export { UPLOAD_PRESET, CLOUD_NAME, MAX_MB_IMAGE_UPLOAD, MAX_MB_BANNER_UPLOAD }

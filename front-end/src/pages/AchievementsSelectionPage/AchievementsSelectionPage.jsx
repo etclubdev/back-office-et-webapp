@@ -10,7 +10,7 @@ import { SearchBar } from "../../components/SearchBar";
 import { AchievementCardList } from "../../components/AchievementCardList";
 import { getAllAchievements, createAchievement, updateAchievementById, deleteAchievementById, deleteAchievements } from '../../api/achievement.service';
 
-import { confirmContents } from '../../constants';
+import { confirmContents } from '../../config/confirmContents';
 
 const contents = confirmContents.achievements;
 

@@ -5,7 +5,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
-import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { DatePickerController } from "../../../components/DatePickerController"
 import { SelectController } from '../../../components/SelectController';
 import { TextFieldController } from '../../../components/TextFieldController';
@@ -16,18 +15,19 @@ import { getDepartmentNameUtil } from '../../../utils/getDepartmentNameUtil';
 import { formatDates } from '../../../utils/formatDatesUtil';
 import { personnelSchema } from '../../../schemas/personnelSchema';
 import { removeRedundantField } from '../../../utils/removeRedundantFieldsUtil';
+import { Navigate } from "react-router-dom";
+import { useAuth } from '../../../context/useAuth';
 
 export const PersonnelFormPage = ({ action, department_name }) => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [terms, setTerms] = useState([]);
+    const { user } = useAuth();
 
     const {
         control,
         handleSubmit,
-        setValue,
         reset,
-        register,
         formState: { errors, isSubmitting },
     } = useForm({
         resolver: yupResolver(personnelSchema),
@@ -71,6 +71,10 @@ export const PersonnelFormPage = ({ action, department_name }) => {
         fetchData();
     }, [id]);
 
+    if (user && user?.department_name !== getDepartmentNameUtil(department_name) && user.sysrole_name !== "Administrator") {
+        return <Navigate to="/unauthorized" replace />;
+    }
+
     const handleClose = () => {
         navigate(`/colleague/${department_name}`);
     }
@@ -107,14 +111,14 @@ export const PersonnelFormPage = ({ action, department_name }) => {
                 personnel: removeRedundantField(fullPayload.personnel),
                 status: removeRedundantField(fullPayload.status)
             }
-            
+
             if (action === "create") {
                 const response = await createPersonnel(fullPayload);
-               handleClose();
-                
+                handleClose();
+
             } else if (action === "edit") {
                 const response = await updatePersonnel(id, fullPayload);
-               handleClose();
+                handleClose();
             }
         } catch (error) {
             console.log(error);

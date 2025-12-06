@@ -14,7 +14,7 @@ import { useAuth } from "../../../context/useAuth";
 import { CircularLoading } from '../../../components/CircularLoading';
 
 import { noDataForGraph } from "../../../assets/images/errors";
-import { confirmContents } from '../../../constants';
+import { confirmContents } from '../../../config/confirmContents';
 
 // import { CircularProgress } from "@mui/material";
 

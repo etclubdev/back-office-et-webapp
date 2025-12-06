@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
-import { breadcrumbNameMap } from "../../constants";
+import { breadcrumbNameMap } from "../../config/breadcrumbNameMap";
 
 export const Header = ({ children }) => {
     const location = useLocation();

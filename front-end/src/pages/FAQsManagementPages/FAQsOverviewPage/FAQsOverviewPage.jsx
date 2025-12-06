@@ -17,7 +17,8 @@ import { convertToArray } from '../../../utils/convertToArray';
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData, confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 
 const columns = [
     { field: 'question', headerName: 'Câu hỏi' },

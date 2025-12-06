@@ -14,7 +14,7 @@ import "./AccountsOverviewPage.css";
 import { getAllAccounts, deleteAccountById, deleteAccounts, resetPassword } from '../../../api/account.service';
 import { getAllSysRoles } from '../../../api/sysrole.service';
 
-import { confirmContents } from '../../../constants';
+import { confirmContents } from '../../../config/confirmContents';
 
 const columns = [
     { field: 'username', headerName: 'Tên tài khoản' },
