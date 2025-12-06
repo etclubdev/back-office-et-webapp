@@ -5,9 +5,10 @@ import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-
 import { useAuth } from "../../context/useAuth";
 import { ConfirmedDialog } from "../ConfirmedDialog";
 
-export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isLogoutItem, setIsExpanded }) => {
+export const NavbarItem = ({ id, to, icon, label, requiredPermissions, dropdownContent, userInfo, isLogoutItem, setIsExpanded }) => {
     const { user, logout } = useAuth();
     const [isConfirmingLogout, setIsConfirmingLogout] = useState(false);
+    const permissions = user?.permissions || [];
 
     const handleLogout = () => {
         logout();
@@ -46,9 +47,22 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
         );
     }
 
+    let filteredDropdownContent;
+    if (dropdownContent) {
+        filteredDropdownContent = dropdownContent.filter(item => {
+            return item.requiredPermissions.every(p => permissions.includes(p))
+        })
+        if (filteredDropdownContent.length === 0) return;
+
+    } else {
+        const hasAccess = requiredPermissions?.every(p => permissions.includes(p));
+        if (!hasAccess)
+            return;
+    }
+
     return (
         <div className="navbar-item-wrapper">
-            {!dropdownContent ? (
+            {!filteredDropdownContent ? (
                 <NavLink
                     id={id}
                     to={to}
@@ -80,7 +94,7 @@ export const NavbarItem = ({ id, to, icon, label, dropdownContent, userInfo, isL
                     </div>
 
                     <div id={id + "-dropdown"} className="dropdown-container">
-                        {dropdownContent.map((item) => {
+                        {filteredDropdownContent.map((item) => {
                             return (
                                 <NavLink
                                     key={item.id}
