@@ -2,7 +2,7 @@ import { Box, Typography, FormHelperText } from "@mui/material";
 import { Controller } from "react-hook-form";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import "./ImageUploadController.css";
-import { MAX_MB_IMAGE_UPLOAD } from '../../constants';
+import { MAX_MB_IMAGE_UPLOAD } from '../../config/cloudinary';
 
 export const ImageUploadController = ({ name, control, preview, setPreview, setValue, setError, maxMBImageUpload = MAX_MB_IMAGE_UPLOAD }) => {
     return (

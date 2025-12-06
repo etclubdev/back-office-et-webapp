@@ -18,8 +18,8 @@ import { RecordDialog } from '../RecordDialog';
 import { getApplicationById, getAllApplications, approveApplication, rejectApplication, restoreApplication, deleteApplications, exportApplications } from '../../../api/application.service';
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData } from '../../../constants';
-import { confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 
 import './CollaboratorsManagementPage.css';
 

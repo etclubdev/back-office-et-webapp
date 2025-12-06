@@ -10,7 +10,8 @@ import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import { convertToArray } from "../../../utils/convertToArrayUtil";
 import { Filter } from '../../../components/Filter';
-import { filterChipData, confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 import "./PartnersOverviewPage.css";
 
 import {

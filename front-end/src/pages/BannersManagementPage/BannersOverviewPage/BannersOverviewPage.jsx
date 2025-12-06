@@ -15,7 +15,7 @@ import {
 } from '../../../api/banner.service';
 import "./BannersOverviewPage.css";
 
-import { confirmContents } from '../../../constants';
+import { confirmContents } from '../../../config/confirmContents';
 
 const columns = [
   { field: 'banner_name', headerName: 'Tên banner' },

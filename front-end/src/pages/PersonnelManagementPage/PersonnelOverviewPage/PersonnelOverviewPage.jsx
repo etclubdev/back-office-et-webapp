@@ -10,7 +10,8 @@ import { ConfirmedDialog } from "../../../components/ConfirmedDialog";
 import { getConfirmDialogConfig } from "../../../utils/confirmDialogUtil";
 import { getDepartmentNameUtil } from '../../../utils/getDepartmentNameUtil';
 import { Filter } from '../../../components/Filter';
-import { filterChipData, confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 import "./PersonnelOverviewPage.css";
 
 import { getAllPersonnels, deletePersonnelById, deletePersonnels } from '../../../api/personnel.service';

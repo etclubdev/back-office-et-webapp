@@ -1,92 +1,6 @@
-import { faHandshake, faCircleQuestion, faFileLines, faObjectGroup, faShieldHalved, faUserGroup, faArrowRightFromBracket, faFaceSmile } from '@fortawesome/free-solid-svg-icons';
 import { FactCheck, Inventory, Delete, Restore } from '@mui/icons-material';
 
-const navbarContents = [
-    { id: "navbar-account", to: "accounts", icon: faShieldHalved, label: "Quản lý tài khoản" },
-    {
-        id: "navbar-hr",
-        to: "",
-        icon: faUserGroup,
-        label: "Quản lý nhân sự",
-        dropdownContent: [
-            { id: "dropdown-tech", to: "/colleague/tech", label: "Ban Chuyên môn" },
-            { id: "dropdown-hr", to: "/colleague/hr", label: "Ban Nhân sự - Tổ chức" },
-            { id: "dropdown-pr", to: "/colleague/pr", label: "Ban Truyền thông" },
-            { id: "dropdown-event", to: "/colleague/event", label: "Ban Sự kiện" },
-            { id: "dropdown-fer", to: "/colleague/fer", label: "Ban Tài chính - Đối ngoại" },
-        ],
-    },
-    { id: "navbar-partners", to: "partners", icon: faHandshake, label: "Quản lý đối tác" },
-    {
-        id: "navbar-homepage",
-        icon: faObjectGroup,
-        label: "Quản lý trang chủ",
-        dropdownContent: [
-            { id: "dropdown-achievements", to: "homepage-achievements", label: "Thành tựu" },
-            { id: "dropdown-partners", to: "homepage-partners", label: "Đối tác" },
-            { id: "dropdown-faqs", to: "homepage-faqs", label: "FAQs" },
-            { id: "dropdown-banners", to: "homepage-banners", label: "Banner" },
-        ],
-    },
-    { id: "navbar-faqs", to: "faqs", icon: faCircleQuestion, label: "Quản lý FAQs" },
-    {
-        id: "navbar-posts",
-        to: "",
-        icon: faFileLines,
-        label: "Quản lý Bài đăng",
-        dropdownContent: [
-            { id: "dropdown-activities", to: "activities", label: "Hoạt động" },
-            { id: "dropdown-etnews", to: "et-news", label: "ET News" },
-            { id: "dropdown-etblog", to: "et-blog", label: "ET Blog" },
-        ],
-    },
-    {
-        id: "navbar-collaborator",
-        to: "",
-        icon: faFaceSmile,
-        label: "Quản lý Tìm kiếm CTV",
-        dropdownContent: [
-            { id: "dropdown-overview", to: "/collaborator/overview", label: "Tổng quan" },
-            { id: "dropdown-approve", to: "/collaborator/approve", label: "Phê duyệt" },
-            { id: "dropdown-archive", to: "/collaborator/archive", label: "Lưu trữ" },
-        ],
-    },
-];
-
-const breadcrumbNameMap = {
-    "profile": "Thông tin cá nhân",
-    "accounts": "Quản lý tài khoản",
-    "partners": "Quản lý đối tác",
-    "tech": "Ban Chuyên môn",
-    "event": "Ban Sự kiện",
-    "hr": "Ban Nhân sự - Tổ chức",
-    "fer": "Ban Tài chính - Đối ngoại",
-    "pr": "Ban Truyền thông",
-    "homepage-achievements": "Thành tựu",
-    "homepage-partners": "Đối tác",
-    "homepage-faqs": "FAQs",
-    "homepage-banners": "Quản lý Banner",
-    "faqs": "Quản lý FAQs",
-    "et-news": "Quản lý ET News",
-    "et-blog": "Quản lý ET Blog",
-    "activities": "Quản lý Hoạt động",
-    "collaborator": "Quản lý Tìm kiếm CTV",
-    "overview": "Tổng quan",
-    "approve": "Phê duyệt",
-    "archive": "Lưu trữ",
-    "create": "Thêm mới",
-};
-
-const filterChipData = {
-    partners: ['Đối tác doanh nghiệp', 'Đối tác chuyên gia', 'Đối tác Truyền thông', 'Nghệ sĩ khách mời'],
-    personnelStatus: ['Đang hoạt động', 'Cựu thành viên'],
-    faqs: ['Về ET Club', 'Về hoạt động và sự kiện', 'Về quy trình tham gia', 'Khác'],
-    etNews: ['Công nghệ Việt Nam', 'Công nghệ thế giới', 'Chính phủ số', 'Khác'],
-    activities: ['Talkshow/Workshop', 'Cuộc thi', 'Game', 'Hoạt động truyền thông', 'Hoạt động nội bộ'],
-    collaborators: ['Ban Chuyên môn', "Ban Sự kiện", "Ban Nhân sự - Tổ chức", "Ban Tài chính - Đối ngoại", "Ban Truyền thông"]
-};
-
-const confirmContents = {
+export const confirmContents = {
     accounts: {
         delete: {
             title: "Xác nhận xóa tài khoản",
@@ -228,12 +142,3 @@ const confirmContents = {
         }
     }
 };
-
-
-const UPLOAD_PRESET = "first_upload";
-const CLOUD_NAME = "dgqolusci";
-
-const MAX_MB_IMAGE_UPLOAD = 2;
-const MAX_MB_BANNER_UPLOAD = 5;
-
-export { confirmContents, filterChipData, breadcrumbNameMap, navbarContents, UPLOAD_PRESET, CLOUD_NAME, MAX_MB_IMAGE_UPLOAD, MAX_MB_BANNER_UPLOAD }

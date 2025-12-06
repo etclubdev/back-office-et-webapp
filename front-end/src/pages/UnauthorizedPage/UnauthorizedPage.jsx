@@ -7,9 +7,9 @@ import { Button } from '@mui/material';
 export const UnauthorizedPage = () => {
   return (
     <div className="unauthorized-page">
-        <img src={error403} alt="403 Error" />
+        <img src={error403} alt="401 Error" />
         <div className="content">
-            <p className="error">LỖI 403 - KHÔNG CÓ QUYỀN TRUY CẬP</p>
+            <p className="error">LỖI 401 - KHÔNG CÓ QUYỀN TRUY CẬP</p>
             <p className="error-desc">Bạn đã đăng nhập, nhưng không có quyền truy cập vào nội dung này. Nếu bạn cho rằng đây là lỗi, vui lòng liên hệ bộ phận hỗ trợ.</p>
         </div>
         <Button className="button" variant='outlined' color="#252F40">

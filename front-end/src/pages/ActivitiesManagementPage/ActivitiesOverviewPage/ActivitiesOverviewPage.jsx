@@ -14,7 +14,8 @@ import "./ActivitiesOverviewPage.css";
 import { getAllActivities, deleteActivities, deleteActivity } from "../../../api/activity.service";
 
 import { Filter } from '../../../components/Filter';
-import { filterChipData, confirmContents } from '../../../constants';
+import { filterChipData } from '../../../config/filterChipData';
+import { confirmContents } from '../../../config/confirmContents';
 
 const contents = confirmContents.activities;
 

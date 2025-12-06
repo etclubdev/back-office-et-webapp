@@ -11,7 +11,7 @@ import { Header } from "../../../components/Header";
 import { getBannerById, createBanner, updateBanner } from '../../../api/banner.service';
 import { bannerSchema } from '../../../schemas/bannerSchema';
 import { handleImageUpload } from '../../../utils/handleUploadUtil';
-import { MAX_MB_BANNER_UPLOAD } from '../../../constants'
+import { MAX_MB_BANNER_UPLOAD } from '../../../config/cloudinary';
 
 export const BannersFormPage = ({ action }) => {
     const navigate = useNavigate();

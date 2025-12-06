@@ -33,8 +33,6 @@ import { CollaboratorsOverviewPage } from './pages/CollaboratorsSeekingPage/Coll
 // import { ComingSoonPage } from './pages/ComingSoonPage';
 import { ToastNotifier } from './components/ToastNotifier';
 
-import roles from './global/roles';
-
 function App() {
   useEffect(() => {
     generateTraceId();
@@ -56,133 +54,384 @@ function App() {
               <Route element={<MainLayout />}>
 
                 {/* PERSONAL INFO */}
-                <Route element={<RequireAuth allowedRoles={roles.managePersonalInfoRoles} />}>
-                  {/* Unauthorized */}
-                  <Route path="/unauthorized" element={<UnauthorizedPage />} />
+                <Route path="/unauthorized"
+                  element={
+                    <RequireAuth path="/unauthorized">
+                      <UnauthorizedPage />
+                    </RequireAuth>
+                  }
+                />
 
-                  {/* Welcome pages */}
-                  <Route path="/" element={<WelcomePage />} />
+                <Route path="/"
+                  element={
+                    <RequireAuth path="/">
+                      <WelcomePage />
+                    </RequireAuth>
+                  }
+                />
 
-                  {/* Personal Profile */}
-                  <Route path="/profile" element={<PersonalProfilePage />} />
-                </Route>
+                <Route path="/profile"
+                  element={
+                    <RequireAuth path="/profile">
+                      <PersonalProfilePage />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* ACCOUNT */}
-                <Route element={<RequireAuth allowedRoles={roles.manageAccountRoles} />}>
-                  <Route path="/accounts" element={<AccountsOverviewPage />} />
-                  <Route path="/accounts/create" element={<AccountsFormPage action="create" />} />
-                  <Route path="/accounts/edit/:id" element={<AccountsFormPage action="edit" />} />
-                </Route>
+                <Route path="/accounts"
+                  element={
+                    <RequireAuth path="/accounts">
+                      <AccountsOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/accounts/create"
+                  element={
+                    <RequireAuth path="/accounts">
+                      <AccountsFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/accounts"
+                  element={
+                    <RequireAuth path="/accounts/edit/:id">
+                      <AccountsFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* PERSONNELS */}
                 {/* Get Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageGetAllPersonnelsRoles} />}>
-                  <Route path="/colleague/tech" element={<PersonnelOverviewPage department_name="tech" />} />
-                  <Route path="/colleague/hr" element={<PersonnelOverviewPage department_name="hr" />} />
-                  <Route path="/colleague/event" element={<PersonnelOverviewPage department_name="event" />} />
-                  <Route path="/colleague/fer" element={<PersonnelOverviewPage department_name="fer" />} />
-                  <Route path="/colleague/pr" element={<PersonnelOverviewPage department_name="pr" />} />
-                </Route>
+                <Route path="/colleague/tech"
+                  element={
+                    <RequireAuth path="/colleague/tech">
+                      <PersonnelOverviewPage department_name="tech" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/hr"
+                  element={
+                    <RequireAuth path="/colleague/hr">
+                      <PersonnelOverviewPage department_name="hr" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/event"
+                  element={
+                    <RequireAuth path="/colleague/event">
+                      <PersonnelOverviewPage department_name="event" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/fer"
+                  element={
+                    <RequireAuth path="/colleague/fer">
+                      <PersonnelOverviewPage department_name="fer" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/pr"
+                  element={
+                    <RequireAuth path="/colleague/pr">
+                      <PersonnelOverviewPage department_name="pr" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change HR Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangeHRPersonnelRoles} />}>
-                  <Route path="/colleague/hr/create" element={<PersonnelFormPage action="create" department_name="hr" />} />
-                  <Route path="/colleague/hr/edit/:id" element={<PersonnelFormPage action="edit" department_name="hr" />} />
-                </Route>
+                <Route path="/colleague/hr/create"
+                  element={
+                    <RequireAuth path="/colleague/hr/create">
+                      <PersonnelFormPage action="create" department_name="hr" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/hr/edit/:id"
+                  element={
+                    <RequireAuth path="/colleague/hr/edit/:id">
+                      <PersonnelFormPage action="edit" department_name="hr" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change Tech Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangeTechPersonnelRoles} />}>
-                  <Route path="/colleague/tech/create" element={<PersonnelFormPage action="create" department_name="tech" />} />
-                  <Route path="/colleague/tech/edit/:id" element={<PersonnelFormPage action="edit" department_name="tech" />} />
-                </Route>
+                <Route path="/colleague/tech/create"
+                  element={
+                    <RequireAuth path="/colleague/tech/create">
+                      <PersonnelFormPage action="create" department_name="tech" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/tech/edit/:id"
+                  element={
+                    <RequireAuth path="/colleague/tech/edit/:id">
+                      <PersonnelFormPage action="edit" department_name="tech" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change PR Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangePRPersonnelRoles} />}>
-                  <Route path="/colleague/pr/create" element={<PersonnelFormPage action="create" department_name="pr" />} />
-                  <Route path="/colleague/pr/edit/:id" element={<PersonnelFormPage action="edit" department_name="pr" />} />
-                </Route>
+                <Route path="/colleague/pr/create"
+                  element={
+                    <RequireAuth path="/colleague/pr/create">
+                      <PersonnelFormPage action="create" department_name="pr" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/pr/edit/:id"
+                  element={
+                    <RequireAuth path="/colleague/pr/edit/:id">
+                      <PersonnelFormPage action="edit" department_name="pr" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change EV Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangeEVPersonnelRoles} />}>
-                  <Route path="/colleague/event/create" element={<PersonnelFormPage action="create" department_name="event" />} />
-                  <Route path="/colleague/event/edit/:id" element={<PersonnelFormPage action="edit" department_name="event" />} />
-                </Route>
+                <Route path="/colleague/event/create"
+                  element={
+                    <RequireAuth path="/colleague/event/create">
+                      <PersonnelFormPage action="create" department_name="event" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/colleague/event/edit/:id"
+                  element={
+                    <RequireAuth path="/colleague/event/edit/:id">
+                      <PersonnelFormPage action="edit" department_name="event" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change FER Personnels */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangeFERPersonnelRoles} />}>
-                  <Route path="/colleague/fer/create" element={<PersonnelFormPage action="create" department_name="fer" />} />
-                  <Route path="/colleague/fer/edit/:id" element={<PersonnelFormPage action="edit" department_name="fer" />} />
-                </Route>
+                <Route path="/colleague/fer/create"
+                  element={
+                    <RequireAuth path="/colleague/fer/create">
+                      <PersonnelFormPage action="create" department_name="fer" />
+                    </RequireAuth>
+                  }
+                />
 
+                <Route path="/colleague/fer/edit/:id"
+                  element={
+                    <RequireAuth path="/colleague/fer/edit/:id">
+                      <PersonnelFormPage action="edit" department_name="fer" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* PARTNER */}
                 {/* Get Partners */}
-                <Route element={<RequireAuth allowedRoles={roles.manageGetPartnerRoles} />}>
-                  <Route path="/partners" element={<PartnersOverviewPage />} />
-                </Route>
+                <Route path="/partners"
+                  element={
+                    <RequireAuth path="/partners">
+                      <PartnersOverviewPage />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change Partners */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangePartnerRoles} />}>
-                  <Route path="/partners/create" element={<PartnersFormPage action="create" />} />
-                  <Route path="/partners/edit/:id" element={<PartnersFormPage action="edit" />} />
-                </Route>
+                <Route path="/partners/create"
+                  element={
+                    <RequireAuth path="/partners/create">
+                      <PartnersFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/partners/edit/:id"
+                  element={
+                    <RequireAuth path="/partners/edit/:id">
+                      <PartnersFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* HOMEPAGE */}
-                <Route element={<RequireAuth allowedRoles={roles.manageHomePageRoles} />}>
-                  {/* Achievement */}
-                  <Route path="/homepage-achievements" element={<AchievementsSelectionPage />} />
+                <Route path="/homepage-achievements"
+                  element={
+                    <RequireAuth path="/homepage-achievements">
+                      <AchievementsSelectionPage />
+                    </RequireAuth>
+                  }
+                />
 
-                  {/* Partner */}
-                  <Route path="/homepage-partners" element={<PartnersSelectionPage />} />
+                <Route path="/homepage-partners"
+                  element={
+                    <RequireAuth path="/homepage-partners">
+                      <PartnersSelectionPage />
+                    </RequireAuth>
+                  }
+                />
 
-                  {/* FAQs */}
-                  <Route path="/homepage-faqs" element={<FAQsSelectionPage />} />
+                <Route path="/homepage-faqs"
+                  element={
+                    <RequireAuth path="/homepage-faqs">
+                      <FAQsSelectionPage />
+                    </RequireAuth>
+                  }
+                />
 
-                  {/* Banners */}
-                  <Route path="/homepage-banners" element={<BannersOverviewPage />} />
-                  <Route path="/homepage-banners/create" element={<BannersFormPage action="create" />} />
-                  <Route path="/homepage-banners/edit/:id" element={<BannersFormPage action="edit" />} />
-                </Route>
+                <Route path="/homepage-banners"
+                  element={
+                    <RequireAuth path="/homepage-banners">
+                      <BannersOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/homepage-banners/create"
+                  element={
+                    <RequireAuth path="/homepage-banners/create">
+                      <BannersFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/homepage-banners/edit/:id"
+                  element={
+                    <RequireAuth path="/homepage-banners/edit/:id">
+                      <BannersFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* FAQ */}
                 {/* Get FAQs */}
-                <Route element={<RequireAuth allowedRoles={roles.manageGetFAQRoles} />}>
-                  <Route path="/faqs" element={<FAQsOverviewPage />} />
-                </Route>
+                <Route path="/faqs"
+                  element={
+                    <RequireAuth path="/faqs">
+                      <FAQsOverviewPage />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* Change FAQs */}
-                <Route element={<RequireAuth allowedRoles={roles.manageChangeFAQRoles} />}>
-                  <Route path="/faqs/edit/:id" element={<FAQsFormPage action="edit" />} />
-                  <Route path="/faqs/create" element={<FAQsFormPage action="create" />} />
-                </Route>
+                <Route path="/faqs/edit/:id"
+                  element={
+                    <RequireAuth path="/faqs/edit/:id">
+                      <FAQsFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/faqs/create"
+                  element={
+                    <RequireAuth path="/faqs/create">
+                      <FAQsFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* ACTIVITIES */}
-                <Route element={<RequireAuth allowedRoles={roles.manageActivityRoles} />}>
-                  <Route path="/activities" element={<ActivitiesOverviewPage />} />
-                  <Route path="/activities/create" element={<ActivitiesFormPage action="create" />} />
-                  <Route path="/activities/edit/:id" element={<ActivitiesFormPage action="edit" />} />
-                </Route>
+                 <Route path="/activities"
+                  element={
+                    <RequireAuth path="/activities">
+                      <ActivitiesOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/activities/edit/:id"
+                  element={
+                    <RequireAuth path="/activities/edit/:id">
+                      <ActivitiesFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/activities/create"
+                  element={
+                    <RequireAuth path="/activities/create">
+                      <ActivitiesFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* ET NEWS */}
-                <Route element={<RequireAuth allowedRoles={roles.manageEtNewsRoles} />}>
-                  <Route path="/et-news" element={<ETNewsOverviewPage />} />
-                  <Route path="/et-news/create" element={<ETNewsFormPage action="create" />} />
-                  <Route path="/et-news/edit/:id" element={<ETNewsFormPage action="edit" />} />
-                </Route>
+                <Route path="/et-news"
+                  element={
+                    <RequireAuth path="/et-news">
+                      <ETNewsOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/et-news/edit/:id"
+                  element={
+                    <RequireAuth path="/et-news/edit/:id">
+                      <ETNewsFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/et-news/create"
+                  element={
+                    <RequireAuth path="/et-news/create">
+                      <ETNewsFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* ET BLOG */}
-                <Route element={<RequireAuth allowedRoles={roles.manageEtBlogRoles} />}>
-                  <Route path="/et-blog" element={<ETBlogOverviewPage />} />
-                  <Route path="/et-blog/create" element={<ETBlogFormPage action="create" />} />
-                  <Route path="/et-blog/edit/:id" element={<ETBlogFormPage action="edit" />} />
-                </Route>
+                <Route path="/et-blog"
+                  element={
+                    <RequireAuth path="/et-blog">
+                      <ETBlogOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/et-blog/edit/:id"
+                  element={
+                    <RequireAuth path="/et-blog/edit/:id">
+                      <ETBlogFormPage action="edit" />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/et-blog/create"
+                  element={
+                    <RequireAuth path="/et-blog/create">
+                      <ETBlogFormPage action="create" />
+                    </RequireAuth>
+                  }
+                />
 
                 {/* COLLABORATION */}
-                <Route element={<RequireAuth allowedRoles={roles.manageCollaborationRoles} />}>
-                  <Route path="/collaborator/overview" element={<CollaboratorsOverviewPage />} />
-                  <Route path="/collaborator/approve" element={<CollaboratorsManagementPage isApprovingPage={true} />} />
-                  <Route path="/collaborator/archive" element={<CollaboratorsManagementPage isApprovingPage={false} />} />
-                </Route>
+                <Route path="/collaborator/overview"
+                  element={
+                    <RequireAuth path="/collaborator/overview">
+                      <CollaboratorsOverviewPage />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/collaborator/approve"
+                  element={
+                    <RequireAuth path="/collaborator/approve">
+                      <CollaboratorsManagementPage isApprovingPage={true} />
+                    </RequireAuth>
+                  }
+                />
+
+                <Route path="/collaborator/archive"
+                  element={
+                    <RequireAuth path="/collaborator/archive">
+                      <CollaboratorsManagementPage isApprovingPage={false} />
+                    </RequireAuth>
+                  }
+                />
               </Route>
             </Routes>
           </div>
