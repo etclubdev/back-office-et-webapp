@@ -2,12 +2,12 @@ import { faHandshake, faCircleQuestion, faFileLines, faObjectGroup, faShieldHalv
 import { routePermissions } from './routePermissions';
 
 export const navbarContents = [
-    { id: "navbar-account", to: "/accounts", icon: faShieldHalved, label: "Quản lý tài khoản", requiredPermissions: routePermissions["/accounts"] },
+    { id: "navbar-account", to: "/accounts", icon: faShieldHalved, label: "Tài khoản", requiredPermissions: routePermissions["/accounts"] },
     {
         id: "navbar-hr",
         to: "",
         icon: faUserGroup,
-        label: "Quản lý nhân sự",
+        label: "Nhân sự",
         dropdownContent: [
             { id: "dropdown-tech", to: "/colleague/tech", label: "Ban Chuyên môn", requiredPermissions: routePermissions["/colleague/tech"] },
             { id: "dropdown-hr", to: "/colleague/hr", label: "Ban Nhân sự - Tổ chức", requiredPermissions: routePermissions["/colleague/hr"] },
@@ -16,11 +16,11 @@ export const navbarContents = [
             { id: "dropdown-fer", to: "/colleague/fer", label: "Ban Tài chính - Đối ngoại", requiredPermissions: routePermissions["/colleague/fer"] },
         ],
     },
-    { id: "navbar-partners", to: "/partners", icon: faHandshake, label: "Quản lý đối tác", requiredPermissions: routePermissions["/partners"] },
+    { id: "navbar-partners", to: "/partners", icon: faHandshake, label: "Đối tác", requiredPermissions: routePermissions["/partners"] },
     {
         id: "navbar-homepage",
         icon: faObjectGroup,
-        label: "Quản lý trang chủ",
+        label: "Trang chủ",
         dropdownContent: [
             { id: "dropdown-achievements", to: "/homepage-achievements", label: "Thành tựu", requiredPermissions: routePermissions["/homepage-achievements"]  },
             { id: "dropdown-partners", to: "/homepage-partners", label: "Đối tác", requiredPermissions: routePermissions["/homepage-partners"]  },
@@ -28,12 +28,12 @@ export const navbarContents = [
             { id: "dropdown-banners", to: "/homepage-banners", label: "Banner", requiredPermissions: routePermissions["/homepage-banners"]  },
         ],
     },
-    { id: "navbar-faqs", to: "/faqs", icon: faCircleQuestion, label: "Quản lý FAQs", requiredPermissions: routePermissions["/faqs"] },
+    { id: "navbar-faqs", to: "/faqs", icon: faCircleQuestion, label: "FAQs", requiredPermissions: routePermissions["/faqs"] },
     {
         id: "navbar-posts",
         to: "",
         icon: faFileLines,
-        label: "Quản lý Bài đăng",
+        label: "Bài đăng",
         dropdownContent: [
             { id: "dropdown-activities", to: "/activities", label: "Hoạt động", requiredPermissions: routePermissions["/activities"] },
             { id: "dropdown-etnews", to: "/et-news", label: "ET News", requiredPermissions: routePermissions["/et-news"] },
@@ -44,7 +44,7 @@ export const navbarContents = [
         id: "navbar-collaborator",
         to: "",
         icon: faFaceSmile,
-        label: "Quản lý Tìm kiếm CTV",
+        label: "Tìm kiếm CTV",
         dropdownContent: [
             { id: "dropdown-overview", to: "/collaborator/overview", label: "Tổng quan", requiredPermissions: routePermissions["/collaborator/overview"] },
             { id: "dropdown-approve", to: "/collaborator/approve", label: "Phê duyệt", requiredPermissions: routePermissions["/collaborator/approve"] },
